@@ -1,0 +1,6 @@
+{
+  "filename": "{{ entityName.kebabCase }}.redis.controller.ts",
+  "filepath": "./src/{{ moduleName.kebabCase }}",
+  "temppath": "../../temp/src/module/redis.controller.ts.promise.temp",
+  "isRender": "{{ dataStructure === 'Promise' }}"
+}

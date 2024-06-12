@@ -1,0 +1,71 @@
+/**
+ * @Author       : {{ fileHeaders.author }}
+ * @Date         : {{ fileHeaders.createTime }}
+ * @LastEditors  : {{ fileHeaders.author }}
+ * @LastEditTime : {{ fileHeaders.createTime }}
+ */
+
+/* eslint-disable max-classes-per-file */
+import { Type } from 'class-transformer'
+import { IsObject, IsString, ValidateNested } from 'class-validator'
+
+import { ClassValidatorUtil as CU, IsOptionalNotNull } from '@hz-9/a4-core'
+import { CRUDTypeOrmModuleSchema } from '@hz-9/a4-crud-typeorm'
+import { DocsConfigSchema } from '@hz-9/a4-docs'
+import { SimpleLoggerConfigSchema } from '@hz-9/a4-log-log4js'
+import { MicroServiceConfigSchema } from '@hz-9/a4-micro-service'
+import { NetworkConfigSchema } from '@hz-9/a4-network'
+import { EurekaRegisterConfigSchema } from '@hz-9/a4-register-eureka'
+import { SafeConfigSchema } from '@hz-9/a4-safe'
+
+export class A4Config {
+  @IsOptionalNotNull()
+  @IsString()
+  public NODE_ENV: string
+
+  @IsObject()
+  @ValidateNested()
+  @Type(() => MicroServiceConfigSchema)
+  public readonly microService: MicroServiceConfigSchema
+
+  @IsObject()
+  @ValidateNested()
+  @Type(() => CRUDTypeOrmModuleSchema)
+  public readonly crud: CRUDTypeOrmModuleSchema
+
+  @IsOptionalNotNull()
+  @IsObject()
+  @ValidateNested()
+  @Type(() => SimpleLoggerConfigSchema)
+  public readonly log: SimpleLoggerConfigSchema = CU.p2CwD(SimpleLoggerConfigSchema, {})
+
+  @IsOptionalNotNull()
+  @IsObject()
+  @ValidateNested()
+  @Type(() => NetworkConfigSchema)
+  public readonly network: NetworkConfigSchema = CU.p2CwD(NetworkConfigSchema, {})
+
+  @IsOptionalNotNull()
+  @IsObject()
+  @ValidateNested()
+  @Type(() => DocsConfigSchema)
+  public readonly docs: DocsConfigSchema = CU.p2CwD(DocsConfigSchema, {})
+
+  @IsObject()
+  @ValidateNested()
+  @Type(() => EurekaRegisterConfigSchema)
+  public readonly register: EurekaRegisterConfigSchema
+
+  @IsOptionalNotNull()
+  @IsObject()
+  @ValidateNested()
+  @Type(() => SafeConfigSchema)
+  public readonly safe: SafeConfigSchema = CU.p2CwD(SafeConfigSchema, {})
+}
+
+export class AppConfigSchema {
+  @IsObject()
+  @ValidateNested()
+  @Type(() => A4Config)
+  public readonly A4: A4Config
+}

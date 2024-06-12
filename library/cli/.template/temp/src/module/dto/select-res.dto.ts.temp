@@ -1,0 +1,47 @@
+/**
+ * @Author       : {{ fileHeaders.author }}
+ * @Date         : {{ fileHeaders.createTime }}
+ * @LastEditors  : {{ fileHeaders.author }}
+ * @LastEditTime : {{ fileHeaders.createTime }}
+ */
+
+/* eslint-disable max-classes-per-file, @rushstack/no-new-null */
+import { PageResDto } from '@hz-9/a4-core'
+
+import { {{ entityName.firstCase }}Entity } from '../entity/{{ entityName.kebabCase }}.entity'
+
+export class {{ entityName.firstCase }}SelectResDto extends {{ entityName.firstCase }}Entity {}
+
+export class {{ entityName.firstCase }}SelectByPageResultDto {
+  public readonly status: number
+
+  public readonly data: {{ entityName.firstCase }}SelectResDto[]
+
+  public readonly page: PageResDto
+
+  public readonly message: string
+}
+
+export class {{ entityName.firstCase }}SelectNoPageResultDto {
+  public readonly status: number
+
+  public readonly data: {{ entityName.firstCase }}SelectResDto[]
+
+  public readonly message: string
+}
+
+export class {{ entityName.firstCase }}SelectByIdResultDto {
+  public readonly status: number
+
+  public readonly data: {{ entityName.firstCase }}SelectResDto | null
+
+  public readonly message: string
+}
+
+export class {{ entityName.firstCase }}SelectByIdsResultDto {
+  public readonly status: number
+
+  public readonly data: {{ entityName.firstCase }}SelectResDto[]
+
+  public readonly message: string
+}

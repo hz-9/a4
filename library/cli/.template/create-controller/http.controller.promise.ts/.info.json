@@ -1,0 +1,6 @@
+{
+  "filename": "{{ entityName.kebabCase }}.http.controller.ts",
+  "filepath": "./src/{{ moduleName.kebabCase }}",
+  "temppath": "../../temp/src/module/http.controller.ts.promise.temp",
+  "isRender": "{{ dataStructure === 'Promise' }}"
+}

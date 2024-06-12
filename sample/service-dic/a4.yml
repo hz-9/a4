@@ -1,0 +1,44 @@
+A4:
+  registry:
+    instance:
+      service: SERVICE_DIC
+      urlAlias: dic
+      version: v1
+    service:
+      host: '192.168.31.179'
+      port: 8761
+      servicePath: '/eureka/apps/'
+      serviceUrls:
+        - http://192.168.31.179:8761/eureka/apps/
+  microService:
+    connect:
+      redis:
+        host: '192.168.31.179'
+        port: 6379
+        password: 'A1345678'
+  cache:
+    # store: memory
+    store: redis
+    redis:
+      ttl: 0
+      connect:
+        host: '192.168.31.179'
+        port: 6379
+        password: 'A1345678'
+        db: 11
+  crud:
+    elasticSearch:
+      default:
+        node: https://192.168.31.179:9200
+        auth:
+          username: elastic
+          password: heaven2024a4
+        tls:
+          ca: ./temp/es01.crt
+          rejectUnauthorized: false
+        synchronize: true
+
+    typeORM:
+      default:
+        type: postgres
+        url: 'postgres://postgres:postgres123456@192.168.31.179:5432/demo'

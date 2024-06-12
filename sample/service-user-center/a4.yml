@@ -1,0 +1,30 @@
+A4:
+  registry:
+    instance:
+      service: SERVICE_USER_CENTER
+      urlAlias: user-center
+      version: v1
+    service:
+      host: '127.0.0.1'
+      port: 8761
+      servicePath: '/eureka/apps/'
+      serviceUrls:
+        - http://127.0.0.1:8761/eureka/apps/
+  microService:
+    connect:
+      redis:
+        host: '127.0.0.1'
+        port: 6379
+        password: 'A1345678'
+  crud:
+    db:
+      postgres:
+        default:
+          url: 'postgres://postgres:postgres123456@127.0.0.1:5432/demo'
+          synchronize: true
+  lock:
+    connect:
+      host: '127.0.0.1'
+      port: 6379
+      password: 'A1345678'
+      db: 15

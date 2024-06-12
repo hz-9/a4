@@ -1,0 +1,5 @@
+{
+  "filename": "{{ entityName.kebabCase }}.select-res.dto.ts",
+  "filepath": "./src/{{ moduleName.kebabCase }}/dto",
+  "temppath": "../../temp/src/module/dto/select-res.dto.ts.temp"
+}

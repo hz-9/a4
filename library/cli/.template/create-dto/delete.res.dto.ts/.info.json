@@ -1,0 +1,5 @@
+{
+  "filename": "{{ entityName.kebabCase }}.delete-res.dto.ts",
+  "filepath": "./src/{{ moduleName.kebabCase }}/dto",
+  "temppath": "../../temp/src/module/dto/delete-res.dto.ts.temp"
+}

@@ -1,0 +1,3 @@
+{
+  "extends": "./node_modules/@hz-9/heft-node-rig/profiles/tool/tsconfig.json"
+}

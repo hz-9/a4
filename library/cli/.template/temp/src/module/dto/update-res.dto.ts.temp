@@ -1,0 +1,10 @@
+/**
+ * @Author       : {{ fileHeaders.author }}
+ * @Date         : {{ fileHeaders.createTime }}
+ * @LastEditors  : {{ fileHeaders.author }}
+ * @LastEditTime : {{ fileHeaders.createTime }}
+ */
+
+/* eslint-disable max-classes-per-file, @rushstack/no-new-null */
+
+/* A4 Cli 自动创建的 Dto 文件，请按需添加 Dto。请注意必须添加 class。 */

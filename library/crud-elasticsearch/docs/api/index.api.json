@@ -1,0 +1,2969 @@
+{
+  "metadata": {
+    "toolPackage": "@microsoft/api-extractor",
+    "toolVersion": "7.42.3",
+    "schemaVersion": 1011,
+    "oldestForwardsCompatibleVersion": 1001,
+    "tsdocConfig": {
+      "$schema": "https://developer.microsoft.com/json-schemas/tsdoc/v0/tsdoc.schema.json",
+      "noStandardTags": true,
+      "tagDefinitions": [
+        {
+          "tagName": "@alpha",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@beta",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@defaultValue",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@decorator",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@deprecated",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@eventProperty",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@example",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@experimental",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@inheritDoc",
+          "syntaxKind": "inline"
+        },
+        {
+          "tagName": "@internal",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@label",
+          "syntaxKind": "inline"
+        },
+        {
+          "tagName": "@link",
+          "syntaxKind": "inline",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@override",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@packageDocumentation",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@param",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@privateRemarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@public",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@readonly",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@remarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@returns",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@sealed",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@see",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@throws",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@typeParam",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@virtual",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@betaDocumentation",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@internalRemarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@preapproved",
+          "syntaxKind": "modifier"
+        }
+      ],
+      "supportForTags": {
+        "@alpha": true,
+        "@beta": true,
+        "@defaultValue": true,
+        "@decorator": true,
+        "@deprecated": true,
+        "@eventProperty": true,
+        "@example": true,
+        "@experimental": true,
+        "@inheritDoc": true,
+        "@internal": true,
+        "@label": true,
+        "@link": true,
+        "@override": true,
+        "@packageDocumentation": true,
+        "@param": true,
+        "@privateRemarks": true,
+        "@public": true,
+        "@readonly": true,
+        "@remarks": true,
+        "@returns": true,
+        "@sealed": true,
+        "@see": true,
+        "@throws": true,
+        "@typeParam": true,
+        "@virtual": true,
+        "@betaDocumentation": true,
+        "@internalRemarks": true,
+        "@preapproved": true
+      },
+      "reportUnsupportedHtmlElements": false
+    }
+  },
+  "kind": "Package",
+  "canonicalReference": "@hz-9/a4-crud-elasticsearch!",
+  "docComment": "",
+  "name": "@hz-9/a4-crud-elasticsearch",
+  "preserveMemberOrder": false,
+  "members": [
+    {
+      "kind": "EntryPoint",
+      "canonicalReference": "@hz-9/a4-crud-elasticsearch!",
+      "name": "",
+      "preserveMemberOrder": false,
+      "members": [
+        {
+          "kind": "Variable",
+          "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4_CRUD_ELASTICSEARCH_DATASOURCE_GROUP:var",
+          "docComment": "/**\n * 用于作为 A4 Crud ElasticSearch 多数据库合集的标记\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "A4_CRUD_ELASTICSEARCH_DATASOURCE_GROUP: "
+            },
+            {
+              "kind": "Content",
+              "text": "\"A4.Crud.ElasticSearch.DataSourceGroup\""
+            }
+          ],
+          "fileUrlPath": "dist/const/index.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "A4_CRUD_ELASTICSEARCH_DATASOURCE_GROUP",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4_CRUD_ELASTICSEARCH_OPTIONS:var",
+          "docComment": "/**\n * 用于作为 A4 Crud ElasticSearch 配置的标记。\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "A4_CRUD_ELASTICSEARCH_OPTIONS: "
+            },
+            {
+              "kind": "Content",
+              "text": "\"A4.Crud.ElasticSearch.Option\""
+            }
+          ],
+          "fileUrlPath": "dist/const/index.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "A4_CRUD_ELASTICSEARCH_OPTIONS",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4_DEFAULT_DATA_SOURCE_NAME:var",
+          "docComment": "/**\n * A4 Crud ElasticSearch 默认数据库名称。\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "A4_DEFAULT_DATA_SOURCE_NAME: "
+            },
+            {
+              "kind": "Content",
+              "text": "\"default\""
+            }
+          ],
+          "fileUrlPath": "dist/const/index.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "A4_DEFAULT_DATA_SOURCE_NAME",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4_ELASTICSEARCH_INDEX_NAME_IN_METADATA:var",
+          "docComment": "/**\n * A4 Crud ElasticSearch 索引 Key\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "A4_ELASTICSEARCH_INDEX_NAME_IN_METADATA: "
+            },
+            {
+              "kind": "Content",
+              "text": "\"A4.Crud.ElasticSearch.Metadata.IndexName\""
+            }
+          ],
+          "fileUrlPath": "dist/const/index.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "A4_ELASTICSEARCH_INDEX_NAME_IN_METADATA",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@hz-9/a4-crud-elasticsearch!A44ElasticSearchCrudModuleSchemaC:class",
+          "docComment": "/**\n * `A4 CRUD TypeORM Module` 用于 Multi Schema 类型判断类（A4.crud）\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class A44ElasticSearchCrudModuleSchemaC "
+            }
+          ],
+          "fileUrlPath": "dist/schema/elastic-search.crud.schema.d.ts",
+          "releaseTag": "Public",
+          "isAbstract": false,
+          "name": "A44ElasticSearchCrudModuleSchemaC",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "Property",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A44ElasticSearchCrudModuleSchemaC#elasticSearch:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "readonly elasticSearch: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "A4ElasticSearchCrudModuleSchema",
+                  "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrudModuleSchema:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": true,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "elasticSearch",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrud:class",
+          "docComment": "/**\n * 对 ElasticSearch 进行 CRUD 操作的工具类。\n *\n * API: https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/getting-started-js.html#_indexing_documents\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class A4ElasticSearchCrud<E extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "IObjectLiteral",
+              "canonicalReference": "@hz-9/a4-core!IObjectLiteral:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "> implements "
+            },
+            {
+              "kind": "Reference",
+              "text": "IA4SimpleDao",
+              "canonicalReference": "@hz-9/a4-core!IA4SimpleDao:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "fileUrlPath": "dist/modules/elastic-search.crud.d.ts",
+          "releaseTag": "Public",
+          "typeParameters": [
+            {
+              "typeParameterName": "E",
+              "constraintTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "isAbstract": false,
+          "name": "A4ElasticSearchCrud",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrud:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `A4ElasticSearchCrud` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor(instance: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ElasticsearchClient",
+                  "canonicalReference": "@elastic/elasticsearch!default:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", indexName: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ");"
+                }
+              ],
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "instance",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "indexName",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 4
+                  },
+                  "isOptional": false
+                }
+              ]
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrud#deleteByIdsToObservable:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "deleteByIdsToObservable(ids: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Observable",
+                  "canonicalReference": "rxjs!Observable:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IUpdateResult",
+                  "canonicalReference": "@hz-9/a4-core!IUpdateResult:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 7
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "ids",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "deleteByIdsToObservable"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrud#deleteByIdsToPromise:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "deleteByIdsToPromise(ids: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IDeleteResult",
+                  "canonicalReference": "@hz-9/a4-core!IDeleteResult:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 7
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "ids",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "deleteByIdsToPromise"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrud#deleteByIdToObservable:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "deleteByIdToObservable(id: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Observable",
+                  "canonicalReference": "rxjs!Observable:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IUpdateResult",
+                  "canonicalReference": "@hz-9/a4-core!IUpdateResult:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 7
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "id",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "deleteByIdToObservable"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrud#deleteByIdToPromise:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "deleteByIdToPromise(id: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IDeleteResult",
+                  "canonicalReference": "@hz-9/a4-core!IDeleteResult:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 7
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "id",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "deleteByIdToPromise"
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrud#indexName:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "readonly indexName: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": true,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "indexName",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrud#insertMultiToObservable:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "insertMultiToObservable(modelList: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DeepPartial",
+                  "canonicalReference": "@hz-9/a4-core!DeepPartial:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<E>[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Observable",
+                  "canonicalReference": "rxjs!Observable:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<E[]>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 4,
+                "endIndex": 6
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "modelList",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "insertMultiToObservable"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrud#insertMultiToPromise:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "insertMultiToPromise(modelList: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DeepPartial",
+                  "canonicalReference": "@hz-9/a4-core!DeepPartial:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<E>[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<E[]>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 4,
+                "endIndex": 6
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "modelList",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "insertMultiToPromise"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrud#insertToObservable:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "insertToObservable(model: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DeepPartial",
+                  "canonicalReference": "@hz-9/a4-core!DeepPartial:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<E>"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Observable",
+                  "canonicalReference": "rxjs!Observable:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<E>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 4,
+                "endIndex": 6
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "model",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "insertToObservable"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrud#insertToPromise:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "insertToPromise(model: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DeepPartial",
+                  "canonicalReference": "@hz-9/a4-core!DeepPartial:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<E>"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<E>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 4,
+                "endIndex": 6
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "model",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "insertToPromise"
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrud#instance:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "readonly instance: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ElasticsearchClient",
+                  "canonicalReference": "@elastic/elasticsearch!default:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": true,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "instance",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrud#selectByIdsToObservable:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "selectByIdsToObservable(ids: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Observable",
+                  "canonicalReference": "rxjs!Observable:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<E[]>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 5
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "ids",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "selectByIdsToObservable"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrud#selectByIdsToPromise:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "selectByIdsToPromise(ids: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<E[]>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 5
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "ids",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "selectByIdsToPromise"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrud#selectByIdToObservable:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "selectByIdToObservable(id: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Observable",
+                  "canonicalReference": "rxjs!Observable:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<E | null>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 5
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "id",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "selectByIdToObservable"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrud#selectByIdToPromise:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "selectByIdToPromise(id: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<E | null>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 5
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "id",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "selectByIdToPromise"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrud#selectByPageToObservable:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "selectByPageToObservable(model: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DeepPartial",
+                  "canonicalReference": "@hz-9/a4-core!DeepPartial:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<E>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", options: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ISelectByPageOptions",
+                  "canonicalReference": "@hz-9/a4-core!ISelectByPageOptions:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<E>"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Observable",
+                  "canonicalReference": "rxjs!Observable:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ISelectByPageReturn",
+                  "canonicalReference": "@hz-9/a4-core!ISelectByPageReturn:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<E>>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 7,
+                "endIndex": 11
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "model",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 6
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "selectByPageToObservable"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrud#selectByPageToPromise:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "selectByPageToPromise(model: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DeepPartial",
+                  "canonicalReference": "@hz-9/a4-core!DeepPartial:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<E>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", options: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ISelectByPageOptions",
+                  "canonicalReference": "@hz-9/a4-core!ISelectByPageOptions:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<E>"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ISelectByPageReturn",
+                  "canonicalReference": "@hz-9/a4-core!ISelectByPageReturn:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<E>>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 7,
+                "endIndex": 11
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "model",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 6
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "selectByPageToPromise"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrud#selectNoPageToObservable:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "selectNoPageToObservable(model: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DeepPartial",
+                  "canonicalReference": "@hz-9/a4-core!DeepPartial:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<E>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", options: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ISelectNoPageOptions",
+                  "canonicalReference": "@hz-9/a4-core!ISelectNoPageOptions:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<E>"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Observable",
+                  "canonicalReference": "rxjs!Observable:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ISelectNoPageReturn",
+                  "canonicalReference": "@hz-9/a4-core!ISelectNoPageReturn:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<E>>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 7,
+                "endIndex": 11
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "model",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 6
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "selectNoPageToObservable"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrud#selectNoPageToPromise:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "selectNoPageToPromise(model: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DeepPartial",
+                  "canonicalReference": "@hz-9/a4-core!DeepPartial:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<E>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", options: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ISelectNoPageOptions",
+                  "canonicalReference": "@hz-9/a4-core!ISelectNoPageOptions:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<E>"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ISelectNoPageReturn",
+                  "canonicalReference": "@hz-9/a4-core!ISelectNoPageReturn:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<E>>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 7,
+                "endIndex": 11
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "model",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 6
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "selectNoPageToPromise"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrud#updateByIdsToObservable:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "updateByIdsToObservable(ids: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", model: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DeepPartial",
+                  "canonicalReference": "@hz-9/a4-core!DeepPartial:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Omit",
+                  "canonicalReference": "!Omit:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<E, 'id'>>"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Observable",
+                  "canonicalReference": "rxjs!Observable:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IUpdateResult",
+                  "canonicalReference": "@hz-9/a4-core!IUpdateResult:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 8,
+                "endIndex": 12
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "ids",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "model",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 7
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "updateByIdsToObservable"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrud#updateByIdsToPromise:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "updateByIdsToPromise(ids: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", model: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DeepPartial",
+                  "canonicalReference": "@hz-9/a4-core!DeepPartial:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Omit",
+                  "canonicalReference": "!Omit:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<E, 'id'>>"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IUpdateResult",
+                  "canonicalReference": "@hz-9/a4-core!IUpdateResult:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 8,
+                "endIndex": 12
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "ids",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "model",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 7
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "updateByIdsToPromise"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrud#updateByIdToObservable:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "updateByIdToObservable(id: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", model: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DeepPartial",
+                  "canonicalReference": "@hz-9/a4-core!DeepPartial:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Omit",
+                  "canonicalReference": "!Omit:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<E, 'id'>>"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Observable",
+                  "canonicalReference": "rxjs!Observable:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IUpdateResult",
+                  "canonicalReference": "@hz-9/a4-core!IUpdateResult:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 8,
+                "endIndex": 12
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "id",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "model",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 7
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "updateByIdToObservable"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrud#updateByIdToPromise:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "updateByIdToPromise(id: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", model: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DeepPartial",
+                  "canonicalReference": "@hz-9/a4-core!DeepPartial:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Omit",
+                  "canonicalReference": "!Omit:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<E, 'id'>>"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IUpdateResult",
+                  "canonicalReference": "@hz-9/a4-core!IUpdateResult:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 8,
+                "endIndex": 12
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "id",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "model",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 7
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "updateByIdToPromise"
+            }
+          ],
+          "implementsTokenRanges": [
+            {
+              "startIndex": 3,
+              "endIndex": 4
+            }
+          ]
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrudModule:class",
+          "docComment": "/**\n * `A4 CRUD ElasticSearch` 核心模块类。\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class A4ElasticSearchCrudModule implements "
+            },
+            {
+              "kind": "Reference",
+              "text": "A4ModuleBase",
+              "canonicalReference": "@hz-9/a4-core!A4ModuleBase:class"
+            },
+            {
+              "kind": "Content",
+              "text": ", "
+            },
+            {
+              "kind": "Reference",
+              "text": "IA4CrudModule",
+              "canonicalReference": "@hz-9/a4-core!IA4CrudModule:class"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "fileUrlPath": "dist/modules/elastic-search.crud.module.d.ts",
+          "releaseTag": "Public",
+          "isAbstract": false,
+          "name": "A4ElasticSearchCrudModule",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "Property",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrudModule.CONFIG_MIDDLE_PATH:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "static CONFIG_MIDDLE_PATH: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"A4.crud.elasticSearch\""
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "CONFIG_MIDDLE_PATH",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": true,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrudModule.forFeature:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "static forFeature(indices?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Index",
+                  "canonicalReference": "@hz-9/a4-crud-elasticsearch!Index:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", dbName?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DynamicModule",
+                  "canonicalReference": "@nestjs/common!DynamicModule:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": true,
+              "returnTypeTokenRange": {
+                "startIndex": 6,
+                "endIndex": 7
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "indices",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": true
+                },
+                {
+                  "parameterName": "dbName",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  },
+                  "isOptional": true
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "forFeature"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrudModule.forRootAsync:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "static forRootAsync(options: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Omit",
+                  "canonicalReference": "!Omit:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "FactoryProvider",
+                  "canonicalReference": "@nestjs/common!FactoryProvider:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string, "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DataSourceOptionsExtraWithDefault",
+                  "canonicalReference": "@hz-9/a4-crud-elasticsearch!DataSourceOptionsExtraWithDefault:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">>, 'provide'>"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DynamicModule",
+                  "canonicalReference": "@nestjs/common!DynamicModule:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": true,
+              "returnTypeTokenRange": {
+                "startIndex": 10,
+                "endIndex": 11
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 9
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "forRootAsync"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrudModule.getConfig:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "static getConfig(a4Config: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IA4Config",
+                  "canonicalReference": "@hz-9/a4-core!IA4Config:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string, "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DataSourceOptionsExtraWithDefault",
+                  "canonicalReference": "@hz-9/a4-crud-elasticsearch!DataSourceOptionsExtraWithDefault:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": true,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 7
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "a4Config",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "getConfig"
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrudModule.logger:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "static logger: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Logger",
+                  "canonicalReference": "@nestjs/common!Logger:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "logger",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": true,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrudModule.Schema:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "static Schema: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "typeof "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "A4ElasticSearchCrudModuleSchemaA",
+                  "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrudModuleSchemaA:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "Schema",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isStatic": true,
+              "isProtected": false,
+              "isAbstract": false
+            }
+          ],
+          "implementsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 2
+            },
+            {
+              "startIndex": 3,
+              "endIndex": 4
+            }
+          ]
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrudModuleSchema:class",
+          "docComment": "/**\n * `A4 CRUD ElasticSearch Module` 配置项结构。\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class A4ElasticSearchCrudModuleSchema "
+            }
+          ],
+          "fileUrlPath": "dist/schema/elastic-search.crud.schema.d.ts",
+          "releaseTag": "Public",
+          "isAbstract": false,
+          "name": "A4ElasticSearchCrudModuleSchema",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "Property",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrudModuleSchema#default:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "readonly default: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DataSourceOptionsExtra",
+                  "canonicalReference": "@hz-9/a4-crud-elasticsearch!DataSourceOptionsExtra:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": true,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "default",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrudModuleSchemaA:class",
+          "docComment": "/**\n * `A4 CRUD ElasticSearch Module` 用于 Multi Schema 类型判断类\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class A4ElasticSearchCrudModuleSchemaA "
+            }
+          ],
+          "fileUrlPath": "dist/schema/elastic-search.crud.schema.d.ts",
+          "releaseTag": "Public",
+          "isAbstract": false,
+          "name": "A4ElasticSearchCrudModuleSchemaA",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "Property",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrudModuleSchemaA#A4:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "readonly A4: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "A4ElasticSearchCrudModuleSchemaB",
+                  "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrudModuleSchemaB:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": true,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "A4",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrudModuleSchemaB:class",
+          "docComment": "/**\n * `A4 CRUD ElasticSearch Module` 用于 Multi Schema 类型判断类（A4）\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class A4ElasticSearchCrudModuleSchemaB "
+            }
+          ],
+          "fileUrlPath": "dist/schema/elastic-search.crud.schema.d.ts",
+          "releaseTag": "Public",
+          "isAbstract": false,
+          "name": "A4ElasticSearchCrudModuleSchemaB",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "Property",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrudModuleSchemaB#crud:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "readonly crud: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "A44ElasticSearchCrudModuleSchemaC",
+                  "canonicalReference": "@hz-9/a4-crud-elasticsearch!A44ElasticSearchCrudModuleSchemaC:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": true,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "crud",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4TypeORMCrudModuleSchema:class",
+          "docComment": "/**\n * `A4 CRUD TypeORM Module` 配置项结构。\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class A4TypeORMCrudModuleSchema "
+            }
+          ],
+          "fileUrlPath": "dist/schema/elastic-search.crud.schema.d.ts",
+          "releaseTag": "Public",
+          "isAbstract": false,
+          "name": "A4TypeORMCrudModuleSchema",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "Property",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4TypeORMCrudModuleSchema#default:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "readonly default: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DataSourceOptionsExtra",
+                  "canonicalReference": "@hz-9/a4-crud-elasticsearch!DataSourceOptionsExtra:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": true,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "default",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@hz-9/a4-crud-elasticsearch!CRUD_ELASTICSEARCH_MODULE_DEFAULT:var",
+          "docComment": "/**\n * `A4 Crud ElasticSearch` 自定义配置的默认信息。\n *\n * 各参数说明，请查看\n *\n * @see\n *\n * IElasticSearchModuleOptions\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "CRUD_ELASTICSEARCH_MODULE_DEFAULT: "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    readonly RETRY_ATTMPTS: 10;\n    readonly RETRY_DELAY: 3000;\n    readonly VERBOSE_RESTRY_LOG: true;\n}"
+            }
+          ],
+          "fileUrlPath": "dist/const/index.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "CRUD_ELASTICSEARCH_MODULE_DEFAULT",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@hz-9/a4-crud-elasticsearch!DataSourceOptionsExtra:type",
+          "docComment": "/**\n * /**\n *\n * elasticsearch 中的 `ClientOptions` 类型与 IElasticSearchModuleOptions 的联合类型（IElasticSearchModuleOptions 为全部可选参数）。\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type DataSourceOptionsExtra = "
+            },
+            {
+              "kind": "Reference",
+              "text": "ClientOptions",
+              "canonicalReference": "@elastic/elasticsearch!ClientOptions:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " & "
+            },
+            {
+              "kind": "Reference",
+              "text": "IElasticSearchModuleOptions",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!IElasticSearchModuleOptions:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/interface/index.d.ts",
+          "releaseTag": "Public",
+          "name": "DataSourceOptionsExtra",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 4
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@hz-9/a4-crud-elasticsearch!DataSourceOptionsExtraWithDefault:type",
+          "docComment": "/**\n * elasticsearch 中的 `ClientOptions` 类型与 IElasticSearchModuleOptions 的联合类型（IElasticSearchModuleOptions 为全部必选参数）。\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type DataSourceOptionsExtraWithDefault = "
+            },
+            {
+              "kind": "Reference",
+              "text": "ClientOptions",
+              "canonicalReference": "@elastic/elasticsearch!ClientOptions:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " & "
+            },
+            {
+              "kind": "Reference",
+              "text": "Required",
+              "canonicalReference": "!Required:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "IElasticSearchModuleOptions",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!IElasticSearchModuleOptions:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ">"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/interface/index.d.ts",
+          "releaseTag": "Public",
+          "name": "DataSourceOptionsExtraWithDefault",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 7
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@hz-9/a4-crud-elasticsearch!Document_2:type",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type Document = "
+            },
+            {
+              "kind": "Reference",
+              "text": "Record",
+              "canonicalReference": "!Record:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<string, any>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/interface/index.d.ts",
+          "releaseTag": "Public",
+          "name": "Document_2",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@hz-9/a4-crud-elasticsearch!IElasticSearchModuleOptions:interface",
+          "docComment": "/**\n * `A4 CRUD ElasticSearch` 中，对于数据库链接的自定义参数。\n *\n * 借鉴于 `@nestjs/typeorm` 的 `TypeORMModuleOptions` 类型。\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface IElasticSearchModuleOptions "
+            }
+          ],
+          "fileUrlPath": "dist/interface/index.d.ts",
+          "releaseTag": "Public",
+          "name": "IElasticSearchModuleOptions",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!IElasticSearchModuleOptions#retryAttempts:member",
+              "docComment": "/**\n * 重新连接次数。\n *\n * 默认:\n *\n * @see\n *\n * CRUD_ELASTICSEARCH_MODULE_DEFAULT.RETRY_ATTMPTS\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "retryAttempts?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "retryAttempts",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!IElasticSearchModuleOptions#retryDelay:member",
+              "docComment": "/**\n * 两次重连的间隔时间。（单位：ms）\n *\n * 默认:\n *\n * @see\n *\n * CRUD_ELASTICSEARCH_MODULE_DEFAULT.RETRY_DELAY\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "retryDelay?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "retryDelay",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!IElasticSearchModuleOptions#synchronize:member",
+              "docComment": "/**\n * 是否同步 Index。\n *\n * 可选。默认值是看当前所在环境的。\n *\n * 若 isDev = true, 则默认值为 true；否则，强制为 false\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "synchronize?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "synchronize",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!IElasticSearchModuleOptions#verboseRetryLog:member",
+              "docComment": "/**\n * 重连时，是否显示日志信息。\n *\n * 默认:\n *\n * @see\n *\n * CRUD_ELASTICSEARCH_MODULE_DEFAULT.VERBOSE_RESTRY_LOG\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "verboseRetryLog?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "verboseRetryLog",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@hz-9/a4-crud-elasticsearch!Index:type",
+          "docComment": "/**\n * Index 实例对象\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type Index<T extends "
+            },
+            {
+              "kind": "Content",
+              "text": "any"
+            },
+            {
+              "kind": "Content",
+              "text": " = "
+            },
+            {
+              "kind": "Content",
+              "text": "any"
+            },
+            {
+              "kind": "Content",
+              "text": "> = "
+            },
+            {
+              "kind": "Content",
+              "text": "new (...args: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Array",
+              "canonicalReference": "!Array:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<any>) => T"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/interface/index.d.ts",
+          "releaseTag": "Public",
+          "name": "Index",
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              }
+            }
+          ],
+          "typeTokenRange": {
+            "startIndex": 5,
+            "endIndex": 8
+          }
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@hz-9/a4-crud-elasticsearch!InjectA4ElasticSearchCrud:function(1)",
+          "docComment": "/**\n * 获取 A4 的 A4ElasticSearchCrud 对象。\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "InjectA4ElasticSearchCrud: (index: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Index",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!Index:type"
+            },
+            {
+              "kind": "Content",
+              "text": ", dbName?: "
+            },
+            {
+              "kind": "Content",
+              "text": "string"
+            },
+            {
+              "kind": "Content",
+              "text": ") => "
+            },
+            {
+              "kind": "Reference",
+              "text": "ReturnType",
+              "canonicalReference": "!ReturnType:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "Inject",
+              "canonicalReference": "@nestjs/common!Inject:function"
+            },
+            {
+              "kind": "Content",
+              "text": ">"
+            }
+          ],
+          "fileUrlPath": "dist/decorators/inject-elasticsearch-crud.decorator.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 5,
+            "endIndex": 9
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "index",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "dbName",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "isOptional": true
+            }
+          ],
+          "name": "InjectA4ElasticSearchCrud"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@hz-9/a4-crud-elasticsearch!InjectIndex:function(1)",
+          "docComment": "/**\n * 获取 ElasticSearch 的 Index 对象。\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "InjectIndex: (index: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Index",
+              "canonicalReference": "@hz-9/a4-crud-elasticsearch!Index:type"
+            },
+            {
+              "kind": "Content",
+              "text": ", dbName?: "
+            },
+            {
+              "kind": "Content",
+              "text": "string"
+            },
+            {
+              "kind": "Content",
+              "text": ") => "
+            },
+            {
+              "kind": "Reference",
+              "text": "ReturnType",
+              "canonicalReference": "!ReturnType:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "Inject",
+              "canonicalReference": "@nestjs/common!Inject:function"
+            },
+            {
+              "kind": "Content",
+              "text": ">"
+            }
+          ],
+          "fileUrlPath": "dist/decorators/inject-index.decorator.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 5,
+            "endIndex": 9
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "index",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "dbName",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "isOptional": true
+            }
+          ],
+          "name": "InjectIndex"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@hz-9/a4-crud-elasticsearch!RegisterIndex:function(1)",
+          "docComment": "/**\n * 注册索引。\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "RegisterIndex: (args?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "OpenSearchEntityArgs",
+              "canonicalReference": "@scalenc/opensearch-mapping-ts!OpenSearchEntityArgs:class"
+            },
+            {
+              "kind": "Content",
+              "text": ") => "
+            },
+            {
+              "kind": "Reference",
+              "text": "ClassDecorator",
+              "canonicalReference": "!ClassDecorator:type"
+            }
+          ],
+          "fileUrlPath": "dist/decorators/register-index.decorator.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "args",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": true
+            }
+          ],
+          "name": "RegisterIndex"
+        }
+      ]
+    }
+  ]
+}

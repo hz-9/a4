@@ -1,0 +1,48 @@
+{
+  "name": "@hz-9/heft-nest-plugin",
+  "version": "0.0.0",
+  "description": "A heft plugin package for Nest.js projects.",
+  "bugs": {
+    "url": "https://github.com/hz-9/a4/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hz-9/a4.git",
+    "directory": "hefts/heft-nest-plugin"
+  },
+  "license": "MIT",
+  "author": "Chen Zhen <heavenzhen999@163.com>",
+  "files": [
+    "lib",
+    "heft-plugin.json"
+  ],
+  "scripts": {
+    "_phase:build": "heft run --only build -- --clean",
+    "_phase:test": " heft run --only test -- --clean",
+    "build": "heft build --clean",
+    "start": "heft test  --clean --watch"
+  },
+  "dependencies": {
+    "execa": "^4.1.0",
+    "fs-extra": "~11.1.1",
+    "yaml": "~2.3.3"
+  },
+  "devDependencies": {
+    "@rushstack/eslint-config": "^3.3.2",
+    "@rushstack/heft": "0.66.1",
+    "@rushstack/heft-node-rig": "~2.4.0",
+    "@types/fs-extra": "~11.0.3",
+    "@types/heft-jest": "~1.0.3",
+    "@types/node": "~20.3.1",
+    "eslint": "^8.2.0",
+    "typescript": ">=5.0.0 <5.4.0"
+  },
+  "peerDependencies": {
+    "@microsoft/api-extractor": "~7.42.0",
+    "@rushstack/heft": "0.66.1",
+    "typescript": ">=5.0.0 <5.4.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

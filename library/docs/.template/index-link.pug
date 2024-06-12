@@ -1,0 +1,49 @@
+doctype html
+html
+  head
+    title=service.name
+    style.
+      body {
+        margin: 0;
+        font-size: 16px;
+        background: #f1f1f1;
+        font-weight: 400;
+        font-family: "varela_roundregular", sans-serif;
+        color: #34302d;
+      }
+      .head {
+        padding: 0 100px;
+        height: 80px;
+        background: #000;
+      }
+      .head__name {
+        color: #fff;
+        font-size: 36px;
+        line-height: 80px;
+        letter-spacing: 4px;
+      }
+
+      .content {
+        padding: 20px 40px;
+        font-size: 1rem;
+      }
+      .content-ul {
+        list-style: none;
+      }
+      .content-li {
+        line-height: 1.5rem;
+      }
+      .content-link {
+        text-decoration: none;
+      }
+      .content-link:hover {
+        text-decoration: underline;
+      }
+  body
+    div.head
+      div.head__name=service.normalName
+    div.content
+      ul.content-ul
+        each item in links
+          li.content-li
+            a.content-link(href=item.link target="_blank")=item.label

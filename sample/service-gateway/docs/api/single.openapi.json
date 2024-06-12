@@ -1,0 +1,20 @@
+{
+  "openapi": "3.0.0",
+  "paths": {},
+  "info": {
+    "title": "SERVICE GATEWAY",
+    "description": "",
+    "version": "0.0.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [
+    {
+      "url": "http://127.0.0.1:8000",
+      "description": "直接访问服务"
+    }
+  ],
+  "components": {
+    "schemas": {}
+  }
+}

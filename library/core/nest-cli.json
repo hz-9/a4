@@ -1,0 +1,18 @@
+{
+  "projects": {
+    "common": {
+      "type": "library",
+      "root": "./",
+      "entryFile": "./src/index",
+      "sourceRoot": "./src",
+      "compilerOptions": {
+        "tsConfigPath": "./tsconfig.lib.json"
+      }
+    }
+  },
+  "compilerOptions": {
+    "webpack": false,
+    "deleteOutDir": true,
+    "plugins": ["@nestjs/swagger"]
+  }
+}

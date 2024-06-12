@@ -1,0 +1,100 @@
+/**
+ * @Author       : {{ fileHeaders.author }}
+ * @Date         : {{ fileHeaders.createTime }}
+ * @LastEditors  : {{ fileHeaders.author }}
+ * @LastEditTime : {{ fileHeaders.createTime }}
+ */
+import { MiddlewareConsumer, Module } from '@nestjs/common'
+
+import { ConfigModule, ConfigService } from '@hz-9/a4-config'
+import { LoggerMiddleware } from '@hz-9/a4-core'
+import { CRUDTypeOrmModule, CRUDTypeOrmModuleSchema, DBConfigUtil } from '@hz-9/a4-crud-typeorm'
+import { TypeOrmModule } from '@hz-9/a4-crud-typeorm/nestjs-typeorm'
+import { DocsConfigSchema, DocsModule } from '@hz-9/a4-docs'
+import { LogModule, SimpleLoggerConfigSchema } from '@hz-9/a4-log-log4js'
+import { MicroServiceConfigSchema, MicroServiceModule } from '@hz-9/a4-micro-service'
+import { NetworkConfigSchema, NetworkModule } from '@hz-9/a4-network'
+import { EurekaRegisterConfigSchema, EurekaRegsiterModule } from '@hz-9/a4-register-eureka'
+import { SafeConfigSchema, SafeModule } from '@hz-9/a4-safe'
+
+import { AppConfigSchema } from './app.schema'
+
+@Module({
+  imports: [
+    ConfigModule.forRootAsync({
+      useFactory: async () => ({
+        type: 'file',
+        Schema: AppConfigSchema,
+      }),
+    }),
+
+    EurekaRegsiterModule.forRootAsync({
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService) => {
+        const config = configService.getOrThrow<EurekaRegisterConfigSchema>(EurekaRegsiterModule.CONFIG_MIDDLE_PATH)
+        return config
+      },
+    }),
+
+    MicroServiceModule.forRootAsync({
+      inject: [ConfigService],
+
+      useFactory: (configService: ConfigService) => {
+        const config = configService.getOrThrow<MicroServiceConfigSchema>(MicroServiceModule.CONFIG_MIDDLE_PATH)
+        return config
+      },
+    }),
+
+    DocsModule.forRootAsync({
+      inject: [ConfigService],
+
+      useFactory: (configService: ConfigService) => {
+        const config = configService.getOrThrow<DocsConfigSchema>(DocsModule.CONFIG_MIDDLE_PATH)
+        return config
+      },
+    }),
+
+    LogModule.forRootAsync({
+      inject: [ConfigService],
+
+      useFactory: async (configService: ConfigService) => {
+        const config = configService.getOrThrow<SimpleLoggerConfigSchema>(LogModule.CONFIG_MIDDLE_PATH)
+        return LogModule.simpleConfig(config)
+      },
+    }),
+
+    NetworkModule.forRootAsync({
+      inject: [ConfigService],
+
+      useFactory: (configService: ConfigService) => {
+        const config = configService.getOrThrow<NetworkConfigSchema>(NetworkModule.CONFIG_MIDDLE_PATH)
+        return config
+      },
+    }),
+
+    SafeModule.forRootAsync({
+      inject: [ConfigService],
+
+      useFactory: async (configService: ConfigService) => {
+        const config = configService.getOrThrow<SafeConfigSchema>(SafeModule.CONFIG_MIDDLE_PATH)
+        return config
+      },
+    }),
+
+    CRUDTypeOrmModule.forRootAsync({
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService) => {
+        const config = configService.getOrThrow<CRUDTypeOrmModuleSchema>(CRUDTypeOrmModule.CONFIG_MIDDLE_PATH)
+        const dbOptions = CRUDTypeOrmModule.getDBOptions(config, 'postgres', 'default')
+        return CRUDTypeOrmModule.withDBInstanceOptions(dbOptions)
+      },
+    }),
+
+    // Some application modules ...
+  ],
+})
+export class AppModule {
+  public configure(consumer: MiddlewareConsumer): void {
+    consumer.apply(LoggerMiddleware).forRoutes('*')
+  }
+}

@@ -1,0 +1,4 @@
+apps:
+  - name: '{{ projectName.upperCase }}'
+    namespace: A4 Service
+    script: ./dist/main.js

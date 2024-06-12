@@ -1,0 +1,28 @@
+A4:
+  docs:
+    swagger:
+      open: true
+  register:
+    instance:
+      service: NOT_SET
+      urlAlias: NOT_SET
+      version: NOT_SET
+    service:
+      host: '127.0.0.1'
+      port: 8761
+      servicePath: '/eureka/apps/'
+      serviceUrls:
+        - http://127.0.0.1:8761/eureka/apps/
+  microService:
+    connect:
+      redis:
+        host: '127.0.0.1'
+        port: 6379
+        password: NOT_SET
+  crud:
+    db:
+      postgres:
+        default:
+          url: NOT_SET
+  app:
+    # ...

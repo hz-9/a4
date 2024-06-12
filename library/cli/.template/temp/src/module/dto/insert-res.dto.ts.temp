@@ -1,0 +1,27 @@
+/**
+ * @Author       : {{ fileHeaders.author }}
+ * @Date         : {{ fileHeaders.createTime }}
+ * @LastEditors  : {{ fileHeaders.author }}
+ * @LastEditTime : {{ fileHeaders.createTime }}
+ */
+
+/* eslint-disable max-classes-per-file, @rushstack/no-new-null */
+import { {{ entityName.firstCase }}Entity } from '../entity/{{ entityName.kebabCase }}.entity'
+
+export class {{ entityName.firstCase }}InsertResDto extends {{ entityName.firstCase }}Entity {}
+
+export class {{ entityName.firstCase }}InsertResultDto {
+  public readonly status: number
+
+  public readonly data: {{ entityName.firstCase }}InsertResDto
+
+  public readonly message: string
+}
+
+export class {{ entityName.firstCase }}InsertMultiResultDto {
+  public readonly status: number
+
+  public readonly data: {{ entityName.firstCase }}InsertResDto[]
+
+  public readonly message: string
+}

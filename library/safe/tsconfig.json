@@ -1,0 +1,8 @@
+{
+  "extends": "./node_modules/@hz-9/heft-nest-rig/profiles/library/tsconfig.json",
+
+  "compilerOptions": {
+    "outDir": "./dist",
+    "baseUrl": "./"
+  }
+}

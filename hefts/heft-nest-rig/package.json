@@ -1,0 +1,40 @@
+{
+  "name": "@hz-9/heft-nest-rig",
+  "version": "0.0.0",
+  "description": "A rig package for Nest.js projects that build using Heft build system.",
+  "bugs": {
+    "url": "https://github.com/hz-9/a4/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hz-9/a4.git",
+    "directory": "hefts/heft-nest-rig"
+  },
+  "license": "MIT",
+  "author": "Chen Zhen <heavenzhen999@163.com>",
+  "files": [
+    "profiles",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "build": ""
+  },
+  "dependencies": {
+    "@hz-9/heft-nest-plugin": "workspace:*",
+    "@microsoft/api-extractor": "7.42.3",
+    "@rushstack/heft-api-extractor-plugin": "0.3.21",
+    "@rushstack/heft-jest-plugin": "0.11.22",
+    "jest-environment-node": "~29.6.2"
+  },
+  "devDependencies": {
+    "@rushstack/heft": "0.66.1"
+  },
+  "peerDependencies": {
+    "@rushstack/heft": "0.66.1",
+    "@types/heft-jest": "~1.0.3",
+    "typescript": ">=5.0.0 <5.4.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "name": "@hz-9/a4-cli",
+  "version": "0.0.0",
+  "description": "",
+  "bugs": {
+    "url": "https://github.com/hz-9/a4/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hz-9/a4.git",
+    "directory": "library/cli"
+  },
+  "license": "MIT",
+  "author": "Chen Zhen <heavenzhen999@163.com>",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "bin": {
+    "a4-cli": "./lib/bin/a4-cli.js"
+  },
+  "files": [
+    "lib",
+    "CHANGELOG.md",
+    ".template"
+  ],
+  "scripts": {
+    "build": "heft test --clean",
+    "build:link": "heft test --clean && npm unlink -g && npm link",
+    "start": "ts-node ./src/bin/a4-cli.ts",
+    "test": "heft test --clean",
+    "test:watch": "heft test-watch --clean"
+  },
+  "dependencies": {
+    "@hz-9/a4-core": "workspace:*",
+    "dayjs": "~1.11.10",
+    "inquirer": "~8.2.6",
+    "simple-git": "~3.20.0",
+    "yaml": "~2.3.3"
+  },
+  "devDependencies": {
+    "@hz-9/eslint-config-airbnb-ts": "~0.5.4",
+    "@hz-9/heft-node-rig": "~0.4.1",
+    "@rushstack/heft": "0.66.1",
+    "@types/heft-jest": "~1.0.3",
+    "@types/inquirer": "^8.0.0",
+    "@types/node": "~20.3.1",
+    "eslint": "^8.2.0",
+    "execa": "^4.1.0",
+    "typescript": ">=5.0.0 <5.4.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

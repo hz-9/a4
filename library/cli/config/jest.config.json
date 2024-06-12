@@ -1,0 +1,3 @@
+{
+  "extends": "@hz-9/heft-node-rig/profiles/tool/config/jest.config.json"
+}

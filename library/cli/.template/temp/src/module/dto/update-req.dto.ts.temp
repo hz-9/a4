@@ -1,0 +1,13 @@
+/**
+ * @Author       : {{ fileHeaders.author }}
+ * @Date         : {{ fileHeaders.createTime }}
+ * @LastEditors  : {{ fileHeaders.author }}
+ * @LastEditTime : {{ fileHeaders.createTime }}
+ */
+
+/* eslint-disable max-classes-per-file, @rushstack/no-new-null */
+import { OmitType, PartialType } from '@hz-9/a4-docs'
+
+import { {{ entityName.firstCase }}Entity } from '../entity/{{ entityName.kebabCase }}.entity'
+
+export class {{ entityName.firstCase }}UpdateReqDto extends PartialType(OmitType({{ entityName.firstCase }}Entity, ['id'])) {}

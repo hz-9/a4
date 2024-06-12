@@ -1,0 +1,6 @@
+{
+  "filename": "{{ entityName.kebabCase }}.service.ts",
+  "filepath": "./src/{{ moduleName.kebabCase }}",
+  "temppath": "../../temp/src/module/service.ts.promise.temp",
+  "isRender": "{{ dataStructure === 'Promise' }}"
+}

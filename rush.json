@@ -387,5 +387,125 @@
     //   // "tags": [ "1.0.0-release", "frontend-team" ]
     // },
     // "apps" folder (alphabetical order)
+
+    {
+      "packageName": "@hz-9/heft-nest-plugin",
+      "projectFolder": "hefts/heft-nest-plugin",
+      "versionPolicyName": "hz9",
+      "shouldPublish": true
+    },
+
+    {
+      "packageName": "@hz-9/heft-nest-rig",
+      "projectFolder": "hefts/heft-nest-rig",
+      "versionPolicyName": "hz9",
+      "shouldPublish": true
+    },
+
+    {
+      "packageName": "@hz-9/a4-cli",
+      "projectFolder": "library/cli",
+      "versionPolicyName": "cli",
+      "shouldPublish": true
+    },
+
+    {
+      "packageName": "@hz-9/a4-cache",
+      "projectFolder": "library/cache",
+      "versionPolicyName": "a4",
+      "shouldPublish": true
+    },
+
+    {
+      "packageName": "@hz-9/a4-config",
+      "projectFolder": "library/config",
+      "versionPolicyName": "a4",
+      "shouldPublish": true
+    },
+
+    {
+      "packageName": "@hz-9/a4-core",
+      "projectFolder": "library/core",
+      "versionPolicyName": "a4",
+      "shouldPublish": true
+    },
+
+    {
+      "packageName": "@hz-9/a4-crud-elasticsearch",
+      "projectFolder": "library/crud-elasticsearch",
+      "versionPolicyName": "a4",
+      "shouldPublish": true
+    },
+
+    {
+      "packageName": "@hz-9/a4-crud-typeorm",
+      "projectFolder": "library/crud-typeorm",
+      "versionPolicyName": "a4",
+      "shouldPublish": true
+    },
+
+    {
+      "packageName": "@hz-9/a4-docs",
+      "projectFolder": "library/docs",
+      "versionPolicyName": "a4",
+      "shouldPublish": true
+    },
+
+    {
+      "packageName": "@hz-9/a4-log-log4js",
+      "projectFolder": "library/log-log4js",
+      "versionPolicyName": "a4",
+      "shouldPublish": true
+    },
+
+    {
+      "packageName": "@hz-9/a4-micro-service",
+      "projectFolder": "library/micro-service",
+      "versionPolicyName": "a4",
+      "shouldPublish": true
+    },
+
+    {
+      "packageName": "@hz-9/a4-network",
+      "projectFolder": "library/network",
+      "versionPolicyName": "a4",
+      "shouldPublish": true
+    },
+
+    {
+      "packageName": "@hz-9/a4-lock-redlock",
+      "projectFolder": "library/lock-redlock",
+      "versionPolicyName": "a4",
+      "shouldPublish": true
+    },
+
+    {
+      "packageName": "@hz-9/a4-registry-eureka",
+      "projectFolder": "library/registry-eureka",
+      "versionPolicyName": "a4",
+      "shouldPublish": true
+    },
+
+    {
+      "packageName": "@hz-9/a4-safe",
+      "projectFolder": "library/safe",
+      "versionPolicyName": "a4",
+      "shouldPublish": true
+    },
+
+    {
+      "packageName": "sample-service-dic",
+      "projectFolder": "sample/service-dic"
+    },
+
+    {
+      "packageName": "sample-service-gateway",
+      "projectFolder": "sample/service-gateway"
+    },
+
+    {
+      "packageName": "sample-service-user-center",
+      "projectFolder": "sample/service-user-center"
+    }
   ]
 }

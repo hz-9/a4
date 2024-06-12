@@ -1,0 +1,34 @@
+/**
+ * @Author       : {{ fileHeaders.author }}
+ * @Date         : {{ fileHeaders.createTime }}
+ * @LastEditors  : {{ fileHeaders.author }}
+ * @LastEditTime : {{ fileHeaders.createTime }}
+ */
+
+import { Module } from '@nestjs/common'
+
+import { TypeOrmModule } from '@hz-9/a4-crud-typeorm/nestjs-typeorm'
+
+import { {{ entityName.firstCase }}HttpController } from './{{ entityName.kebabCase }}.http.controller'
+// import { {{ entityName.firstCase }}RedisController } from './{{ entityName.kebabCase }}.redis.controller'
+import { {{ entityName.firstCase }}Service } from './{{ entityName.kebabCase }}.service'
+import { {{ entityName.firstCase }}Entity } from './entity/{{ entityName.kebabCase }}.entity'
+
+/**
+ * A4 Cli 自动生成的文件。
+ */
+@Module({
+  imports: [
+    TypeOrmModule.forFeature([
+      {{ entityName.firstCase }}Entity
+    ])
+  ],
+  controllers: [
+    {{ entityName.firstCase }}HttpController,
+    // {{ entityName.firstCase }}RedisController
+  ],
+  providers: [
+    {{ entityName.firstCase }}Service
+  ],
+})
+export class {{ moduleName.firstCase }}Module {}

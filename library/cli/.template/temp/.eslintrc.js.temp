@@ -1,0 +1,16 @@
+/**
+ * @Author       : {{ fileHeaders.author }}
+ * @Date         : {{ fileHeaders.createTime }}
+ * @LastEditors  : {{ fileHeaders.author }}
+ * @LastEditTime : {{ fileHeaders.createTime }}
+ */
+
+// eslint-disable-next-line import/no-unresolved
+require('@hz-9/eslint-config-airbnb-ts/modern-module-resolution')
+
+module.exports = {
+  extends: ['@hz-9/eslint-config-airbnb-ts/node-rushstack'],
+  parserOptions: { tsconfigRootDir: __dirname },
+
+  rules: {},
+}

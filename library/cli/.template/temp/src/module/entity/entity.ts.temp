@@ -1,0 +1,19 @@
+/**
+ * @Author       : {{ fileHeaders.author }}
+ * @Date         : {{ fileHeaders.createTime }}
+ * @LastEditors  : {{ fileHeaders.author }}
+ * @LastEditTime : {{ fileHeaders.createTime }}
+ */
+
+import { {{ idType === 'id' ? 'IsId' : 'IsUUId' }} } from '@hz-9/a4-core'
+
+import { Entity, PrimaryGeneratedColumn } from '@hz-9/a4-crud-typeorm/typeorm'
+
+@Entity()
+export class {{ entityName.firstCase }}Entity {
+  @PrimaryGeneratedColumn('{{ idType === 'id' ? 'increment' : 'uuid' }}')
+  @{{ idType === 'id' ? 'IsId' : 'IsUUId' }}()
+  public id: {{ idType === 'id' ? 'number' : 'string' }}
+
+  /* A4 Cli 自动创建的 Entity 文件，请按需添加其他数据列。 */
+}

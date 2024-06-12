@@ -1,0 +1,5 @@
+{
+  "filename": "{{ moduleName.kebabCase }}.module.ts",
+  "filepath": "./src/{{ moduleName.kebabCase }}",
+  "temppath": "../../temp/src/module/module.ts.temp"
+}

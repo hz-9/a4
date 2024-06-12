@@ -1,0 +1,5 @@
+{
+  "filename": "{{ entityName.kebabCase }}.entity.ts",
+  "filepath": "./src/{{ moduleName.kebabCase }}/entity",
+  "temppath": "../../temp/src/module/entity/entity.ts.temp"
+}

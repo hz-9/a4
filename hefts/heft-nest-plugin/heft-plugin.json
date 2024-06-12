@@ -1,0 +1,48 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/heft/v0/heft-plugin.schema.json",
+
+  "lifecyclePlugins": [],
+
+  "taskPlugins": [
+    {
+      "pluginName": "nest-start-plugin",
+      "entryPoint": "./lib/nest-start-plugin",
+
+      "parameterScope": "nest-start",
+      "parameters": [
+        {
+          "longName": "--watch",
+          "parameterKind": "flag",
+          "description": "Nest start `--watch` args."
+        },
+        {
+          "longName": "--debug",
+          "parameterKind": "flag",
+          "description": "Nest start `--debug` args."
+        },
+        {
+          "longName": "--prod",
+          "parameterKind": "flag",
+          "description": "Nest start `--prod` args."
+        }
+      ]
+    },
+    {
+      "pluginName": "nest-lint-plugin",
+      "entryPoint": "./lib/nest-lint-plugin",
+
+      "parameterScope": "nest-lint",
+      "parameters": [
+        {
+          "longName": "--fix",
+          "parameterKind": "flag",
+          "description": "Eslint `--fix` args."
+        }
+      ]
+    },
+    {
+      "pluginName": "nest-build-plugin",
+      "entryPoint": "./lib/nest-build-plugin"
+    }
+  ]
+}

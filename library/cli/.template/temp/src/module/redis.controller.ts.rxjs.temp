@@ -1,0 +1,215 @@
+/**
+ * @Author       : {{ fileHeaders.author }}
+ * @Date         : {{ fileHeaders.createTime }}
+ * @LastEditors  : {{ fileHeaders.author }}
+ * @LastEditTime : {{ fileHeaders.createTime }}
+ */
+
+import { Controller, HttpStatus, Logger, UseFilters, UseInterceptors } from '@nestjs/common'
+
+import { Observable } from 'rxjs'
+import { map } from 'rxjs/operators'
+
+import {
+  A4SimpleControllerRxjs,
+  DeleteByIdResultDto,
+  DeleteByIdsResultDto,
+  PageReqDto,
+  ParamIdReqDto,
+  ParamIdsReqDto,
+  SortReqDto,
+  TransformInterceptor,
+  UpdateByIdResultDto,
+  UpdateByIdsResultDto,
+} from '@hz-9/a4-core'
+
+import { ControllerUtil } from '@hz-9/a4-crud-typeorm'
+import { MessagePattern, RPCExceptionFilter, ValidationWithDefaultPipe } from '@hz-9/a4-micro-service'
+import { Payload } from '@hz-9/a4-micro-service/nestjs-microservices'
+
+import { {{ entityName.firstCase }}Service } from './{{ entityName.kebabCase }}.service'
+
+import {
+  {{ entityName.firstCase }}InsertReqDto,
+} from './dto/{{ entityName.kebabCase }}.insert-req.dto'
+
+import {
+  {{ entityName.firstCase }}InsertResultDto,
+  {{ entityName.firstCase }}InsertMultiResultDto,
+} from './dto/{{ entityName.kebabCase }}.insert-res.dto'
+
+import {
+  {{ entityName.firstCase }}SelectReqDto,
+} from './dto/{{ entityName.kebabCase }}.select-req.dto'
+
+import {
+  {{ entityName.firstCase }}SelectByIdResultDto,
+  {{ entityName.firstCase }}SelectByIdsResultDto,
+  {{ entityName.firstCase }}SelectByPageResultDto,
+  {{ entityName.firstCase }}SelectNoPageResultDto,
+} from './dto/{{ entityName.kebabCase }}.select-res.dto'
+
+import {
+  {{ entityName.firstCase }}UpdateReqDto,
+} from './dto/{{ entityName.kebabCase }}.update-req.dto'
+
+// import {} from './dto/{{ entityName.kebabCase }}.update-res.dto'
+// import {} from './dto/{{ entityName.kebabCase }}.delete-req.dto'
+// import {} from './dto/{{ entityName.kebabCase }}.delete-res.dto'
+
+@UseFilters(RPCExceptionFilter)
+@UseInterceptors(new TransformInterceptor({ openLog: true }))
+@Controller()
+export class {{ entityName.firstCase }}RedisController implements A4SimpleControllerRxjs {
+  protected readonly Logger: Logger = new Logger('{{ entityName.firstCase }}RedisController')
+
+  public static get rpcPrefix(): string {
+    // A4 Cli 自动创建的，请填写 RPC 前缀 eg: 'api.dic.v1.dic'
+    return 'NOT_SET'
+  }
+
+  public constructor(protected readonly service: {{ entityName.firstCase }}Service) {
+    // ...
+  }
+
+  {{ actions.insert ? '@MessagePattern({ cmd: \'insert\' })' : '/* A4 Cli 并未开启当前接口，请添加装饰器 `@MessagePattern({ cmd: \'insert\' })` 开启此路由。 */' }}
+  public insert(
+    @Payload('data', ValidationWithDefaultPipe) model: {{ entityName.firstCase }}InsertReqDto
+  ): Observable<{{ entityName.firstCase }}InsertResultDto> {
+    const result = this.service.insert(model)
+
+    return result.pipe(map((i) => ({
+      status: HttpStatus.CREATED,
+      data: i,
+      message: 'ok',
+    })))
+  }
+
+  {{ actions.select === 'SelectByPage' ? '@MessagePattern({ cmd: \'selectByPage\' })' : '/* A4 Cli 并未开启当前接口，请添加装饰器 `@MessagePattern({ cmd: \'selectByPage\' })` 开启此路由。 */' }}
+  public selectByPage(
+    @Payload('data', ValidationWithDefaultPipe) model: {{ entityName.firstCase }}SelectReqDto,
+    @Payload('page', ValidationWithDefaultPipe) page: PageReqDto,
+    @Payload('sort', ValidationWithDefaultPipe) sort: SortReqDto
+  ): Observable<{{ entityName.firstCase }}SelectByPageResultDto> {
+    const result = this.service.selectByPage(model, {
+      page,
+      sort: ControllerUtil.sortToTypeORM(sort),
+    })
+
+    return result.pipe(map((i) => ({
+      status: HttpStatus.OK,
+      data: i.data,
+      page: i.page,
+      message: 'ok',
+    })))
+  }
+
+  {{ actions.select === 'SelectNoPage' ? '@MessagePattern({ cmd: \'selectNoPage\' })' : '/* A4 Cli 并未开启当前接口，请添加装饰器 `@MessagePattern({ cmd: \'selectNoPage\' })` 开启此路由。 */' }}
+  public selectNoPage(
+    @Payload('data', ValidationWithDefaultPipe) model: {{ entityName.firstCase }}SelectReqDto,
+    @Payload('sort', ValidationWithDefaultPipe) sort: SortReqDto
+  ): Observable<{{ entityName.firstCase }}SelectNoPageResultDto> {
+    const result = this.service.selectNoPage(model, {
+      sort: ControllerUtil.sortToTypeORM(sort),
+    })
+
+    return result.pipe(map((i) => ({
+      status: HttpStatus.OK,
+      data: i.data,
+      message: 'ok',
+    })))
+  }
+
+  {{ actions.selectById ? '@MessagePattern({ cmd: \'selectById\' })' : '/* A4 Cli 并未开启当前接口，请添加装饰器 `@MessagePattern({ cmd: \'selectById\' })` 开启此路由。 */' }}
+  public selectById(
+    @Payload('data', ValidationWithDefaultPipe) params: ParamIdReqDto
+  ): Observable<{{ entityName.firstCase }}SelectByIdResultDto> {
+    const result = this.service.selectById(params.id)
+
+    return result.pipe(map((i) => ({
+      status: HttpStatus.OK,
+      data: i,
+      message: 'ok',
+    })))
+  }
+
+  {{ actions.updateById ? '@MessagePattern({ cmd: \'updateById\' })' : '/* A4 Cli 并未开启当前接口，请添加装饰器 `@MessagePattern({ cmd: \'updateById\' })` 开启此路由。 */' }}
+  public updateById(
+    @Payload('query', ValidationWithDefaultPipe) params: ParamIdReqDto,
+    @Payload('data', ValidationWithDefaultPipe) model: {{ entityName.firstCase }}UpdateReqDto
+  ): Observable<UpdateByIdResultDto> {
+    const result = this.service.updateById(params.id, model)
+
+    return result.pipe(map((i) => ({
+      status: HttpStatus.OK,
+      data: { effectNum: i.affected ?? null },
+      message: 'ok',
+    })))
+  }
+
+  {{ actions.deleteById ? '@MessagePattern({ cmd: \'deleteById\' })' : '/* A4 Cli 并未开启当前接口，请添加装饰器 `@MessagePattern({ cmd: \'deleteById\' })` 开启此路由。 */' }}
+  public deleteById(
+    @Payload('query', ValidationWithDefaultPipe) params: ParamIdReqDto
+  ): Observable<DeleteByIdResultDto> {
+    const result = this.service.deleteById(params.id)
+
+    return result.pipe(map((i) => ({
+      status: HttpStatus.NO_CONTENT,
+      data: { effectNum: i.affected ?? null },
+      message: 'ok',
+    })))
+  }
+
+  {{ actions.insertMulti ? '@MessagePattern({ cmd: \'insertMulti\' })' : '/* A4 Cli 并未开启当前接口，请添加装饰器 `@MessagePattern({ cmd: \'insertMulti\' })` 开启此路由。 */' }}
+  public insertMulti(
+    @Payload('data', ValidationWithDefaultPipe) modelList: {{ entityName.firstCase }}InsertReqDto[]
+  ): Observable<{{ entityName.firstCase }}InsertMultiResultDto> {
+    const result = this.service.insertMulti(modelList)
+
+    return result.pipe(map((i) => ({
+      status: HttpStatus.CREATED,
+      data: i,
+      message: 'ok',
+    })))
+  }
+
+  {{ actions.selectByIds ? '@MessagePattern({ cmd: \'selectByIds\' })' : '/* A4 Cli 并未开启当前接口，请添加装饰器 `@MessagePattern({ cmd: \'selectByIds\' })` 开启此路由。 */' }}
+  public selectByIds(
+    @Payload('data', ValidationWithDefaultPipe) params: ParamIdsReqDto
+  ): Observable<{{ entityName.firstCase }}SelectByIdsResultDto> {
+    const result = this.service.selectByIds(params.ids)
+
+    return result.pipe(map((i) => ({
+      status: HttpStatus.OK,
+      data: i,
+      message: 'ok',
+    })))
+  }
+
+  {{ actions.updateByIds ? '@MessagePattern({ cmd: \'updateByIds\' })' : '/* A4 Cli 并未开启当前接口，请添加装饰器 `@MessagePattern({ cmd: \'updateByIds\' })` 开启此路由。 */' }}
+  public updateByIds(
+    @Payload('query', ValidationWithDefaultPipe) params: ParamIdsReqDto,
+    @Payload('data', ValidationWithDefaultPipe) model: {{ entityName.firstCase }}UpdateReqDto
+  ): Observable<UpdateByIdsResultDto> {
+    const result = this.service.updateByIds(params.ids, model)
+
+    return result.pipe(map((i) => ({
+      status: HttpStatus.OK,
+      data: { effectNum: i.affected ?? null },
+      message: 'ok',
+    })))
+  }
+
+  {{ actions.deleteByIds ? '@MessagePattern({ cmd: \'deleteByIds\' })' : '/* A4 Cli 并未开启当前接口，请添加装饰器 `@MessagePattern({ cmd: \'deleteByIds\' })` 开启此路由。 */' }}
+  public deleteByIds(
+    @Payload('query', ValidationWithDefaultPipe) params: ParamIdsReqDto
+  ): Observable<DeleteByIdsResultDto> {
+    const result = this.service.deleteByIds(params.ids)
+
+    return result.pipe(map((i) => ({
+      status: HttpStatus.NO_CONTENT,
+      data: { effectNum: i.affected ?? null },
+      message: 'ok',
+    })))
+  }
+}

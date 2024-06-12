@@ -1,0 +1,37 @@
+/**
+ * @Author       : {{ fileHeaders.author }}
+ * @Date         : {{ fileHeaders.createTime }}
+ * @LastEditors  : {{ fileHeaders.author }}
+ * @LastEditTime : {{ fileHeaders.createTime }}
+ */
+import 'reflect-metadata'
+
+import { A4Factory } from '@hz-9/a4-core'
+import { DocsModule } from '@hz-9/a4-docs'
+import { LogModule } from '@hz-9/a4-log-log4js'
+import { MicroServiceModule, MicroServiceParseExceptionRules } from '@hz-9/a4-micro-service'
+import { NetworkModule } from '@hz-9/a4-network'
+import { EurekaRegsiterModule } from '@hz-9/a4-register-eureka'
+import { SafeModule } from '@hz-9/a4-safe'
+
+import { AppModule } from './app.module'
+
+;(async (): Promise<void> => {
+  const app = await A4Factory.create(AppModule, {
+    logger: await LogModule.getInitLogger(),
+  })
+
+  await app.runInit(DocsModule)
+
+  await app.runInit(SafeModule)
+
+  await app.runStart(MicroServiceModule)
+
+  app.bindAllExceptionsFilter(MicroServiceParseExceptionRules)
+
+  await app.listen(NetworkModule)
+
+  await app.runStart(EurekaRegsiterModule, NetworkModule)
+
+  await app.printAddress(NetworkModule)
+})()

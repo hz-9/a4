@@ -1,0 +1,88 @@
+/**
+ * Defines configuration used by core Heft.
+ */
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/heft/v0/heft.schema.json",
+
+  "phasesByName": {
+    "lint": {
+      "tasksByName": {
+        "lint": {
+          "taskPlugin": {
+            "pluginPackage": "@hz-9/heft-nest-plugin",
+            "pluginName": "nest-lint-plugin"
+          }
+        }
+      }
+    },
+
+    "start": {
+      "tasksByName": {
+        "nest-start": {
+          "taskPlugin": {
+            "pluginPackage": "@hz-9/heft-nest-plugin",
+            "pluginName": "nest-start-plugin"
+          }
+        }
+      }
+    },
+
+    "build": {
+      "phaseDependencies": ["lint"],
+
+      "cleanFiles": [{ "includeGlobs": ["dist"] }],
+
+      "tasksByName": {
+        "nest-build": {
+          "taskPlugin": {
+            "pluginPackage": "@hz-9/heft-nest-plugin",
+            "pluginName": "nest-build-plugin"
+          }
+        }
+      }
+    },
+
+    "pkg-build": {
+      "phaseDependencies": ["build"],
+
+      "tasksByName": {
+        "pkg-build": {
+          "taskPlugin": {
+            "pluginPackage": "@hz-9/heft-nest-plugin",
+            "pluginName": "nest-pkg-build-plugin"
+          }
+        }
+      }
+    }
+
+    // "test": {
+    //   "phaseDependencies": ["build"],
+
+    //   "tasksByName": {
+    //     "vite-test": {
+    //       "taskPlugin": {
+    //         "pluginPackage": "@camouflage/heft-vue-vite-plugin",
+    //         "pluginName": "vitest-run-plugin"
+    //       }
+    //     }
+    //   }
+    // },
+
+    // /**
+    //  * test-watch 会被 heft 直接拦截解析；
+    //  * 此处使用 watch-test
+    //  */
+    // "watch-test": {
+    //   "phaseDependencies": ["build"],
+
+    //   "tasksByName": {
+    //     "vite-test-watch": {
+    //       "taskPlugin": {
+    //         "pluginPackage": "@camouflage/heft-vue-vite-plugin",
+    //         "pluginName": "vitest-watch-plugin"
+    //       }
+    //     }
+    //   }
+    // }
+  }
+}

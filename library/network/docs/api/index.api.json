@@ -1,0 +1,1411 @@
+{
+  "metadata": {
+    "toolPackage": "@microsoft/api-extractor",
+    "toolVersion": "7.42.3",
+    "schemaVersion": 1011,
+    "oldestForwardsCompatibleVersion": 1001,
+    "tsdocConfig": {
+      "$schema": "https://developer.microsoft.com/json-schemas/tsdoc/v0/tsdoc.schema.json",
+      "noStandardTags": true,
+      "tagDefinitions": [
+        {
+          "tagName": "@alpha",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@beta",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@defaultValue",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@decorator",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@deprecated",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@eventProperty",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@example",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@experimental",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@inheritDoc",
+          "syntaxKind": "inline"
+        },
+        {
+          "tagName": "@internal",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@label",
+          "syntaxKind": "inline"
+        },
+        {
+          "tagName": "@link",
+          "syntaxKind": "inline",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@override",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@packageDocumentation",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@param",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@privateRemarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@public",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@readonly",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@remarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@returns",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@sealed",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@see",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@throws",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@typeParam",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@virtual",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@betaDocumentation",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@internalRemarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@preapproved",
+          "syntaxKind": "modifier"
+        }
+      ],
+      "supportForTags": {
+        "@alpha": true,
+        "@beta": true,
+        "@defaultValue": true,
+        "@decorator": true,
+        "@deprecated": true,
+        "@eventProperty": true,
+        "@example": true,
+        "@experimental": true,
+        "@inheritDoc": true,
+        "@internal": true,
+        "@label": true,
+        "@link": true,
+        "@override": true,
+        "@packageDocumentation": true,
+        "@param": true,
+        "@privateRemarks": true,
+        "@public": true,
+        "@readonly": true,
+        "@remarks": true,
+        "@returns": true,
+        "@sealed": true,
+        "@see": true,
+        "@throws": true,
+        "@typeParam": true,
+        "@virtual": true,
+        "@betaDocumentation": true,
+        "@internalRemarks": true,
+        "@preapproved": true
+      },
+      "reportUnsupportedHtmlElements": false
+    }
+  },
+  "kind": "Package",
+  "canonicalReference": "@hz-9/a4-network!",
+  "docComment": "",
+  "name": "@hz-9/a4-network",
+  "preserveMemberOrder": false,
+  "members": [
+    {
+      "kind": "EntryPoint",
+      "canonicalReference": "@hz-9/a4-network!",
+      "name": "",
+      "preserveMemberOrder": false,
+      "members": [
+        {
+          "kind": "Class",
+          "canonicalReference": "@hz-9/a4-network!A4Network:class",
+          "docComment": "/**\n * `A4 Network` 核心服务类。\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class A4Network implements "
+            },
+            {
+              "kind": "Reference",
+              "text": "IA4Network",
+              "canonicalReference": "@hz-9/a4-core!IA4Network:class"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "fileUrlPath": "dist/module/network.d.ts",
+          "releaseTag": "Public",
+          "isAbstract": false,
+          "name": "A4Network",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@hz-9/a4-network!A4Network:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `A4Network` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor(options: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "INetworkInfo",
+                  "canonicalReference": "@hz-9/a4-network!INetworkInfo:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ");"
+                }
+              ],
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ]
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@hz-9/a4-network!A4Network#currentPort:member",
+              "docComment": "/**\n * 应用程序当前使用的端口\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "get currentPort(): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number | undefined"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";\n\nset currentPort(newPort: number | undefined);"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "currentPort",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/a4-network!A4Network#getAddressInfo:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "getAddressInfo(): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IA4AddressInfo",
+                  "canonicalReference": "@hz-9/a4-core!IA4AddressInfo:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "getAddressInfo"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/a4-network!A4Network#getAvailablePort:member(1)",
+              "docComment": "/**\n * 获取有效端口，若多次获取，\n *\n * 根据 `NetworkModule.forRootAsync` 启动传入的端口相关参数， 获取对应的端口相关信息。\n *\n * 此函数用作端口被占用后的重试获取，若初次使用，请使用 `getPort`。\n *\n * @public\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "getAvailablePort(): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<number>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "getAvailablePort"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/a4-network!A4Network#getHostAndPort:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "getHostAndPort(): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IA4HostAndPort",
+                  "canonicalReference": "@hz-9/a4-core!IA4HostAndPort:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "getHostAndPort"
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@hz-9/a4-network!A4Network#options:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "protected readonly options: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "INetworkInfo",
+                  "canonicalReference": "@hz-9/a4-network!INetworkInfo:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": true,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "options",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": true,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@hz-9/a4-network!A4Network#tryPortTimes:member",
+              "docComment": "/**\n * 端口尝试次数。\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "tryPortTimes: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "tryPortTimes",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            }
+          ],
+          "implementsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 2
+            }
+          ]
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@hz-9/a4-network!A4NetworkModule:class",
+          "docComment": "/**\n * `A4 Network` 核心模块类。\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class A4NetworkModule implements "
+            },
+            {
+              "kind": "Reference",
+              "text": "A4ModuleBase",
+              "canonicalReference": "@hz-9/a4-core!A4ModuleBase:class"
+            },
+            {
+              "kind": "Content",
+              "text": ", "
+            },
+            {
+              "kind": "Reference",
+              "text": "IA4NetworkModule",
+              "canonicalReference": "@hz-9/a4-core!IA4NetworkModule:class"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "fileUrlPath": "dist/module/network.module.d.ts",
+          "releaseTag": "Public",
+          "isAbstract": false,
+          "name": "A4NetworkModule",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "Property",
+              "canonicalReference": "@hz-9/a4-network!A4NetworkModule.CONFIG_MIDDLE_PATH:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "static CONFIG_MIDDLE_PATH: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"A4.network\""
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "CONFIG_MIDDLE_PATH",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": true,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/a4-network!A4NetworkModule.forRootAsync:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "static forRootAsync(options: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Omit",
+                  "canonicalReference": "!Omit:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "FactoryProvider",
+                  "canonicalReference": "@nestjs/common!FactoryProvider:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "A4NetworkModuleSchema",
+                  "canonicalReference": "@hz-9/a4-network!A4NetworkModuleSchema:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">, 'provide'>"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DynamicModule",
+                  "canonicalReference": "@nestjs/common!DynamicModule:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": true,
+              "returnTypeTokenRange": {
+                "startIndex": 8,
+                "endIndex": 9
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 7
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "forRootAsync"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/a4-network!A4NetworkModule.getConfig:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "static getConfig(a4Config: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IA4Config",
+                  "canonicalReference": "@hz-9/a4-core!IA4Config:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "A4NetworkModuleSchema",
+                  "canonicalReference": "@hz-9/a4-network!A4NetworkModuleSchema:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": true,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "a4Config",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "getConfig"
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@hz-9/a4-network!A4NetworkModule.logger:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "static logger: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Logger",
+                  "canonicalReference": "@nestjs/common!Logger:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "logger",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": true,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@hz-9/a4-network!A4NetworkModule.Schema:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "static Schema: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "typeof "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "A4NetworkModuleSchemaA",
+                  "canonicalReference": "@hz-9/a4-network!A4NetworkModuleSchemaA:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "Schema",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isStatic": true,
+              "isProtected": false,
+              "isAbstract": false
+            }
+          ],
+          "implementsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 2
+            },
+            {
+              "startIndex": 3,
+              "endIndex": 4
+            }
+          ]
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@hz-9/a4-network!A4NetworkModuleSchema:class",
+          "docComment": "/**\n * `A4 Network` 的配置项结构。\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class A4NetworkModuleSchema "
+            }
+          ],
+          "fileUrlPath": "dist/schema/network.schema.d.ts",
+          "releaseTag": "Public",
+          "isAbstract": false,
+          "name": "A4NetworkModuleSchema",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "Property",
+              "canonicalReference": "@hz-9/a4-network!A4NetworkModuleSchema#bindIPv4:member",
+              "docComment": "/**\n * 服务是否侦听 `IPv4`。\n *\n * 作为 `ConfitSchema` 时，若缺省，则赋值为 [NETWORK_MODULE_DEFAULT.BIND_IPV4]\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "readonly bindIPv4: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": true,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "bindIPv4",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@hz-9/a4-network!A4NetworkModuleSchema#bindIPv6:member",
+              "docComment": "/**\n * 服务是否侦听 `IPv6`。\n *\n * 作为 `ConfitSchema` 时，若缺省，则赋值为 [NETWORK_MODULE_DEFAULT.BIND_IPV6]\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "readonly bindIPv6: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": true,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "bindIPv6",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@hz-9/a4-network!A4NetworkModuleSchema#forcePort:member",
+              "docComment": "/**\n * 指定端口。此时 `portBaseline` 属性无效。\n *\n * 作为 `ConfigDto` 时，可选，默认值为 `undefined`。\n *\n * !!! 当使用 `PM2` 时，会不断重复重启、报错。慎用。\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "readonly forcePort?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": true,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "forcePort",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@hz-9/a4-network!A4NetworkModuleSchema#portBaseline:member",
+              "docComment": "/**\n * 端口自动搜索时的起始端口。\n *\n * 若该端口被占用，将会 +1 重新获取端口号。\n *\n * 系统启动时，应使用 `NetworkModule.listen` 替代 `app.listen` 以多次尝试直到获取到空闲的端口。\n *\n * 作为 `ConfitSchema` 时，若缺省，则赋值为 [NETWORK_MODULE_DEFAULT.PORT_BASELINE]\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "readonly portBaseline: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": true,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "portBaseline",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@hz-9/a4-network!A4NetworkModuleSchemaA:class",
+          "docComment": "/**\n * `A4 Cache Module` 用于 Multi Schema 类型判断类\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class A4NetworkModuleSchemaA "
+            }
+          ],
+          "fileUrlPath": "dist/schema/network.schema.d.ts",
+          "releaseTag": "Public",
+          "isAbstract": false,
+          "name": "A4NetworkModuleSchemaA",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "Property",
+              "canonicalReference": "@hz-9/a4-network!A4NetworkModuleSchemaA#A4:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "readonly A4: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "A4NetworkModuleSchemaB",
+                  "canonicalReference": "@hz-9/a4-network!A4NetworkModuleSchemaB:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": true,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "A4",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@hz-9/a4-network!A4NetworkModuleSchemaB:class",
+          "docComment": "/**\n * `A4 Cache Module` 用于 Multi Schema 类型判断类（A4）。\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class A4NetworkModuleSchemaB "
+            }
+          ],
+          "fileUrlPath": "dist/schema/network.schema.d.ts",
+          "releaseTag": "Public",
+          "isAbstract": false,
+          "name": "A4NetworkModuleSchemaB",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "Property",
+              "canonicalReference": "@hz-9/a4-network!A4NetworkModuleSchemaB#network:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "readonly network: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "A4NetworkModuleSchema",
+                  "canonicalReference": "@hz-9/a4-network!A4NetworkModuleSchema:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": true,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "network",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@hz-9/a4-network!IA4NetworkOptions:interface",
+          "docComment": "/**\n * 获取 Network 信息的配置信息。\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface IA4NetworkOptions extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "A4NetworkModuleSchema",
+              "canonicalReference": "@hz-9/a4-network!A4NetworkModuleSchema:class"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "fileUrlPath": "dist/interface/network.d.ts",
+          "releaseTag": "Public",
+          "name": "IA4NetworkOptions",
+          "preserveMemberOrder": false,
+          "members": [],
+          "extendsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 2
+            }
+          ]
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@hz-9/a4-network!IInterfaceInfoIPv4:interface",
+          "docComment": "/**\n * 网卡信息。扩展自 `os.NetworkInterfaceInfoIPv4`。\n *\n * 增加了 `name` 属性，用于保存网络实例名称。\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface IInterfaceInfoIPv4 extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "os.NetworkInterfaceInfoIPv4",
+              "canonicalReference": "!\"\\\"os\\\"\".NetworkInterfaceInfoIPv4:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "fileUrlPath": "dist/interface/address.d.ts",
+          "releaseTag": "Public",
+          "name": "IInterfaceInfoIPv4",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/a4-network!IInterfaceInfoIPv4#name:member",
+              "docComment": "/**\n * 网络实例名称\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "name: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "name",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 2
+            }
+          ]
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@hz-9/a4-network!IInterfaceInfoIPv6:interface",
+          "docComment": "/**\n * 网卡信息。扩展自 `os.NetworkInterfaceInfoIPv6`。\n *\n * 增加了 `name` 属性，用于保存网络实例名称。\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface IInterfaceInfoIPv6 extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "os.NetworkInterfaceInfoIPv6",
+              "canonicalReference": "!\"\\\"os\\\"\".NetworkInterfaceInfoIPv6:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "fileUrlPath": "dist/interface/address.d.ts",
+          "releaseTag": "Public",
+          "name": "IInterfaceInfoIPv6",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/a4-network!IInterfaceInfoIPv6#name:member",
+              "docComment": "/**\n * 网络实例名称\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "name: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "name",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 2
+            }
+          ]
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@hz-9/a4-network!INetworkInfo:interface",
+          "docComment": "/**\n * 与 `IA4NetworkOPtions` 相比，增加了网卡与端口号的相关信息。\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface INetworkInfo extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "IA4NetworkOptions",
+              "canonicalReference": "@hz-9/a4-network!IA4NetworkOptions:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "fileUrlPath": "dist/interface/network.d.ts",
+          "releaseTag": "Public",
+          "name": "INetworkInfo",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/a4-network!INetworkInfo#defaultIPv4:member",
+              "docComment": "/**\n * ipv4 数组的第一项\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "defaultIPv4?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "InterfaceInfo",
+                  "canonicalReference": "@hz-9/a4-network!InterfaceInfo:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "defaultIPv4",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/a4-network!INetworkInfo#defaultIPv6:member",
+              "docComment": "/**\n * ipv6 数组的第一项\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "defaultIPv6?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "InterfaceInfo",
+                  "canonicalReference": "@hz-9/a4-network!InterfaceInfo:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "defaultIPv6",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/a4-network!INetworkInfo#ipv4:member",
+              "docComment": "/**\n * 若当前机器无网络时，`ipv4` 为 undefined\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "ipv4: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "InterfaceInfo",
+                  "canonicalReference": "@hz-9/a4-network!InterfaceInfo:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "ipv4",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/a4-network!INetworkInfo#ipv6:member",
+              "docComment": "/**\n * 若当前机器无网络时，`ipv6` 为以下内容：\n * ```json\n * {\n *   address: '::1',\n *   netmask: 'ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff',\n *   family: 'IPv6',\n *   mac: '00:00:00:00:00:00',\n *   internal: true,\n *   cidr: '::1/128',\n *   scopeid: 0\n * }\n * ```\n *\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "ipv6: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "InterfaceInfo",
+                  "canonicalReference": "@hz-9/a4-network!InterfaceInfo:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "ipv6",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/a4-network!INetworkInfo#mac:member",
+              "docComment": "/**\n * 为 `defaultIPv4` 的 `mac` 信息\n *\n * 仅当服务器无网络时，`mac` 为 undefined\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "mac?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "mac",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/a4-network!INetworkInfo#port:member",
+              "docComment": "/**\n * 当前正在使用的端口。\n *\n * 在初始化 `app.listen` 之前，`port` 为 undefined\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "port?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "port",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 2
+            }
+          ]
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@hz-9/a4-network!InterfaceInfo:type",
+          "docComment": "/**\n * 网卡信息。包含 `InterfaceInfoIPv4` `InterfaceInfoIPv6` 接口。\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type InterfaceInfo = "
+            },
+            {
+              "kind": "Reference",
+              "text": "IInterfaceInfoIPv4",
+              "canonicalReference": "@hz-9/a4-network!IInterfaceInfoIPv4:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "IInterfaceInfoIPv6",
+              "canonicalReference": "@hz-9/a4-network!IInterfaceInfoIPv6:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/interface/address.d.ts",
+          "releaseTag": "Public",
+          "name": "InterfaceInfo",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 4
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@hz-9/a4-network!NETWORK_MODULE_DEFAULT:var",
+          "docComment": "/**\n * `A4 Network` 配置信息默认值。\n *\n * 各参数说明，请查看 [NetworkModuleConfigSchema](TODO)。\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "NETWORK_MODULE_DEFAULT: "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    readonly BIND_IPV4: true;\n    readonly BIND_IPV6: false;\n    readonly PORT_BASELINE: 16100;\n}"
+            }
+          ],
+          "fileUrlPath": "dist/const/index.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "NETWORK_MODULE_DEFAULT",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Enum",
+          "canonicalReference": "@hz-9/a4-network!NetworkFamily:enum",
+          "docComment": "/**\n * 网络版本。`IPv4` `IPv6`。\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare enum NetworkFamily "
+            }
+          ],
+          "fileUrlPath": "dist/enum/index.d.ts",
+          "releaseTag": "Public",
+          "name": "NetworkFamily",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@hz-9/a4-network!NetworkFamily.IPv4:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "IPv4 = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"IPv4\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "IPv4"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@hz-9/a4-network!NetworkFamily.IPv6:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "IPv6 = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"IPv6\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "IPv6"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

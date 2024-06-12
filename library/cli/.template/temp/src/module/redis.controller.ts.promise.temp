@@ -1,0 +1,212 @@
+/**
+ * @Author       : {{ fileHeaders.author }}
+ * @Date         : {{ fileHeaders.createTime }}
+ * @LastEditors  : {{ fileHeaders.author }}
+ * @LastEditTime : {{ fileHeaders.createTime }}
+ */
+
+import { Controller, HttpStatus, Logger, UseFilters, UseInterceptors } from '@nestjs/common'
+
+import {
+  A4SimpleControllerPromise,
+  DeleteByIdResultDto,
+  DeleteByIdsResultDto,
+  PageReqDto,
+  ParamIdReqDto,
+  ParamIdsReqDto,
+  SortReqDto,
+  TransformInterceptor,
+  UpdateByIdResultDto,
+  UpdateByIdsResultDto,
+} from '@hz-9/a4-core'
+
+import { ControllerUtil } from '@hz-9/a4-crud-typeorm'
+import { MessagePattern, RPCExceptionFilter, ValidationWithDefaultPipe } from '@hz-9/a4-micro-service'
+import { Payload } from '@hz-9/a4-micro-service/nestjs-microservices'
+
+import { {{ entityName.firstCase }}Service } from './{{ entityName.kebabCase }}.service'
+
+import {
+  {{ entityName.firstCase }}InsertReqDto,
+} from './dto/{{ entityName.kebabCase }}.insert-req.dto'
+
+import {
+  {{ entityName.firstCase }}InsertResultDto,
+  {{ entityName.firstCase }}InsertMultiResultDto,
+} from './dto/{{ entityName.kebabCase }}.insert-res.dto'
+
+import {
+  {{ entityName.firstCase }}SelectReqDto,
+} from './dto/{{ entityName.kebabCase }}.select-req.dto'
+
+import {
+  {{ entityName.firstCase }}SelectByIdResultDto,
+  {{ entityName.firstCase }}SelectByIdsResultDto,
+  {{ entityName.firstCase }}SelectByPageResultDto,
+  {{ entityName.firstCase }}SelectNoPageResultDto,
+} from './dto/{{ entityName.kebabCase }}.select-res.dto'
+
+import {
+  {{ entityName.firstCase }}UpdateReqDto,
+} from './dto/{{ entityName.kebabCase }}.update-req.dto'
+
+// import {} from './dto/{{ entityName.kebabCase }}.update-res.dto'
+// import {} from './dto/{{ entityName.kebabCase }}.delete-req.dto'
+// import {} from './dto/{{ entityName.kebabCase }}.delete-res.dto'
+
+@UseFilters(RPCExceptionFilter)
+@UseInterceptors(new TransformInterceptor({ openLog: true }))
+@Controller()
+export class {{ entityName.firstCase }}RedisController implements A4SimpleControllerPromise {
+  protected readonly Logger: Logger = new Logger('{{ entityName.firstCase }}RedisController')
+
+  public static get rpcPrefix(): string {
+    // A4 Cli 自动创建的，请填写 RPC 前缀 eg: 'api.dic.v1.dic'
+    return 'NOT_SET'
+  }
+
+  public constructor(protected readonly service: {{ entityName.firstCase }}Service) {
+    // ...
+  }
+
+  {{ actions.insert ? '@MessagePattern({ cmd: \'insert\' })' : '/* A4 Cli 并未开启当前接口，请添加装饰器 `@MessagePattern({ cmd: \'insert\' })` 开启此路由。 */' }}
+  public async insert(
+    @Payload('data', ValidationWithDefaultPipe) model: {{ entityName.firstCase }}InsertReqDto
+  ): Promise<{{ entityName.firstCase }}InsertResultDto> {
+    const result = await this.service.insert(model)
+
+    return {
+      status: HttpStatus.CREATED,
+      data: result,
+      message: 'ok',
+    }
+  }
+
+  {{ actions.select === 'SelectByPage' ? '@MessagePattern({ cmd: \'selectByPage\' })' : '/* A4 Cli 并未开启当前接口，请添加装饰器 `@MessagePattern({ cmd: \'selectByPage\' })` 开启此路由。 */' }}
+  public async selectByPage(
+    @Payload('data', ValidationWithDefaultPipe) model: {{ entityName.firstCase }}SelectReqDto,
+    @Payload('page', ValidationWithDefaultPipe) page: PageReqDto,
+    @Payload('sort', ValidationWithDefaultPipe) sort: SortReqDto
+  ): Promise<{{ entityName.firstCase }}SelectByPageResultDto> {
+    const result = await this.service.selectByPage(model, {
+      page,
+      sort: ControllerUtil.sortToTypeORM(sort),
+    })
+
+    return {
+      status: HttpStatus.OK,
+      data: result.data,
+      page: result.page,
+      message: 'ok',
+    }
+  }
+
+  {{ actions.select === 'SelectNoPage' ? '@MessagePattern({ cmd: \'selectNoPage\' })' : '/* A4 Cli 并未开启当前接口，请添加装饰器 `@MessagePattern({ cmd: \'selectNoPage\' })` 开启此路由。 */' }}
+  public async selectNoPage(
+    @Payload('data', ValidationWithDefaultPipe) model: {{ entityName.firstCase }}SelectReqDto,
+    @Payload('sort', ValidationWithDefaultPipe) sort: SortReqDto
+  ): Promise<{{ entityName.firstCase }}SelectNoPageResultDto> {
+    const result = await this.service.selectNoPage(model, {
+      sort: ControllerUtil.sortToTypeORM(sort),
+    })
+
+    return {
+      status: HttpStatus.OK,
+      data: result.data,
+      message: 'ok',
+    }
+  }
+
+  {{ actions.selectById ? '@MessagePattern({ cmd: \'selectById\' })' : '/* A4 Cli 并未开启当前接口，请添加装饰器 `@MessagePattern({ cmd: \'selectById\' })` 开启此路由。 */' }}
+  public async selectById(
+    @Payload('data', ValidationWithDefaultPipe) params: ParamIdReqDto
+  ): Promise<{{ entityName.firstCase }}SelectByIdResultDto> {
+    const result = await this.service.selectById(params.id)
+
+    return {
+      status: HttpStatus.OK,
+      data: result,
+      message: 'ok',
+    }
+  }
+
+  {{ actions.updateById ? '@MessagePattern({ cmd: \'updateById\' })' : '/* A4 Cli 并未开启当前接口，请添加装饰器 `@MessagePattern({ cmd: \'updateById\' })` 开启此路由。 */' }}
+  public async updateById(
+    @Payload('query', ValidationWithDefaultPipe) params: ParamIdReqDto,
+    @Payload('data', ValidationWithDefaultPipe) model: {{ entityName.firstCase }}UpdateReqDto
+  ): Promise<UpdateByIdResultDto> {
+    const result = await this.service.updateById(params.id, model)
+
+    return {
+      status: HttpStatus.OK,
+      data: { effectNum: result.affected ?? null },
+      message: 'ok',
+    }
+  }
+
+  {{ actions.deleteById ? '@MessagePattern({ cmd: \'deleteById\' })' : '/* A4 Cli 并未开启当前接口，请添加装饰器 `@MessagePattern({ cmd: \'deleteById\' })` 开启此路由。 */' }}
+  public async deleteById(
+    @Payload('query', ValidationWithDefaultPipe) params: ParamIdReqDto
+  ): Promise<DeleteByIdResultDto> {
+    const result = await this.service.deleteById(params.id)
+
+    return {
+      status: HttpStatus.NO_CONTENT,
+      data: { effectNum: result.affected ?? null },
+      message: 'ok',
+    }
+  }
+
+  {{ actions.insertMulti ? '@MessagePattern({ cmd: \'insertMulti\' })' : '/* A4 Cli 并未开启当前接口，请添加装饰器 `@MessagePattern({ cmd: \'insertMulti\' })` 开启此路由。 */' }}
+  public async insertMulti(
+    @Payload('data', ValidationWithDefaultPipe) modelList: {{ entityName.firstCase }}InsertReqDto[]
+  ): Promise<{{ entityName.firstCase }}InsertMultiResultDto> {
+    const result = await this.service.insertMulti(modelList)
+
+    return {
+      status: HttpStatus.CREATED,
+      data: result,
+      message: 'ok',
+    }
+  }
+
+  {{ actions.selectByIds ? '@MessagePattern({ cmd: \'selectByIds\' })' : '/* A4 Cli 并未开启当前接口，请添加装饰器 `@MessagePattern({ cmd: \'selectByIds\' })` 开启此路由。 */' }}
+  public async selectByIds(
+    @Payload('data', ValidationWithDefaultPipe) params: ParamIdsReqDto
+  ): Promise<{{ entityName.firstCase }}SelectByIdsResultDto> {
+    const result = await this.service.selectByIds(params.ids)
+
+    return {
+      status: HttpStatus.OK,
+      data: result,
+      message: 'ok',
+    }
+  }
+
+  {{ actions.updateByIds ? '@MessagePattern({ cmd: \'updateByIds\' })' : '/* A4 Cli 并未开启当前接口，请添加装饰器 `@MessagePattern({ cmd: \'updateByIds\' })` 开启此路由。 */' }}
+  public async updateByIds(
+    @Payload('query', ValidationWithDefaultPipe) params: ParamIdsReqDto,
+    @Payload('data', ValidationWithDefaultPipe) model: {{ entityName.firstCase }}UpdateReqDto
+  ): Promise<UpdateByIdsResultDto> {
+    const result = await this.service.updateByIds(params.ids, model)
+
+    return {
+      status: HttpStatus.OK,
+      data: { effectNum: result.affected ?? null },
+      message: 'ok',
+    }
+  }
+
+  {{ actions.deleteByIds ? '@MessagePattern({ cmd: \'deleteByIds\' })' : '/* A4 Cli 并未开启当前接口，请添加装饰器 `@MessagePattern({ cmd: \'deleteByIds\' })` 开启此路由。 */' }}
+  public async deleteByIds(
+    @Payload('query', ValidationWithDefaultPipe) params: ParamIdsReqDto
+  ): Promise<DeleteByIdsResultDto> {
+    const result = await this.service.deleteByIds(params.ids)
+
+    return {
+      status: HttpStatus.NO_CONTENT,
+      data: { effectNum: result.affected ?? null },
+      message: 'ok',
+    }
+  }
+}
