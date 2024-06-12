@@ -1,0 +1,17 @@
+{
+  "name": "@hz-9/heft-nest-rig",
+  "entries": [
+    {
+      "version": "0.1.0",
+      "tag": "@hz-9/heft-nest-rig_v0.1.0",
+      "date": "Wed, 12 Jun 2024 08:18:52 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "feat: first commit"
+          }
+        ]
+      }
+    }
+  ]
+}

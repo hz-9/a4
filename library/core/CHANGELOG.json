@@ -1,0 +1,17 @@
+{
+  "name": "@hz-9/a4-core",
+  "entries": [
+    {
+      "version": "0.1.0",
+      "tag": "@hz-9/a4-core_v0.1.0",
+      "date": "Wed, 12 Jun 2024 08:18:52 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "feat: first commit"
+          }
+        ]
+      }
+    }
+  ]
+}

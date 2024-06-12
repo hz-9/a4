@@ -1,6 +1,6 @@
 {
   "name": "@hz-9/heft-nest-rig",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A rig package for Nest.js projects that build using Heft build system.",
   "bugs": {
     "url": "https://github.com/hz-9/a4/issues"

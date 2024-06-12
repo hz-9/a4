@@ -103,7 +103,7 @@
   {
     "policyName": "a4",
     "definitionName": "lockStepVersion",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "nextBump": "patch",
     "mainProject": "@hz-9/a4-core"
   },
@@ -111,7 +111,7 @@
   {
     "policyName": "hz9",
     "definitionName": "lockStepVersion",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "nextBump": "patch",
     "mainProject": "@hz-9/heft-nest-rig"
   },
@@ -119,7 +119,7 @@
   {
     "policyName": "cli",
     "definitionName": "lockStepVersion",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "nextBump": "patch",
     "mainProject": "@hz-9/a4-cli"
   }

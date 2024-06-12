@@ -1,6 +1,6 @@
 {
   "name": "@hz-9/heft-nest-plugin",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A heft plugin package for Nest.js projects.",
   "bugs": {
     "url": "https://github.com/hz-9/a4/issues"
