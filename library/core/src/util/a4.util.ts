@@ -2,11 +2,11 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-05 19:20:20
+ * @LastEditTime : 2024-06-15 22:54:41
  */
+import * as path from 'upath'
 import { Logger } from '@nestjs/common'
-import { Observable } from 'rxjs'
-import { delay, retryWhen, scan } from 'rxjs/operators'
+import { Observable, delay, retry, scan } from 'rxjs'
 
 /**
  *
@@ -26,6 +26,20 @@ export class A4Util {
     return new Promise((resolve) => {
       setTimeout(resolve, t)
     })
+  }
+
+  /**
+   * @public
+   *
+   *  如果不是绝对路径，则进行拼接
+   *
+   * @param sourcePath - 资源路径
+   * @param basePath - 基础路径
+   *
+   * @returns 资源路径的绝对路径。
+   */
+  public static noAbsoluteWith(sourcePath: string, basePath: string): string {
+    return path.isAbsolute(sourcePath) ? path.normalize(sourcePath) : path.resolve(basePath, sourcePath)
   }
 
   /**
@@ -50,23 +64,24 @@ export class A4Util {
   ): <T>(source: Observable<T>) => Observable<T> {
     return <T>(source: Observable<T>) =>
       source.pipe(
-        retryWhen((e) =>
-          e.pipe(
-            scan((errorCount, error: Error) => {
-              const verboseMessage = verboseRetryLog ? ` Message: ${error.message}.` : ''
+        retry({
+          delay: (e) =>
+            e.pipe(
+              scan((errorCount, error: Error) => {
+                const verboseMessage = verboseRetryLog ? ` Message: ${error.message}.` : ''
 
-              logger.error(
-                `Unable to connect to the database${dataSourceName}.${verboseMessage} Retrying (${errorCount + 1})...`,
-                error.stack
-              )
-              if (errorCount + 1 >= retryAttempts) {
-                throw error
-              }
-              return errorCount + 1
-            }, 0),
-            delay(retryDelay)
-          )
-        )
+                logger.error(
+                  `Unable to connect to the database${dataSourceName}.${verboseMessage} Retrying (${errorCount + 1})...`,
+                  error.stack
+                )
+                if (errorCount + 1 >= retryAttempts) {
+                  throw error
+                }
+                return errorCount + 1
+              }, 0),
+              delay(retryDelay)
+            ),
+        })
       )
   }
 }

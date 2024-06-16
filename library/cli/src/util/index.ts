@@ -2,9 +2,9 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-24 18:29:44
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-05-25 15:32:50
+ * @LastEditTime : 2024-06-15 23:04:13
  */
-import _ from '@hz-9/a4-core/lodash'
+import _ from 'lodash'
 
 import type { IRenderInfoModuleName } from '../interface'
 

@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-05-31 00:59:11
+ * @LastEditTime : 2024-06-16 16:29:13
  */
 import { isUndefined } from '@nestjs/common/utils/shared.utils'
 
@@ -12,7 +12,7 @@ import { IA4Config, IA4EnvInfo, IA4Info, IA4LibrariesInfo, IA4PathInfo, IA4Stats
 import dayjs from '@hz-9/a4-core/dayjs'
 import dayjsPluginRelativeTime from '@hz-9/a4-core/dayjs-plugin-relative-time'
 import _ from '@hz-9/a4-core/lodash'
-import type PackageJson from '@hz-9/a4-core/package-json'
+import type { PackageJson } from '@hz-9/a4-core/type-fest'
 
 dayjs.extend(dayjsPluginRelativeTime)
 
@@ -169,7 +169,7 @@ export class A4Config implements IA4Config {
       path.resolve(this.mainRoot, 'package.json'),
     ].find((i) => fs.existsSync(i))
 
-    let packageJson: PackageJson.Content = {}
+    let packageJson: PackageJson = {}
     if (packageJsonPath) packageJson = JSON.parse(fs.readFileSync(packageJsonPath, { encoding: 'utf8' }))
 
     return {

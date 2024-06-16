@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-29 15:21:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-06 09:57:55
+ * @LastEditTime : 2024-06-15 22:52:48
  */
 import {
   Body,
@@ -17,8 +17,7 @@ import {
   Query,
   UseInterceptors,
 } from '@nestjs/common'
-import { Observable } from 'rxjs'
-import { map } from 'rxjs/operators'
+import { Observable, map } from 'rxjs'
 
 import {
   A4CrudUtil,

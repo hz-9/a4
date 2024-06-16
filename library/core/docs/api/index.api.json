@@ -2939,6 +2939,70 @@
             },
             {
               "kind": "Method",
+              "canonicalReference": "@hz-9/a4-core!A4Util.noAbsoluteWith:member(1)",
+              "docComment": "/**\n * 如果不是绝对路径，则进行拼接\n *\n * @param sourcePath - 资源路径\n *\n * @param basePath - 基础路径\n *\n * @returns 资源路径的绝对路径。\n *\n * @public\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "static noAbsoluteWith(sourcePath: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", basePath: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": true,
+              "returnTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 6
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "sourcePath",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "basePath",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 4
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "noAbsoluteWith"
+            },
+            {
+              "kind": "Method",
               "canonicalReference": "@hz-9/a4-core!A4Util.sleep:member(1)",
               "docComment": "/**\n * 睡眠。\n *\n * @param t - 时间。单位：毫秒\n */\n",
               "excerptTokens": [
@@ -6344,8 +6408,8 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "PackageJson.Content",
-                  "canonicalReference": "@types/npmcli__package-json!NPMCliPackageJson.Content:type"
+                  "text": "PackageJson",
+                  "canonicalReference": "type-fest!PackageJson:type"
                 },
                 {
                   "kind": "Content",
@@ -12022,7 +12086,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@hz-9/a4-core!IsIdorSId:function(1)",
-          "docComment": "/**\n * 一个自定义 `class-validator` 的可选装饰器。\n *\n * 判断该属性为 id 或 UUId。\n *\n * @public\n */\n",
+          "docComment": "/**\n * 一个自定义 `class-validator` 的可选装饰器。\n *\n * 判断该属性为 id 或 SId。\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -12069,7 +12133,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@hz-9/a4-core!IsIdorSIdArray:function(1)",
-          "docComment": "/**\n * 一个自定义 `class-validator` 的可选装饰器。\n *\n * 判断该属性为 id 组成的数组或 UUID 组成的数组。\n *\n * @public\n */\n",
+          "docComment": "/**\n * 一个自定义 `class-validator` 的可选装饰器。\n *\n * 判断该属性为 id 组成的数组或 SID 组成的数组。\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -12442,184 +12506,6 @@
             }
           ],
           "name": "IsSIdArray"
-        },
-        {
-          "kind": "Variable",
-          "canonicalReference": "@hz-9/a4-core!isUId:var",
-          "docComment": "/**\n * 判断该值为 UUID。\n *\n * @public\n */\n",
-          "excerptTokens": [
-            {
-              "kind": "Content",
-              "text": "isUId: "
-            },
-            {
-              "kind": "Content",
-              "text": "typeof "
-            },
-            {
-              "kind": "Reference",
-              "text": "isUUID",
-              "canonicalReference": "class-validator!isUUID:function"
-            }
-          ],
-          "fileUrlPath": "dist/decorator/is-id.decorator.d.ts",
-          "isReadonly": true,
-          "releaseTag": "Public",
-          "name": "isUId",
-          "variableTypeTokenRange": {
-            "startIndex": 1,
-            "endIndex": 3
-          }
-        },
-        {
-          "kind": "Variable",
-          "canonicalReference": "@hz-9/a4-core!IsUId:var",
-          "docComment": "/**\n * 一个自定义 `class-validator` 的可选装饰器。\n *\n * 判断该属性为 UUID。\n *\n * @public\n */\n",
-          "excerptTokens": [
-            {
-              "kind": "Content",
-              "text": "IsUId: "
-            },
-            {
-              "kind": "Content",
-              "text": "typeof "
-            },
-            {
-              "kind": "Reference",
-              "text": "IsUUID",
-              "canonicalReference": "class-validator!IsUUID:function"
-            }
-          ],
-          "fileUrlPath": "dist/decorator/is-id.decorator.d.ts",
-          "isReadonly": true,
-          "releaseTag": "Public",
-          "name": "IsUId",
-          "variableTypeTokenRange": {
-            "startIndex": 1,
-            "endIndex": 3
-          }
-        },
-        {
-          "kind": "Function",
-          "canonicalReference": "@hz-9/a4-core!isUIdArray:function(1)",
-          "docComment": "/**\n * 判断该值为 UUID 数组\n *\n * @public\n */\n",
-          "excerptTokens": [
-            {
-              "kind": "Content",
-              "text": "isUIdArray: (value: "
-            },
-            {
-              "kind": "Content",
-              "text": "unknown"
-            },
-            {
-              "kind": "Content",
-              "text": ", uuidVersion?: "
-            },
-            {
-              "kind": "Reference",
-              "text": "UUIDVersion",
-              "canonicalReference": "@hz-9/a4-core!UUIDVersion:type"
-            },
-            {
-              "kind": "Content",
-              "text": ") => "
-            },
-            {
-              "kind": "Content",
-              "text": "boolean"
-            }
-          ],
-          "fileUrlPath": "dist/decorator/is-id.decorator.d.ts",
-          "returnTypeTokenRange": {
-            "startIndex": 5,
-            "endIndex": 6
-          },
-          "releaseTag": "Public",
-          "overloadIndex": 1,
-          "parameters": [
-            {
-              "parameterName": "value",
-              "parameterTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              },
-              "isOptional": false
-            },
-            {
-              "parameterName": "uuidVersion",
-              "parameterTypeTokenRange": {
-                "startIndex": 3,
-                "endIndex": 4
-              },
-              "isOptional": true
-            }
-          ],
-          "name": "isUIdArray"
-        },
-        {
-          "kind": "Function",
-          "canonicalReference": "@hz-9/a4-core!IsUIdArray:function(1)",
-          "docComment": "/**\n * 一个自定义 `class-validator` 装饰器。\n *\n * 判断该属性为 UUID 组成的数组。\n *\n * @public\n */\n",
-          "excerptTokens": [
-            {
-              "kind": "Content",
-              "text": "export declare function IsUIdArray(uuidVersion?: "
-            },
-            {
-              "kind": "Reference",
-              "text": "UUIDVersion",
-              "canonicalReference": "@hz-9/a4-core!UUIDVersion:type"
-            },
-            {
-              "kind": "Content",
-              "text": ", validationOptions?: "
-            },
-            {
-              "kind": "Reference",
-              "text": "ValidationOptions",
-              "canonicalReference": "class-validator!ValidationOptions:interface"
-            },
-            {
-              "kind": "Content",
-              "text": "): "
-            },
-            {
-              "kind": "Reference",
-              "text": "PropertyDecorator",
-              "canonicalReference": "!PropertyDecorator:type"
-            },
-            {
-              "kind": "Content",
-              "text": ";"
-            }
-          ],
-          "fileUrlPath": "dist/decorator/is-id.decorator.d.ts",
-          "returnTypeTokenRange": {
-            "startIndex": 5,
-            "endIndex": 6
-          },
-          "releaseTag": "Public",
-          "overloadIndex": 1,
-          "parameters": [
-            {
-              "parameterName": "uuidVersion",
-              "parameterTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              },
-              "isOptional": true
-            },
-            {
-              "parameterName": "validationOptions",
-              "parameterTypeTokenRange": {
-                "startIndex": 3,
-                "endIndex": 4
-              },
-              "isOptional": true
-            }
-          ],
-          "name": "IsUIdArray"
         },
         {
           "kind": "Interface",
@@ -13362,104 +13248,6 @@
             {
               "kind": "Property",
               "canonicalReference": "@hz-9/a4-core!ParamSIdsReqDto#ids:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "readonly ids: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "string[]"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": true,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "ids",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              },
-              "isStatic": false,
-              "isProtected": false,
-              "isAbstract": false
-            }
-          ],
-          "implementsTokenRanges": []
-        },
-        {
-          "kind": "Class",
-          "canonicalReference": "@hz-9/a4-core!ParamUIdReqDto:class",
-          "docComment": "/**\n * Controller 进行 PATCH DELETE 请求时，`@Param` 解析的数据结构。\n *\n * `{ id: string }`\n *\n * @public\n */\n",
-          "excerptTokens": [
-            {
-              "kind": "Content",
-              "text": "export declare class ParamUIdReqDto "
-            }
-          ],
-          "fileUrlPath": "dist/module/crud/dto/param.req.dto.d.ts",
-          "releaseTag": "Public",
-          "isAbstract": false,
-          "name": "ParamUIdReqDto",
-          "preserveMemberOrder": false,
-          "members": [
-            {
-              "kind": "Property",
-              "canonicalReference": "@hz-9/a4-core!ParamUIdReqDto#id:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "readonly id: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "string"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": true,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "id",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              },
-              "isStatic": false,
-              "isProtected": false,
-              "isAbstract": false
-            }
-          ],
-          "implementsTokenRanges": []
-        },
-        {
-          "kind": "Class",
-          "canonicalReference": "@hz-9/a4-core!ParamUIdsReqDto:class",
-          "docComment": "/**\n * Controller 进行 PATCH DELETE 请求时，`@Param` 解析的数据结构。\n *\n * `{ ids: string[] }`\n *\n * @public\n */\n",
-          "excerptTokens": [
-            {
-              "kind": "Content",
-              "text": "export declare class ParamUIdsReqDto "
-            }
-          ],
-          "fileUrlPath": "dist/module/crud/dto/param.req.dto.d.ts",
-          "releaseTag": "Public",
-          "isAbstract": false,
-          "name": "ParamUIdsReqDto",
-          "preserveMemberOrder": false,
-          "members": [
-            {
-              "kind": "Property",
-              "canonicalReference": "@hz-9/a4-core!ParamUIdsReqDto#ids:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -15040,46 +14828,6 @@
         },
         {
           "kind": "TypeAlias",
-          "canonicalReference": "@hz-9/a4-core!TUIdEntity:type",
-          "docComment": "/**\n * UIdEntity 的类型。\n *\n * @public\n */\n",
-          "excerptTokens": [
-            {
-              "kind": "Content",
-              "text": "export type TUIdEntity = "
-            },
-            {
-              "kind": "Reference",
-              "text": "Debug",
-              "canonicalReference": "@hz-9/a4-core!Debug:type"
-            },
-            {
-              "kind": "Content",
-              "text": "<"
-            },
-            {
-              "kind": "Reference",
-              "text": "UIdEntity",
-              "canonicalReference": "@hz-9/a4-core!UIdEntity:class"
-            },
-            {
-              "kind": "Content",
-              "text": ">"
-            },
-            {
-              "kind": "Content",
-              "text": ";"
-            }
-          ],
-          "fileUrlPath": "dist/interface/entity.d.ts",
-          "releaseTag": "Public",
-          "name": "TUIdEntity",
-          "typeTokenRange": {
-            "startIndex": 1,
-            "endIndex": 5
-          }
-        },
-        {
-          "kind": "TypeAlias",
           "canonicalReference": "@hz-9/a4-core!TUnionIdEntity:type",
           "docComment": "/**\n * IdEntity 与 SIdEntity 的联合类型。\n *\n * @public\n */\n",
           "excerptTokens": [
@@ -15117,55 +14865,6 @@
             "startIndex": 1,
             "endIndex": 5
           }
-        },
-        {
-          "kind": "Class",
-          "canonicalReference": "@hz-9/a4-core!UIdEntity:class",
-          "docComment": "/**\n * 使用 UUId 作为索引列的数据实体。\n *\n * @public\n */\n",
-          "excerptTokens": [
-            {
-              "kind": "Content",
-              "text": "export declare class UIdEntity "
-            }
-          ],
-          "fileUrlPath": "dist/interface/entity.d.ts",
-          "releaseTag": "Public",
-          "isAbstract": false,
-          "name": "UIdEntity",
-          "preserveMemberOrder": false,
-          "members": [
-            {
-              "kind": "Property",
-              "canonicalReference": "@hz-9/a4-core!UIdEntity#id:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "id: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "string"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "id",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              },
-              "isStatic": false,
-              "isProtected": false,
-              "isAbstract": false
-            }
-          ],
-          "implementsTokenRanges": []
         },
         {
           "kind": "Class",
@@ -15551,32 +15250,6 @@
             }
           ],
           "implementsTokenRanges": []
-        },
-        {
-          "kind": "TypeAlias",
-          "canonicalReference": "@hz-9/a4-core!UUIDVersion:type",
-          "docComment": "/**\n * UUID 版本\n *\n * @public\n */\n",
-          "excerptTokens": [
-            {
-              "kind": "Content",
-              "text": "export type UUIDVersion = "
-            },
-            {
-              "kind": "Content",
-              "text": "'1' | '2' | '3' | '4' | '5' | 'all' | 1 | 2 | 3 | 4 | 5"
-            },
-            {
-              "kind": "Content",
-              "text": ";"
-            }
-          ],
-          "fileUrlPath": "dist/interface/uuid.d.ts",
-          "releaseTag": "Public",
-          "name": "UUIDVersion",
-          "typeTokenRange": {
-            "startIndex": 1,
-            "endIndex": 2
-          }
         },
         {
           "kind": "Class",

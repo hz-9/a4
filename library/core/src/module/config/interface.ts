@@ -2,11 +2,11 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-21 13:51:49
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-05-31 00:07:41
+ * @LastEditTime : 2024-06-16 00:10:28
  */
 
 /* eslint-disable max-classes-per-file */
-import type PackageJson from '@npmcli/package-json'
+import type { PackageJson } from 'type-fest'
 
 /**
  *
@@ -125,7 +125,7 @@ export interface IA4PathInfo {
  *
  */
 export interface IA4LibrariesInfo {
-  packageJson: PackageJson.Content
+  packageJson: PackageJson
 
   // a4Packages:
 }

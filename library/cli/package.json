@@ -30,18 +30,22 @@
     "test:watch": "heft test-watch --clean"
   },
   "dependencies": {
-    "@hz-9/a4-core": "workspace:*",
     "dayjs": "~1.11.10",
+    "fs-extra": "~11.1.1",
     "inquirer": "~8.2.6",
+    "lodash": "~4.17.21",
     "simple-git": "~3.20.0",
+    "upath": "~2.0.1",
     "yaml": "~2.3.3"
   },
   "devDependencies": {
     "@hz-9/eslint-config-airbnb-ts": "~0.5.4",
     "@hz-9/heft-node-rig": "~0.4.1",
     "@rushstack/heft": "0.66.1",
+    "@types/fs-extra": "~11.0.3",
     "@types/heft-jest": "~1.0.3",
     "@types/inquirer": "^8.0.0",
+    "@types/lodash": "~4.17.4",
     "@types/node": "~20.3.1",
     "eslint": "^8.2.0",
     "execa": "^4.1.0",

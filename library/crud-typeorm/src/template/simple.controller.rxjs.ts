@@ -2,13 +2,12 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-12 17:47:53
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-05 17:46:10
+ * @LastEditTime : 2024-06-15 22:52:19
  */
 
 /* eslint-disable @typescript-eslint/brace-style */
 import { HttpStatus, Logger } from '@nestjs/common'
-import { Observable } from 'rxjs'
-import { map } from 'rxjs/operators'
+import { Observable, map } from 'rxjs'
 import { DeepPartial } from 'typeorm'
 
 import {

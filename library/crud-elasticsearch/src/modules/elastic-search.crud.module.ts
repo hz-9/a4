@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-21 16:10:04
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-05 20:22:03
+ * @LastEditTime : 2024-06-15 22:58:16
  */
 import type { ClientOptions } from '@elastic/elasticsearch'
 import type { IndicesGetResponse } from '@elastic/elasticsearch/lib/api/types'
@@ -11,7 +11,6 @@ import { OpenSearchMappingService } from '@scalenc/opensearch-mapping-ts'
 import { defer, lastValueFrom } from 'rxjs'
 
 import * as fs from '@hz-9/a4-core/fs-extra'
-import * as path from '@hz-9/a4-core/upath'
 import { A4ModuleBase, A4Util, IA4Config, IA4CrudModule, RunEnv } from '@hz-9/a4-core'
 
 import {
@@ -204,8 +203,7 @@ export class A4ElasticSearchCrudModule implements A4ModuleBase, IA4CrudModule {
       // 将 ca.crt 从文件路径读取为文件内容。
       if (c.tls?.ca && typeof c.tls.ca === 'string') {
         const { ca } = c.tls
-        const p: string = path.isAbsolute(ca) ? ca : path.resolve(a4Config.cwd, ca)
-        c.tls.ca = fs.readFileSync(p)
+        c.tls.ca = fs.readFileSync(A4Util.noAbsoluteWith(ca, a4Config.cwd))
       }
 
       newConfig[name] = {

@@ -2,13 +2,12 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-05-29 23:31:15
+ * @LastEditTime : 2024-06-15 22:52:02
  */
 import { CACHE_TTL_METADATA, CacheInterceptor as CacheInterceptorBase } from '@nestjs/cache-manager'
 import { CallHandler, ExecutionContext, Injectable, Logger, StreamableFile } from '@nestjs/common'
 import { isFunction, isNil } from '@nestjs/common/utils/shared.utils'
-import { Observable, of } from 'rxjs'
-import { tap } from 'rxjs/operators'
+import { Observable, of, tap } from 'rxjs'
 
 import type { Response } from '@hz-9/a4-core/express'
 

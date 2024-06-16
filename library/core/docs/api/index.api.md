@@ -15,8 +15,6 @@ import { ExecutionContext } from '@nestjs/common';
 import { ExpressAdapter } from '@nestjs/platform-express';
 import type { FactoryProvider } from '@nestjs/common';
 import { HttpAdapterHost } from '@nestjs/core';
-import { IsUUID } from 'class-validator';
-import { isUUID } from 'class-validator';
 import { Logger } from '@nestjs/common';
 import { LoggerService } from '@nestjs/common';
 import { NestApplication } from '@nestjs/core';
@@ -27,7 +25,7 @@ import { NestInterceptor } from '@nestjs/common';
 import { NestMiddleware } from '@nestjs/common';
 import type { NextFunction } from 'express';
 import { Observable } from 'rxjs';
-import type PackageJson from '@npmcli/package-json';
+import type { PackageJson } from 'type-fest';
 import type { ParseIntPipeOptions } from '@nestjs/common';
 import { PipeTransform } from '@nestjs/common';
 import type { Request as Request_2 } from 'express';
@@ -174,6 +172,7 @@ export type A4SimpleServiceRxjs = {
 // @public
 export class A4Util {
     static handleRetry(dataSourceName: string, retryDelay: number, retryAttempts: number, verboseRetryLog: boolean, logger: Logger): <T>(source: Observable<T>) => Observable<T>;
+    static noAbsoluteWith(sourcePath: string, basePath: string): string;
     static sleep(t: number): Promise<void>;
 }
 
@@ -403,7 +402,7 @@ export type IA4Info = IA4StatsInfo & IA4EnvInfo & IA4PathInfo & IA4LibrariesInfo
 // @public
 export interface IA4LibrariesInfo {
     // (undocumented)
-    packageJson: PackageJson.Content;
+    packageJson: PackageJson;
 }
 
 // @public
@@ -739,18 +738,6 @@ export function IsSIdArray(validationOptions?: ValidationOptions): PropertyDecor
 export const isSIdArray: (value: unknown) => boolean;
 
 // @public
-export const IsUId: typeof IsUUID;
-
-// @public
-export const isUId: typeof isUUID;
-
-// @public
-export function IsUIdArray(uuidVersion?: UUIDVersion, validationOptions?: ValidationOptions): PropertyDecorator;
-
-// @public
-export const isUIdArray: (value: unknown, uuidVersion?: UUIDVersion) => boolean;
-
-// @public
 export interface IUpdateResult {
     affected?: number | null;
 }
@@ -816,18 +803,6 @@ export class ParamSIdReqDto {
 
 // @public
 export class ParamSIdsReqDto {
-    // (undocumented)
-    readonly ids: string[];
-}
-
-// @public
-export class ParamUIdReqDto {
-    // (undocumented)
-    readonly id: string;
-}
-
-// @public
-export class ParamUIdsReqDto {
     // (undocumented)
     readonly ids: string[];
 }
@@ -931,16 +906,7 @@ export class TransformInterceptor<T extends IObjectLiteral = IObjectLiteral> imp
 export type TSIdEntity = Debug<SIdEntity>;
 
 // @public
-export type TUIdEntity = Debug<UIdEntity>;
-
-// @public
 export type TUnionIdEntity = Debug<UnionIdEntity>;
-
-// @public
-export class UIdEntity {
-    // (undocumented)
-    id: string;
-}
 
 // @public
 export class UnionIdEntity {
@@ -976,9 +942,6 @@ export class UpdateEffectInfo {
     // (undocumented)
     readonly effectNum: number | null;
 }
-
-// @public
-export type UUIDVersion = '1' | '2' | '3' | '4' | '5' | 'all' | 1 | 2 | 3 | 4 | 5;
 
 // @public
 export class ValidationWithDefaultPipe extends ValidationPipe {

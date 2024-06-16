@@ -2,15 +2,15 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-05-31 23:21:31
+ * @LastEditTime : 2024-06-15 23:01:45
  */
 import { Logger } from '@nestjs/common'
 import { DocumentBuilder, OpenAPIObject, SwaggerModule } from '@nestjs/swagger'
+import path from 'node:path'
 
-import type { A4Application, IA4Docs } from '@hz-9/a4-core'
+import { type A4Application, A4Util, type IA4Docs } from '@hz-9/a4-core'
 import { mkdirpSync, writeFileSync } from '@hz-9/a4-core/fs-extra'
 import { renderFile } from '@hz-9/a4-core/pug'
-import { dirname, isAbsolute, resolve } from '@hz-9/a4-core/upath'
 
 import type { IDocsConstructorOptions } from '../interface'
 
@@ -105,13 +105,11 @@ export class A4Docs implements IA4Docs {
    */
   private _initSwaggerFile(app: A4Application, document: OpenAPIObject): void {
     const config = this.options.file
-    const filedir = isAbsolute(config.filedir)
-      ? config.filedir
-      : resolve(this.options.pathInfo.mainNormalRoot, config.filedir)
-    const filepath = resolve(filedir, config.filename)
+    const filedir = A4Util.noAbsoluteWith(config.filedir, this.options.pathInfo.mainNormalRoot)
+    const filepath = path.resolve(filedir, config.filename)
 
     if (config.export) {
-      mkdirpSync(dirname(filepath))
+      mkdirpSync(path.dirname(filepath))
       writeFileSync(filepath, JSON.stringify(document, undefined, 2), { encoding: 'utf8' })
     }
 
@@ -142,8 +140,8 @@ export class A4Docs implements IA4Docs {
   private _initHomePage(app: A4Application): void {
     const filePath =
       this.homeLinkOptions.length === 0
-        ? resolve(__dirname, '../../.template/index-empty.pug')
-        : resolve(__dirname, '../../.template/index-link.pug')
+        ? path.resolve(__dirname, '../../.template/index-empty.pug')
+        : path.resolve(__dirname, '../../.template/index-link.pug')
 
     const html = renderFile(filePath, { links: this.homeLinkOptions, service: this.options.statsInfo })
     const requestPath = `/${this.options.prefix}`

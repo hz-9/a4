@@ -2,11 +2,11 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-12 00:04:30
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-05 22:09:50
+ * @LastEditTime : 2024-06-16 00:11:47
  */
 
 /* eslint-disable @typescript-eslint/no-explicit-any, max-classes-per-file */
-import { IsId, IsIdArray, IsSId, IsSIdArray, IsUId, IsUIdArray } from '../../../decorator'
+import { IsId, IsIdArray, IsSId, IsSIdArray } from '../../../decorator'
 
 /**
  * @public
@@ -19,19 +19,6 @@ import { IsId, IsIdArray, IsSId, IsSIdArray, IsUId, IsUIdArray } from '../../../
 export class ParamIdReqDto {
   @IsId()
   public readonly id: number
-}
-
-/**
- * @public
- *
- *  Controller 进行 PATCH DELETE 请求时，`@Param` 解析的数据结构。
- *
- *  `{ id: string }`
- *
- */
-export class ParamUIdReqDto {
-  @IsUId()
-  public readonly id: string
 }
 
 /**
@@ -70,19 +57,6 @@ export class ParamAnyIdReqDto {
 export class ParamIdsReqDto {
   @IsIdArray()
   public readonly ids: number[]
-}
-
-/**
- * @public
- *
- *  Controller 进行 PATCH DELETE 请求时，`@Param` 解析的数据结构。
- *
- *  `{ ids: string[] }`
- *
- */
-export class ParamUIdsReqDto {
-  @IsUIdArray()
-  public readonly ids: string[]
 }
 
 /**

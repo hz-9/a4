@@ -2,9 +2,9 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-24 15:53:05
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-05-26 02:16:35
+ * @LastEditTime : 2024-06-15 23:03:43
  */
-import * as path from '@hz-9/a4-core/upath'
+import path from 'upath'
 
 import type { IGenerateBase, IGenerateControllerOptions } from '../interface'
 import { mergeOptions } from '../util'

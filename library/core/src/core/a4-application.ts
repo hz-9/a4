@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-14 17:26:12
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-05-31 23:00:55
+ * @LastEditTime : 2024-06-15 23:30:12
  */
 import { Logger } from '@nestjs/common'
 import { HttpAdapterHost, NestApplication } from '@nestjs/core'
@@ -10,7 +10,7 @@ import chalk from 'chalk'
 import type { Request, Response } from 'express'
 import { createReadStream } from 'fs-extra'
 import _ from 'lodash'
-import { v1 as uuidV1 } from 'uuid'
+import { nanoid } from 'nanoid'
 
 import { HTTP_LISTEN_DEFAULT } from '../const/index'
 import { AllExceptionsFilter, IExceptionRule } from '../exception-filter'
@@ -114,7 +114,8 @@ export class A4Application {
   public readonly registry: A4RegistryHelp
 
   public constructor(nestApp: NestApplication) {
-    this.instanceId = (uuidV1().match(/^[\w]+/g) ?? ['UNKNOWN'])[0]
+    this.instanceId = nanoid()
+
     this.nestApp = nestApp
     this.microService = new A4MicroServiceHelp(this)
     this.registry = new A4RegistryHelp(this)

@@ -4,12 +4,12 @@
 
 ```ts
 
-import type { A4Application } from '@hz-9/a4-core';
+import { A4Application } from '@hz-9/a4-core';
 import { A4ModuleBase } from '@hz-9/a4-core';
 import { DynamicModule } from '@nestjs/common';
 import { FactoryProvider } from '@nestjs/common';
 import { IA4Config } from '@hz-9/a4-core';
-import type { IA4Docs } from '@hz-9/a4-core';
+import { IA4Docs } from '@hz-9/a4-core';
 import { IA4DocsModule } from '@hz-9/a4-core';
 import type { IA4PathInfo } from '@hz-9/a4-core';
 import type { IA4StatsInfo } from '@hz-9/a4-core';

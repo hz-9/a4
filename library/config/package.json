@@ -31,7 +31,9 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
-  "dependencies": {},
+  "dependencies": {
+    "yaml": "~2.3.3"
+  },
   "devDependencies": {
     "@hz-9/a4-core": "workspace:*",
     "@hz-9/eslint-config-airbnb-ts": "~0.5.4",

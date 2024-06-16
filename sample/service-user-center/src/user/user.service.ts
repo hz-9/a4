@@ -2,11 +2,10 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-27 16:18:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-06 09:57:34
+ * @LastEditTime : 2024-06-15 22:53:10
  */
 import { Injectable, Logger } from '@nestjs/common'
-import { Observable } from 'rxjs'
-import { map } from 'rxjs/operators'
+import { Observable, map } from 'rxjs'
 
 import {
   A4SimpleServiceRxjs,

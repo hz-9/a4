@@ -7,8 +7,7 @@
 
 import { Injectable, Logger } from '@nestjs/common'
 
-import { Observable, from } from 'rxjs'
-import { map } from 'rxjs/operators'
+import { Observable, from, map } from 'rxjs'
 
 import {
   A4SimpleServiceRxjs,

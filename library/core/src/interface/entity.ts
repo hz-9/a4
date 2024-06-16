@@ -2,11 +2,11 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-05 22:08:08
+ * @LastEditTime : 2024-06-15 23:27:57
  */
 
 /* eslint-disable max-classes-per-file */
-import { IsId, IsIdorSId, IsSId, IsUId } from '../decorator'
+import { IsId, IsIdorSId, IsSId } from '../decorator'
 import type { Debug } from './util'
 
 /**
@@ -47,18 +47,6 @@ export class SIdEntity {
 }
 
 /**
- * @public
- *
- *  使用 UUId 作为索引列的数据实体。
- *
- */
-export class UIdEntity {
-  @IsUId()
-  public id: string
-  // 其他属性
-}
-
-/**
  *
  * @public
  *
@@ -86,14 +74,6 @@ export type TIdEntity = Debug<IdEntity>
  *
  */
 export type TSIdEntity = Debug<SIdEntity>
-
-/**
- * @public
- *
- *  UIdEntity 的类型。
- *
- */
-export type TUIdEntity = Debug<UIdEntity>
 
 /**
  * @public

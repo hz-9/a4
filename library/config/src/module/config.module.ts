@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-01 01:34:00
+ * @LastEditTime : 2024-06-15 22:41:02
  */
 import { DynamicModule, FactoryProvider, Logger, Module } from '@nestjs/common'
 import type { ClassConstructor } from 'class-transformer'
@@ -86,6 +86,7 @@ export class A4ConfigModule implements A4ModuleBase, IA4ConfigModule {
     if (options.type === 'file') {
       loader = new FileConfigLoader(options)
     }
+
     if (!loader) throw new Error('Unknown load config type.')
 
     const successLogger: string = loader.getSuccessLoggerMsg()

@@ -2,13 +2,12 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-24 15:53:05
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-05-27 15:34:59
+ * @LastEditTime : 2024-06-15 22:46:01
  */
 import dayjs from 'dayjs'
 import type { QuestionCollection } from 'inquirer'
 import SimpleGit, { type ConfigValues } from 'simple-git'
-
-import * as upath from '@hz-9/a4-core/upath'
+import path from 'upath'
 
 import { DataStructureType } from '../enum'
 import { IGenerateBase } from '../interface'
@@ -55,7 +54,7 @@ export class InitProcess extends BaseProcess {
   public async toNext(options: IGenerateBase): Promise<BaseProcess> {
     const newOptions: IGenerateBase = {
       ...options,
-      root: upath.isAbsolute(options.root) ? options.root : upath.resolve(process.cwd(), options.root),
+      root: path.isAbsolute(options.root) ? path.normalize(options.root) : path.resolve(process.cwd(), options.root),
       fileHeaders: {
         author: 'NOT_SET',
         createTime: dayjs().format('YYYY-MM-DD HH:mm:00'),

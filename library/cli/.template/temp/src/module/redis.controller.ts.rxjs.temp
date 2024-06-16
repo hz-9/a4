@@ -7,8 +7,7 @@
 
 import { Controller, HttpStatus, Logger, UseFilters, UseInterceptors } from '@nestjs/common'
 
-import { Observable } from 'rxjs'
-import { map } from 'rxjs/operators'
+import { Observable, map } from 'rxjs'
 
 import {
   A4SimpleControllerRxjs,

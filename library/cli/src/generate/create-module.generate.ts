@@ -4,7 +4,7 @@
  * @LastEditors  : Chen Zhen
  * @LastEditTime : 2024-05-26 11:39:31
  */
-import * as path from '@hz-9/a4-core/upath'
+import path from 'upath'
 
 import type { IGenerateBase, IGenerateModuleOptions } from '../interface'
 import { mergeOptions } from '../util'

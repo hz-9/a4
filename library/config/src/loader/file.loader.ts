@@ -2,13 +2,14 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-05-31 23:52:49
+ * @LastEditTime : 2024-06-15 23:06:57
  */
 import { isObject } from '@nestjs/common/utils/shared.utils'
+import fs from 'node:fs'
+import path from 'node:path'
+import { parse as parseYml } from 'yaml'
 
-import * as fs from '@hz-9/a4-core/fs-extra'
-import * as path from '@hz-9/a4-core/upath'
-import { parse as parseYml } from '@hz-9/a4-core/yaml'
+import { A4Util } from '@hz-9/a4-core'
 
 import { A4_CONFIG_FILE } from '../const/index'
 import { ConfigModuleError } from '../errors'
@@ -60,13 +61,11 @@ export interface IFileConfigOptions extends Required<IFileConfigPreOptions> {
  */
 export class FileConfigLoader extends BaseConfigLoader<IFileConfigPreOptions, IFileConfigOptions> {
   protected withDefaultOptions(options: IFileConfigPreOptions): IFileConfigOptions {
-    const withCwd = (p: string): string => (path.isAbsolute(p) ? path.normalize(p) : path.resolve(process.cwd(), p))
-
     let rootDir: string[] = []
     if (typeof options.rootDir === 'string') {
-      rootDir = [withCwd(options.rootDir)]
+      rootDir = [A4Util.noAbsoluteWith(options.rootDir, process.cwd())]
     } else if (Array.isArray(options.rootDir) && options.rootDir.length) {
-      rootDir = options.rootDir.map((i) => withCwd(i))
+      rootDir = options.rootDir.map((i) => A4Util.noAbsoluteWith(i, process.cwd()))
     } else {
       rootDir = [process.cwd()]
     }
@@ -84,7 +83,7 @@ export class FileConfigLoader extends BaseConfigLoader<IFileConfigPreOptions, IF
 
     if (!configPath) throw new ConfigModuleError('Not found config file.')
 
-    const fileInfo = await fs.readFile(configPath, { encoding: 'utf8' })
+    const fileInfo = fs.readFileSync(configPath, { encoding: 'utf8' })
     const configInfo = parseYml(fileInfo)
 
     /**

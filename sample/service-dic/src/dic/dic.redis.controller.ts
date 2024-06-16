@@ -2,11 +2,10 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-29 15:19:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-05 16:13:10
+ * @LastEditTime : 2024-06-15 22:52:34
  */
 import { Controller, HttpStatus, Logger, UseFilters, UseInterceptors } from '@nestjs/common'
-import { Observable } from 'rxjs'
-import { map } from 'rxjs/operators'
+import { Observable, map } from 'rxjs'
 
 import {
   A4CrudUtil,

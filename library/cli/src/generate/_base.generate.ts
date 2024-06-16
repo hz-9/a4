@@ -2,14 +2,13 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-24 18:24:20
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-05-26 01:48:08
+ * @LastEditTime : 2024-06-15 23:04:10
  */
+import fs from 'fs-extra'
 import type { QuestionCollection } from 'inquirer'
+import _ from 'lodash'
 import console from 'node:console'
-
-import * as fs from '@hz-9/a4-core/fs-extra'
-import * as path from '@hz-9/a4-core/upath'
-import _ from '@hz-9/a4-core/lodash'
+import path from 'upath'
 
 import { IGenerateRenderOptions, ITemplateInfo } from '../interface/generate'
 import { BaseProcess } from '../process/_base'

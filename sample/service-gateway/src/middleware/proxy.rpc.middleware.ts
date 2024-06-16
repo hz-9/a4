@@ -2,11 +2,10 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-01 02:05:37
+ * @LastEditTime : 2024-06-15 22:52:42
  */
 import { Injectable, Logger, NestMiddleware } from '@nestjs/common'
-import { firstValueFrom } from 'rxjs'
-import { timeout } from 'rxjs/operators'
+import { firstValueFrom, timeout } from 'rxjs'
 
 import type { NextFunction, Request, Response } from '@hz-9/a4-core/express'
 import { A4MicroService, MicroServiceClient } from '@hz-9/a4-micro-service'

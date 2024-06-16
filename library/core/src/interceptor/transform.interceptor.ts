@@ -2,11 +2,10 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-05-30 14:07:26
+ * @LastEditTime : 2024-06-15 22:52:11
  */
 import { CallHandler, ExecutionContext, Injectable, Logger, NestInterceptor } from '@nestjs/common'
-import { Observable } from 'rxjs'
-import { map, tap } from 'rxjs/operators'
+import { Observable, map, tap } from 'rxjs'
 
 import type { IObjectLiteral } from '../interface'
 
