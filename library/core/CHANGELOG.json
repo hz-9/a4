@@ -2,6 +2,30 @@
   "name": "@hz-9/a4-core",
   "entries": [
     {
+      "version": "0.2.0",
+      "tag": "@hz-9/a4-core_v0.2.0",
+      "date": "Sun, 16 Jun 2024 08:45:19 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "perf: remove `import some from 'rxjs/operators'`"
+          },
+          {
+            "comment": "feat(core): replace `uuid` with `nanoid@^3.3.7`"
+          },
+          {
+            "comment": "feat(core): add the  `noAbsoluteWith` function to the `A4Util` class "
+          },
+          {
+            "comment": "feat(core): remove dependency `@npmcli/package-json` `yaml`"
+          },
+          {
+            "comment": "feat(config): add dependency `yaml`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.1.0",
       "tag": "@hz-9/a4-core_v0.1.0",
       "date": "Wed, 12 Jun 2024 08:18:52 GMT",
