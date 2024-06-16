@@ -39,8 +39,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-      - uses: rm -rf ./common/config/rush/.npmrc
-      - uses: cp     ./common/config/rush/.npmrc-github ./common/config/rush/.npmrc
+      - run: rm -rf ./common/config/rush/.npmrc
+      - run: cp     ./common/config/rush/.npmrc-github ./common/config/rush/.npmrc
       - name: RushJS Helper
         uses: advancedcsg-open/actions-rush@v1.6.2
       - name: Install @hz-9/docs-build
