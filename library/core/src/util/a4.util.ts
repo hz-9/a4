@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-15 22:54:41
+ * @LastEditTime : 2024-06-19 12:10:04
  */
 import * as path from 'upath'
 import { Logger } from '@nestjs/common'
@@ -65,8 +65,10 @@ export class A4Util {
     return <T>(source: Observable<T>) =>
       source.pipe(
         retry({
-          delay: (e) =>
-            e.pipe(
+          delay: (e) => {
+            if (e instanceof Error) throw e
+
+            return e.pipe(
               scan((errorCount, error: Error) => {
                 const verboseMessage = verboseRetryLog ? ` Message: ${error.message}.` : ''
 
@@ -80,7 +82,8 @@ export class A4Util {
                 return errorCount + 1
               }, 0),
               delay(retryDelay)
-            ),
+            )
+          },
         })
       )
   }

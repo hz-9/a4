@@ -12,7 +12,7 @@ import { IA4Config } from '@hz-9/a4-core';
 import { IA4Docs } from '@hz-9/a4-core';
 import { IA4DocsModule } from '@hz-9/a4-core';
 import type { IA4PathInfo } from '@hz-9/a4-core';
-import type { IA4StatsInfo } from '@hz-9/a4-core';
+import type { IA4StatusInfo } from '@hz-9/a4-core';
 import { Logger } from '@nestjs/common';
 
 // @public
@@ -108,7 +108,7 @@ export interface IDocsInfo extends A4DocsModuleSchema {
     // (undocumented)
     pathInfo: IA4PathInfo;
     // (undocumented)
-    statsInfo: IA4StatsInfo;
+    statsInfo: IA4StatusInfo;
 }
 
 

@@ -17,11 +17,11 @@ A4:
         port: 6379
         password: 'A1345678'
   crud:
-    db:
-      postgres:
-        default:
-          url: 'postgres://postgres:postgres123456@127.0.0.1:5432/demo'
-          synchronize: true
+    typeORM:
+      default:
+        type: postgres
+        url: 'postgres://postgres:postgres123456@127.0.0.1:5432/demo'
+        synchronize: true
   lock:
     connect:
       host: '127.0.0.1'

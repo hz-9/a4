@@ -22,6 +22,7 @@ import {
 import { Observable, map } from 'rxjs'
 
 import {
+  A4CrudUtil,
   A4SimpleControllerRxjs,
   DeleteByIdResultDto,
   DeleteByIdsResultDto,
@@ -40,7 +41,6 @@ import {
   ValidationWithDefaultPipe,
 } from '@hz-9/a4-core'
 
-import { ControllerUtil } from '@hz-9/a4-crud-typeorm'
 import { ApiTags } from '@hz-9/a4-docs'
 
 import { {{ entityName.firstCase }}Service } from './{{ entityName.kebabCase }}.service'
@@ -109,7 +109,7 @@ export class {{ entityName.firstCase }}HttpController implements A4SimpleControl
   ): Observable<{{ entityName.firstCase }}SelectByPageResultDto> {
     const result = this.service.selectByPage(model, {
       page,
-      sort: ControllerUtil.sortToTypeORM(sort),
+      sort: A4CrudUtil.parseSortOptions(sort),
     })
 
     return result.pipe(map((i) => ({
@@ -131,7 +131,7 @@ export class {{ entityName.firstCase }}HttpController implements A4SimpleControl
     @Query(ParseSortPipe, ValidationWithDefaultPipe) sort: SortReqDto
   ): Observable<{{ entityName.firstCase }}SelectNoPageResultDto> {
     const result = this.service.selectNoPage(model, {
-      sort: ControllerUtil.sortToTypeORM(sort),
+      sort: A4CrudUtil.parseSortOptions(sort),
     })
 
     return result.pipe(map((i) => ({

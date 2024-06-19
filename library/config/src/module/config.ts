@@ -2,13 +2,13 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-16 16:29:13
+ * @LastEditTime : 2024-06-19 17:24:41
  */
 import { isUndefined } from '@nestjs/common/utils/shared.utils'
 
 import * as fs from '@hz-9/a4-core/fs-extra'
 import * as path from '@hz-9/a4-core/upath'
-import { IA4Config, IA4EnvInfo, IA4Info, IA4LibrariesInfo, IA4PathInfo, IA4StatsInfo, RunEnv } from '@hz-9/a4-core'
+import { IA4Config, IA4EnvInfo, IA4Info, IA4LibrariesInfo, IA4PathInfo, IA4StatusInfo, RunEnv } from '@hz-9/a4-core'
 import dayjs from '@hz-9/a4-core/dayjs'
 import dayjsPluginRelativeTime from '@hz-9/a4-core/dayjs-plugin-relative-time'
 import _ from '@hz-9/a4-core/lodash'
@@ -124,7 +124,9 @@ export class A4Config implements IA4Config {
     return value
   }
 
-  public getA4StatsInfo(librariesInfo: IA4LibrariesInfo = this.getA4LibrariesInfo()): IA4StatsInfo {
+  public getA4StatsInfo(librariesInfoBase?: IA4LibrariesInfo): IA4StatusInfo {
+    const librariesInfo = librariesInfoBase ?? this.getA4LibrariesInfo()
+
     const name: string = librariesInfo.packageJson.name ?? 'a4-service'
     const version: string = librariesInfo.packageJson.version ?? '0.0.0'
     const normalName: string = _.upperCase((name.match(/[^/]+$/g) ?? [name])[0])
@@ -170,7 +172,11 @@ export class A4Config implements IA4Config {
     ].find((i) => fs.existsSync(i))
 
     let packageJson: PackageJson = {}
-    if (packageJsonPath) packageJson = JSON.parse(fs.readFileSync(packageJsonPath, { encoding: 'utf8' }))
+    if (packageJsonPath) {
+      packageJson = JSON.parse(fs.readFileSync(packageJsonPath, { encoding: 'utf8' }))
+      delete packageJson.jest
+      delete packageJson.scripts
+    }
 
     return {
       packageJson,

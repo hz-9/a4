@@ -200,6 +200,15 @@
 
     {
       "commandKind": "bulk",
+      "name": "build",
+      "summary": "Run `build` script.",
+      "enableParallelism": true,
+      // "safeForSimultaneousRushProcesses": true,
+      "ignoreMissingScript": true
+    },
+
+    {
+      "commandKind": "bulk",
       "name": "lint",
       "summary": "Lint code.",
       "enableParallelism": true,

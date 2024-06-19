@@ -2,9 +2,9 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-05-31 23:19:24
+ * @LastEditTime : 2024-06-19 17:29:42
  */
-import type { IA4PathInfo, IA4StatsInfo } from '@hz-9/a4-core'
+import type { IA4PathInfo, IA4StatusInfo } from '@hz-9/a4-core'
 
 import type { A4DocsModuleSchema } from '../schema/docs.schema'
 
@@ -16,7 +16,7 @@ import type { A4DocsModuleSchema } from '../schema/docs.schema'
  *
  */
 export interface IDocsInfo extends A4DocsModuleSchema {
-  statsInfo: IA4StatsInfo
+  statsInfo: IA4StatusInfo
 
   pathInfo: IA4PathInfo
 }

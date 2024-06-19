@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-27 16:18:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-15 22:53:10
+ * @LastEditTime : 2024-06-19 22:54:43
  */
 import { Injectable, Logger } from '@nestjs/common'
 import { Observable, map } from 'rxjs'
@@ -151,7 +151,7 @@ export class UserService implements A4SimpleServiceRxjs {
   }
 
   public deleteByIds(ids: Array<UserEntity['id']>): Observable<IDeleteResult> {
-    const result = this.crud.deleteByIdToObservable(ids)
+    const result = this.crud.deleteByIdsToObservable(ids)
 
     return result
   }

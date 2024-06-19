@@ -8,6 +8,7 @@
 import { Controller, HttpStatus, Logger, UseFilters, UseInterceptors } from '@nestjs/common'
 
 import {
+  A4CrudUtil,
   A4SimpleControllerPromise,
   DeleteByIdResultDto,
   DeleteByIdsResultDto,
@@ -20,7 +21,6 @@ import {
   UpdateByIdsResultDto,
 } from '@hz-9/a4-core'
 
-import { ControllerUtil } from '@hz-9/a4-crud-typeorm'
 import { MessagePattern, RPCExceptionFilter, ValidationWithDefaultPipe } from '@hz-9/a4-micro-service'
 import { Payload } from '@hz-9/a4-micro-service/nestjs-microservices'
 
@@ -90,7 +90,7 @@ export class {{ entityName.firstCase }}RedisController implements A4SimpleContro
   ): Promise<{{ entityName.firstCase }}SelectByPageResultDto> {
     const result = await this.service.selectByPage(model, {
       page,
-      sort: ControllerUtil.sortToTypeORM(sort),
+      sort: A4CrudUtil.parseSortOptions(sort),
     })
 
     return {
@@ -107,7 +107,7 @@ export class {{ entityName.firstCase }}RedisController implements A4SimpleContro
     @Payload('sort', ValidationWithDefaultPipe) sort: SortReqDto
   ): Promise<{{ entityName.firstCase }}SelectNoPageResultDto> {
     const result = await this.service.selectNoPage(model, {
-      sort: ControllerUtil.sortToTypeORM(sort),
+      sort: A4CrudUtil.parseSortOptions(sort),
     })
 
     return {

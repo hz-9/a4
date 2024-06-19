@@ -8,15 +8,17 @@
 import { Injectable, Logger } from '@nestjs/common'
 
 import {
-  A4SimpleServicePromise,
+  A4SimpleServiceRxjs,
+  DeepPartial,
+  IDeleteResult,
   ISelectByPageOptions,
   ISelectByPageReturn,
   ISelectNoPageOptions,
   ISelectNoPageReturn,
+  IUpdateResult,
 } from '@hz-9/a4-core'
 
-import { InjectRepository } from '@hz-9/a4-crud-typeorm/nestjs-typeorm'
-import { DeepPartial, DeleteResult, In, Repository, UpdateResult } from '@hz-9/a4-crud-typeorm/typeorm'
+import { A4TypeORMCrud, InjectA4TypeORMCrud } from '@hz-9/a4-crud-typeorm'
 
 import {
   {{ entityName.firstCase }}InsertResDto,
@@ -33,20 +35,20 @@ export class {{ entityName.firstCase }}Service implements A4SimpleServicePromise
   protected readonly Logger: Logger = new Logger('{{ entityName.firstCase }}Service')
 
   public constructor(
-    @InjectRepository({{ entityName.firstCase }}Entity)
-    protected readonly repository: Repository<{{ entityName.firstCase }}Entity>
+    @InjectA4TypeORMCrud({{ entityName.firstCase }}Entity)
+    protected readonly crud: A4TypeORMCrud<{{ entityName.firstCase }}Entity>
   ) {
     // ...
   }
 
   public async insert(model: DeepPartial<{{ entityName.firstCase }}Entity>): Promise<{{ entityName.firstCase }}InsertResDto> {
-    const result = await this.repository.save(model)
+    const result = this.crud.insertToPromise(model)
 
     return result
   }
 
   public async insertMulti(modelList: DeepPartial<{{ entityName.firstCase }}Entity>[]): Promise<{{ entityName.firstCase }}InsertResDto[]> {
-    const result = await this.repository.save(modelList)
+    const result = this.crud.insertMultiToPromise(modelList)
 
     return result
   }
@@ -55,76 +57,53 @@ export class {{ entityName.firstCase }}Service implements A4SimpleServicePromise
     model: DeepPartial<{{ entityName.firstCase }}Entity>,
     options: ISelectByPageOptions<{{ entityName.firstCase }}Entity>
   ): Promise<ISelectByPageReturn<{{ entityName.firstCase }}SelectResDto>> {
-    const { page, sort } = options
+    const result = this.crud.selectByPageToPromise(model, options)
 
-    const findResult = await this.repository.findAndCount({
-      where: model,
-
-      skip: (page.pageNum - 1) * page.pageSize,
-      take: page.pageSize,
-
-      order: sort,
-    })
-
-    return {
-      data: findResult[0],
-
-      page: {
-        ...page,
-
-        total: findResult[1],
-      },
-    }
+    return result
   }
 
   public async selectNoPage(
     model: DeepPartial<{{ entityName.firstCase }}Entity>,
     options: ISelectNoPageOptions<{{ entityName.firstCase }}Entity>
   ): Promise<ISelectNoPageReturn<{{ entityName.firstCase }}SelectResDto>> {
-    const { sort } = options
+    const result = this.crud.selectNoPageToPromise(model, options)
 
-    const findResult = await this.repository.findAndCount({
-      where: model,
-
-      order: sort,
-    })
-
-    return {
-      data: findResult[0],
-    }
+    return result
   }
 
   public async selectById(id: {{ entityName.firstCase }}Entity['id']): Promise<{{ entityName.firstCase }}SelectResDto | null> {
-    const result = await this.repository.findOneBy({ id })
+    const result = this.crud.selectByIdToPromise(id)
 
     return result
   }
 
   public async selectByIds(ids: Array<{{ entityName.firstCase }}Entity['id']>): Promise<{{ entityName.firstCase }}SelectResDto[]> {
-    const result = await this.repository.findBy({ id: In(ids) })
+    const result = this.crud.selectByIdsToPromise(ids)
 
     return result
   }
 
-  public async updateById(id: {{ entityName.firstCase }}Entity['id'], model: DeepPartial<{{ entityName.firstCase }}Entity>): Promise<UpdateResult> {
-    const result = await this.repository.update(id, model)
+  public async updateById(id: {{ entityName.firstCase }}Entity['id'], model: DeepPartial<{{ entityName.firstCase }}Entity>): Promise<IUpdateResult> {
+    const result = this.crud.updateByIdToPromise(id, model)
 
     return result
   }
 
-  public async updateByIds(ids: Array<{{ entityName.firstCase }}Entity['id']>, model: DeepPartial<{{ entityName.firstCase }}Entity>): Promise<UpdateResult> {
-    const result = await this.repository.update(ids, model)
+  public async updateByIds(ids: Array<{{ entityName.firstCase }}Entity['id']>, model: DeepPartial<{{ entityName.firstCase }}Entity>): Promise<IUpdateResult> {
+    const result = this.crud.updateByIdsToPromise(ids, model)
 
     return result
   }
 
-  public async deleteById(id: {{ entityName.firstCase }}Entity['id']): Promise<DeleteResult> {
-    const result = await this.repository.delete(id)
+  public async deleteById(id: {{ entityName.firstCase }}Entity['id']): Promise<IDeleteResult> {
+    const result = this.crud.deleteByIdToPromise(id)
+
     return result
   }
 
-  public async deleteByIds(ids: Array<{{ entityName.firstCase }}Entity['id']>): Promise<DeleteResult> {
-    const result = await this.repository.delete(ids)
+  public async deleteByIds(ids: Array<{{ entityName.firstCase }}Entity['id']>): Promise<IDeleteResult> {
+    const result = this.crud.deleteByIdsToPromise(ids)
+
     return result
   }
 }

@@ -6,10 +6,10 @@
       "request": "launch",
       "name": "A4 Application",
       "program": "${workspaceFolder}/node_modules/@nestjs/cli/bin/nest.js",
-      "console": "integratedTerminal",
-      "args": ["start"],
+      "outputCapture": "std",
+      "args": ["start", "--watch"],
       "env": {
-        "NEST_DEBUG": "true"
+        // "NEST_DEBUG": "false"
       }
     }
   ]

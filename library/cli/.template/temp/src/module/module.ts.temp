@@ -7,7 +7,7 @@
 
 import { Module } from '@nestjs/common'
 
-import { TypeOrmModule } from '@hz-9/a4-crud-typeorm/nestjs-typeorm'
+import { A4TypeORMCrudModule } from '@hz-9/a4-crud-typeorm'
 
 import { {{ entityName.firstCase }}HttpController } from './{{ entityName.kebabCase }}.http.controller'
 // import { {{ entityName.firstCase }}RedisController } from './{{ entityName.kebabCase }}.redis.controller'
@@ -19,9 +19,7 @@ import { {{ entityName.firstCase }}Entity } from './entity/{{ entityName.kebabCa
  */
 @Module({
   imports: [
-    TypeOrmModule.forFeature([
-      {{ entityName.firstCase }}Entity
-    ])
+    A4TypeORMCrudModule.forFeature([{{ entityName.firstCase }}Entity])
   ],
   controllers: [
     {{ entityName.firstCase }}HttpController,

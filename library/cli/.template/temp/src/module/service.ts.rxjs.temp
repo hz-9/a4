@@ -7,18 +7,20 @@
 
 import { Injectable, Logger } from '@nestjs/common'
 
-import { Observable, from, map } from 'rxjs'
+import { Observable } from 'rxjs'
 
 import {
   A4SimpleServiceRxjs,
+  DeepPartial,
+  IDeleteResult,
   ISelectByPageOptions,
   ISelectByPageReturn,
   ISelectNoPageOptions,
   ISelectNoPageReturn,
+  IUpdateResult,
 } from '@hz-9/a4-core'
 
-import { InjectRepository } from '@hz-9/a4-crud-typeorm/nestjs-typeorm'
-import { DeepPartial, DeleteResult, In, Repository, UpdateResult } from '@hz-9/a4-crud-typeorm/typeorm'
+import { A4TypeORMCrud, InjectA4TypeORMCrud } from '@hz-9/a4-crud-typeorm'
 
 import {
   {{ entityName.firstCase }}InsertResDto,
@@ -35,20 +37,20 @@ export class {{ entityName.firstCase }}Service implements A4SimpleServiceRxjs {
   protected readonly Logger: Logger = new Logger('{{ entityName.firstCase }}Service')
 
   public constructor(
-    @InjectRepository({{ entityName.firstCase }}Entity)
-    protected readonly repository: Repository<{{ entityName.firstCase }}Entity>
+    @InjectA4TypeORMCrud({{ entityName.firstCase }}Entity)
+    protected readonly crud: A4TypeORMCrud<{{ entityName.firstCase }}Entity>
   ) {
     // ...
   }
 
   public insert(model: DeepPartial<{{ entityName.firstCase }}Entity>): Observable<{{ entityName.firstCase }}InsertResDto> {
-    const result = from(this.repository.save(model))
+    const result = this.crud.insertToObservable(model)
 
     return result
   }
 
   public insertMulti(modelList: DeepPartial<{{ entityName.firstCase }}Entity>[]): Observable<{{ entityName.firstCase }}InsertResDto[]> {
-    const result = from(this.repository.save(modelList))
+    const result = this.crud.insertMultiToObservable(modelList)
 
     return result
   }
@@ -57,81 +59,52 @@ export class {{ entityName.firstCase }}Service implements A4SimpleServiceRxjs {
     model: DeepPartial<{{ entityName.firstCase }}Entity>,
     options: ISelectByPageOptions<{{ entityName.firstCase }}Entity>
   ): Observable<ISelectByPageReturn<{{ entityName.firstCase }}SelectResDto>> {
-    const { page, sort } = options
+    const result = this.crud.selectByPageToObservable(model, options)
 
-    const findResult = from(this.repository.findAndCount({
-      where: model,
-
-      skip: (page.pageNum - 1) * page.pageSize,
-      take: page.pageSize,
-
-      order: sort,
-    }))
-
-    return findResult.pipe(map(
-      (i) => ({
-        data: i[0],
-
-        page: {
-          ...page,
-
-          total: i[1],
-        },
-      })
-    ))
+    return result
   }
 
   public selectNoPage(
     model: DeepPartial<{{ entityName.firstCase }}Entity>,
     options: ISelectNoPageOptions<{{ entityName.firstCase }}Entity>
   ): Observable<ISelectNoPageReturn<{{ entityName.firstCase }}SelectResDto>> {
-    const { sort } = options
+    const result = this.crud.selectNoPageToObservable(model, options)
 
-    const findResult = from(this.repository.findAndCount({
-      where: model,
-
-      order: sort,
-    }))
-
-    return findResult.pipe(map(
-      (i) => ({
-        data: i[0],
-      })
-    ))
+    return result
   }
 
   public selectById(id: {{ entityName.firstCase }}Entity['id']): Observable<{{ entityName.firstCase }}SelectResDto | null> {
-    const result = from(this.repository.findOneBy({ id }))
+    const result = this.crud.selectByIdToObservable(id)
 
     return result
   }
 
   public selectByIds(ids: Array<{{ entityName.firstCase }}Entity['id']>): Observable<{{ entityName.firstCase }}SelectResDto[]> {
-    const result = from(this.repository.findBy({ id: In(ids) }))
+    const result = this.crud.selectByIdsToObservable(ids)
 
     return result
   }
 
-  public updateById(id: {{ entityName.firstCase }}Entity['id'], model: DeepPartial<{{ entityName.firstCase }}Entity>): Observable<UpdateResult> {
-    const result = from(this.repository.update(id, model))
+  public updateById(id: {{ entityName.firstCase }}Entity['id'], model: DeepPartial<{{ entityName.firstCase }}Entity>): Observable<IUpdateResult> {
+    const result = this.crud.updateByIdToObservable(id, model)
 
     return result
   }
 
-  public updateByIds(ids: Array<{{ entityName.firstCase }}Entity['id']>, model: DeepPartial<{{ entityName.firstCase }}Entity>): Observable<UpdateResult> {
-    const result = from(this.repository.update(ids, model))
+  public updateByIds(ids: Array<{{ entityName.firstCase }}Entity['id']>, model: DeepPartial<{{ entityName.firstCase }}Entity>): Observable<IUpdateResult> {
+    const result = this.crud.updateByIdsToObservable(ids, model)
 
     return result
   }
 
-  public deleteById(id: {{ entityName.firstCase }}Entity['id']): Observable<DeleteResult> {
-    const result = from(this.repository.delete(id))
+  public deleteById(id: {{ entityName.firstCase }}Entity['id']): Observable<IDeleteResult> {
+    const result = this.crud.deleteByIdToObservable(id)
 
     return result
   }
 
-  public deleteByIds(ids: Array<{{ entityName.firstCase }}Entity['id']>): Observable<DeleteResult> {
-    const result = from(this.repository.delete(ids))
+  public deleteByIds(ids: Array<{{ entityName.firstCase }}Entity['id']>): Observable<IDeleteResult> {
+    const result = this.crud.deleteByIdsToObservable(ids)
 
     return result
   }

@@ -67,7 +67,7 @@ common/envs/eureka/*.jar
 **/.rush/temp/
 
 # docs
-/docs
+/docs/.vuepress
 
 # Heft
 .heft

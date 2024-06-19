@@ -504,6 +504,11 @@
     },
 
     {
+      "packageName": "sample-service-news",
+      "projectFolder": "sample/service-news"
+    },
+
+    {
       "packageName": "sample-service-user-center",
       "projectFolder": "sample/service-user-center"
     }

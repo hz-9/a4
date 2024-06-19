@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-29 15:21:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-15 22:52:55
+ * @LastEditTime : 2024-06-19 23:01:57
  */
 import { Controller, HttpStatus, Logger, UseFilters, UseInterceptors } from '@nestjs/common'
 import { Observable, map } from 'rxjs'
@@ -46,7 +46,7 @@ export class UserRedisController implements A4SimpleControllerRxjs {
 
   public static get rpcPrefix(): string {
     // A4 Cli 自动创建的，请填写 RPC 前缀 eg: 'api.dic.v1.dic'
-    return 'NOT_SET'
+    return 'api.user-center.v1.user'
   }
 
   public constructor(protected readonly service: UserService) {

@@ -14,7 +14,7 @@ import { IA4EnvInfo } from '@hz-9/a4-core';
 import { IA4Info } from '@hz-9/a4-core';
 import { IA4LibrariesInfo } from '@hz-9/a4-core';
 import { IA4PathInfo } from '@hz-9/a4-core';
-import { IA4StatsInfo } from '@hz-9/a4-core';
+import { IA4StatusInfo } from '@hz-9/a4-core';
 import { Logger } from '@nestjs/common';
 
 // @public
@@ -36,7 +36,7 @@ export class A4Config implements IA4Config {
     // (undocumented)
     getA4PathInfo(): IA4PathInfo;
     // (undocumented)
-    getA4StatsInfo(librariesInfo?: IA4LibrariesInfo): IA4StatsInfo;
+    getA4StatsInfo(librariesInfoBase?: IA4LibrariesInfo): IA4StatusInfo;
     // (undocumented)
     getOrThrow<CT = unknown>(propertyPath: string): CT;
     get mainFilepath(): string;

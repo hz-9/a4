@@ -20,6 +20,7 @@ import {
 } from '@nestjs/common'
 
 import {
+  A4CrudUtil,
   A4SimpleControllerPromise,
   DeleteByIdResultDto,
   DeleteByIdsResultDto,
@@ -38,7 +39,6 @@ import {
   ValidationWithDefaultPipe,
 } from '@hz-9/a4-core'
 
-import { ControllerUtil } from '@hz-9/a4-crud-typeorm'
 import { ApiTags } from '@hz-9/a4-docs'
 
 import { {{ entityName.firstCase }}Service } from './{{ entityName.kebabCase }}.service'

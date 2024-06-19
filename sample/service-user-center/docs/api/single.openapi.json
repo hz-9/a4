@@ -1,6 +1,700 @@
 {
   "openapi": "3.0.0",
   "paths": {
+    "/api/permission": {
+      "post": {
+        "operationId": "PermissionHttpController_insert",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PermissionInsertReqDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PermissionInsertResultDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Permission"
+        ]
+      },
+      "get": {
+        "operationId": "PermissionHttpController_selectByPage",
+        "parameters": [
+          {
+            "name": "id",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "sysId",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "code",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "extInfo",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageNum",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "minimum": 1,
+              "default": 1,
+              "type": "number"
+            }
+          },
+          {
+            "name": "pageSize",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "minimum": 1,
+              "maximum": 1000,
+              "default": 20,
+              "type": "number"
+            }
+          },
+          {
+            "name": "sort",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PermissionSelectByPageResultDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Permission"
+        ]
+      }
+    },
+    "/api/permission/{id}": {
+      "get": {
+        "operationId": "PermissionHttpController_selectById",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PermissionSelectByIdResultDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Permission"
+        ]
+      },
+      "patch": {
+        "operationId": "PermissionHttpController_updateById",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PermissionUpdateReqDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateByIdResultDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Permission"
+        ]
+      },
+      "delete": {
+        "operationId": "PermissionHttpController_deleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteByIdResultDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Permission"
+        ]
+      }
+    },
+    "/api/permission/m": {
+      "post": {
+        "operationId": "PermissionHttpController_insertMulti",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PermissionInsertMultiResultDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Permission"
+        ]
+      }
+    },
+    "/api/permission/m/{ids}": {
+      "get": {
+        "operationId": "PermissionHttpController_selectByIds",
+        "parameters": [
+          {
+            "name": "ids",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PermissionSelectByIdsResultDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Permission"
+        ]
+      },
+      "patch": {
+        "operationId": "PermissionHttpController_updateByIds",
+        "parameters": [
+          {
+            "name": "ids",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PermissionUpdateReqDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateByIdsResultDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Permission"
+        ]
+      },
+      "delete": {
+        "operationId": "PermissionHttpController_deleteByIds",
+        "parameters": [
+          {
+            "name": "ids",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteByIdsResultDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Permission"
+        ]
+      }
+    },
+    "/api/role": {
+      "post": {
+        "operationId": "RoleHttpController_insert",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoleInsertReqDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoleInsertResultDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Role"
+        ]
+      },
+      "get": {
+        "operationId": "RoleHttpController_selectByPage",
+        "parameters": [
+          {
+            "name": "id",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "name",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "isDefault",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "pageNum",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "minimum": 1,
+              "default": 1,
+              "type": "number"
+            }
+          },
+          {
+            "name": "pageSize",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "minimum": 1,
+              "maximum": 1000,
+              "default": 20,
+              "type": "number"
+            }
+          },
+          {
+            "name": "sort",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoleSelectByPageResultDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Role"
+        ]
+      }
+    },
+    "/api/role/{id}": {
+      "get": {
+        "operationId": "RoleHttpController_selectById",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoleSelectByIdResultDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Role"
+        ]
+      },
+      "patch": {
+        "operationId": "RoleHttpController_updateById",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoleUpdateReqDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateByIdResultDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Role"
+        ]
+      },
+      "delete": {
+        "operationId": "RoleHttpController_deleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteByIdResultDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Role"
+        ]
+      }
+    },
+    "/api/role/m": {
+      "post": {
+        "operationId": "RoleHttpController_insertMulti",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoleInsertMultiResultDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Role"
+        ]
+      }
+    },
+    "/api/role/m/{ids}": {
+      "get": {
+        "operationId": "RoleHttpController_selectByIds",
+        "parameters": [
+          {
+            "name": "ids",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoleSelectByIdsResultDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Role"
+        ]
+      },
+      "patch": {
+        "operationId": "RoleHttpController_updateByIds",
+        "parameters": [
+          {
+            "name": "ids",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoleUpdateReqDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateByIdsResultDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Role"
+        ]
+      },
+      "delete": {
+        "operationId": "RoleHttpController_deleteByIds",
+        "parameters": [
+          {
+            "name": "ids",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteByIdsResultDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Role"
+        ]
+      }
+    },
     "/api/user": {
       "post": {
         "operationId": "UserHttpController_insert",
@@ -92,6 +786,14 @@
           },
           {
             "name": "telephoneVerify",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "accountType",
             "required": false,
             "in": "query",
             "schema": {
@@ -406,20 +1108,510 @@
     }
   },
   "info": {
-    "title": "SERVICE USER CENTER",
+    "title": "SAMPLE SERVICE USER CENTER",
     "description": "",
     "version": "0.0.0",
     "contact": {}
   },
   "tags": [],
-  "servers": [
-    {
-      "url": "http://127.0.0.1:8000",
-      "description": "直接访问服务"
-    }
-  ],
+  "servers": [],
   "components": {
     "schemas": {
+      "PermissionInsertReqDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "sysId": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "extInfo": {
+            "type": "string"
+          }
+        }
+      },
+      "PermissionInsertResDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "sysId": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "extInfo": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "code",
+          "name"
+        ]
+      },
+      "PermissionInsertResultDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "number"
+          },
+          "data": {
+            "$ref": "#/components/schemas/PermissionInsertResDto"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "data",
+          "message"
+        ]
+      },
+      "PermissionSelectResDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "sysId": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "extInfo": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "code",
+          "name"
+        ]
+      },
+      "PageResDto": {
+        "type": "object",
+        "properties": {
+          "pageSize": {
+            "type": "number"
+          },
+          "pageNum": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "pageSize",
+          "pageNum",
+          "total"
+        ]
+      },
+      "PermissionSelectByPageResultDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "number"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PermissionSelectResDto"
+            }
+          },
+          "page": {
+            "$ref": "#/components/schemas/PageResDto"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "data",
+          "page",
+          "message"
+        ]
+      },
+      "PermissionSelectByIdResultDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "number"
+          },
+          "data": {
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PermissionSelectResDto"
+              }
+            ]
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "data",
+          "message"
+        ]
+      },
+      "PermissionUpdateReqDto": {
+        "type": "object",
+        "properties": {
+          "sysId": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "extInfo": {
+            "type": "string"
+          }
+        }
+      },
+      "UpdateEffectInfo": {
+        "type": "object",
+        "properties": {
+          "effectNum": {
+            "type": "number",
+            "nullable": true
+          }
+        },
+        "required": [
+          "effectNum"
+        ]
+      },
+      "UpdateByIdResultDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "number"
+          },
+          "data": {
+            "$ref": "#/components/schemas/UpdateEffectInfo"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "data",
+          "message"
+        ]
+      },
+      "DeleteEffectInfo": {
+        "type": "object",
+        "properties": {
+          "effectNum": {
+            "type": "number",
+            "nullable": true
+          }
+        },
+        "required": [
+          "effectNum"
+        ]
+      },
+      "DeleteByIdResultDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "number"
+          },
+          "data": {
+            "$ref": "#/components/schemas/DeleteEffectInfo"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "data",
+          "message"
+        ]
+      },
+      "PermissionInsertMultiResultDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "number"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PermissionInsertResDto"
+            }
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "data",
+          "message"
+        ]
+      },
+      "PermissionSelectByIdsResultDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "number"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PermissionSelectResDto"
+            }
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "data",
+          "message"
+        ]
+      },
+      "UpdateByIdsResultDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "number"
+          },
+          "data": {
+            "$ref": "#/components/schemas/UpdateEffectInfo"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "data",
+          "message"
+        ]
+      },
+      "DeleteByIdsResultDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "number"
+          },
+          "data": {
+            "$ref": "#/components/schemas/DeleteEffectInfo"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "data",
+          "message"
+        ]
+      },
+      "RoleInsertReqDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "isDefault": {
+            "type": "number"
+          }
+        }
+      },
+      "RoleInsertResDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "isDefault": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "isDefault"
+        ]
+      },
+      "RoleInsertResultDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "number"
+          },
+          "data": {
+            "$ref": "#/components/schemas/RoleInsertResDto"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "data",
+          "message"
+        ]
+      },
+      "RoleSelectResDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "isDefault": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "isDefault"
+        ]
+      },
+      "RoleSelectByPageResultDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "number"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RoleSelectResDto"
+            }
+          },
+          "page": {
+            "$ref": "#/components/schemas/PageResDto"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "data",
+          "page",
+          "message"
+        ]
+      },
+      "RoleSelectByIdResultDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "number"
+          },
+          "data": {
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/RoleSelectResDto"
+              }
+            ]
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "data",
+          "message"
+        ]
+      },
+      "RoleUpdateReqDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "isDefault": {
+            "type": "number"
+          }
+        }
+      },
+      "RoleInsertMultiResultDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "number"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RoleInsertResDto"
+            }
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "data",
+          "message"
+        ]
+      },
+      "RoleSelectByIdsResultDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "number"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RoleSelectResDto"
+            }
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "data",
+          "message"
+        ]
+      },
       "UserInsertReqDto": {
         "type": "object",
         "properties": {
@@ -445,6 +1637,9 @@
             "type": "number"
           },
           "telephoneVerify": {
+            "type": "number"
+          },
+          "accountType": {
             "type": "number"
           },
           "userIcon": {
@@ -482,6 +1677,9 @@
           "telephoneVerify": {
             "type": "number"
           },
+          "accountType": {
+            "type": "number"
+          },
           "userIcon": {
             "type": "string"
           },
@@ -497,6 +1695,7 @@
           "username",
           "emailVerify",
           "telephoneVerify",
+          "accountType",
           "registeTime",
           "pwdLastModifyTime"
         ]
@@ -544,6 +1743,9 @@
           "telephoneVerify": {
             "type": "number"
           },
+          "accountType": {
+            "type": "number"
+          },
           "userIcon": {
             "type": "string"
           },
@@ -559,27 +1761,9 @@
           "username",
           "emailVerify",
           "telephoneVerify",
+          "accountType",
           "registeTime",
           "pwdLastModifyTime"
-        ]
-      },
-      "PageResDto": {
-        "type": "object",
-        "properties": {
-          "pageSize": {
-            "type": "number"
-          },
-          "pageNum": {
-            "type": "number"
-          },
-          "total": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "pageSize",
-          "pageNum",
-          "total"
         ]
       },
       "UserSelectByPageResultDto": {
@@ -656,6 +1840,9 @@
           "telephoneVerify": {
             "type": "number"
           },
+          "accountType": {
+            "type": "number"
+          },
           "userIcon": {
             "type": "string"
           },
@@ -666,68 +1853,6 @@
             "type": "number"
           }
         }
-      },
-      "UpdateEffectInfo": {
-        "type": "object",
-        "properties": {
-          "effectNum": {
-            "type": "number",
-            "nullable": true
-          }
-        },
-        "required": [
-          "effectNum"
-        ]
-      },
-      "UpdateByIdResultDto": {
-        "type": "object",
-        "properties": {
-          "status": {
-            "type": "number"
-          },
-          "data": {
-            "$ref": "#/components/schemas/UpdateEffectInfo"
-          },
-          "message": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "status",
-          "data",
-          "message"
-        ]
-      },
-      "DeleteEffectInfo": {
-        "type": "object",
-        "properties": {
-          "effectNum": {
-            "type": "number",
-            "nullable": true
-          }
-        },
-        "required": [
-          "effectNum"
-        ]
-      },
-      "DeleteByIdResultDto": {
-        "type": "object",
-        "properties": {
-          "status": {
-            "type": "number"
-          },
-          "data": {
-            "$ref": "#/components/schemas/DeleteEffectInfo"
-          },
-          "message": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "status",
-          "data",
-          "message"
-        ]
       },
       "UserInsertMultiResultDto": {
         "type": "object",
@@ -762,44 +1887,6 @@
             "items": {
               "$ref": "#/components/schemas/UserSelectResDto"
             }
-          },
-          "message": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "status",
-          "data",
-          "message"
-        ]
-      },
-      "UpdateByIdsResultDto": {
-        "type": "object",
-        "properties": {
-          "status": {
-            "type": "number"
-          },
-          "data": {
-            "$ref": "#/components/schemas/UpdateEffectInfo"
-          },
-          "message": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "status",
-          "data",
-          "message"
-        ]
-      },
-      "DeleteByIdsResultDto": {
-        "type": "object",
-        "properties": {
-          "status": {
-            "type": "number"
-          },
-          "data": {
-            "$ref": "#/components/schemas/DeleteEffectInfo"
           },
           "message": {
             "type": "string"

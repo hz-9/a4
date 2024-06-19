@@ -1,0 +1,10 @@
+{
+  "pkg": {
+    "name": "service-news",
+    "targets": ["win-x64", "macos-x64", "linux-x64"],
+    "inputPath": "./dist/main.js",
+    "outputPath": "build",
+    "scripts": [],
+    "assets": ["package.json"]
+  }
+}

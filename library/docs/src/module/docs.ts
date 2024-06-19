@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-15 23:01:45
+ * @LastEditTime : 2024-06-19 17:05:40
  */
 import { Logger } from '@nestjs/common'
 import { DocumentBuilder, OpenAPIObject, SwaggerModule } from '@nestjs/swagger'
@@ -68,7 +68,7 @@ export class A4Docs implements IA4Docs {
 
     const config = new DocumentBuilder()
       .setTitle(normalName)
-      .addServer('http://127.0.0.1:8000', '直接访问服务')
+      // .addServer('http://127.0.0.1:8000', '直接访问服务')
       .setVersion(version)
       .setDescription(description ?? 'The service API description.')
       .build()
@@ -138,17 +138,17 @@ export class A4Docs implements IA4Docs {
    *
    */
   private _initHomePage(app: A4Application): void {
-    const filePath =
-      this.homeLinkOptions.length === 0
-        ? path.resolve(__dirname, '../../.template/index-empty.pug')
-        : path.resolve(__dirname, '../../.template/index-link.pug')
-
-    const html = renderFile(filePath, { links: this.homeLinkOptions, service: this.options.statsInfo })
     const requestPath = `/${this.options.prefix}`
     app.staticFile({
       requestPath,
-      fileContent: html,
       contentType: 'text/html',
+      contentCallback: (req, res) => {
+        const filePath =
+          this.homeLinkOptions.length === 0
+            ? path.resolve(__dirname, '../../.template/index-empty.pug')
+            : path.resolve(__dirname, '../../.template/index-link.pug')
+        return renderFile(filePath, { links: this.homeLinkOptions, service: this.options.statsInfo })
+      },
       loggerMarker,
     })
   }

@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-21 13:51:49
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-16 00:10:28
+ * @LastEditTime : 2024-06-19 17:30:00
  */
 
 /* eslint-disable max-classes-per-file */
@@ -15,7 +15,7 @@ import type { PackageJson } from 'type-fest'
  *  A4 服务 - 状态信息
  *
  */
-export interface IA4StatsInfo {
+export interface IA4StatusInfo {
   /**
    * 服务名称。
    *
@@ -89,8 +89,6 @@ export interface IA4StatsInfo {
  *
  */
 export interface IA4EnvInfo {
-  env: NodeJS.ProcessEnv
-
   pid: number
 
   platform: NodeJS.Platform
@@ -98,6 +96,8 @@ export interface IA4EnvInfo {
   arch: NodeJS.Architecture
 
   nodeVersion: NodeJS.ProcessVersions
+
+  env: NodeJS.ProcessEnv
 }
 
 /**
@@ -137,11 +137,11 @@ export interface IA4LibrariesInfo {
  *  A4 服务 - 相关信息
  *
  */
-export type IA4Info = IA4StatsInfo & IA4EnvInfo & IA4PathInfo & IA4LibrariesInfo
+export type IA4Info = IA4StatusInfo & IA4EnvInfo & IA4PathInfo & IA4LibrariesInfo
 
 // export type IA4Info = Debug<
 //   {
-//     [K in keyof IA4StatsInfo]: IA4StatsInfo[K]
+//     [K in keyof IA4StatusInfo]: IA4StatusInfo[K]
 //   } & {
 //     [K in keyof IA4EnvInfo]: IA4EnvInfo[K]
 //   } & {
@@ -182,7 +182,7 @@ export abstract class IA4Config {
 
   public abstract getOrThrow<CT = unknown>(propertyPath: string, defaultValueOrOptions?: CT): CT
 
-  public abstract getA4StatsInfo(): IA4StatsInfo
+  public abstract getA4StatsInfo(): IA4StatusInfo
 
   public abstract getA4EnvInfo(): IA4EnvInfo
 

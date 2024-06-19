@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-26 15:09:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-05-30 21:55:23
+ * @LastEditTime : 2024-06-19 17:36:26
  */
 import { IsNumber, IsString } from 'class-validator'
 
@@ -48,6 +48,10 @@ export class UserEntity {
   @Column({ type: 'int2', comment: '收集验证。（0: 未验证；1: 已验证）', default: 0 })
   @IsNumber()
   public telephoneVerify: number
+
+  @Column({ type: 'int2', comment: '用户类型。（-1: 超级管理员；0: 普通用户）', default: 0 })
+  @IsNumber()
+  public accountType: number
 
   @Column({ comment: '用户头像', nullable: true })
   @IsString()

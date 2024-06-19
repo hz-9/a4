@@ -69,7 +69,15 @@ export const A4_SAFE: string;
 export class A4Application {
     constructor(nestApp: NestApplication);
     addGlobalExceptionsFilter(rules?: IExceptionRule[]): void;
+    // (undocumented)
+    alive: boolean;
+    // (undocumented)
+    protected init(): void;
     initDocs(): Promise<void>;
+    // (undocumented)
+    protected initHome(): void;
+    // (undocumented)
+    protected initMainStatic(): void;
     initSafe(): Promise<void>;
     // (undocumented)
     readonly instanceId: string;
@@ -276,6 +284,12 @@ export class DeleteEffectInfo {
     readonly effectNum: number | null;
 }
 
+// @public (undocumented)
+export const ERROR_WELCOME_MSG: string;
+
+// @public (undocumented)
+export const HOME_STATIC_PATH: string;
+
 // @public
 export const HTTP_LISTEN_DEFAULT: {
     readonly TRY_TIMES: 20;
@@ -304,10 +318,12 @@ export interface IA4AppListenOptions {
 
 // @public
 export interface IA4AppStaticFileOptions {
-    contentCallback?: () => Promise<string> | string;
+    callback?: (req: Request_2, res: Response_2) => Promise<void> | void;
+    contentCallback?: (req: Request_2, res: Response_2) => Promise<string> | string;
     contentType?: string;
     fileContent?: string;
     filepath?: string;
+    logger?: boolean;
     loggerMarker?: string;
     requestPath: string;
 }
@@ -333,7 +349,7 @@ export abstract class IA4Config {
     // (undocumented)
     abstract getA4PathInfo(): IA4PathInfo;
     // (undocumented)
-    abstract getA4StatsInfo(): IA4StatsInfo;
+    abstract getA4StatsInfo(): IA4StatusInfo;
     // (undocumented)
     abstract getOrThrow<CT = unknown>(propertyPath: string, defaultValueOrOptions?: CT): CT;
     // (undocumented)
@@ -397,7 +413,7 @@ export interface IA4HostAndPort {
 }
 
 // @public
-export type IA4Info = IA4StatsInfo & IA4EnvInfo & IA4PathInfo & IA4LibrariesInfo;
+export type IA4Info = IA4StatusInfo & IA4EnvInfo & IA4PathInfo & IA4LibrariesInfo;
 
 // @public
 export interface IA4LibrariesInfo {
@@ -575,7 +591,7 @@ export interface IA4SimpleServiceBase {
 }
 
 // @public
-export interface IA4StatsInfo {
+export interface IA4StatusInfo {
     currentTime: number;
     currentTimeStr: string;
     description?: string;
@@ -753,6 +769,9 @@ export class LogoUtil {
     static get content(): string;
     static print(onlyLogo?: boolean): void;
 }
+
+// @public (undocumented)
+export const MAIN_STATIC_PATH: string;
 
 // @public
 export class ModuleError extends A4Error {

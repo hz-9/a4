@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 17:05:30
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-06 09:51:02
+ * @LastEditTime : 2024-06-19 23:08:48
  */
 import { MiddlewareConsumer, Module } from '@nestjs/common'
 
@@ -18,9 +18,8 @@ import { A4NetworkModule } from '@hz-9/a4-network'
 import { A4EurekaRegsitryModule } from '@hz-9/a4-registry-eureka'
 import { A4SafeModule } from '@hz-9/a4-safe'
 
-// import { AppConfigSchema } from './app.schema'
-// import { PermissionModule } from './permission/permission.module'
-// import { RoleModule } from './role/role.module'
+import { PermissionModule } from './permission/permission.module'
+import { RoleModule } from './role/role.module'
 import { UserModule } from './user/user.module'
 
 @Module({
@@ -87,8 +86,8 @@ import { UserModule } from './user/user.module'
       useFactory: (a4Config: A4Config) => A4SafeModule.getConfig(a4Config),
     }),
 
-    // PermissionModule,
-    // RoleModule,
+    PermissionModule,
+    RoleModule,
     UserModule,
   ],
 })

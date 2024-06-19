@@ -17,11 +17,6 @@
     "test:watch": "jest --watch"
   },
   "author": "Chen Zhen",
-  "dependenciesMeta": {
-    "@hz-9/a4-core": {
-      "injected": true
-    }
-  },
   "jest": {
     "collectCoverageFrom": [
       "**/*.(t|j)s"

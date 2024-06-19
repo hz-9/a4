@@ -540,7 +540,7 @@
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "getA4StatsInfo(librariesInfo?: "
+                  "text": "getA4StatsInfo(librariesInfoBase?: "
                 },
                 {
                   "kind": "Reference",
@@ -553,8 +553,8 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "IA4StatsInfo",
-                  "canonicalReference": "@hz-9/a4-core!IA4StatsInfo:interface"
+                  "text": "IA4StatusInfo",
+                  "canonicalReference": "@hz-9/a4-core!IA4StatusInfo:interface"
                 },
                 {
                   "kind": "Content",
@@ -571,7 +571,7 @@
               "overloadIndex": 1,
               "parameters": [
                 {
-                  "parameterName": "librariesInfo",
+                  "parameterName": "librariesInfoBase",
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 2

@@ -2,19 +2,22 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-14 17:26:12
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-15 23:30:12
+ * @LastEditTime : 2024-06-19 14:15:39
  */
 import { Logger } from '@nestjs/common'
 import { HttpAdapterHost, NestApplication } from '@nestjs/core'
 import chalk from 'chalk'
 import type { Request, Response } from 'express'
-import { createReadStream } from 'fs-extra'
+import { createReadStream, readdirSync } from 'fs-extra'
 import _ from 'lodash'
 import { nanoid } from 'nanoid'
+import { renderFile } from 'pug'
+import { resolve } from 'upath'
 
-import { HTTP_LISTEN_DEFAULT } from '../const/index'
+import { ERROR_WELCOME_MSG, HOME_STATIC_PATH, HTTP_LISTEN_DEFAULT, MAIN_STATIC_PATH } from '../const/index'
 import { AllExceptionsFilter, IExceptionRule } from '../exception-filter'
 import { IA4ModuleBase } from '../module/_base/index'
+import { A4_CONFIG, type IA4Config } from '../module/config'
 import { A4_DOCS, type IA4Docs } from '../module/docs'
 import { A4_NETWORK, type IA4Network } from '../module/network'
 import { A4_SAFE, type IA4Safe } from '../module/safe'
@@ -81,12 +84,26 @@ export interface IA4AppStaticFileOptions {
    *
    * filepath fileContent contentCallback 三个属性必选其一
    */
-  contentCallback?: () => Promise<string> | string
+  contentCallback?: (req: Request, res: Response) => Promise<string> | string
+
+  /**
+   * 通过回调函数返回文件内容。可选。
+   *
+   * filepath fileContent contentCallback 三个属性必选其一
+   */
+  callback?: (req: Request, res: Response) => Promise<void> | void
 
   /**
    * 'Content-type' 属性。可选。默认为：'text/plain'
    */
   contentType?: string
+
+  /**
+   * 是否输出 logger.
+   *
+   * 默认：true
+   */
+  logger?: boolean
 
   /**
    * 日志输出时, logger 标记信息。可选。缺省时，使用 A4Application 默认 Logger
@@ -113,12 +130,96 @@ export class A4Application {
 
   public readonly registry: A4RegistryHelp
 
+  public alive: boolean
+
   public constructor(nestApp: NestApplication) {
     this.instanceId = nanoid()
 
     this.nestApp = nestApp
     this.microService = new A4MicroServiceHelp(this)
     this.registry = new A4RegistryHelp(this)
+
+    this.alive = true
+
+    this.init()
+  }
+
+  protected init(): void {
+    this.initHome()
+    this.initMainStatic()
+  }
+
+  protected initHome(): void {
+    this.staticFile({
+      requestPath: '/',
+      callback: (req, res) => {
+        res.setHeader('Content-type', 'text/html')
+        const a4Config: IA4Config = this.nestApp.get(A4_CONFIG)
+        try {
+          res.status(200).send(renderFile(HOME_STATIC_PATH, { info: a4Config.getA4Info() }))
+        } catch (error) {
+          this.logger.error(`Render error.`, error)
+          res.status(200).send(ERROR_WELCOME_MSG)
+        }
+      },
+      logger: false,
+    })
+
+    this.staticFile({
+      requestPath: '/alive',
+      callback: (req, res) => {
+        if (this.alive) {
+          res.status(200).send('RUNNING')
+        } else {
+          res.status(404).send('STOPING')
+        }
+      },
+      logger: false,
+    })
+
+    this.staticFile({
+      requestPath: '/info',
+      callback: (req, res) => {
+        res.setHeader('Content-type', 'application/json')
+        const a4Config: IA4Config = this.nestApp.get(A4_CONFIG)
+        res.status(200).json(a4Config.getA4Info())
+      },
+      logger: false,
+    })
+
+    this.staticFile({
+      requestPath: '/info/:type',
+      callback: (req, res) => {
+        const a4Config: IA4Config = this.nestApp.get(A4_CONFIG)
+        const info = {
+          stats: a4Config.getA4StatsInfo(),
+          env: a4Config.getA4EnvInfo(),
+          path: a4Config.getA4PathInfo(),
+          libraries: a4Config.getA4LibrariesInfo(),
+          library: a4Config.getA4LibrariesInfo(),
+        }[req.params.type]
+
+        if (!info) {
+          res.status(404).send()
+        } else {
+          res.setHeader('Content-type', 'application/json')
+          res.status(200).json(info)
+        }
+      },
+      logger: false,
+    })
+  }
+
+  protected initMainStatic(): void {
+    readdirSync(MAIN_STATIC_PATH).forEach((filename) => {
+      if (filename !== '.DS_Store' && !/.ejs$/.test(filename)) {
+        this.staticFile({
+          requestPath: `/${filename}`,
+          filepath: resolve(MAIN_STATIC_PATH, filename),
+          logger: false,
+        })
+      }
+    })
   }
 
   /**
@@ -274,11 +375,11 @@ export class A4Application {
    */
   public staticFile(options: IA4AppStaticFileOptions): void {
     const logger: Logger = options.loggerMarker ? new Logger(options.loggerMarker) : this.logger
-    logger.log(`Mapped {${options.requestPath}, GET} route`)
+    if (options.logger ?? true) logger.log(`Mapped {${options.requestPath}, GET} route`)
 
-    this.nestApp.getHttpAdapter().get(options.requestPath, (req: Request, res: Response) => {
-      res.setHeader('Content-type', options.contentType ?? 'text/plain')
+    this.nestApp.getHttpAdapter().get(options.requestPath, async (req: Request, res: Response) => {
       if (options.filepath) {
+        res.setHeader('Content-type', options.contentType ?? 'text/plain')
         // 创建一个可读流来读取文件
         const fileStream = createReadStream(options.filepath)
 
@@ -291,9 +392,11 @@ export class A4Application {
           res.status(404).send()
         })
       } else if (options.fileContent) {
+        res.setHeader('Content-type', options.contentType ?? 'text/plain')
         res.status(200).send(options.fileContent)
       } else if (options.contentCallback) {
-        const a = options.contentCallback()
+        res.setHeader('Content-type', options.contentType ?? 'text/plain')
+        const a = options.contentCallback(req, res)
         if (a instanceof Promise) {
           a.then((b) => {
             res.status(200).send(b)
@@ -303,6 +406,8 @@ export class A4Application {
         } else {
           res.status(200).send(a)
         }
+      } else if (options.callback) {
+        await options.callback(req, res)
       } else {
         res.status(404).send()
       }

@@ -1,0 +1,158 @@
+doctype html
+html
+  head
+    title= info.normalName
+    style.
+      body {
+        margin: 0;
+        font-size: 16px;
+        background: #f1f1f1;
+        font-weight: 400;
+        font-family: "varela_roundregular", sans-serif;
+        color: #34302d;
+      }
+      .head {
+        padding: 0 40px;
+        height: 80px;
+        background: #000;
+      }
+      .head__name {
+        color: #fff;
+        font-size: 36px;
+        line-height: 80px;
+        letter-spacing: 4px;
+      }
+
+      .content {
+        padding: 20px 40px;
+        font-size: 1rem;
+      }
+      .content__title{
+        font-size: 1.2rem;
+        line-height: 3rem;
+        font-weight: bold;
+      }
+
+      .content__table table {
+        width: 100%;
+        border-color: grey;
+        border-collapse: collapse;
+        border-spacing: 0;
+        word-wrap:break-word;
+        word-break:break-all;
+      }
+
+      .content__table tbody {
+        border-color: inherit;
+      }
+
+
+      .content__table table tr {
+        padding: 0 6px;
+        line-height: 2rem;
+        border-top: 1px solid #000;
+      }
+
+      .content__table table tr:nth-child(2n) {
+        background: #fff;
+      }
+
+      .content__table table tr td:first-child {
+         width: 20%;
+       }
+
+      .content__table table tr:last-child {
+        border-bottom: 1px solid #000;
+      }
+  body
+    div.head
+      div.head__name A4
+    div.content
+      div.content__title System Status
+      div.content__table
+        table
+          //- thead
+          //-   tr
+          //-     th Name
+          //-     th Value
+          tbody
+            tr
+              td Normal Name
+              td= info.normalName
+            tr
+              td Version
+              td= info.version
+            tr
+              td Description
+              td= info.description
+            tr
+              td Current time
+              td= info.currentTimeStr
+            tr
+              td InitTime
+              td= info.initTimeStr
+            tr
+              td Uptime
+              td= info.upTimeStr
+            tr
+              td pid
+              td= info.pid
+            tr
+              td Platform
+              td= info.platform
+            tr
+              td arch
+              td= info.arch
+    div.content
+      div.content__title Path
+      div.content__table
+        table
+          tbody
+            tr
+              td Mainfile path
+              td= info.mainFilepath
+            tr
+              td Main Root
+              td= info.mainRoot
+            tr
+              td Main Normal Root
+              td= info.mainNormalRoot
+            tr
+              td cwd
+              td= info.cwd
+    div.content
+      div.content__title Node Version
+      div.content__table
+        table
+          tbody
+            each value, key in info.nodeVersion
+              tr
+                td= key
+                td= value
+    div.content
+      div.content__title Environment
+      div.content__table
+        table
+          tbody
+            each value, key in info.env
+              tr
+                td= key
+                td= value
+    div.content
+      div.content__title Package - dependencies
+      div.content__table
+        table
+          tbody
+            each value, key in info.packageJson.dependencies
+              tr
+                td= key
+                td= value
+    div.content
+      div.content__title Package - devDependencies
+      div.content__table
+        table
+          tbody
+            each value, key in info.packageJson.devDependencies
+              tr
+                td= key
+                td= value

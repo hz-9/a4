@@ -1199,8 +1199,8 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "IA4StatsInfo",
-                  "canonicalReference": "@hz-9/a4-core!IA4StatsInfo:interface"
+                  "text": "IA4StatusInfo",
+                  "canonicalReference": "@hz-9/a4-core!IA4StatusInfo:interface"
                 },
                 {
                   "kind": "Content",
