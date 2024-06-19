@@ -50,7 +50,7 @@ services:
       - 6379:6379
   eureka:
     platform: linux/amd64
-    build: ./eureka/.
+    image: steeltoeoss/eureka-server:4.1.1
     restart: always
     ports:
       - 8761:8761
