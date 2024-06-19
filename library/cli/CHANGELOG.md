@@ -1,6 +1,13 @@
 # Change Log - @hz-9/a4-cli
 
-This log was last generated on Sun, 16 Jun 2024 08:45:28 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Jun 2024 15:31:25 GMT and should not be manually modified.
+
+## 0.2.1
+Wed, 19 Jun 2024 15:31:25 GMT
+
+### Updates
+
+- fix: fixed template mismatch issue caused by `A4` upgrade
 
 ## 0.2.0
 Sun, 16 Jun 2024 08:45:28 GMT

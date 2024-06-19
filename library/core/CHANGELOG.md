@@ -1,6 +1,13 @@
 # Change Log - @hz-9/a4-core
 
-This log was last generated on Sun, 16 Jun 2024 08:45:19 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Jun 2024 15:31:14 GMT and should not be manually modified.
+
+## 0.3.0
+Wed, 19 Jun 2024 15:31:14 GMT
+
+### Updates
+
+- feat: added several built-in interfaces
 
 ## 0.2.0
 Sun, 16 Jun 2024 08:45:19 GMT

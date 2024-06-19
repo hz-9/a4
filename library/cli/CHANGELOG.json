@@ -2,6 +2,18 @@
   "name": "@hz-9/a4-cli",
   "entries": [
     {
+      "version": "0.2.1",
+      "tag": "@hz-9/a4-cli_v0.2.1",
+      "date": "Wed, 19 Jun 2024 15:31:25 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "fix: fixed template mismatch issue caused by `A4` upgrade"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.2.0",
       "tag": "@hz-9/a4-cli_v0.2.0",
       "date": "Sun, 16 Jun 2024 08:45:28 GMT",
