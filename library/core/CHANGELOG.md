@@ -1,6 +1,14 @@
 # Change Log - @hz-9/a4-core
 
-This log was last generated on Wed, 19 Jun 2024 15:31:14 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Jun 2024 02:56:08 GMT and should not be manually modified.
+
+## 0.3.1
+Fri, 21 Jun 2024 02:56:08 GMT
+
+### Updates
+
+- fix: adjust the unreasonable data interface of the `IA4SimpleDao` class
+- style: optimize error messages for known exceptions
 
 ## 0.3.0
 Wed, 19 Jun 2024 15:31:14 GMT

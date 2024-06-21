@@ -2,6 +2,21 @@
   "name": "@hz-9/a4-core",
   "entries": [
     {
+      "version": "0.3.1",
+      "tag": "@hz-9/a4-core_v0.3.1",
+      "date": "Fri, 21 Jun 2024 02:56:08 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "fix: adjust the unreasonable data interface of the `IA4SimpleDao` class"
+          },
+          {
+            "comment": "style: optimize error messages for known exceptions"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.3.0",
       "tag": "@hz-9/a4-core_v0.3.0",
       "date": "Wed, 19 Jun 2024 15:31:14 GMT",
