@@ -2,13 +2,12 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-21 16:10:04
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-06 10:04:06
+ * @LastEditTime : 2024-06-20 19:45:38
  */
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Logger } from '@nestjs/common'
-import { Observable, from } from 'rxjs'
-import { type FindOptionsOrder, type FindOptionsWhere, In, Repository } from 'typeorm'
+import { type FindManyOptions, type FindOptionsOrder, type FindOptionsWhere, In, Repository } from 'typeorm'
 import type { QueryDeepPartialEntity } from 'typeorm/query-builder/QueryPartialEntity'
 
 import {
@@ -21,6 +20,7 @@ import {
   ISelectNoPageOptions,
   ISelectNoPageReturn,
   IUpdateResult,
+  PartialKey,
 } from '@hz-9/a4-core'
 
 /**
@@ -29,53 +29,40 @@ import {
  *  `A4 CRUD TypeORM` 核心模块类。
  *
  */
-export class A4TypeORMCrud<E extends IObjectLiteral> implements IA4SimpleDao {
+export class A4TypeORMCrud<E extends IObjectLiteral> extends IA4SimpleDao {
   public readonly logger: Logger = new Logger('A4 Crud TypeORM')
 
   public readonly instance: Repository<E>
 
   public constructor(repository: Repository<E>) {
+    super()
     this.instance = repository
   }
 
-  public async insertToPromise(model: DeepPartial<E>): Promise<E> {
-    const result = await this.instance.save(model)
+  public async insertToPromise(model: PartialKey<E, 'id'>): Promise<E> {
+    const result = await this.instance.save(model as E)
     return result
   }
 
-  public insertToObservable(model: DeepPartial<E>): Observable<E> {
-    const result = from(this.insertToPromise(model))
-
-    return result
-  }
-
-  public async insertMultiToPromise(modelList: DeepPartial<E>[]): Promise<E[]> {
-    const result = await this.instance.save(modelList)
-    return result
-  }
-
-  public insertMultiToObservable(modelList: DeepPartial<E>[]): Observable<E[]> {
-    const result = from(this.insertMultiToPromise(modelList))
+  public async insertMultiToPromise(modelList: PartialKey<E, 'id'>[]): Promise<E[]> {
+    const result = await this.instance.save(modelList as E[])
     return result
   }
 
   public async selectByPageToPromise(
     model: DeepPartial<E>,
-    options: ISelectByPageOptions<E>
+    options: ISelectByPageOptions<E> = {}
   ): Promise<ISelectByPageReturn<E>> {
-    const { page, sort } = options
-
-    const result = await this.instance.findAndCount({
+    const page = options.page ?? { pageNum: 1, pageSize: 20 }
+    const findOptions: FindManyOptions<E> = {
       where: model as FindOptionsWhere<E>,
-
-      /**
-       * TODO 将排序数值，进行整理。
-       */
-      order: sort as FindOptionsOrder<E>,
 
       skip: (page.pageNum - 1) * page.pageSize,
       take: page.pageSize,
-    })
+    }
+    if (options.sort) findOptions.order = options.sort as FindOptionsOrder<E>
+
+    const result = await this.instance.findAndCount(findOptions)
 
     return {
       data: result[0],
@@ -88,109 +75,56 @@ export class A4TypeORMCrud<E extends IObjectLiteral> implements IA4SimpleDao {
     }
   }
 
-  public selectByPageToObservable(
-    model: DeepPartial<E>,
-    options: ISelectByPageOptions<E>
-  ): Observable<ISelectByPageReturn<E>> {
-    const result = from(this.selectByPageToPromise(model, options))
-    return result
-  }
-
   public async selectNoPageToPromise(
     model: DeepPartial<E>,
-    options: ISelectNoPageOptions<E>
+    options: ISelectNoPageOptions<E> = {}
   ): Promise<ISelectNoPageReturn<E>> {
-    const { sort } = options
-
-    const result = await this.instance.findAndCount({
+    const findOptions: FindManyOptions<E> = {
       where: model as FindOptionsWhere<E>,
+    }
+    if (options.sort) findOptions.order = options.sort as FindOptionsOrder<E>
 
-      order: sort as FindOptionsOrder<E>,
-    })
+    const result = await this.instance.findAndCount(findOptions)
 
     return {
       data: result[0],
     }
   }
 
-  public selectNoPageToObservable(
-    model: DeepPartial<E>,
-    options: ISelectNoPageOptions<E>
-  ): Observable<ISelectNoPageReturn<E>> {
-    const result = from(this.selectNoPageToPromise(model, options))
-    return result
-  }
-
-  public async selectByIdToPromise(id: any): Promise<E | null> {
+  public async selectByIdToPromise(id: E['id']): Promise<E | null> {
     const result = await this.instance.findOneBy({ id })
 
     return result
   }
 
-  public selectByIdToObservable(id: any): Observable<E | null> {
-    const result = from(this.selectByIdToPromise(id))
-
-    return result
-  }
-
-  public async selectByIdsToPromise(ids: any[]): Promise<E[]> {
+  public async selectByIdsToPromise(ids: E['id'][]): Promise<E[]> {
     const result = await this.instance.findBy({
-      id: In(ids),
+      id: In(ids.map((i) => `${i}`)),
     } as unknown as FindOptionsWhere<E>)
 
     return result
   }
 
-  public selectByIdsToObservable(ids: any[]): Observable<E[]> {
-    const result = from(this.selectByIdsToPromise(ids))
-
-    return result
-  }
-
-  public async updateByIdToPromise(id: any, model: DeepPartial<Omit<E, 'id'>>): Promise<IUpdateResult> {
+  public async updateByIdToPromise(id: E['id'], model: DeepPartial<Omit<E, 'id'>>): Promise<IUpdateResult> {
     const result = await this.instance.update(id, model as QueryDeepPartialEntity<E>)
 
     return result
   }
 
-  public updateByIdToObservable(id: any, model: DeepPartial<Omit<E, 'id'>>): Observable<IUpdateResult> {
-    const result = from(this.updateByIdToPromise(id, model))
-
-    return result
-  }
-
-  public async updateByIdsToPromise(ids: any[], model: DeepPartial<Omit<E, 'id'>>): Promise<IUpdateResult> {
+  public async updateByIdsToPromise(ids: E['id'][], model: DeepPartial<Omit<E, 'id'>>): Promise<IUpdateResult> {
     const result = await this.instance.update(ids, model as QueryDeepPartialEntity<E>)
 
     return result
   }
 
-  public updateByIdsToObservable(ids: any[], model: DeepPartial<Omit<E, 'id'>>): Observable<IUpdateResult> {
-    const result = from(this.updateByIdsToPromise(ids, model))
-
-    return result
-  }
-
-  public async deleteByIdToPromise(id: any): Promise<IDeleteResult> {
+  public async deleteByIdToPromise(id: E['id']): Promise<IDeleteResult> {
     const result = await this.instance.delete(id)
 
     return result
   }
 
-  public deleteByIdToObservable(id: any): Observable<IUpdateResult> {
-    const result = from(this.deleteByIdToPromise(id))
-
-    return result
-  }
-
-  public async deleteByIdsToPromise(ids: any[]): Promise<IDeleteResult> {
+  public async deleteByIdsToPromise(ids: E['id'][]): Promise<IDeleteResult> {
     const result = await this.instance.delete(ids)
-
-    return result
-  }
-
-  public deleteByIdsToObservable(ids: any[]): Observable<IUpdateResult> {
-    const result = from(this.deleteByIdsToPromise(ids))
 
     return result
   }

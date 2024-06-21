@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-19 23:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-19 23:00:00
+ * @LastEditTime : 2024-06-20 14:15:46
  */
 import {
   Body,
@@ -56,7 +56,7 @@ import { RoleService } from './role.service'
 // import {} from './dto/role.delete-req.dto'
 // import {} from './dto/role.delete-res.dto'
 
-@ApiTags('Role')
+@ApiTags('Role - 角色信息')
 @Controller('api/role')
 @UseInterceptors(new TransformInterceptor())
 export class RoleHttpController implements A4SimpleControllerRxjs {

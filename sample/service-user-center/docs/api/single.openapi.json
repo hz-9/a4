@@ -28,7 +28,7 @@
           }
         },
         "tags": [
-          "Permission"
+          "Permission - 权限信息"
         ]
       },
       "get": {
@@ -117,7 +117,7 @@
           }
         },
         "tags": [
-          "Permission"
+          "Permission - 权限信息"
         ]
       }
     },
@@ -147,7 +147,7 @@
           }
         },
         "tags": [
-          "Permission"
+          "Permission - 权限信息"
         ]
       },
       "patch": {
@@ -185,7 +185,7 @@
           }
         },
         "tags": [
-          "Permission"
+          "Permission - 权限信息"
         ]
       },
       "delete": {
@@ -213,7 +213,7 @@
           }
         },
         "tags": [
-          "Permission"
+          "Permission - 权限信息"
         ]
       }
     },
@@ -247,7 +247,7 @@
           }
         },
         "tags": [
-          "Permission"
+          "Permission - 权限信息"
         ]
       }
     },
@@ -280,7 +280,7 @@
           }
         },
         "tags": [
-          "Permission"
+          "Permission - 权限信息"
         ]
       },
       "patch": {
@@ -321,7 +321,7 @@
           }
         },
         "tags": [
-          "Permission"
+          "Permission - 权限信息"
         ]
       },
       "delete": {
@@ -352,7 +352,7 @@
           }
         },
         "tags": [
-          "Permission"
+          "Permission - 权限信息"
         ]
       }
     },
@@ -383,7 +383,7 @@
           }
         },
         "tags": [
-          "Role"
+          "Role - 角色信息"
         ]
       },
       "get": {
@@ -456,7 +456,7 @@
           }
         },
         "tags": [
-          "Role"
+          "Role - 角色信息"
         ]
       }
     },
@@ -486,7 +486,7 @@
           }
         },
         "tags": [
-          "Role"
+          "Role - 角色信息"
         ]
       },
       "patch": {
@@ -524,7 +524,7 @@
           }
         },
         "tags": [
-          "Role"
+          "Role - 角色信息"
         ]
       },
       "delete": {
@@ -552,7 +552,7 @@
           }
         },
         "tags": [
-          "Role"
+          "Role - 角色信息"
         ]
       }
     },
@@ -586,7 +586,7 @@
           }
         },
         "tags": [
-          "Role"
+          "Role - 角色信息"
         ]
       }
     },
@@ -619,7 +619,7 @@
           }
         },
         "tags": [
-          "Role"
+          "Role - 角色信息"
         ]
       },
       "patch": {
@@ -660,7 +660,7 @@
           }
         },
         "tags": [
-          "Role"
+          "Role - 角色信息"
         ]
       },
       "delete": {
@@ -691,7 +691,7 @@
           }
         },
         "tags": [
-          "Role"
+          "Role - 角色信息"
         ]
       }
     },
@@ -722,7 +722,7 @@
           }
         },
         "tags": [
-          "User"
+          "User - 用户信息"
         ]
       },
       "get": {
@@ -867,7 +867,7 @@
           }
         },
         "tags": [
-          "User"
+          "User - 用户信息"
         ]
       }
     },
@@ -897,7 +897,7 @@
           }
         },
         "tags": [
-          "User"
+          "User - 用户信息"
         ]
       },
       "patch": {
@@ -935,7 +935,7 @@
           }
         },
         "tags": [
-          "User"
+          "User - 用户信息"
         ]
       },
       "delete": {
@@ -963,7 +963,7 @@
           }
         },
         "tags": [
-          "User"
+          "User - 用户信息"
         ]
       }
     },
@@ -997,7 +997,7 @@
           }
         },
         "tags": [
-          "User"
+          "User - 用户信息"
         ]
       }
     },
@@ -1030,7 +1030,7 @@
           }
         },
         "tags": [
-          "User"
+          "User - 用户信息"
         ]
       },
       "patch": {
@@ -1071,7 +1071,7 @@
           }
         },
         "tags": [
-          "User"
+          "User - 用户信息"
         ]
       },
       "delete": {
@@ -1102,7 +1102,98 @@
           }
         },
         "tags": [
-          "User"
+          "User - 用户信息"
+        ]
+      }
+    },
+    "/api/user/login": {
+      "post": {
+        "operationId": "UserHttpController_login",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserLoginReqDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserLoginResultDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "User - 用户信息"
+        ]
+      }
+    },
+    "/api/user/detail": {
+      "post": {
+        "operationId": "UserHttpController_detail",
+        "parameters": [
+          {
+            "name": "token",
+            "required": true,
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDetailResultDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "User - 用户信息"
+        ]
+      }
+    },
+    "/api/user/{id}/password": {
+      "put": {
+        "operationId": "UserHttpController_resetDefaultPwd",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BodyBooleanResultDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "User - 用户信息"
         ]
       }
     }
@@ -1887,6 +1978,78 @@
             "items": {
               "$ref": "#/components/schemas/UserSelectResDto"
             }
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "data",
+          "message"
+        ]
+      },
+      "UserLoginReqDto": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "username",
+          "password"
+        ]
+      },
+      "UserLoginResultDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "number"
+          },
+          "data": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "data",
+          "message"
+        ]
+      },
+      "UserDetailResultDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "number"
+          },
+          "data": {
+            "$ref": "#/components/schemas/UserSelectResDto"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "data",
+          "message"
+        ]
+      },
+      "BodyBooleanResultDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "number"
+          },
+          "data": {
+            "type": "boolean"
           },
           "message": {
             "type": "string"

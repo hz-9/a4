@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-04 17:58:40
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-06 09:10:01
+ * @LastEditTime : 2024-06-21 10:44:06
  */
 import { GetGetResult, SearchRequest } from '@elastic/elasticsearch/lib/api/types'
 import { Observable, from } from 'rxjs'
@@ -29,12 +29,14 @@ import { ElasticsearchClient } from '../plugin/elasticsearch_'
  *  API: https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/getting-started-js.html#_indexing_documents
  *
  */
-export class A4ElasticSearchCrud<E extends IObjectLiteral> implements IA4SimpleDao {
+export class A4ElasticSearchCrud<E extends IObjectLiteral> extends IA4SimpleDao {
   public readonly instance: ElasticsearchClient
 
   public readonly indexName: string
 
   public constructor(instance: ElasticsearchClient, indexName: string) {
+    super()
+
     this.instance = instance
     this.indexName = indexName
   }
@@ -49,12 +51,6 @@ export class A4ElasticSearchCrud<E extends IObjectLiteral> implements IA4SimpleD
       ...model,
       id: result._id,
     } as E
-  }
-
-  public insertToObservable(model: DeepPartial<E>): Observable<E> {
-    const result = from(this.insertToPromise(model))
-
-    return result
   }
 
   public async insertMultiToPromise(modelList: DeepPartial<E>[]): Promise<E[]> {
@@ -75,16 +71,11 @@ export class A4ElasticSearchCrud<E extends IObjectLiteral> implements IA4SimpleD
     return list
   }
 
-  public insertMultiToObservable(modelList: DeepPartial<E>[]): Observable<E[]> {
-    const result = from(this.insertMultiToPromise(modelList))
-    return result
-  }
-
   public async selectByPageToPromise(
     model: DeepPartial<E>,
-    options: ISelectByPageOptions<E>
+    options: ISelectByPageOptions<E> = {}
   ): Promise<ISelectByPageReturn<E>> {
-    const { page, sort } = options
+    const page = options.page ?? { pageNum: 1, pageSize: 20 }
 
     const params: SearchRequest = {
       index: this.indexName,
@@ -93,11 +84,11 @@ export class A4ElasticSearchCrud<E extends IObjectLiteral> implements IA4SimpleD
       size: page.pageSize,
     }
 
-    const queryNames = Object.getOwnPropertyNames(model)
-    if (queryNames.length) {
+    const modelNames = Object.getOwnPropertyNames(model)
+    if (modelNames.length) {
       params.query = {
         bool: {
-          must: queryNames.map((k) => ({
+          must: modelNames.map((k) => ({
             match: {
               [k]: (model as E)[k],
             },
@@ -105,12 +96,10 @@ export class A4ElasticSearchCrud<E extends IObjectLiteral> implements IA4SimpleD
         },
       }
     }
-
-    const sortNames = Object.getOwnPropertyNames(model)
-    if (sortNames.length) {
-      params.sort = Object.getOwnPropertyNames(sort).map((k) => ({
+    if (options.sort) {
+      params.sort = Object.getOwnPropertyNames(options.sort).map((k) => ({
         [k]: {
-          order: (model as E)[k],
+          order: (options.sort as E)[k],
         },
       }))
     }
@@ -146,17 +135,9 @@ export class A4ElasticSearchCrud<E extends IObjectLiteral> implements IA4SimpleD
     return r
   }
 
-  public selectByPageToObservable(
-    model: DeepPartial<E>,
-    options: ISelectByPageOptions<E>
-  ): Observable<ISelectByPageReturn<E>> {
-    const result = from(this.selectByPageToPromise(model, options))
-    return result
-  }
-
   public async selectNoPageToPromise(
     model: DeepPartial<E>,
-    options: ISelectNoPageOptions<E>
+    options: ISelectNoPageOptions<E> = {}
   ): Promise<ISelectNoPageReturn<E>> {
     const { sort } = options
 
@@ -164,11 +145,11 @@ export class A4ElasticSearchCrud<E extends IObjectLiteral> implements IA4SimpleD
       index: this.indexName,
     }
 
-    const queryNames = Object.getOwnPropertyNames(model)
-    if (queryNames.length) {
+    const modelNames = Object.getOwnPropertyNames(model)
+    if (modelNames.length) {
       params.query = {
         bool: {
-          must: queryNames.map((k) => ({
+          must: modelNames.map((k) => ({
             match: {
               [k]: (model as E)[k],
             },
@@ -177,11 +158,10 @@ export class A4ElasticSearchCrud<E extends IObjectLiteral> implements IA4SimpleD
       }
     }
 
-    const sortNames = Object.getOwnPropertyNames(model)
-    if (sortNames.length) {
-      params.sort = Object.getOwnPropertyNames(sort).map((k) => ({
+    if (options.sort) {
+      params.sort = Object.getOwnPropertyNames(options.sort).map((k) => ({
         [k]: {
-          order: (model as E)[k],
+          order: (options.sort as E)[k],
         },
       }))
     }
@@ -203,14 +183,6 @@ export class A4ElasticSearchCrud<E extends IObjectLiteral> implements IA4SimpleD
     return r
   }
 
-  public selectNoPageToObservable(
-    model: DeepPartial<E>,
-    options: ISelectNoPageOptions<E>
-  ): Observable<ISelectNoPageReturn<E>> {
-    const result = from(this.selectNoPageToPromise(model, options))
-    return result
-  }
-
   public async selectByIdToPromise(id: string): Promise<E | null> {
     try {
       const result = await this.instance.get({
@@ -230,12 +202,6 @@ export class A4ElasticSearchCrud<E extends IObjectLiteral> implements IA4SimpleD
     }
   }
 
-  public selectByIdToObservable(id: string): Observable<E | null> {
-    const result = from(this.selectByIdToPromise(id))
-
-    return result
-  }
-
   public async selectByIdsToPromise(ids: string[]): Promise<E[]> {
     const result = await this.instance.mget({
       index: this.indexName,
@@ -253,12 +219,6 @@ export class A4ElasticSearchCrud<E extends IObjectLiteral> implements IA4SimpleD
       }
     })
     return list
-  }
-
-  public selectByIdsToObservable(ids: string[]): Observable<E[]> {
-    const result = from(this.selectByIdsToPromise(ids))
-
-    return result
   }
 
   public async updateByIdToPromise(id: string, model: DeepPartial<Omit<E, 'id'>>): Promise<IUpdateResult> {
@@ -284,12 +244,6 @@ export class A4ElasticSearchCrud<E extends IObjectLiteral> implements IA4SimpleD
     }
   }
 
-  public updateByIdToObservable(id: string, model: DeepPartial<Omit<E, 'id'>>): Observable<IUpdateResult> {
-    const result = from(this.updateByIdToPromise(id, model))
-
-    return result
-  }
-
   public async updateByIdsToPromise(ids: string[], model: DeepPartial<Omit<E, 'id'>>): Promise<IUpdateResult> {
     if (!ids.length) return { affected: 0 }
 
@@ -303,12 +257,6 @@ export class A4ElasticSearchCrud<E extends IObjectLiteral> implements IA4SimpleD
     })
 
     return { affected }
-  }
-
-  public updateByIdsToObservable(ids: string[], model: DeepPartial<Omit<E, 'id'>>): Observable<IUpdateResult> {
-    const result = from(this.updateByIdsToPromise(ids, model))
-
-    return result
   }
 
   public async deleteByIdToPromise(id: string): Promise<IDeleteResult> {
@@ -333,12 +281,6 @@ export class A4ElasticSearchCrud<E extends IObjectLiteral> implements IA4SimpleD
     }
   }
 
-  public deleteByIdToObservable(id: string): Observable<IUpdateResult> {
-    const result = from(this.deleteByIdToPromise(id))
-
-    return result
-  }
-
   public async deleteByIdsToPromise(ids: string[]): Promise<IDeleteResult> {
     if (!ids.length) return { affected: 0 }
 
@@ -352,11 +294,5 @@ export class A4ElasticSearchCrud<E extends IObjectLiteral> implements IA4SimpleD
     })
 
     return { affected }
-  }
-
-  public deleteByIdsToObservable(ids: string[]): Observable<IUpdateResult> {
-    const result = from(this.deleteByIdsToPromise(ids))
-
-    return result
   }
 }

@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-26 15:09:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-19 17:36:26
+ * @LastEditTime : 2024-06-20 19:49:38
  */
 import { IsNumber, IsString } from 'class-validator'
 

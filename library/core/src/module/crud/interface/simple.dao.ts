@@ -2,11 +2,11 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-05 16:23:18
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-05 18:06:44
+ * @LastEditTime : 2024-06-20 19:32:24
  */
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import type { Observable } from 'rxjs'
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/member-ordering */
+import { type Observable, from } from 'rxjs'
 
 import type { DeepPartial } from '../../../interface'
 import type {
@@ -24,11 +24,11 @@ import type {
  *  `A4` 单表简单数据交互层。
  *
  */
-export interface IA4SimpleDao {
+export abstract class IA4SimpleDao {
   /**
    * 数据连接对象。
    */
-  instance: any
+  public instance: any
 
   /**
    * @public
@@ -41,7 +41,7 @@ export interface IA4SimpleDao {
    * @returns 返回值为 Promise 对象。
    *
    */
-  insertToPromise: (model: DeepPartial<any>) => Promise<any>
+  public abstract insertToPromise(model: any): Promise<any>
 
   /**
    * @public
@@ -54,7 +54,10 @@ export interface IA4SimpleDao {
    * @returns 返回值为 Observable 对象。
    *
    */
-  insertToObservable: (model: DeepPartial<any>) => Observable<any>
+  public insertToObservable(model: any): Observable<any> {
+    const result = from(this.insertToPromise(model))
+    return result
+  }
 
   /**
    * @public
@@ -67,7 +70,7 @@ export interface IA4SimpleDao {
    * @returns 返回值为 Promise 对象。
    *
    */
-  insertMultiToPromise: (modelList: DeepPartial<any>[]) => Promise<any[]>
+  public abstract insertMultiToPromise(modelList: any[]): Promise<any[]>
 
   /**
    * @public
@@ -80,7 +83,10 @@ export interface IA4SimpleDao {
    * @returns 返回值为 Observable 对象。
    *
    */
-  insertMultiToObservable: (modelList: DeepPartial<any>[]) => Observable<any[]>
+  public insertMultiToObservable(modelList: any[]): Observable<any[]> {
+    const result = from(this.insertMultiToPromise(modelList))
+    return result
+  }
 
   /**
    * @public
@@ -95,10 +101,10 @@ export interface IA4SimpleDao {
    * @returns 返回值为 Promise 对象。
    *
    */
-  selectByPageToPromise: (
+  public abstract selectByPageToPromise(
     model: DeepPartial<any>,
     options: ISelectByPageOptions<any>
-  ) => Promise<ISelectByPageReturn<any>>
+  ): Promise<ISelectByPageReturn<any>>
 
   /**
    * @public
@@ -113,10 +119,13 @@ export interface IA4SimpleDao {
    * @returns 返回值为 Observable 对象。
    *
    */
-  selectByPageToObservable: (
+  public selectByPageToObservable(
     model: DeepPartial<any>,
     options: ISelectByPageOptions<any>
-  ) => Observable<ISelectByPageReturn<any>>
+  ): Observable<ISelectByPageReturn<any>> {
+    const result = from(this.selectByPageToPromise(model, options))
+    return result
+  }
 
   /**
    * @public
@@ -131,10 +140,10 @@ export interface IA4SimpleDao {
    * @returns 返回值为 Promise 对象。
    *
    */
-  selectNoPageToPromise: (
+  public abstract selectNoPageToPromise(
     model: DeepPartial<any>,
-    options: ISelectNoPageOptions<any>
-  ) => Promise<ISelectNoPageReturn<any>>
+    options?: ISelectNoPageOptions<any>
+  ): Promise<ISelectNoPageReturn<any>>
 
   /**
    * @public
@@ -149,10 +158,13 @@ export interface IA4SimpleDao {
    * @returns 返回值为 Observable 对象。
    *
    */
-  selectNoPageToObservable: (
+  public selectNoPageToObservable(
     model: DeepPartial<any>,
-    options: ISelectNoPageOptions<any>
-  ) => Observable<ISelectNoPageReturn<any>>
+    options?: ISelectNoPageOptions<any>
+  ): Observable<ISelectNoPageReturn<any>> {
+    const result = from(this.selectNoPageToPromise(model, options))
+    return result
+  }
 
   /**
    * @public
@@ -165,7 +177,7 @@ export interface IA4SimpleDao {
    * @returns 返回值为 Promise 对象。
    *
    */
-  selectByIdToPromise: (id: any) => Promise<any | null>
+  public abstract selectByIdToPromise(id: any): Promise<any | null>
 
   /**
    * @public
@@ -178,7 +190,11 @@ export interface IA4SimpleDao {
    * @returns 返回值为 Observable 对象。
    *
    */
-  selectByIdToObservable: (id: any) => Observable<any | null>
+  public selectByIdToObservable(id: any): Observable<any | null> {
+    const result = from(this.selectByIdToPromise(id))
+
+    return result
+  }
 
   /**
    * @public
@@ -191,7 +207,7 @@ export interface IA4SimpleDao {
    * @returns 返回值为 Promise 对象。
    *
    */
-  selectByIdsToPromise: (ids: any[]) => Promise<any[]>
+  public abstract selectByIdsToPromise(ids: any[]): Promise<any[]>
 
   /**
    * @public
@@ -204,7 +220,11 @@ export interface IA4SimpleDao {
    * @returns 返回值为 Observable 对象。
    *
    */
-  selectByIdsToObservable: (ids: any[]) => Observable<any[]>
+  public selectByIdsToObservable(ids: any[]): Observable<any[]> {
+    const result = from(this.selectByIdsToPromise(ids))
+
+    return result
+  }
 
   /**
    * @public
@@ -219,7 +239,7 @@ export interface IA4SimpleDao {
    * @returns 返回值为 Promise 对象。
    *
    */
-  updateByIdToPromise: (id: any, model: DeepPartial<any>) => Promise<IUpdateResult>
+  public abstract updateByIdToPromise(id: any, model: DeepPartial<any>): Promise<IUpdateResult>
 
   /**
    * @public
@@ -234,7 +254,11 @@ export interface IA4SimpleDao {
    * @returns 返回值为 Observable 对象。
    *
    */
-  updateByIdToObservable: (id: any, model: DeepPartial<any>) => Observable<IUpdateResult>
+  public updateByIdToObservable(id: any, model: DeepPartial<any>): Observable<IUpdateResult> {
+    const result = from(this.updateByIdToPromise(id, model))
+
+    return result
+  }
 
   /**
    * @public
@@ -249,7 +273,7 @@ export interface IA4SimpleDao {
    * @returns 返回值为 Promise 对象。
    *
    */
-  updateByIdsToPromise: (ids: any[], model: DeepPartial<any>) => Promise<IUpdateResult>
+  public abstract updateByIdsToPromise(ids: any[], model: DeepPartial<any>): Promise<IUpdateResult>
 
   /**
    * @public
@@ -264,7 +288,11 @@ export interface IA4SimpleDao {
    * @returns 返回值为 Observable 对象。
    *
    */
-  updateByIdsToObservable: (ids: any[], model: DeepPartial<any>) => Observable<IUpdateResult>
+  public updateByIdsToObservable(ids: any[], model: DeepPartial<any>): Observable<IUpdateResult> {
+    const result = from(this.updateByIdsToPromise(ids, model))
+
+    return result
+  }
 
   /**
    * @public
@@ -279,7 +307,7 @@ export interface IA4SimpleDao {
    * @returns 返回值为 Promise 对象。
    *
    */
-  deleteByIdToPromise: (id: any) => Promise<IDeleteResult>
+  public abstract deleteByIdToPromise(id: any): Promise<IDeleteResult>
 
   /**
    * @public
@@ -294,7 +322,10 @@ export interface IA4SimpleDao {
    * @returns 返回值为 Observable 对象。
    *
    */
-  deleteByIdToObservable: (id: any) => Observable<IDeleteResult>
+  public deleteByIdToObservable(id: any): Observable<IUpdateResult> {
+    const result = from(this.deleteByIdToPromise(id))
+    return result
+  }
 
   /**
    * @public
@@ -309,7 +340,7 @@ export interface IA4SimpleDao {
    * @returns 返回值为 Promise 对象。
    *
    */
-  deleteByIdsToPromise: (ids: any[]) => Promise<IDeleteResult>
+  public abstract deleteByIdsToPromise(ids: any[]): Promise<IDeleteResult>
 
   /**
    * @public
@@ -324,5 +355,9 @@ export interface IA4SimpleDao {
    * @returns 返回值为 Observable 对象。
    *
    */
-  deleteByIdsToObservable: (ids: any[]) => Observable<IDeleteResult>
+  public deleteByIdsToObservable(ids: any[]): Observable<IUpdateResult> {
+    const result = from(this.deleteByIdsToPromise(ids))
+
+    return result
+  }
 }

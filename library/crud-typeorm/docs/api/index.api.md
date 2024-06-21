@@ -22,7 +22,7 @@ import { ISelectNoPageOptions } from '@hz-9/a4-core';
 import { ISelectNoPageReturn } from '@hz-9/a4-core';
 import { IUpdateResult } from '@hz-9/a4-core';
 import { Logger } from '@nestjs/common';
-import { Observable } from 'rxjs';
+import { PartialKey } from '@hz-9/a4-core';
 import { Repository } from 'typeorm';
 
 // @public
@@ -35,52 +35,32 @@ export const A4_CRUD_TYPEORM_OPTIONS: "A4.Crud.TypeORM.Option";
 export const A4_DEFAULT_DATA_SOURCE_NAME: "default";
 
 // @public
-export class A4TypeORMCrud<E extends IObjectLiteral> implements IA4SimpleDao {
+export class A4TypeORMCrud<E extends IObjectLiteral> extends IA4SimpleDao {
     constructor(repository: Repository<E>);
     // (undocumented)
-    deleteByIdsToObservable(ids: any[]): Observable<IUpdateResult>;
+    deleteByIdsToPromise(ids: E['id'][]): Promise<IDeleteResult>;
     // (undocumented)
-    deleteByIdsToPromise(ids: any[]): Promise<IDeleteResult>;
+    deleteByIdToPromise(id: E['id']): Promise<IDeleteResult>;
     // (undocumented)
-    deleteByIdToObservable(id: any): Observable<IUpdateResult>;
+    insertMultiToPromise(modelList: PartialKey<E, 'id'>[]): Promise<E[]>;
     // (undocumented)
-    deleteByIdToPromise(id: any): Promise<IDeleteResult>;
-    // (undocumented)
-    insertMultiToObservable(modelList: DeepPartial<E>[]): Observable<E[]>;
-    // (undocumented)
-    insertMultiToPromise(modelList: DeepPartial<E>[]): Promise<E[]>;
-    // (undocumented)
-    insertToObservable(model: DeepPartial<E>): Observable<E>;
-    // (undocumented)
-    insertToPromise(model: DeepPartial<E>): Promise<E>;
+    insertToPromise(model: PartialKey<E, 'id'>): Promise<E>;
     // (undocumented)
     readonly instance: Repository<E>;
     // (undocumented)
     readonly logger: Logger;
     // (undocumented)
-    selectByIdsToObservable(ids: any[]): Observable<E[]>;
+    selectByIdsToPromise(ids: E['id'][]): Promise<E[]>;
     // (undocumented)
-    selectByIdsToPromise(ids: any[]): Promise<E[]>;
+    selectByIdToPromise(id: E['id']): Promise<E | null>;
     // (undocumented)
-    selectByIdToObservable(id: any): Observable<E | null>;
+    selectByPageToPromise(model: DeepPartial<E>, options?: ISelectByPageOptions<E>): Promise<ISelectByPageReturn<E>>;
     // (undocumented)
-    selectByIdToPromise(id: any): Promise<E | null>;
+    selectNoPageToPromise(model: DeepPartial<E>, options?: ISelectNoPageOptions<E>): Promise<ISelectNoPageReturn<E>>;
     // (undocumented)
-    selectByPageToObservable(model: DeepPartial<E>, options: ISelectByPageOptions<E>): Observable<ISelectByPageReturn<E>>;
+    updateByIdsToPromise(ids: E['id'][], model: DeepPartial<Omit<E, 'id'>>): Promise<IUpdateResult>;
     // (undocumented)
-    selectByPageToPromise(model: DeepPartial<E>, options: ISelectByPageOptions<E>): Promise<ISelectByPageReturn<E>>;
-    // (undocumented)
-    selectNoPageToObservable(model: DeepPartial<E>, options: ISelectNoPageOptions<E>): Observable<ISelectNoPageReturn<E>>;
-    // (undocumented)
-    selectNoPageToPromise(model: DeepPartial<E>, options: ISelectNoPageOptions<E>): Promise<ISelectNoPageReturn<E>>;
-    // (undocumented)
-    updateByIdsToObservable(ids: any[], model: DeepPartial<Omit<E, 'id'>>): Observable<IUpdateResult>;
-    // (undocumented)
-    updateByIdsToPromise(ids: any[], model: DeepPartial<Omit<E, 'id'>>): Promise<IUpdateResult>;
-    // (undocumented)
-    updateByIdToObservable(id: any, model: DeepPartial<Omit<E, 'id'>>): Observable<IUpdateResult>;
-    // (undocumented)
-    updateByIdToPromise(id: any, model: DeepPartial<Omit<E, 'id'>>): Promise<IUpdateResult>;
+    updateByIdToPromise(id: E['id'], model: DeepPartial<Omit<E, 'id'>>): Promise<IUpdateResult>;
 }
 
 // @public

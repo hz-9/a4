@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-29 15:19:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-15 22:52:34
+ * @LastEditTime : 2024-06-20 14:11:42
  */
 import { Controller, HttpStatus, Logger, UseFilters, UseInterceptors } from '@nestjs/common'
 import { Observable, map } from 'rxjs'
@@ -20,7 +20,7 @@ import {
   UpdateByIdResultDto,
   UpdateByIdsResultDto,
 } from '@hz-9/a4-core'
-import { MessagePattern, RPCExceptionFilter, ValidationWithDefaultPipe } from '@hz-9/a4-micro-service'
+import { A4MessagePattern, RPCExceptionFilter, ValidationWithDefaultPipe } from '@hz-9/a4-micro-service'
 import { Payload } from '@hz-9/a4-micro-service/nestjs-microservices'
 
 import { DicService } from './dic.service'
@@ -48,14 +48,14 @@ export class DicRedisController implements A4SimpleControllerRxjs {
 
   public static get rpcPrefix(): string {
     // A4 Cli 自动创建的，请填写 RPC 前缀 eg: 'api.dic.v1.dic'
-    return 'NOT_SET'
+    return 'api.dic.v1.dic'
   }
 
   public constructor(protected readonly service: DicService) {
     // ...
   }
 
-  @MessagePattern({ cmd: 'insert' })
+  @A4MessagePattern({ cmd: 'insert' })
   public insert(@Payload('data', ValidationWithDefaultPipe) model: DicInsertReqDto): Observable<DicInsertResultDto> {
     const result = this.service.insert(model)
 
@@ -68,7 +68,7 @@ export class DicRedisController implements A4SimpleControllerRxjs {
     )
   }
 
-  @MessagePattern({ cmd: 'selectByPage' })
+  @A4MessagePattern({ cmd: 'selectByPage' })
   public selectByPage(
     @Payload('data', ValidationWithDefaultPipe) model: DicSelectReqDto,
     @Payload('page', ValidationWithDefaultPipe) page: PageReqDto,
@@ -89,7 +89,7 @@ export class DicRedisController implements A4SimpleControllerRxjs {
     )
   }
 
-  /* A4 Cli 并未开启当前接口，请添加装饰器 `@MessagePattern({ cmd: 'selectNoPage' })` 开启此路由。 */
+  /* A4 Cli 并未开启当前接口，请添加装饰器 `@A4MessagePattern({ cmd: 'selectNoPage' })` 开启此路由。 */
   public selectNoPage(
     @Payload('data', ValidationWithDefaultPipe) model: DicSelectReqDto,
     @Payload('sort', ValidationWithDefaultPipe) sort: SortReqDto
@@ -107,7 +107,7 @@ export class DicRedisController implements A4SimpleControllerRxjs {
     )
   }
 
-  @MessagePattern({ cmd: 'selectById' })
+  @A4MessagePattern({ cmd: 'selectById' })
   public selectById(
     @Payload('data', ValidationWithDefaultPipe) params: ParamIdReqDto
   ): Observable<DicSelectByIdResultDto> {
@@ -122,7 +122,7 @@ export class DicRedisController implements A4SimpleControllerRxjs {
     )
   }
 
-  @MessagePattern({ cmd: 'updateById' })
+  @A4MessagePattern({ cmd: 'updateById' })
   public updateById(
     @Payload('query', ValidationWithDefaultPipe) params: ParamIdReqDto,
     @Payload('data', ValidationWithDefaultPipe) model: DicUpdateReqDto
@@ -138,7 +138,7 @@ export class DicRedisController implements A4SimpleControllerRxjs {
     )
   }
 
-  @MessagePattern({ cmd: 'deleteById' })
+  @A4MessagePattern({ cmd: 'deleteById' })
   public deleteById(
     @Payload('query', ValidationWithDefaultPipe) params: ParamIdReqDto
   ): Observable<DeleteByIdResultDto> {
@@ -153,7 +153,7 @@ export class DicRedisController implements A4SimpleControllerRxjs {
     )
   }
 
-  @MessagePattern({ cmd: 'insertMulti' })
+  @A4MessagePattern({ cmd: 'insertMulti' })
   public insertMulti(
     @Payload('data', ValidationWithDefaultPipe) modelList: DicInsertReqDto[]
   ): Observable<DicInsertMultiResultDto> {
@@ -168,7 +168,7 @@ export class DicRedisController implements A4SimpleControllerRxjs {
     )
   }
 
-  @MessagePattern({ cmd: 'selectByIds' })
+  @A4MessagePattern({ cmd: 'selectByIds' })
   public selectByIds(
     @Payload('data', ValidationWithDefaultPipe) params: ParamIdsReqDto
   ): Observable<DicSelectByIdsResultDto> {
@@ -183,7 +183,7 @@ export class DicRedisController implements A4SimpleControllerRxjs {
     )
   }
 
-  @MessagePattern({ cmd: 'updateByIds' })
+  @A4MessagePattern({ cmd: 'updateByIds' })
   public updateByIds(
     @Payload('query', ValidationWithDefaultPipe) params: ParamIdsReqDto,
     @Payload('data', ValidationWithDefaultPipe) model: DicUpdateReqDto
@@ -199,7 +199,7 @@ export class DicRedisController implements A4SimpleControllerRxjs {
     )
   }
 
-  @MessagePattern({ cmd: 'deleteByIds' })
+  @A4MessagePattern({ cmd: 'deleteByIds' })
   public deleteByIds(
     @Payload('query', ValidationWithDefaultPipe) params: ParamIdsReqDto
   ): Observable<DeleteByIdsResultDto> {

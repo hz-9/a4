@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-05-31 18:28:09
+ * @LastEditTime : 2024-06-20 19:19:01
  */
 import {
   ArgumentsHost,
@@ -188,12 +188,12 @@ export class AllExceptionsFilter implements ExceptionFilter {
       response = f[1](exception, host, this._httpAdapterHost)
     } else {
       response = this.parseUnknownError(exception, host)
-    }
 
-    /**
-     *  Request 出现异常时，可以在控制台显示异常信息。
-     */
-    this._logger.error(exception)
+      /**
+       * 对于未知异常，输出于日志中。其他异常，由业务层处理。
+       */
+      this._logger.error(exception)
+    }
 
     httpAdapter.reply(response.instance, response.body, response.status)
   }
@@ -239,20 +239,20 @@ export class AllExceptionsFilter implements ExceptionFilter {
           const exceptionReal = exception as HttpException
 
           const ctx = host.switchToHttp()
-          const { httpAdapter } = httpAdapterHost
-
+          // const { httpAdapter } = httpAdapterHost
           return {
             instance: ctx.getResponse(),
             status: exceptionReal.getStatus(),
             body: {
               status: exceptionReal.getStatus(),
               data: null,
-              message: [
-                `Http Error. ${ctx.getRequest().method} ${httpAdapter.getRequestUrl(ctx.getRequest())}`,
-                `Name:      ${exception.message ?? exception.name}`,
-                `Message:   ${((exception as IExceptionsFilterError).error ?? ['Unknown message.']).join(';')}.`,
-                `Timestamp: ${new Date().toISOString()}`,
-              ].join(' '),
+              message: exception.message,
+              // message: [
+              //   `Http Error. ${ctx.getRequest().method} ${httpAdapter.getRequestUrl(ctx.getRequest())}`,
+              //   `Name:      ${exception.message ?? exception.name}`,
+              //   `Message:   ${((exception as IExceptionsFilterError).error ?? ['Unknown message.']).join(';')}.`,
+              //   `Timestamp: ${new Date().toISOString()}`,
+              // ].join(' '),
             },
           }
         },

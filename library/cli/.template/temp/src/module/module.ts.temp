@@ -5,7 +5,7 @@
  * @LastEditTime : {{ fileHeaders.createTime }}
  */
 
-import { Module } from '@nestjs/common'
+import { Global, Module } from '@nestjs/common'
 
 import { A4TypeORMCrudModule } from '@hz-9/a4-crud-typeorm'
 
@@ -17,6 +17,7 @@ import { {{ entityName.firstCase }}Entity } from './entity/{{ entityName.kebabCa
 /**
  * A4 Cli 自动生成的文件。
  */
+@Global()
 @Module({
   imports: [
     A4TypeORMCrudModule.forFeature([{{ entityName.firstCase }}Entity])
@@ -25,8 +26,8 @@ import { {{ entityName.firstCase }}Entity } from './entity/{{ entityName.kebabCa
     {{ entityName.firstCase }}HttpController,
     // {{ entityName.firstCase }}RedisController
   ],
-  providers: [
-    {{ entityName.firstCase }}Service
-  ],
+  providers: [{{ entityName.firstCase }}Service],
+
+  // exports: [{{ entityName.firstCase }}Service],
 })
 export class {{ moduleName.firstCase }}Module {}

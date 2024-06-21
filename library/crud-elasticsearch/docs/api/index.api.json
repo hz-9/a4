@@ -330,12 +330,12 @@
             },
             {
               "kind": "Content",
-              "text": "> implements "
+              "text": "> extends "
             },
             {
               "kind": "Reference",
               "text": "IA4SimpleDao",
-              "canonicalReference": "@hz-9/a4-core!IA4SimpleDao:interface"
+              "canonicalReference": "@hz-9/a4-core!IA4SimpleDao:class"
             },
             {
               "kind": "Content",
@@ -412,68 +412,6 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrud#deleteByIdsToObservable:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "deleteByIdsToObservable(ids: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "string[]"
-                },
-                {
-                  "kind": "Content",
-                  "text": "): "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Observable",
-                  "canonicalReference": "rxjs!Observable:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<"
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IUpdateResult",
-                  "canonicalReference": "@hz-9/a4-core!IUpdateResult:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": ">"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 3,
-                "endIndex": 7
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "ids",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 2
-                  },
-                  "isOptional": false
-                }
-              ],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "deleteByIdsToObservable"
-            },
-            {
-              "kind": "Method",
               "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrud#deleteByIdsToPromise:member(1)",
               "docComment": "",
               "excerptTokens": [
@@ -533,68 +471,6 @@
               "isOptional": false,
               "isAbstract": false,
               "name": "deleteByIdsToPromise"
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrud#deleteByIdToObservable:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "deleteByIdToObservable(id: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "string"
-                },
-                {
-                  "kind": "Content",
-                  "text": "): "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Observable",
-                  "canonicalReference": "rxjs!Observable:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<"
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IUpdateResult",
-                  "canonicalReference": "@hz-9/a4-core!IUpdateResult:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": ">"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 3,
-                "endIndex": 7
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "id",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 2
-                  },
-                  "isOptional": false
-                }
-              ],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "deleteByIdToObservable"
             },
             {
               "kind": "Method",
@@ -690,64 +566,6 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrud#insertMultiToObservable:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "insertMultiToObservable(modelList: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "DeepPartial",
-                  "canonicalReference": "@hz-9/a4-core!DeepPartial:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<E>[]"
-                },
-                {
-                  "kind": "Content",
-                  "text": "): "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Observable",
-                  "canonicalReference": "rxjs!Observable:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<E[]>"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 4,
-                "endIndex": 6
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "modelList",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 3
-                  },
-                  "isOptional": false
-                }
-              ],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "insertMultiToObservable"
-            },
-            {
-              "kind": "Method",
               "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrud#insertMultiToPromise:member(1)",
               "docComment": "",
               "excerptTokens": [
@@ -803,64 +621,6 @@
               "isOptional": false,
               "isAbstract": false,
               "name": "insertMultiToPromise"
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrud#insertToObservable:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "insertToObservable(model: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "DeepPartial",
-                  "canonicalReference": "@hz-9/a4-core!DeepPartial:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<E>"
-                },
-                {
-                  "kind": "Content",
-                  "text": "): "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Observable",
-                  "canonicalReference": "rxjs!Observable:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<E>"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 4,
-                "endIndex": 6
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "model",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 3
-                  },
-                  "isOptional": false
-                }
-              ],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "insertToObservable"
             },
             {
               "kind": "Method",
@@ -953,59 +713,6 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrud#selectByIdsToObservable:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "selectByIdsToObservable(ids: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "string[]"
-                },
-                {
-                  "kind": "Content",
-                  "text": "): "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Observable",
-                  "canonicalReference": "rxjs!Observable:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<E[]>"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 3,
-                "endIndex": 5
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "ids",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 2
-                  },
-                  "isOptional": false
-                }
-              ],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "selectByIdsToObservable"
-            },
-            {
-              "kind": "Method",
               "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrud#selectByIdsToPromise:member(1)",
               "docComment": "",
               "excerptTokens": [
@@ -1056,59 +763,6 @@
               "isOptional": false,
               "isAbstract": false,
               "name": "selectByIdsToPromise"
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrud#selectByIdToObservable:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "selectByIdToObservable(id: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "string"
-                },
-                {
-                  "kind": "Content",
-                  "text": "): "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Observable",
-                  "canonicalReference": "rxjs!Observable:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<E | null>"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 3,
-                "endIndex": 5
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "id",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 2
-                  },
-                  "isOptional": false
-                }
-              ],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "selectByIdToObservable"
             },
             {
               "kind": "Method",
@@ -1165,94 +819,6 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrud#selectByPageToObservable:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "selectByPageToObservable(model: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "DeepPartial",
-                  "canonicalReference": "@hz-9/a4-core!DeepPartial:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<E>"
-                },
-                {
-                  "kind": "Content",
-                  "text": ", options: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "ISelectByPageOptions",
-                  "canonicalReference": "@hz-9/a4-core!ISelectByPageOptions:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<E>"
-                },
-                {
-                  "kind": "Content",
-                  "text": "): "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Observable",
-                  "canonicalReference": "rxjs!Observable:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<"
-                },
-                {
-                  "kind": "Reference",
-                  "text": "ISelectByPageReturn",
-                  "canonicalReference": "@hz-9/a4-core!ISelectByPageReturn:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<E>>"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 7,
-                "endIndex": 11
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "model",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 3
-                  },
-                  "isOptional": false
-                },
-                {
-                  "parameterName": "options",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 4,
-                    "endIndex": 6
-                  },
-                  "isOptional": false
-                }
-              ],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "selectByPageToObservable"
-            },
-            {
-              "kind": "Method",
               "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrud#selectByPageToPromise:member(1)",
               "docComment": "",
               "excerptTokens": [
@@ -1271,7 +837,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": ", options: "
+                  "text": ", options?: "
                 },
                 {
                   "kind": "Reference",
@@ -1332,100 +898,12 @@
                     "startIndex": 4,
                     "endIndex": 6
                   },
-                  "isOptional": false
+                  "isOptional": true
                 }
               ],
               "isOptional": false,
               "isAbstract": false,
               "name": "selectByPageToPromise"
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrud#selectNoPageToObservable:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "selectNoPageToObservable(model: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "DeepPartial",
-                  "canonicalReference": "@hz-9/a4-core!DeepPartial:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<E>"
-                },
-                {
-                  "kind": "Content",
-                  "text": ", options: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "ISelectNoPageOptions",
-                  "canonicalReference": "@hz-9/a4-core!ISelectNoPageOptions:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<E>"
-                },
-                {
-                  "kind": "Content",
-                  "text": "): "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Observable",
-                  "canonicalReference": "rxjs!Observable:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<"
-                },
-                {
-                  "kind": "Reference",
-                  "text": "ISelectNoPageReturn",
-                  "canonicalReference": "@hz-9/a4-core!ISelectNoPageReturn:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<E>>"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 7,
-                "endIndex": 11
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "model",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 3
-                  },
-                  "isOptional": false
-                },
-                {
-                  "parameterName": "options",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 4,
-                    "endIndex": 6
-                  },
-                  "isOptional": false
-                }
-              ],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "selectNoPageToObservable"
             },
             {
               "kind": "Method",
@@ -1447,7 +925,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": ", options: "
+                  "text": ", options?: "
                 },
                 {
                   "kind": "Reference",
@@ -1508,104 +986,12 @@
                     "startIndex": 4,
                     "endIndex": 6
                   },
-                  "isOptional": false
+                  "isOptional": true
                 }
               ],
               "isOptional": false,
               "isAbstract": false,
               "name": "selectNoPageToPromise"
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrud#updateByIdsToObservable:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "updateByIdsToObservable(ids: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "string[]"
-                },
-                {
-                  "kind": "Content",
-                  "text": ", model: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "DeepPartial",
-                  "canonicalReference": "@hz-9/a4-core!DeepPartial:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<"
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Omit",
-                  "canonicalReference": "!Omit:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<E, 'id'>>"
-                },
-                {
-                  "kind": "Content",
-                  "text": "): "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Observable",
-                  "canonicalReference": "rxjs!Observable:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<"
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IUpdateResult",
-                  "canonicalReference": "@hz-9/a4-core!IUpdateResult:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": ">"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 8,
-                "endIndex": 12
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "ids",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 2
-                  },
-                  "isOptional": false
-                },
-                {
-                  "parameterName": "model",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 3,
-                    "endIndex": 7
-                  },
-                  "isOptional": false
-                }
-              ],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "updateByIdsToObservable"
             },
             {
               "kind": "Method",
@@ -1701,98 +1087,6 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrud#updateByIdToObservable:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "updateByIdToObservable(id: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "string"
-                },
-                {
-                  "kind": "Content",
-                  "text": ", model: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "DeepPartial",
-                  "canonicalReference": "@hz-9/a4-core!DeepPartial:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<"
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Omit",
-                  "canonicalReference": "!Omit:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<E, 'id'>>"
-                },
-                {
-                  "kind": "Content",
-                  "text": "): "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Observable",
-                  "canonicalReference": "rxjs!Observable:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<"
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IUpdateResult",
-                  "canonicalReference": "@hz-9/a4-core!IUpdateResult:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": ">"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 8,
-                "endIndex": 12
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "id",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 2
-                  },
-                  "isOptional": false
-                },
-                {
-                  "parameterName": "model",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 3,
-                    "endIndex": 7
-                  },
-                  "isOptional": false
-                }
-              ],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "updateByIdToObservable"
-            },
-            {
-              "kind": "Method",
               "canonicalReference": "@hz-9/a4-crud-elasticsearch!A4ElasticSearchCrud#updateByIdToPromise:member(1)",
               "docComment": "",
               "excerptTokens": [
@@ -1884,12 +1178,11 @@
               "name": "updateByIdToPromise"
             }
           ],
-          "implementsTokenRanges": [
-            {
-              "startIndex": 3,
-              "endIndex": 4
-            }
-          ]
+          "extendsTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "implementsTokenRanges": []
         },
         {
           "kind": "Class",

@@ -2,11 +2,9 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-23 19:34:22
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-05-23 20:11:06
+ * @LastEditTime : 2024-06-20 11:17:08
  */
 import { MessagePattern as MessagePattern_ } from '@nestjs/microservices'
-
-// import { RPC_CONTROLLER_PREFIX } from '@hz-9/a4-core'
 
 /* eslint-disable @typescript-eslint/no-explicit-any, prefer-destructuring, no-param-reassign */
 
@@ -18,7 +16,7 @@ import { MessagePattern as MessagePattern_ } from '@nestjs/microservices'
  *  必须在该  Controller 增加静态常量 rpcPrefix。
  *
  */
-export const MessagePattern =
+export const A4MessagePattern =
   (metadata: Record<string, string> | string, ...args: any[]): MethodDecorator =>
   (target: object, key: string | symbol, descriptor: PropertyDescriptor) => {
     // @ts-ignore

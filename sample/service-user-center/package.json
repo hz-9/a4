@@ -14,7 +14,8 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "generate:pwd-token": "ts-node ./src/_util/generate-pwd.ts"
   },
   "author": "Chen Zhen",
   "jest": {
@@ -54,7 +55,11 @@
     "ioredis": "^5.3.2",
     "pg": "~8.11.3",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "^7.8.1"
+    "rxjs": "^7.8.1",
+    "env-paths": "~2.2.1",
+    "crypto-js": "~4.2.0",
+    "selfsigned": "~2.4.1",
+    "jsonwebtoken": "~9.0.2"
   },
   "devDependencies": {
     "@hz-9/eslint-config-airbnb-ts": "~0.5.4",
@@ -71,6 +76,8 @@
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.2.0",
     "typescript": ">=5.0.0 <5.4.0",
-    "webpack": "^5.0.0"
+    "webpack": "^5.0.0",
+    "@types/crypto-js": "~4.2.2",
+    "@types/jsonwebtoken": "~9.0.6"
   }
 }

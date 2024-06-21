@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-21 10:56:18
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-05 16:52:28
+ * @LastEditTime : 2024-06-20 16:51:15
  * @Description  : `A4 CRUD` 的接口。
  */
 import type { IObjectLiteral } from '../../../interface/entity'
@@ -97,7 +97,7 @@ export interface IDeleteResult {
  *
  */
 export interface ISelectByPageOptions<T extends IObjectLiteral> extends ISelectNoPageOptions<T> {
-  page: PageReqDto
+  page?: PageReqDto
 }
 
 /**
@@ -107,7 +107,7 @@ export interface ISelectByPageOptions<T extends IObjectLiteral> extends ISelectN
  *
  */
 export interface ISelectNoPageOptions<T extends IObjectLiteral> {
-  sort: ISortOptions<T>
+  sort?: ISortOptions<T>
 }
 
 /**

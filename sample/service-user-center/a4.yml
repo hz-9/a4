@@ -28,3 +28,5 @@ A4:
       port: 6379
       password: 'A1345678'
       db: 15
+  app:
+    initDefault: true

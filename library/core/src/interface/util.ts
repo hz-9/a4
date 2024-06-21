@@ -2,8 +2,9 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-12 13:08:04
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-11 22:18:26
+ * @LastEditTime : 2024-06-21 10:46:25
  */
+import type { IObjectLiteral } from './entity'
 
 /**
  * @public
@@ -40,6 +41,18 @@ export type Debug<T> = {
  */
 export type DebugDeep<T extends object> = {
   [K in keyof T]: T[K] extends object ? DebugDeep<T[K]> : T[K]
+}
+
+/**
+ * @public
+ *
+ *  将部分字段转换为可选属性。
+ *
+ */
+export type PartialKey<T extends IObjectLiteral, Key extends string> = {
+  [K in keyof T as K extends Key ? never : K]: T[K]
+} & {
+  [K in keyof T as K extends Key ? K : never]?: T[K]
 }
 
 /**

@@ -210,6 +210,16 @@ export abstract class BasePipe implements PipeTransform {
 }
 
 // @public
+export class BodyBooleanResultDto {
+    // (undocumented)
+    readonly data: boolean;
+    // (undocumented)
+    readonly message: string;
+    // (undocumented)
+    readonly status: number;
+}
+
+// @public
 export class BodyByPageResultDto<T> extends BodyNoPageResultDto<T> {
     // (undocumented)
     readonly page: PageResDto;
@@ -219,6 +229,16 @@ export class BodyByPageResultDto<T> extends BodyNoPageResultDto<T> {
 export class BodyNoPageResultDto<T> {
     // (undocumented)
     readonly data: T;
+    // (undocumented)
+    readonly message: string;
+    // (undocumented)
+    readonly status: number;
+}
+
+// @public
+export class BodyNumberResultDto {
+    // (undocumented)
+    readonly data: number;
     // (undocumented)
     readonly message: string;
     // (undocumented)
@@ -552,28 +572,28 @@ export interface IA4SimpleControllerBase {
 }
 
 // @public
-export interface IA4SimpleDao {
-    deleteByIdsToObservable: (ids: any[]) => Observable<IDeleteResult>;
-    deleteByIdsToPromise: (ids: any[]) => Promise<IDeleteResult>;
-    deleteByIdToObservable: (id: any) => Observable<IDeleteResult>;
-    deleteByIdToPromise: (id: any) => Promise<IDeleteResult>;
-    insertMultiToObservable: (modelList: DeepPartial<any>[]) => Observable<any[]>;
-    insertMultiToPromise: (modelList: DeepPartial<any>[]) => Promise<any[]>;
-    insertToObservable: (model: DeepPartial<any>) => Observable<any>;
-    insertToPromise: (model: DeepPartial<any>) => Promise<any>;
+export abstract class IA4SimpleDao {
+    deleteByIdsToObservable(ids: any[]): Observable<IUpdateResult>;
+    abstract deleteByIdsToPromise(ids: any[]): Promise<IDeleteResult>;
+    deleteByIdToObservable(id: any): Observable<IUpdateResult>;
+    abstract deleteByIdToPromise(id: any): Promise<IDeleteResult>;
+    insertMultiToObservable(modelList: any[]): Observable<any[]>;
+    abstract insertMultiToPromise(modelList: any[]): Promise<any[]>;
+    insertToObservable(model: any): Observable<any>;
+    abstract insertToPromise(model: any): Promise<any>;
     instance: any;
-    selectByIdsToObservable: (ids: any[]) => Observable<any[]>;
-    selectByIdsToPromise: (ids: any[]) => Promise<any[]>;
-    selectByIdToObservable: (id: any) => Observable<any | null>;
-    selectByIdToPromise: (id: any) => Promise<any | null>;
-    selectByPageToObservable: (model: DeepPartial<any>, options: ISelectByPageOptions<any>) => Observable<ISelectByPageReturn<any>>;
-    selectByPageToPromise: (model: DeepPartial<any>, options: ISelectByPageOptions<any>) => Promise<ISelectByPageReturn<any>>;
-    selectNoPageToObservable: (model: DeepPartial<any>, options: ISelectNoPageOptions<any>) => Observable<ISelectNoPageReturn<any>>;
-    selectNoPageToPromise: (model: DeepPartial<any>, options: ISelectNoPageOptions<any>) => Promise<ISelectNoPageReturn<any>>;
-    updateByIdsToObservable: (ids: any[], model: DeepPartial<any>) => Observable<IUpdateResult>;
-    updateByIdsToPromise: (ids: any[], model: DeepPartial<any>) => Promise<IUpdateResult>;
-    updateByIdToObservable: (id: any, model: DeepPartial<any>) => Observable<IUpdateResult>;
-    updateByIdToPromise: (id: any, model: DeepPartial<any>) => Promise<IUpdateResult>;
+    selectByIdsToObservable(ids: any[]): Observable<any[]>;
+    abstract selectByIdsToPromise(ids: any[]): Promise<any[]>;
+    selectByIdToObservable(id: any): Observable<any | null>;
+    abstract selectByIdToPromise(id: any): Promise<any | null>;
+    selectByPageToObservable(model: DeepPartial<any>, options: ISelectByPageOptions<any>): Observable<ISelectByPageReturn<any>>;
+    abstract selectByPageToPromise(model: DeepPartial<any>, options: ISelectByPageOptions<any>): Promise<ISelectByPageReturn<any>>;
+    selectNoPageToObservable(model: DeepPartial<any>, options?: ISelectNoPageOptions<any>): Observable<ISelectNoPageReturn<any>>;
+    abstract selectNoPageToPromise(model: DeepPartial<any>, options?: ISelectNoPageOptions<any>): Promise<ISelectNoPageReturn<any>>;
+    updateByIdsToObservable(ids: any[], model: DeepPartial<any>): Observable<IUpdateResult>;
+    abstract updateByIdsToPromise(ids: any[], model: DeepPartial<any>): Promise<IUpdateResult>;
+    updateByIdToObservable(id: any, model: DeepPartial<any>): Observable<IUpdateResult>;
+    abstract updateByIdToPromise(id: any, model: DeepPartial<any>): Promise<IUpdateResult>;
 }
 
 // @public
@@ -688,7 +708,7 @@ export interface IParseMultiIntConstructorOptions extends IBasePipeConstructorOp
 // @public
 export interface ISelectByPageOptions<T extends IObjectLiteral> extends ISelectNoPageOptions<T> {
     // (undocumented)
-    page: PageReqDto;
+    page?: PageReqDto;
 }
 
 // @public
@@ -700,7 +720,7 @@ export interface ISelectByPageReturn<T extends IObjectLiteral> extends ISelectNo
 // @public
 export interface ISelectNoPageOptions<T extends IObjectLiteral> {
     // (undocumented)
-    sort: ISortOptions<T>;
+    sort?: ISortOptions<T>;
 }
 
 // @public
@@ -860,6 +880,13 @@ export class ParseSortPipe implements PipeTransform {
     // (undocumented)
     transform(value: ISortInReqData): SortReqDto;
 }
+
+// @public
+export type PartialKey<T extends IObjectLiteral, Key extends string> = {
+    [K in keyof T as K extends Key ? never : K]: T[K];
+} & {
+    [K in keyof T as K extends Key ? K : never]?: T[K];
+};
 
 // @public
 export class RemovePagePipe implements PipeTransform {

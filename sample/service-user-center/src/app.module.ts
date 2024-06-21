@@ -2,9 +2,9 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 17:05:30
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-19 23:08:48
+ * @LastEditTime : 2024-06-20 18:00:28
  */
-import { MiddlewareConsumer, Module } from '@nestjs/common'
+import { Logger, MiddlewareConsumer, Module } from '@nestjs/common'
 
 import { A4CacheModule } from '@hz-9/a4-cache'
 import { A4Config, A4ConfigModule } from '@hz-9/a4-config'
@@ -18,9 +18,11 @@ import { A4NetworkModule } from '@hz-9/a4-network'
 import { A4EurekaRegsitryModule } from '@hz-9/a4-registry-eureka'
 import { A4SafeModule } from '@hz-9/a4-safe'
 
+import { AppConfigSchema } from './app.schema'
 import { PermissionModule } from './permission/permission.module'
 import { RoleModule } from './role/role.module'
 import { UserModule } from './user/user.module'
+import { UserService } from './user/user.service'
 
 @Module({
   imports: [
@@ -28,6 +30,7 @@ import { UserModule } from './user/user.module'
       useFactory: async () => ({
         type: 'file',
         Schema: [
+          AppConfigSchema,
           A4CacheModule.Schema,
           A4TypeORMCrudModule.Schema,
           A4DocsModule.Schema,
@@ -92,7 +95,23 @@ import { UserModule } from './user/user.module'
   ],
 })
 export class AppModule {
+  protected readonly logger: Logger = new Logger('AppModule')
+
+  private readonly _initDefault: boolean
+
+  public constructor(
+    protected readonly userService: UserService,
+    protected readonly a4Config: A4Config
+  ) {
+    this._initDefault = a4Config.getOrThrow<AppConfigSchema['A4']['app']['initDefault']>('A4.app.initDefault')
+  }
+
   public configure(consumer: MiddlewareConsumer): void {
     consumer.apply(LoggerMiddleware).forRoutes('*')
+  }
+
+  public async onApplicationBootstrap(): Promise<void> {
+    this.logger.log(`Init default data: ${this._initDefault}`)
+    await this.userService.initDefault()
   }
 }

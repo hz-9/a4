@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-19 23:07:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-19 23:07:00
+ * @LastEditTime : 2024-06-20 14:15:56
  */
 import {
   Body,
@@ -56,7 +56,7 @@ import { PermissionService } from './permission.service'
 // import {} from './dto/permission.delete-req.dto'
 // import {} from './dto/permission.delete-res.dto'
 
-@ApiTags('Permission')
+@ApiTags('Permission - 权限信息')
 @Controller('api/permission')
 @UseInterceptors(new TransformInterceptor())
 export class PermissionHttpController implements A4SimpleControllerRxjs {

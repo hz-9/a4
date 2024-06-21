@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-27 14:09:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-05-27 16:20:33
+ * @LastEditTime : 2024-06-20 19:24:50
  */
 
 /* eslint-disable max-classes-per-file, @rushstack/no-new-null */
@@ -43,6 +43,24 @@ export class UserSelectByIdsResultDto {
   public readonly status: number
 
   public readonly data: UserSelectResDto[]
+
+  public readonly message: string
+}
+
+export type TokenOrCookie = string
+
+export class UserLoginResultDto {
+  public readonly status: number
+
+  public readonly data: TokenOrCookie
+
+  public readonly message: string
+}
+
+export class UserDetailResultDto {
+  public readonly status: number
+
+  public readonly data: UserSelectResDto
 
   public readonly message: string
 }

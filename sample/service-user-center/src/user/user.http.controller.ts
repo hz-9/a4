@@ -2,18 +2,20 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-29 15:21:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-15 22:52:48
+ * @LastEditTime : 2024-06-21 10:33:38
  */
 import {
   Body,
   Controller,
   Delete,
   Get,
+  Headers,
   HttpStatus,
   Logger,
   Param,
   Patch,
   Post,
+  Put,
   Query,
   UseInterceptors,
 } from '@nestjs/common'
@@ -22,6 +24,7 @@ import { Observable, map } from 'rxjs'
 import {
   A4CrudUtil,
   A4SimpleControllerRxjs,
+  BodyBooleanResultDto,
   DeleteByIdResultDto,
   DeleteByIdsResultDto,
   PageReqDto,
@@ -42,8 +45,10 @@ import { ApiTags } from '@hz-9/a4-docs'
 
 import { UserInsertReqDto } from './dto/user.insert-req.dto'
 import { UserInsertMultiResultDto, UserInsertResultDto } from './dto/user.insert-res.dto'
-import { UserSelectReqDto } from './dto/user.select-req.dto'
+import { UserLoginReqDto, UserSelectReqDto } from './dto/user.select-req.dto'
 import {
+  UserDetailResultDto,
+  UserLoginResultDto,
   UserSelectByIdResultDto,
   UserSelectByIdsResultDto,
   UserSelectByPageResultDto,
@@ -55,7 +60,7 @@ import { UserUpdateReqDto } from './dto/user.update-req.dto'
 // import {} from './dto/user.delete-res.dto'
 import { UserService } from './user.service'
 
-@ApiTags('User')
+@ApiTags('User - 用户信息')
 @Controller('api/user')
 @UseInterceptors(new TransformInterceptor())
 export class UserHttpController implements A4SimpleControllerRxjs {
@@ -219,6 +224,51 @@ export class UserHttpController implements A4SimpleControllerRxjs {
       map((i) => ({
         status: HttpStatus.OK,
         data: { effectNum: i.affected ?? null },
+        message: 'ok',
+      }))
+    )
+  }
+
+  /**
+   * 其他业务接口
+   */
+
+  @Post('login')
+  public login(@Body(ValidationWithDefaultPipe) data: UserLoginReqDto): Observable<UserLoginResultDto> {
+    const result = this.service.loginByDefault(data.username, data.password)
+
+    return result.pipe(
+      map((i) => ({
+        status: HttpStatus.OK,
+        data: i,
+        message: 'ok',
+      }))
+    )
+  }
+
+  @Post('detail')
+  public detail(@Headers('token') token: string): Observable<UserDetailResultDto> {
+    const result = this.service.getDetail(token)
+
+    return result.pipe(
+      map((i) => ({
+        status: HttpStatus.OK,
+        data: i,
+        message: 'ok',
+      }))
+    )
+  }
+
+  @Put(':id/password')
+  public resetDefaultPwd(
+    @Param(ParseMultiNumberPipe, ValidationWithDefaultPipe) params: ParamIdReqDto
+  ): Observable<BodyBooleanResultDto> {
+    const result = this.service.resetDefaultPwd(params.id)
+
+    return result.pipe(
+      map((i) => ({
+        status: HttpStatus.OK,
+        data: i,
         message: 'ok',
       }))
     )

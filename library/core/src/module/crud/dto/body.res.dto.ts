@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-05-27 13:52:11
+ * @LastEditTime : 2024-06-20 20:02:12
  */
 
 /* eslint-disable max-classes-per-file */
@@ -123,4 +123,34 @@ export class BodyNoPageResultDto<T> {
  */
 export class BodyByPageResultDto<T> extends BodyNoPageResultDto<T> {
   public readonly page: PageResDto
+}
+
+/**
+ *
+ * @public
+ *
+ *  一个返回 boolean 的请求返回结构。
+ *
+ */
+export class BodyBooleanResultDto {
+  public readonly status: number
+
+  public readonly data: boolean
+
+  public readonly message: string
+}
+
+/**
+ *
+ * @public
+ *
+ *  一个返回 number 的请求返回结构。
+ *
+ */
+export class BodyNumberResultDto {
+  public readonly status: number
+
+  public readonly data: number
+
+  public readonly message: string
 }

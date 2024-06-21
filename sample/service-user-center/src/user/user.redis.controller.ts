@@ -20,7 +20,7 @@ import {
   UpdateByIdResultDto,
   UpdateByIdsResultDto,
 } from '@hz-9/a4-core'
-import { MessagePattern, RPCExceptionFilter, ValidationWithDefaultPipe } from '@hz-9/a4-micro-service'
+import { A4MessagePattern, RPCExceptionFilter, ValidationWithDefaultPipe } from '@hz-9/a4-micro-service'
 import { Payload } from '@hz-9/a4-micro-service/nestjs-microservices'
 
 import { UserInsertReqDto } from './dto/user.insert-req.dto'
@@ -53,7 +53,7 @@ export class UserRedisController implements A4SimpleControllerRxjs {
     // ...
   }
 
-  @MessagePattern({ cmd: 'insert' })
+  @A4MessagePattern({ cmd: 'insert' })
   public insert(@Payload('data', ValidationWithDefaultPipe) model: UserInsertReqDto): Observable<UserInsertResultDto> {
     const result = this.service.insert(model)
 
@@ -66,7 +66,7 @@ export class UserRedisController implements A4SimpleControllerRxjs {
     )
   }
 
-  @MessagePattern({ cmd: 'selectByPage' })
+  @A4MessagePattern({ cmd: 'selectByPage' })
   public selectByPage(
     @Payload('data', ValidationWithDefaultPipe) model: UserSelectReqDto,
     @Payload('page', ValidationWithDefaultPipe) page: PageReqDto,
@@ -87,7 +87,7 @@ export class UserRedisController implements A4SimpleControllerRxjs {
     )
   }
 
-  /* A4 Cli 并未开启当前接口，请添加装饰器 `@MessagePattern({ cmd: 'selectNoPage' })` 开启此路由。 */
+  /* A4 Cli 并未开启当前接口，请添加装饰器 `@A4MessagePattern({ cmd: 'selectNoPage' })` 开启此路由。 */
   public selectNoPage(
     @Payload('data', ValidationWithDefaultPipe) model: UserSelectReqDto,
     @Payload('sort', ValidationWithDefaultPipe) sort: SortReqDto
@@ -105,7 +105,7 @@ export class UserRedisController implements A4SimpleControllerRxjs {
     )
   }
 
-  @MessagePattern({ cmd: 'selectById' })
+  @A4MessagePattern({ cmd: 'selectById' })
   public selectById(
     @Payload('data', ValidationWithDefaultPipe) params: ParamIdReqDto
   ): Observable<UserSelectByIdResultDto> {
@@ -120,7 +120,7 @@ export class UserRedisController implements A4SimpleControllerRxjs {
     )
   }
 
-  @MessagePattern({ cmd: 'updateById' })
+  @A4MessagePattern({ cmd: 'updateById' })
   public updateById(
     @Payload('query', ValidationWithDefaultPipe) params: ParamIdReqDto,
     @Payload('data', ValidationWithDefaultPipe) model: UserUpdateReqDto
@@ -136,7 +136,7 @@ export class UserRedisController implements A4SimpleControllerRxjs {
     )
   }
 
-  @MessagePattern({ cmd: 'deleteById' })
+  @A4MessagePattern({ cmd: 'deleteById' })
   public deleteById(
     @Payload('query', ValidationWithDefaultPipe) params: ParamIdReqDto
   ): Observable<DeleteByIdResultDto> {
@@ -151,7 +151,7 @@ export class UserRedisController implements A4SimpleControllerRxjs {
     )
   }
 
-  @MessagePattern({ cmd: 'insertMulti' })
+  @A4MessagePattern({ cmd: 'insertMulti' })
   public insertMulti(
     @Payload('data', ValidationWithDefaultPipe) modelList: UserInsertReqDto[]
   ): Observable<UserInsertMultiResultDto> {
@@ -166,7 +166,7 @@ export class UserRedisController implements A4SimpleControllerRxjs {
     )
   }
 
-  @MessagePattern({ cmd: 'selectByIds' })
+  @A4MessagePattern({ cmd: 'selectByIds' })
   public selectByIds(
     @Payload('data', ValidationWithDefaultPipe) params: ParamIdsReqDto
   ): Observable<UserSelectByIdsResultDto> {
@@ -181,7 +181,7 @@ export class UserRedisController implements A4SimpleControllerRxjs {
     )
   }
 
-  @MessagePattern({ cmd: 'updateByIds' })
+  @A4MessagePattern({ cmd: 'updateByIds' })
   public updateByIds(
     @Payload('query', ValidationWithDefaultPipe) params: ParamIdsReqDto,
     @Payload('data', ValidationWithDefaultPipe) model: UserUpdateReqDto
@@ -197,7 +197,7 @@ export class UserRedisController implements A4SimpleControllerRxjs {
     )
   }
 
-  @MessagePattern({ cmd: 'deleteByIds' })
+  @A4MessagePattern({ cmd: 'deleteByIds' })
   public deleteByIds(
     @Payload('query', ValidationWithDefaultPipe) params: ParamIdsReqDto
   ): Observable<DeleteByIdsResultDto> {

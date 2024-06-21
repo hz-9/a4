@@ -173,6 +173,69 @@
       "preserveMemberOrder": false,
       "members": [
         {
+          "kind": "Function",
+          "canonicalReference": "@hz-9/a4-micro-service!A4MessagePattern:function(1)",
+          "docComment": "/**\n * 重写 `@nestjs/microservice` 的 `MessagePattern` 装饰器，对 message-pattern 增加前缀。\n *\n * 必须在该 Controller 增加静态常量 rpcPrefix。\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "A4MessagePattern: (metadata: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Record",
+              "canonicalReference": "!Record:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<string, string> | string"
+            },
+            {
+              "kind": "Content",
+              "text": ", ...args: "
+            },
+            {
+              "kind": "Content",
+              "text": "any[]"
+            },
+            {
+              "kind": "Content",
+              "text": ") => "
+            },
+            {
+              "kind": "Reference",
+              "text": "MethodDecorator",
+              "canonicalReference": "!MethodDecorator:type"
+            }
+          ],
+          "fileUrlPath": "dist/decorator/a4-message-pattern.decorator.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 6,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "metadata",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "args",
+              "parameterTypeTokenRange": {
+                "startIndex": 4,
+                "endIndex": 5
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "A4MessagePattern"
+        },
+        {
           "kind": "Class",
           "canonicalReference": "@hz-9/a4-micro-service!A4MicroService:class",
           "docComment": "/**\n * `A4MicroService` 类。\n *\n * @public\n */\n",
@@ -1341,69 +1404,6 @@
             }
           ],
           "implementsTokenRanges": []
-        },
-        {
-          "kind": "Function",
-          "canonicalReference": "@hz-9/a4-micro-service!MessagePattern:function(1)",
-          "docComment": "/**\n * 重写 `@nestjs/microservice` 的 `MessagePattern` 装饰器，对 message-pattern 增加前缀。\n *\n * 必须在该 Controller 增加静态常量 rpcPrefix。\n *\n * @public\n */\n",
-          "excerptTokens": [
-            {
-              "kind": "Content",
-              "text": "MessagePattern: (metadata: "
-            },
-            {
-              "kind": "Reference",
-              "text": "Record",
-              "canonicalReference": "!Record:type"
-            },
-            {
-              "kind": "Content",
-              "text": "<string, string> | string"
-            },
-            {
-              "kind": "Content",
-              "text": ", ...args: "
-            },
-            {
-              "kind": "Content",
-              "text": "any[]"
-            },
-            {
-              "kind": "Content",
-              "text": ") => "
-            },
-            {
-              "kind": "Reference",
-              "text": "MethodDecorator",
-              "canonicalReference": "!MethodDecorator:type"
-            }
-          ],
-          "fileUrlPath": "dist/decorator/message-pattern.decorator.d.ts",
-          "returnTypeTokenRange": {
-            "startIndex": 6,
-            "endIndex": 7
-          },
-          "releaseTag": "Public",
-          "overloadIndex": 1,
-          "parameters": [
-            {
-              "parameterName": "metadata",
-              "parameterTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 3
-              },
-              "isOptional": false
-            },
-            {
-              "parameterName": "args",
-              "parameterTypeTokenRange": {
-                "startIndex": 4,
-                "endIndex": 5
-              },
-              "isOptional": false
-            }
-          ],
-          "name": "MessagePattern"
         },
         {
           "kind": "TypeAlias",

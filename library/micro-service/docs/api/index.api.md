@@ -27,6 +27,9 @@ import { ValidationPipeOptions } from '@nestjs/common';
 import { ValidationWithDefaultPipe as ValidationWithDefaultPipe_2 } from '@hz-9/a4-core';
 
 // @public
+export const A4MessagePattern: (metadata: Record<string, string> | string, ...args: any[]) => MethodDecorator;
+
+// @public
 export class A4MicroService implements IA4MicroService {
     constructor(options: IA4MicroServiceContrustorOptions);
     get client(): MicroServiceClient | undefined;
@@ -106,9 +109,6 @@ export class InsertDtoInRpc<T extends IObjectLiteral> {
     // (undocumented)
     readonly data: T;
 }
-
-// @public
-export const MessagePattern: (metadata: Record<string, string> | string, ...args: any[]) => MethodDecorator;
 
 // @public
 export type MicroServiceClient = ClientProxy & Closeable;
