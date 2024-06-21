@@ -1,6 +1,13 @@
 # Change Log - @hz-9/a4-core
 
-This log was last generated on Fri, 21 Jun 2024 02:56:08 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Jun 2024 05:01:41 GMT and should not be manually modified.
+
+## 0.3.2
+Fri, 21 Jun 2024 05:01:41 GMT
+
+### Updates
+
+- feat: `@hz-9/a4-core` no longer has a strong dependency on other `@hz-9/a4-*` modules
 
 ## 0.3.1
 Fri, 21 Jun 2024 02:56:08 GMT

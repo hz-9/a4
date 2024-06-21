@@ -103,7 +103,7 @@
   {
     "policyName": "a4",
     "definitionName": "lockStepVersion",
-    "version": "0.3.1",
+    "version": "0.3.2",
     "nextBump": "patch",
     "mainProject": "@hz-9/a4-core"
   },

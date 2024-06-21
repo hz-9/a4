@@ -1489,6 +1489,72 @@
               "isOptional": false,
               "isAbstract": false,
               "name": "create"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/a4-core!A4Factory.initBodyParser:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "protected static initBodyParser(nestApplication: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "NestApplication",
+                  "canonicalReference": "@nestjs/core!NestApplication:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", options: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IA4FactoryInitBodyParserOptions",
+                  "canonicalReference": "@hz-9/a4-core!~IA4FactoryInitBodyParserOptions:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": true,
+              "returnTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 6
+              },
+              "releaseTag": "Public",
+              "isProtected": true,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "nestApplication",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 4
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "initBodyParser"
             }
           ],
           "implementsTokenRanges": []

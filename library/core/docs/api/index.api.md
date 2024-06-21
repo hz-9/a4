@@ -18,6 +18,7 @@ import { HttpAdapterHost } from '@nestjs/core';
 import { Logger } from '@nestjs/common';
 import { LoggerService } from '@nestjs/common';
 import { NestApplication } from '@nestjs/core';
+import { NestApplication as NestApplication_2 } from '@nestjs/core/nest-application';
 import type { NestApplicationOptions } from '@nestjs/common';
 import { NestExpressBodyParserOptions } from '@nestjs/platform-express';
 import { NestExpressBodyParserType } from '@nestjs/platform-express';
@@ -121,6 +122,10 @@ export class A4ExpressAdapter extends ExpressAdapter {
 export class A4Factory {
     // (undocumented)
     static create(module: unknown, options?: IA4FactoryCreateOptions): Promise<A4Application>;
+    // Warning: (ae-forgotten-export) The symbol "IA4FactoryInitBodyParserOptions" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    protected static initBodyParser(nestApplication: NestApplication_2, options: IA4FactoryInitBodyParserOptions): void;
 }
 
 // @public
@@ -427,8 +432,6 @@ export interface IA4ExpressBodyParserOptions extends NestExpressBodyParserOption
     prefix?: string;
 }
 
-// Warning: (ae-forgotten-export) The symbol "IA4FactoryInitBodyParserOptions" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export type IA4FactoryCreateOptions = NestApplicationOptions & Omit<IA4FactoryInitBodyParserOptions, 'bodyParser'> & IA4AppConstructorOptions & {
     readonly printLogo?: boolean;
