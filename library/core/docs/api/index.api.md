@@ -67,18 +67,18 @@ export const A4_SAFE: string;
 
 // @public
 export class A4Application {
-    constructor(nestApp: NestApplication);
+    constructor(nestApp: NestApplication, options?: IA4AppConstructorOptions);
     addGlobalExceptionsFilter(rules?: IExceptionRule[]): void;
     // (undocumented)
     alive: boolean;
-    // (undocumented)
-    protected init(): void;
-    initDocs(): Promise<void>;
-    // (undocumented)
-    protected initHome(): void;
-    // (undocumented)
-    protected initMainStatic(): void;
-    initSafe(): Promise<void>;
+    // @internal
+    protected getNetwork(): IA4Network;
+    init(): Promise<void>;
+    // @internal
+    protected initDocs(): Promise<void>;
+    protected initMainRequest(): Promise<void>;
+    // @internal
+    protected initSafe(): Promise<void>;
     // (undocumented)
     readonly instanceId: string;
     listen(options?: IA4AppListenOptions): Promise<void>;
@@ -88,12 +88,15 @@ export class A4Application {
     readonly microService: A4MicroServiceHelp;
     // (undocumented)
     readonly nestApp: NestApplication;
+    // (undocumented)
+    readonly network: IA4Network;
+    // (undocumented)
+    readonly options: Required<IA4AppConstructorOptions>;
+    // (undocumented)
+    protected optionsWithDefault(options?: IA4AppConstructorOptions): Required<IA4AppConstructorOptions>;
     printAddress(): Promise<void>;
     // (undocumented)
     readonly registry: A4RegistryHelp;
-    runInit<P extends unknown[], R extends unknown>(options: Pick<Required<IA4ModuleBase<P, R>>, 'init'>, ...args: P): Promise<R>;
-    runStart<P extends unknown[], R extends unknown>(options: Pick<Required<IA4ModuleBase<P, R>>, 'start'>, ...args: P): Promise<R>;
-    runStop<P extends unknown[], R extends unknown>(options: Pick<Required<IA4ModuleBase<P, R>>, 'stop'>, ...args: P): Promise<R>;
     staticFile(options: IA4AppStaticFileOptions): void;
 }
 
@@ -125,6 +128,8 @@ export class A4MicroServiceHelp {
     constructor(a4App: A4Application);
     // (undocumented)
     protected readonly a4App: A4Application;
+    // (undocumented)
+    protected readonly a4MicroService: IA4MicroService | undefined;
     closeClients(): Promise<void>;
     connect(): Promise<void>;
     connectClients(): Promise<void>;
@@ -140,10 +145,8 @@ export abstract class A4ModuleBase {
     static CONFIG_MIDDLE_PATH: string;
     static forRootAsync: (options: Omit<FactoryProvider, 'provide'>) => DynamicModule;
     static getConfig: <T = unknown>(a4Config: IA4Config) => T;
-    static init?: <P extends unknown[] = unknown[], R extends unknown = unknown>(app: A4Application, ...args: P) => R;
     // (undocumented)
     static logger: Logger;
-    static start?: <P extends unknown[] = unknown[], R extends unknown = unknown>(app: A4Application, ...args: P) => R;
 }
 
 // @public
@@ -151,6 +154,8 @@ export class A4RegistryHelp {
     constructor(a4App: A4Application);
     // (undocumented)
     protected readonly a4App: A4Application;
+    // (undocumented)
+    protected readonly a4Registry: IA4Registry | undefined;
     // (undocumented)
     protected readonly logger: Logger;
     start(): Promise<void>;
@@ -331,6 +336,11 @@ export interface IA4AddressInfo {
 }
 
 // @public
+export interface IA4AppConstructorOptions {
+    readonly port?: number;
+}
+
+// @public
 export interface IA4AppListenOptions {
     tryInterval?: number;
     tryTimes?: number;
@@ -420,7 +430,7 @@ export interface IA4ExpressBodyParserOptions extends NestExpressBodyParserOption
 // Warning: (ae-forgotten-export) The symbol "IA4FactoryInitBodyParserOptions" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export type IA4FactoryCreateOptions = NestApplicationOptions & Omit<IA4FactoryInitBodyParserOptions, 'bodyParser'> & {
+export type IA4FactoryCreateOptions = NestApplicationOptions & Omit<IA4FactoryInitBodyParserOptions, 'bodyParser'> & IA4AppConstructorOptions & {
     readonly printLogo?: boolean;
 };
 

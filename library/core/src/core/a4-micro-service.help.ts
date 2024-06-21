@@ -2,9 +2,10 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-14 17:26:12
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-01 01:56:17
+ * @LastEditTime : 2024-06-21 12:18:51
  */
 import { Logger } from '@nestjs/common'
+import { ModuleRef } from '@nestjs/core'
 
 import { A4_MICRO_SERVICE, type IA4MicroService } from '../module/micro-service'
 import type { A4Application } from './a4-application'
@@ -20,8 +21,17 @@ export class A4MicroServiceHelp {
 
   protected readonly a4App: A4Application
 
+  protected readonly a4MicroService: IA4MicroService | undefined
+
   public constructor(a4App: A4Application) {
     this.a4App = a4App
+
+    const moduleRef: ModuleRef = this.a4App.nestApp.get(ModuleRef)
+    try {
+      this.a4MicroService = moduleRef.get(A4_MICRO_SERVICE, { strict: false })
+    } catch (error) {
+      this.a4MicroService = undefined
+    }
   }
 
   /**
@@ -32,8 +42,11 @@ export class A4MicroServiceHelp {
    *
    */
   public async connect(): Promise<void> {
-    const a4MicroService: IA4MicroService = this.a4App.nestApp.get(A4_MICRO_SERVICE)
-    await a4MicroService.connectMicroservices(this.a4App)
+    if (this.a4MicroService) {
+      await this.a4MicroService.connectMicroservices(this.a4App)
+    } else {
+      this.logger.debug(`'A4 Micro Service' is not loaded.`)
+    }
   }
 
   /**
@@ -44,8 +57,11 @@ export class A4MicroServiceHelp {
    *
    */
   public async start(): Promise<void> {
-    const a4MicroService: IA4MicroService = this.a4App.nestApp.get(A4_MICRO_SERVICE)
-    await a4MicroService.startMicroservices(this.a4App)
+    if (this.a4MicroService) {
+      await this.a4MicroService.startMicroservices(this.a4App)
+    } else {
+      this.logger.debug(`'A4 Micro Service' is not loaded.`)
+    }
   }
 
   /**
@@ -56,8 +72,11 @@ export class A4MicroServiceHelp {
    *
    */
   public async stop(): Promise<void> {
-    const a4MicroService: IA4MicroService = this.a4App.nestApp.get(A4_MICRO_SERVICE)
-    await a4MicroService.stopMicroservices(this.a4App)
+    if (this.a4MicroService) {
+      await this.a4MicroService.stopMicroservices(this.a4App)
+    } else {
+      this.logger.debug(`'A4 Micro Service' is not loaded.`)
+    }
   }
 
   /**
@@ -68,8 +87,11 @@ export class A4MicroServiceHelp {
    *
    */
   public async initClients(): Promise<void> {
-    const a4MicroService: IA4MicroService = this.a4App.nestApp.get(A4_MICRO_SERVICE)
-    await a4MicroService.initClients()
+    if (this.a4MicroService) {
+      await this.a4MicroService.initClients()
+    } else {
+      this.logger.debug(`'A4 Micro Service' is not loaded.`)
+    }
   }
 
   /**
@@ -80,8 +102,11 @@ export class A4MicroServiceHelp {
    *
    */
   public async connectClients(): Promise<void> {
-    const a4MicroService: IA4MicroService = this.a4App.nestApp.get(A4_MICRO_SERVICE)
-    await a4MicroService.connectClients()
+    if (this.a4MicroService) {
+      await this.a4MicroService.connectClients()
+    } else {
+      this.logger.debug(`'A4 Micro Service' is not loaded.`)
+    }
   }
 
   /**
@@ -92,7 +117,10 @@ export class A4MicroServiceHelp {
    *
    */
   public async closeClients(): Promise<void> {
-    const a4MicroService: IA4MicroService = this.a4App.nestApp.get(A4_MICRO_SERVICE)
-    await a4MicroService.closeClients()
+    if (this.a4MicroService) {
+      await this.a4MicroService.closeClients()
+    } else {
+      this.logger.debug(`'A4 Micro Service' is not loaded.`)
+    }
   }
 }

@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 17:05:30
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-20 18:00:28
+ * @LastEditTime : 2024-06-21 11:51:12
  */
 import { Logger, MiddlewareConsumer, Module } from '@nestjs/common'
 
@@ -54,10 +54,10 @@ import { UserService } from './user/user.service'
       useFactory: (a4Config: A4Config) => A4TypeORMCrudModule.getConfig(a4Config),
     }),
 
-    A4DocsModule.forRootAsync({
-      inject: [A4Config],
-      useFactory: (a4Config: A4Config) => A4DocsModule.getConfig(a4Config),
-    }),
+    // A4DocsModule.forRootAsync({
+    //   inject: [A4Config],
+    //   useFactory: (a4Config: A4Config) => A4DocsModule.getConfig(a4Config),
+    // }),
 
     A4RedlockLockModule.forRootAsync({
       inject: [A4Config],

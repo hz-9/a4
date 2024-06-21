@@ -2,10 +2,10 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-14 17:26:12
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-19 14:15:39
+ * @LastEditTime : 2024-06-21 12:45:52
  */
 import { Logger } from '@nestjs/common'
-import { HttpAdapterHost, NestApplication } from '@nestjs/core'
+import { HttpAdapterHost, ModuleRef, NestApplication } from '@nestjs/core'
 import chalk from 'chalk'
 import type { Request, Response } from 'express'
 import { createReadStream, readdirSync } from 'fs-extra'
@@ -16,13 +16,13 @@ import { resolve } from 'upath'
 
 import { ERROR_WELCOME_MSG, HOME_STATIC_PATH, HTTP_LISTEN_DEFAULT, MAIN_STATIC_PATH } from '../const/index'
 import { AllExceptionsFilter, IExceptionRule } from '../exception-filter'
-import { IA4ModuleBase } from '../module/_base/index'
 import { A4_CONFIG, type IA4Config } from '../module/config'
 import { A4_DOCS, type IA4Docs } from '../module/docs'
 import { A4_NETWORK, type IA4Network } from '../module/network'
 import { A4_SAFE, type IA4Safe } from '../module/safe'
 import { A4Util } from '../util'
 import { A4MicroServiceHelp } from './a4-micro-service.help'
+import { A4NetworkB } from './a4-network-b'
 import { A4RegistryHelp } from './a4-registry.help'
 
 /**
@@ -116,6 +116,21 @@ process.env.A4_INIT_TIME = `${Date.now()}`
 /**
  * @public
  *
+ *  初始化构造函数。
+ *
+ */
+export interface IA4AppConstructorOptions {
+  /**
+   * 指定端口。只有当未加载 `A4 Network` 时，此属性才会有效。
+   *
+   * 默认：16100
+   */
+  readonly port?: number
+}
+
+/**
+ * @public
+ *
  *  `NestApplication` 的封装类。
  *
  */
@@ -130,39 +145,72 @@ export class A4Application {
 
   public readonly registry: A4RegistryHelp
 
+  public readonly network: IA4Network
+
+  public readonly options: Required<IA4AppConstructorOptions>
+
   public alive: boolean
 
-  public constructor(nestApp: NestApplication) {
+  public constructor(nestApp: NestApplication, options: IA4AppConstructorOptions = {}) {
     this.instanceId = nanoid()
 
     this.nestApp = nestApp
     this.microService = new A4MicroServiceHelp(this)
     this.registry = new A4RegistryHelp(this)
+    this.options = this.optionsWithDefault(options)
+    this.network = this.getNetwork()
 
     this.alive = true
-
-    this.init()
   }
 
-  protected init(): void {
-    this.initHome()
-    this.initMainStatic()
+  protected optionsWithDefault(options: IA4AppConstructorOptions = {}): Required<IA4AppConstructorOptions> {
+    return {
+      port: options.port ?? 16100,
+    }
   }
 
-  protected initHome(): void {
-    this.staticFile({
-      requestPath: '/',
-      callback: (req, res) => {
-        res.setHeader('Content-type', 'text/html')
-        const a4Config: IA4Config = this.nestApp.get(A4_CONFIG)
-        try {
-          res.status(200).send(renderFile(HOME_STATIC_PATH, { info: a4Config.getA4Info() }))
-        } catch (error) {
-          this.logger.error(`Render error.`, error)
-          res.status(200).send(ERROR_WELCOME_MSG)
-        }
-      },
-      logger: false,
+  /**
+   * @internal
+   *
+   *  在不加载 `Network` 时，添加基础类。
+   *
+   */
+  protected getNetwork(): IA4Network {
+    const moduleRef: ModuleRef = this.nestApp.get(ModuleRef)
+    try {
+      return moduleRef.get(A4_NETWORK, { strict: false }) as IA4Network
+    } catch (error) {
+      this.logger.warn(`'A4 Network' is not loaded, using downgrade scheme.`)
+
+      return new A4NetworkB({ port: this.options.port })
+    }
+  }
+
+  /**
+   * @public
+   *
+   * 一些异步初始化时间。
+   */
+  public async init(): Promise<void> {
+    await this.initMainRequest()
+
+    await this.initDocs()
+
+    await this.initSafe()
+  }
+
+  /**
+   * 加载静态请求
+   */
+  protected async initMainRequest(): Promise<void> {
+    readdirSync(MAIN_STATIC_PATH).forEach((filename) => {
+      if (filename !== '.DS_Store' && !/.ejs$/.test(filename)) {
+        this.staticFile({
+          requestPath: `/${filename}`,
+          filepath: resolve(MAIN_STATIC_PATH, filename),
+          logger: false,
+        })
+      }
     })
 
     this.staticFile({
@@ -177,91 +225,90 @@ export class A4Application {
       logger: false,
     })
 
-    this.staticFile({
-      requestPath: '/info',
-      callback: (req, res) => {
-        res.setHeader('Content-type', 'application/json')
-        const a4Config: IA4Config = this.nestApp.get(A4_CONFIG)
-        res.status(200).json(a4Config.getA4Info())
-      },
-      logger: false,
-    })
+    const moduleRef: ModuleRef = this.nestApp.get(ModuleRef)
+    try {
+      const a4Config: IA4Config = moduleRef.get(A4_CONFIG, { strict: false })
 
-    this.staticFile({
-      requestPath: '/info/:type',
-      callback: (req, res) => {
-        const a4Config: IA4Config = this.nestApp.get(A4_CONFIG)
-        const info = {
-          stats: a4Config.getA4StatsInfo(),
-          env: a4Config.getA4EnvInfo(),
-          path: a4Config.getA4PathInfo(),
-          libraries: a4Config.getA4LibrariesInfo(),
-          library: a4Config.getA4LibrariesInfo(),
-        }[req.params.type]
+      this.staticFile({
+        requestPath: '/',
+        callback: (req, res) => {
+          res.setHeader('Content-type', 'text/html')
+          try {
+            res.status(200).send(renderFile(HOME_STATIC_PATH, { info: a4Config.getA4Info() }))
+          } catch (error) {
+            this.logger.error(`Render error.`, error)
+            res.status(200).send(ERROR_WELCOME_MSG)
+          }
+        },
+        logger: false,
+      })
 
-        if (!info) {
-          res.status(404).send()
-        } else {
+      this.staticFile({
+        requestPath: '/info',
+        callback: (req, res) => {
           res.setHeader('Content-type', 'application/json')
-          res.status(200).json(info)
-        }
-      },
-      logger: false,
-    })
-  }
+          res.status(200).json(a4Config.getA4Info())
+        },
+        logger: false,
+      })
 
-  protected initMainStatic(): void {
-    readdirSync(MAIN_STATIC_PATH).forEach((filename) => {
-      if (filename !== '.DS_Store' && !/.ejs$/.test(filename)) {
-        this.staticFile({
-          requestPath: `/${filename}`,
-          filepath: resolve(MAIN_STATIC_PATH, filename),
-          logger: false,
-        })
-      }
-    })
-  }
+      this.staticFile({
+        requestPath: '/info/:type',
+        callback: (req, res) => {
+          const info = {
+            stats: a4Config.getA4StatsInfo(),
+            env: a4Config.getA4EnvInfo(),
+            path: a4Config.getA4PathInfo(),
+            libraries: a4Config.getA4LibrariesInfo(),
+            library: a4Config.getA4LibrariesInfo(),
+          }[req.params.type]
 
-  /**
-   * @public
-   *
-   *  执行模块的 init 函数。
-   *
-   */
-  public async runInit<P extends unknown[], R extends unknown>(
-    options: Pick<Required<IA4ModuleBase<P, R>>, 'init'>,
-    ...args: P
-  ): Promise<R> {
-    const r = await options.init(this, ...args)
-    return r
+          if (!info) {
+            res.status(404).send()
+          } else {
+            res.setHeader('Content-type', 'application/json')
+            res.status(200).json(info)
+          }
+        },
+        logger: false,
+      })
+    } catch (error) {
+      this.logger.warn(`'A4 Config' is not loaded.`)
+    }
   }
 
   /**
-   * @public
    *
-   *  执行模块的 start 函数。
+   * @internal
+   *
+   *  初始化 `A4 Docs` 及衍生库。
    *
    */
-  public async runStart<P extends unknown[], R extends unknown>(
-    options: Pick<Required<IA4ModuleBase<P, R>>, 'start'>,
-    ...args: P
-  ): Promise<R> {
-    const r = await options.start(this, ...args)
-    return r
+  protected async initDocs(): Promise<void> {
+    const moduleRef: ModuleRef = this.nestApp.get(ModuleRef)
+    try {
+      const a4Docs: IA4Docs = moduleRef.get(A4_DOCS, { strict: false })
+      await a4Docs.init(this)
+    } catch (error) {
+      this.logger.warn(`'A4 Docs' is not loaded.`)
+    }
   }
 
   /**
-   * @public
    *
-   *  执行模块的 stop 函数。
+   * @internal
+   *
+   *  初始化 `A4 Safe` 及衍生库。
    *
    */
-  public async runStop<P extends unknown[], R extends unknown>(
-    options: Pick<Required<IA4ModuleBase<P, R>>, 'stop'>,
-    ...args: P
-  ): Promise<R> {
-    const r = await options.stop(this, ...args)
-    return r
+  protected async initSafe(): Promise<void> {
+    const moduleRef: ModuleRef = this.nestApp.get(ModuleRef)
+    try {
+      const a4Safe: IA4Safe = moduleRef.get(A4_SAFE, { strict: false })
+      await a4Safe.init(this)
+    } catch (error) {
+      this.logger.warn(`'A4 Safe' is not loaded.`)
+    }
   }
 
   /**
@@ -283,8 +330,6 @@ export class A4Application {
    *
    */
   public async listen(options?: IA4AppListenOptions): Promise<void> {
-    const a4Network: IA4Network = this.nestApp.get(A4_NETWORK)
-
     const tryTimes = options?.tryTimes ?? HTTP_LISTEN_DEFAULT.TRY_TIMES
     const tryInterval = options?.tryInterval ?? HTTP_LISTEN_DEFAULT.TRY_INTERVAL
 
@@ -297,7 +342,7 @@ export class A4Application {
         break
       }
 
-      const port = await a4Network.getAvailablePort()
+      const port = await this.network.getAvailablePort()
 
       try {
         /**
@@ -305,7 +350,7 @@ export class A4Application {
          */
         await this.nestApp.listen(port)
 
-        a4Network.currentPort = port
+        this.network.currentPort = port
         break
       } catch (error) {
         const errorMsg: string = (error as Error).message
@@ -332,8 +377,7 @@ export class A4Application {
    *
    */
   public async printAddress(): Promise<void> {
-    const a4Network: IA4Network = this.nestApp.get(A4_NETWORK)
-    const info = a4Network.getAddressInfo()
+    const info = this.network.getAddressInfo()
     const urls: string[] = [`http://127.0.0.1:${info.port}/`]
 
     if (info.bindIPv4) {
@@ -412,30 +456,5 @@ export class A4Application {
         res.status(404).send()
       }
     })
-  }
-
-  /**
-   *
-   * @public
-   *
-   *  初始化 `A4 Docs` 及衍生库。
-   *
-   */
-  public async initDocs(): Promise<void> {
-    const a4Docs: IA4Docs = this.nestApp.get(A4_DOCS)
-
-    await a4Docs.init(this)
-  }
-
-  /**
-   *
-   * @public
-   *
-   *  初始化 `A4 Safe` 及衍生库。
-   *
-   */
-  public async initSafe(): Promise<void> {
-    const a4Safe: IA4Safe = this.nestApp.get(A4_SAFE)
-    await a4Safe.init(this)
   }
 }

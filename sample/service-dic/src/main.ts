@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 17:05:30
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-06 09:24:33
+ * @LastEditTime : 2024-06-21 12:53:14
  */
 import 'reflect-metadata'
 
@@ -16,10 +16,6 @@ import { AppModule } from './app.module'
   const app = await A4Factory.create(AppModule, {
     logger: await A4Log4jsLogModule.getInitLogger(),
   })
-
-  await app.initDocs()
-
-  await app.initSafe()
 
   await app.microService.connect()
 

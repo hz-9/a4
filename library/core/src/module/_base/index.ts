@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-20 23:26:29
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-06 09:29:15
+ * @LastEditTime : 2024-06-21 11:01:58
  */
 import type { DynamicModule, FactoryProvider, Logger } from '@nestjs/common'
 
@@ -61,21 +61,21 @@ export abstract class A4ModuleBase {
    */
   public static forRootAsync: (options: Omit<FactoryProvider, 'provide'>) => DynamicModule
 
-  /**
-   * `A4Plus.runInit` 会自动寻找对象的 init 函数并执行。
-   */
-  public static init?: <P extends unknown[] = unknown[], R extends unknown = unknown>(
-    app: A4Application,
-    ...args: P
-  ) => R
+  // /**
+  //  * `A4Plus.runInit` 会自动寻找对象的 init 函数并执行。
+  //  */
+  // public static init?: <P extends unknown[] = unknown[], R extends unknown = unknown>(
+  //   app: A4Application,
+  //   ...args: P
+  // ) => R
 
-  /**
-   * `A4Plus.runStart` 会自动寻找对象的 start 函数并执行。
-   */
-  public static start?: <P extends unknown[] = unknown[], R extends unknown = unknown>(
-    app: A4Application,
-    ...args: P
-  ) => R
+  // /**
+  //  * `A4Plus.runStart` 会自动寻找对象的 start 函数并执行。
+  //  */
+  // public static start?: <P extends unknown[] = unknown[], R extends unknown = unknown>(
+  //   app: A4Application,
+  //   ...args: P
+  // ) => R
 
   /**
    * `A4Module.getConfig` 会快速获取配置信息。

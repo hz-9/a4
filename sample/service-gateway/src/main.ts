@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 17:05:30
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-01 01:57:52
+ * @LastEditTime : 2024-06-21 12:53:19
  */
 import 'reflect-metadata'
 
@@ -27,10 +27,6 @@ import { AppModule } from './app.module'
    */
   // app.useBodyParser('json', { prefix: '/rpc', limit: '100mb' })
   // app.useBodyParser('urlencoded', { prefix: '/rpc', limit: '100mb', extended: false })
-
-  await app.initDocs()
-
-  await app.initSafe()
 
   await app.microService.connect()
   await app.microService.start()
