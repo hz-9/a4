@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@hz-9/a4-core",
+      "comment": "docs: comprehensive documentation upgrade",
+      "type": "none"
+    }
+  ],
+  "packageName": "@hz-9/a4-core"
+}

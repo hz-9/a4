@@ -2,6 +2,14 @@
   "name": "@hz-9/a4-log-log4js",
   "version": "0.3.2",
   "description": "",
+  "keywords": [
+    "nest",
+    "a4",
+    "a4-log",
+    "a4-log-log4js",
+    "log4js"
+  ],
+  "homepage": "https://hz-9.github.io/a4/guide/a4-log-log4js",
   "bugs": {
     "url": "https://github.com/hz-9/a4/issues"
   },

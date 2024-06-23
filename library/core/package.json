@@ -2,6 +2,12 @@
   "name": "@hz-9/a4-core",
   "version": "0.3.2",
   "description": "The core library for the `@hz-9/a4-*` series of repositories.",
+  "keywords": [
+    "nest",
+    "a4",
+    "a4-core"
+  ],
+  "homepage": "https://hz-9.github.io/a4/guide/a4-core",
   "bugs": {
     "url": "https://github.com/hz-9/a4/issues"
   },

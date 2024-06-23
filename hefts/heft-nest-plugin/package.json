@@ -2,6 +2,13 @@
   "name": "@hz-9/heft-nest-plugin",
   "version": "0.1.0",
   "description": "A heft plugin package for Nest.js projects.",
+  "keywords": [
+    "heft",
+    "rig",
+    "nest",
+    "a4"
+  ],
+  "homepage": "https://hz-9.github.io/a4/guide/heft-node-plugin",
   "bugs": {
     "url": "https://github.com/hz-9/a4/issues"
   },

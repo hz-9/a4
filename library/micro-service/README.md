@@ -8,17 +8,9 @@ A library for microservice RPC communication in `@hz-9/a4-*` applications. It is
 [npm-license-url]: https://img.shields.io/npm/l/@hz-9/a4-micro-service
 [npm-downloads-url]: https://img.shields.io/npm/d18m/@hz-9/a4-micro-service
 
+> Please visit [@hz-9/a4-micro-service](https://hz-9.github.io/a4/guide/a4-micro-service) for detailed documentation.
+
 ## Introduction
-
-Please see [document](https://hz-9.github.io/a4/home/a4-micro-service).
-
-## Installation
-
-``` bash
-npm install @hz-9/a4-micro-service
-```
-
-## Usage
 
 Pending replenishment!
 <!-- TODO -->

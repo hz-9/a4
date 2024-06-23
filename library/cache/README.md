@@ -8,17 +8,9 @@ A library for cache management in `@hz-9/a4-*` applications. It internally utili
 [npm-license-url]: https://img.shields.io/npm/l/@hz-9/a4-cache
 [npm-downloads-url]: https://img.shields.io/npm/d18m/@hz-9/a4-cache
 
+> Please visit [@hz-9/heft-nest-plugin](https://hz-9.github.io/a4/guide/heft-nest-plugin) for detailed documentation.
+
 ## Introduction
-
-Please see [document](https://hz-9.github.io/a4/home/a4-cache).
-
-## Installation
-
-``` bash
-npm install @hz-9/a4-cache
-```
-
-## Usage
 
 Pending replenishment!
 <!-- TODO -->

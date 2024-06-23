@@ -8,17 +8,9 @@ A library for performing CRUD operations with Elasticsearch in `@hz-9/a4-*` appl
 [npm-license-url]: https://img.shields.io/npm/l/@hz-9/a4-crud-elasticsearch
 [npm-downloads-url]: https://img.shields.io/npm/d18m/@hz-9/a4-crud-elasticsearch
 
+> Please visit [@hz-9/a4-crud-elasticsearch](https://hz-9.github.io/a4/guide/a4-crud-elasticsearch) for detailed documentation.
+
 ## Introduction
-
-Please see [document](https://hz-9.github.io/a4/home/a4-crud-elasticsearch).
-
-## Installation
-
-``` bash
-npm install @hz-9/a4-crud-elasticsearch
-```
-
-## Usage
 
 Pending replenishment!
 <!-- TODO -->

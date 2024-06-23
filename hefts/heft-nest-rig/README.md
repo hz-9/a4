@@ -10,6 +10,8 @@ A rig package for Nest.js projects that build using Heft build system. To learn 
 [npm-license-url]: https://img.shields.io/npm/l/@hz-9/heft-nest-rig
 [npm-downloads-url]: https://img.shields.io/npm/d18m/@hz-9/heft-nest-rig
 
+> Please visit [@hz-9/heft-nest-rig](https://hz-9.github.io/a4/guide/heft-nest-rig) for detailed documentation.
+
 ## Introduction
 
 `@hz-9/heft-nest-rig` is a rig pacakge. So the project must have used [Heft](https://heft.rushstack.io/).

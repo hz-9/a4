@@ -9,17 +9,9 @@ A library for a logging module in @hz-9/a4-* applications. It utilizes [log4js] 
 [npm-license-url]: https://img.shields.io/npm/l/@hz-9/a4-log-log4js
 [npm-downloads-url]: https://img.shields.io/npm/d18m/@hz-9/a4-log-log4js
 
+> Please visit [@hz-9/a4-log-log4js](https://hz-9.github.io/a4/guide/a4-log-log4js) for detailed documentation.
+
 ## Introduction
-
-Please see [document](https://hz-9.github.io/a4/home/a4-log-log4js).
-
-## Installation
-
-``` bash
-npm install @hz-9/a4-log-log4js
-```
-
-## Usage
 
 Pending replenishment!
 <!-- TODO -->

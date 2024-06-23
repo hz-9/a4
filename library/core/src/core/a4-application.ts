@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-14 17:26:12
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-21 12:45:52
+ * @LastEditTime : 2024-06-22 10:48:16
  */
 import { Logger } from '@nestjs/common'
 import { HttpAdapterHost, ModuleRef, NestApplication } from '@nestjs/core'
@@ -273,7 +273,7 @@ export class A4Application {
         logger: false,
       })
     } catch (error) {
-      this.logger.warn(`'A4 Config' is not loaded.`)
+      this.logger.warn(`'A4 Config' is not loaded, close the '/info/*' route.`)
     }
   }
 
@@ -290,7 +290,7 @@ export class A4Application {
       const a4Docs: IA4Docs = moduleRef.get(A4_DOCS, { strict: false })
       await a4Docs.init(this)
     } catch (error) {
-      this.logger.warn(`'A4 Docs' is not loaded.`)
+      this.logger.debug(`'A4 Docs' is not loaded.`)
     }
   }
 
@@ -307,7 +307,7 @@ export class A4Application {
       const a4Safe: IA4Safe = moduleRef.get(A4_SAFE, { strict: false })
       await a4Safe.init(this)
     } catch (error) {
-      this.logger.warn(`'A4 Safe' is not loaded.`)
+      this.logger.debug(`'A4 Safe' is not loaded.`)
     }
   }
 

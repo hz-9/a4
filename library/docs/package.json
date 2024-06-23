@@ -2,6 +2,14 @@
   "name": "@hz-9/a4-docs",
   "version": "0.3.2",
   "description": "",
+  "keywords": [
+    "nest",
+    "a4",
+    "a4-docs",
+    "openapi",
+    "swagger"
+  ],
+  "homepage": "https://hz-9.github.io/a4/guide/a4-docs",
   "bugs": {
     "url": "https://github.com/hz-9/a4/issues"
   },

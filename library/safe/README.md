@@ -8,17 +8,9 @@ A library for safe module in `@hz-9/a4-*` applications.  It controls CORS config
 [npm-license-url]: https://img.shields.io/npm/l/@hz-9/a4-safe
 [npm-downloads-url]: https://img.shields.io/npm/d18m/@hz-9/a4-safe
 
+> Please visit [@hz-9/a4-safe](https://hz-9.github.io/a4/guide/a4-safe) for detailed documentation.
+
 ## Introduction
-
-Please see [document](https://hz-9.github.io/a4/home/a4-safe).
-
-## Installation
-
-``` bash
-npm install @hz-9/a4-safe
-```
-
-## Usage
 
 Pending replenishment!
 <!-- TODO -->

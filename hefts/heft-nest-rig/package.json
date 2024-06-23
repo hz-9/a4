@@ -2,6 +2,13 @@
   "name": "@hz-9/heft-nest-rig",
   "version": "0.1.0",
   "description": "A rig package for Nest.js projects that build using Heft build system.",
+  "keywords": [
+    "heft",
+    "rig",
+    "nest",
+    "a4"
+  ],
+  "homepage": "https://hz-9.github.io/a4/guide/heft-node-rig",
   "bugs": {
     "url": "https://github.com/hz-9/a4/issues"
   },

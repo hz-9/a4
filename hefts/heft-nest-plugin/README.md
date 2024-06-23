@@ -8,6 +8,8 @@ A heft plugin package for Nest.js projects.
 [npm-license-url]: https://img.shields.io/npm/l/@hz-9/heft-nest-plugin
 [npm-downloads-url]: https://img.shields.io/npm/d18m/@hz-9/heft-nest-plugin
 
+> Please visit [@hz-9/heft-nest-plugin](https://hz-9.github.io/a4/guide/heft-nest-plugin) for detailed documentation.
+
 ## Introduction
 
 `@hz-9/heft-nest-plugin` introduces several extensions that are currently being utilized in `@hz-9/heft-nest-rig`.

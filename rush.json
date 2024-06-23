@@ -509,6 +509,11 @@
     },
 
     {
+      "packageName": "sample-service-simplest",
+      "projectFolder": "sample/service-simplest"
+    },
+
+    {
       "packageName": "sample-service-user-center",
       "projectFolder": "sample/service-user-center"
     }

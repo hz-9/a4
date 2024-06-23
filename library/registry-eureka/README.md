@@ -9,17 +9,9 @@ A library for a registry center module in @hz-9/a4-* applications. It utilizes [
 [npm-license-url]: https://img.shields.io/npm/l/@hz-9/a4-registry-eureka
 [npm-downloads-url]: https://img.shields.io/npm/d18m/@hz-9/a4-registry-eureka
 
+> Please visit [@hz-9/a4-registry-eureka](https://hz-9.github.io/a4/guide/a4-registry-eureka) for detailed documentation.
+
 ## Introduction
-
-Please see [document](https://hz-9.github.io/a4/home/a4-registry-eureka).
-
-## Installation
-
-``` bash
-npm install @hz-9/a4-registry-eureka
-```
-
-## Usage
 
 Pending replenishment!
 <!-- TODO -->

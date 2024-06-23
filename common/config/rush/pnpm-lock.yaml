@@ -1202,6 +1202,115 @@ importers:
         specifier: ^5.0.0
         version: 5.92.0
 
+  ../../sample/service-simplest:
+    dependencies:
+      '@hz-9/a4-config':
+        specifier: workspace:*
+        version: link:../../library/config
+      '@hz-9/a4-core':
+        specifier: workspace:*
+        version: link:../../library/core
+      '@hz-9/a4-docs':
+        specifier: workspace:*
+        version: link:../../library/docs
+      '@hz-9/a4-log-log4js':
+        specifier: workspace:*
+        version: link:../../library/log-log4js
+      '@hz-9/a4-micro-service':
+        specifier: workspace:*
+        version: link:../../library/micro-service
+      '@hz-9/a4-network':
+        specifier: workspace:*
+        version: link:../../library/network
+      '@hz-9/a4-registry-eureka':
+        specifier: workspace:*
+        version: link:../../library/registry-eureka
+      '@hz-9/a4-safe':
+        specifier: workspace:*
+        version: link:../../library/safe
+      '@nestjs/common':
+        specifier: ^10.0.0
+        version: 10.3.9(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.1.14)(rxjs@7.8.1)
+      '@nestjs/core':
+        specifier: ^10.0.0
+        version: 10.3.9(@nestjs/common@10.3.9)(@nestjs/microservices@10.3.9)(reflect-metadata@0.1.14)(rxjs@7.8.1)
+      class-transformer:
+        specifier: ~0.5.1
+        version: 0.5.1
+      class-validator:
+        specifier: ~0.14.0
+        version: 0.14.1
+      http-proxy:
+        specifier: ~1.18.1
+        version: 1.18.1
+      ioredis:
+        specifier: ^5.3.2
+        version: 5.4.1
+      jsonwebtoken:
+        specifier: ~9.0.2
+        version: 9.0.2
+      pg:
+        specifier: ~8.11.3
+        version: 8.11.6
+      reflect-metadata:
+        specifier: ^0.1.13
+        version: 0.1.14
+      rxjs:
+        specifier: ^7.8.1
+        version: 7.8.1
+    devDependencies:
+      '@hz-9/eslint-config-airbnb-ts':
+        specifier: ~0.5.4
+        version: 0.5.4(eslint@8.57.0)(typescript@5.3.3)
+      '@hz-9/heft-nest-rig':
+        specifier: workspace:*
+        version: link:../../hefts/heft-nest-rig
+      '@nestjs/cli':
+        specifier: ^10.0.0
+        version: 10.3.2
+      '@types/http-proxy':
+        specifier: ~1.17.14
+        version: 1.17.14
+      '@types/jest':
+        specifier: ^29.5.2
+        version: 29.5.12
+      '@types/jsonwebtoken':
+        specifier: ~9.0.6
+        version: 9.0.6
+      '@types/node':
+        specifier: ~20.3.1
+        version: 20.3.3
+      '@types/qs':
+        specifier: ~6.9.9
+        version: 6.9.15
+      eslint:
+        specifier: ^8.2.0
+        version: 8.57.0
+      jest:
+        specifier: ^29.5.0
+        version: 29.7.0(@types/node@20.3.3)(ts-node@10.9.2)
+      source-map-support:
+        specifier: ^0.5.21
+        version: 0.5.21
+      ts-jest:
+        specifier: ^29.1.0
+        version: 29.1.4(jest@29.7.0)(typescript@5.3.3)
+      ts-loader:
+        specifier: ^9.4.3
+        version: 9.5.1(typescript@5.3.3)(webpack@5.92.0)
+      ts-node:
+        specifier: ^10.9.1
+        version: 10.9.2(@types/node@20.3.3)(typescript@5.3.3)
+      tsconfig-paths:
+        specifier: ^4.2.0
+        version: 4.2.0
+      typescript:
+        specifier: '>=5.0.0 <5.4.0'
+        version: 5.3.3
+      webpack:
+        specifier: ^5.0.0
+        version: 5.92.0
+
   ../../sample/service-user-center:
     dependencies:
       '@hz-9/a4-cache':
@@ -1812,6 +1921,7 @@ packages:
   /@humanwhocodes/config-array@0.11.14:
     resolution: {integrity: sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==}
     engines: {node: '>=10.10.0'}
+    deprecated: Use @eslint/config-array instead
     dependencies:
       '@humanwhocodes/object-schema': 2.0.3
       debug: 4.3.5
@@ -1823,6 +1933,7 @@ packages:
   /@humanwhocodes/config-array@0.9.5:
     resolution: {integrity: sha512-ObyMyWxZiCu/yTisA7uzx81s40xR2fD5Cg/2Kq7G02ajkNubJf6BopgDTmDyc3U7sXpNKM8cYOw7s7Tyr+DnCw==}
     engines: {node: '>=10.10.0'}
+    deprecated: Use @eslint/config-array instead
     dependencies:
       '@humanwhocodes/object-schema': 1.2.1
       debug: 4.3.5
@@ -1838,10 +1949,12 @@ packages:
 
   /@humanwhocodes/object-schema@1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
+    deprecated: Use @eslint/object-schema instead
     dev: true
 
   /@humanwhocodes/object-schema@2.0.3:
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
+    deprecated: Use @eslint/object-schema instead
     dev: true
 
   /@hz-9/eslint-config-airbnb-ts@0.5.4(eslint@8.57.0)(typescript@5.3.3):

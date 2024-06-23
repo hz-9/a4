@@ -8,17 +8,9 @@ A code generation tool for `@hz-9/a4-*` applications. It is recommended not to u
 [npm-license-url]: https://img.shields.io/npm/l/@hz-9/a4-cli
 [npm-downloads-url]: https://img.shields.io/npm/d18m/@hz-9/a4-cli
 
+> Please visit [@hz-9/a4-cli](https://hz-9.github.io/a4/guide/a4-cli) for detailed documentation.
+
 ## Introduction
-
-Please see [document](https://hz-9.github.io/a4/home/a4-cli).
-
-## Installation
-
-``` bash
-npm install @hz-9/a4-cli
-```
-
-## Usage
 
 Pending replenishment!
 <!-- TODO -->

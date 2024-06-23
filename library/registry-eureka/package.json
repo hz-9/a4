@@ -2,6 +2,14 @@
   "name": "@hz-9/a4-registry-eureka",
   "version": "0.3.2",
   "description": "",
+  "keywords": [
+    "nest",
+    "a4",
+    "a4-registry-eureka",
+    "registry-eureka",
+    "eureka"
+  ],
+  "homepage": "https://hz-9.github.io/a4/guide/a4-registry-eureka",
   "bugs": {
     "url": "https://github.com/hz-9/a4/issues"
   },

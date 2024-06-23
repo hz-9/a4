@@ -8,17 +8,9 @@ A library for using redlock in `@hz-9/a4-*` applications. It internally utilizes
 [npm-license-url]: https://img.shields.io/npm/l/@hz-9/a4-lock-redlock
 [npm-downloads-url]: https://img.shields.io/npm/d18m/@hz-9/a4-lock-redlock
 
+> Please visit [@hz-9/a4-lock-redlock](https://hz-9.github.io/a4/guide/a4-lock-redlock) for detailed documentation.
+
 ## Introduction
-
-Please see [document](https://hz-9.github.io/a4/home/a4-lock-redlock).
-
-## Installation
-
-``` bash
-npm install @hz-9/a4-lock-redlock
-```
-
-## Usage
 
 Pending replenishment!
 <!-- TODO -->
