@@ -8,22 +8,4 @@ A heft plugin package for Nest.js projects.
 [npm-license-url]: https://img.shields.io/npm/l/@hz-9/heft-nest-plugin
 [npm-downloads-url]: https://img.shields.io/npm/d18m/@hz-9/heft-nest-plugin
 
-> Please visit [@hz-9/heft-nest-plugin](https://hz-9.github.io/a4/guide/heft-nest-plugin) for detailed documentation.
-
-## Introduction
-
-`@hz-9/heft-nest-plugin` introduces several extensions that are currently being utilized in `@hz-9/heft-nest-rig`.
-
-Here are the extensions provided by `@hz-9/heft-nest-plugin`:
-
-| Heft Plugins      | Description              | Arguments                    |
-| ----------------- | ------------------------ | ---------------------------- |
-| nest-start-plugin | Starts a Nest.js project | `--watch` `--debug` `--prod` |
-| nest-lint-plugin  | Run ESLint checks        | `--fix`                      |
-| nest-build-plugin | Builds a Nest.js project |                              |
-
-## Installation
-
-``` bash
-npm install @hz-9/heft-nest-plugin
-```
+[English Document](https://hz-9.github.io/a4/guide/heft-nest-plugin/) | [中文文档](https://hz-9.github.io/a4/zh-CN/guide/heft-nest-plugin/)

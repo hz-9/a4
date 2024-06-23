@@ -26,7 +26,7 @@
   //   ]
   // },
   {
-    "text": "开发者",
+    "text": "Developer",
     "collapsible": true,
     "children": ["developer/to-developer.md", "developer/publish.md"]
   }

@@ -8,9 +8,4 @@ A library for loading configuration information in `@hz-9/a4-*` applications. It
 [npm-license-url]: https://img.shields.io/npm/l/@hz-9/a4-config
 [npm-downloads-url]: https://img.shields.io/npm/d18m/@hz-9/a4-config
 
-> Please visit [@hz-9/a4-config](https://hz-9.github.io/a4/guide/a4-config) for detailed documentation.
-
-## Introduction
-
-Pending replenishment!
-<!-- TODO -->
+[English Document](https://hz-9.github.io/a4/guide/a4-config/) | [中文文档](https://hz-9.github.io/a4/zh-CN/guide/a4-config/)

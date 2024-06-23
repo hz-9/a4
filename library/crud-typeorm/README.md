@@ -9,9 +9,4 @@ A library for performing CRUD operations with [TypeORM] in `@hz-9/a4-*` applicat
 [npm-license-url]: https://img.shields.io/npm/l/@hz-9/a4-crud-typeorm
 [npm-downloads-url]: https://img.shields.io/npm/d18m/@hz-9/a4-crud-typeorm
 
-> Please visit [@hz-9/a4-crud-typeorm](https://hz-9.github.io/a4/guide/a4-crud-typeorm) for detailed documentation.
-
-## Introduction
-
-Pending replenishment!
-<!-- TODO -->
+[English Document](https://hz-9.github.io/a4/guide/a4-crud-typeorm/) | [中文文档](https://hz-9.github.io/a4/zh-CN/guide/a4-crud-typeorm/)
