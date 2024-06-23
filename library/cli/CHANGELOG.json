@@ -2,6 +2,24 @@
   "name": "@hz-9/a4-cli",
   "entries": [
     {
+      "version": "0.2.4",
+      "tag": "@hz-9/a4-cli_v0.2.4",
+      "date": "Sun, 23 Jun 2024 15:29:19 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.2.3",
+      "tag": "@hz-9/a4-cli_v0.2.3",
+      "date": "Sun, 23 Jun 2024 15:28:57 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "docs: comprehensive documentation upgrade"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.2.2",
       "tag": "@hz-9/a4-cli_v0.2.2",
       "date": "Fri, 21 Jun 2024 02:55:54 GMT",

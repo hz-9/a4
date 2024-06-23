@@ -1,6 +1,18 @@
 # Change Log - @hz-9/a4-cli
 
-This log was last generated on Fri, 21 Jun 2024 02:55:54 GMT and should not be manually modified.
+This log was last generated on Sun, 23 Jun 2024 15:29:19 GMT and should not be manually modified.
+
+## 0.2.4
+Sun, 23 Jun 2024 15:29:19 GMT
+
+_Version update only_
+
+## 0.2.3
+Sun, 23 Jun 2024 15:28:57 GMT
+
+### Updates
+
+- docs: comprehensive documentation upgrade
 
 ## 0.2.2
 Fri, 21 Jun 2024 02:55:54 GMT

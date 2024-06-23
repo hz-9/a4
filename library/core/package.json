@@ -1,6 +1,6 @@
 {
   "name": "@hz-9/a4-core",
-  "version": "0.3.2",
+  "version": "0.3.4",
   "description": "The core library for the `@hz-9/a4-*` series of repositories.",
   "keywords": [
     "nest",
