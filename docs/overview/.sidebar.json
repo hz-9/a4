@@ -1,28 +1,34 @@
 [
   "",
+  {
+    "text": "Summary",
+    "collapsible": true,
+    "children": [
+      "summary/start",
+      "summary/config",
+      "summary/log",
+      "summary/network",
+      "summary/crud",
+      "summary/docs",
+      "summary/cache",
+      "summary/schedule",
+      "summary/safe"
+    ]
+  },
   // {
-  //   "text": "Summary",
+  //   "text": "Advance",
   //   "collapsible": true,
   //   "children": [
-  //     "summary/start",
-  //     "summary/crud",
-  //     "summary/config",
-  //     "summary/logger",
-  //     "summary/network",
-  //     "summary/safe",
-  //     "summary/test",
-  //     "summary/docs",
-  //     "summary/ci-cd",
-  //     "summary/micro-service",
-  //     "summary/third-party"
+  //     "advance/schedule",
+  //     "advance/lock-redlock"
   //   ]
   // },
   // {
-  //   "text": "实践",
+  //   "text": "Micro Service",
   //   "collapsible": true,
   //   "children": [
-  //     "practice/single-init",
-  //     "practice/rush-init"
+  //     "micro-service/rpc",
+  //     "micro-service/registry"
   //   ]
   // },
   {

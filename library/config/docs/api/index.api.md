@@ -73,14 +73,16 @@ export class FileConfigLoader extends BaseConfigLoader<IFileConfigPreOptions, IF
     protected withDefaultOptions(options: IFileConfigPreOptions): IFileConfigOptions;
 }
 
+// Warning: (ae-forgotten-export) The symbol "IA4ConfigModuleOptions1" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "IA4ConfigModuleOptions2" needs to be exported by the entry point index.d.ts
+//
 // @public
-export interface IA4ConfigModuleOptions extends AllConfigPreOptions {
-    // (undocumented)
-    Schema: ClassConstructor<object> | ClassConstructor<object>[];
-}
+export type IA4ConfigModuleOptions = IA4ConfigModuleOptions1 | IA4ConfigModuleOptions2;
 
 // @public
 export interface IFileConfigOptions extends Required<IFileConfigPreOptions> {
+    // (undocumented)
+    configFile: string[];
     // (undocumented)
     rootDir: string[];
 }
@@ -89,10 +91,10 @@ export interface IFileConfigOptions extends Required<IFileConfigPreOptions> {
 //
 // @public
 export interface IFileConfigPreOptions extends IBaseConfigOptions {
-    configFile?: string;
+    configFile?: string | string[];
     rootDir?: string | string[];
     // (undocumented)
-    type: 'file';
+    type: 'file' | undefined;
 }
 
 // (No @packageDocumentation comment for this package)

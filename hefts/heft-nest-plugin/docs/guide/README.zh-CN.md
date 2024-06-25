@@ -3,10 +3,13 @@
 一个为 Nest.js 项目准备的 [Heft](https://heft.rushstack.io/) 插件包。通常在 [rig](https://heft.rushstack.io/pages/intro/rig_packages/) 包中被使用。
 
 ![NPM 版本][npm-version-url] ![NPM 许可证][npm-license-url] ![NPM 下载量][npm-downloads-url]
+<br /> ![Node 版本][node-version-url] ![最后提交][last-commit-url]
 
-[npm-version-url]: https://img.shields.io/npm/v/@hz-9/heft-nest-plugin
-[npm-license-url]: https://img.shields.io/npm/l/@hz-9/heft-nest-plugin
-[npm-downloads-url]: https://img.shields.io/npm/d18m/@hz-9/heft-nest-plugin
+[npm-version-url]: https://badgen.net/npm/v/@hz-9/heft-nest-plugin
+[npm-license-url]: https://badgen.net/npm/license/@hz-9/heft-nest-plugin
+[npm-downloads-url]: https://badgen.net/npm/dt/@hz-9/heft-nest-plugin
+[node-version-url]: https://badgen.net/npm/node/@hz-9/heft-nest-plugin
+[last-commit-url]: https://badgen.net/github/last-commit/hz-9/a4
 
 ## 介绍
 

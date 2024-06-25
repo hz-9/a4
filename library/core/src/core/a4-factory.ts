@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-14 11:44:19
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-21 12:57:12
+ * @LastEditTime : 2024-06-25 00:06:54
  */
 import type { NestApplicationOptions } from '@nestjs/common'
 import { NestApplication } from '@nestjs/core/nest-application'
@@ -56,6 +56,7 @@ export class A4Factory {
         prefix: options.bodyParserPrefix,
         limit: options.bodyParserLimit ?? '100kb',
       })
+
       nestApplication.useBodyParser('urlencoded', {
         prefix: options?.bodyParserPrefix,
         limit: options?.bodyParserLimit ?? '100kb',
@@ -69,8 +70,11 @@ export class A4Factory {
 
     const nestApplication: NestApplication = await NestFactory.create(module, new A4ExpressAdapter(), {
       ...options,
+
       bodyParser: false, // 不再自动创建，使用 A4Factory._initBodyParser 手动创建。
     })
+
+    // TODO await NestFactory.create<NestExpressApplication>(AppModule); 才是合理的写法。
 
     this.initBodyParser(nestApplication, options)
 

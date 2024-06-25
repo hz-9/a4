@@ -844,7 +844,7 @@
                 {
                   "kind": "Reference",
                   "text": "IA4ConfigModuleOptions",
-                  "canonicalReference": "@hz-9/a4-config!IA4ConfigModuleOptions:interface"
+                  "canonicalReference": "@hz-9/a4-config!IA4ConfigModuleOptions:type"
                 },
                 {
                   "kind": "Content",
@@ -898,7 +898,7 @@
                 {
                   "kind": "Reference",
                   "text": "IA4ConfigModuleOptions",
-                  "canonicalReference": "@hz-9/a4-config!IA4ConfigModuleOptions:interface"
+                  "canonicalReference": "@hz-9/a4-config!IA4ConfigModuleOptions:type"
                 },
                 {
                   "kind": "Content",
@@ -1013,7 +1013,7 @@
         {
           "kind": "TypeAlias",
           "canonicalReference": "@hz-9/a4-config!AllConfigPreOptions:type",
-          "docComment": "/**\n * 多个类型加载对象配置项的联合类型\n *\n * @public\n */\n",
+          "docComment": "/**\n * 多个类型加载对象配置项的联合类型。\n *\n * type 默认为 Default\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -1209,77 +1209,40 @@
           "implementsTokenRanges": []
         },
         {
-          "kind": "Interface",
-          "canonicalReference": "@hz-9/a4-config!IA4ConfigModuleOptions:interface",
+          "kind": "TypeAlias",
+          "canonicalReference": "@hz-9/a4-config!IA4ConfigModuleOptions:type",
           "docComment": "/**\n * 配置信息加载配置项。\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export interface IA4ConfigModuleOptions extends "
+              "text": "export type IA4ConfigModuleOptions = "
             },
             {
               "kind": "Reference",
-              "text": "AllConfigPreOptions",
-              "canonicalReference": "@hz-9/a4-config!AllConfigPreOptions:type"
+              "text": "IA4ConfigModuleOptions1",
+              "canonicalReference": "@hz-9/a4-config!~IA4ConfigModuleOptions1:interface"
             },
             {
               "kind": "Content",
-              "text": " "
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "IA4ConfigModuleOptions2",
+              "canonicalReference": "@hz-9/a4-config!~IA4ConfigModuleOptions2:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
             }
           ],
           "fileUrlPath": "dist/module/config.module.d.ts",
           "releaseTag": "Public",
           "name": "IA4ConfigModuleOptions",
-          "preserveMemberOrder": false,
-          "members": [
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/a4-config!IA4ConfigModuleOptions#Schema:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "Schema: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "ClassConstructor",
-                  "canonicalReference": "class-transformer!ClassConstructor:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<object> | "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "ClassConstructor",
-                  "canonicalReference": "class-transformer!ClassConstructor:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<object>[]"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "Schema",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 5
-              }
-            }
-          ],
-          "extendsTokenRanges": [
-            {
-              "startIndex": 1,
-              "endIndex": 2
-            }
-          ]
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 4
+          }
         },
         {
           "kind": "Interface",
@@ -1318,6 +1281,33 @@
           "name": "IFileConfigOptions",
           "preserveMemberOrder": false,
           "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/a4-config!IFileConfigOptions#configFile:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "configFile: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "configFile",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
             {
               "kind": "PropertySignature",
               "canonicalReference": "@hz-9/a4-config!IFileConfigOptions#rootDir:member",
@@ -1388,7 +1378,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "string"
+                  "text": "string | string[]"
                 },
                 {
                   "kind": "Content",
@@ -1442,7 +1432,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "'file'"
+                  "text": "'file' | undefined"
                 },
                 {
                   "kind": "Content",

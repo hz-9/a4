@@ -107,6 +107,11 @@ export class A4CrudUtil {
 }
 
 // @public
+export class A4DefaultUtil {
+    static strOrArrWithDefault(strOrArr: undefined | string | string[], defaultValue: string[]): string[];
+}
+
+// @public
 export class A4Error extends Error {
     constructor(message: string);
     // (undocumented)

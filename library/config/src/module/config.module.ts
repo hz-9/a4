@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-15 22:41:02
+ * @LastEditTime : 2024-06-25 11:05:03
  */
 import { DynamicModule, FactoryProvider, Logger, Module } from '@nestjs/common'
 import type { ClassConstructor } from 'class-transformer'
@@ -14,6 +14,16 @@ import { ConfigModuleError } from '../errors'
 import { AllConfigLoader, AllConfigPreOptions, FileConfigLoader } from '../loader'
 import { A4Config } from './config'
 
+interface IA4ConfigModuleOptions1 extends AllConfigPreOptions {
+  ignoreSchema: true
+  Schema?: ClassConstructor<object> | ClassConstructor<object>[]
+}
+
+interface IA4ConfigModuleOptions2 extends AllConfigPreOptions {
+  ignoreSchema?: false
+  Schema: ClassConstructor<object> | ClassConstructor<object>[]
+}
+
 /**
  *
  * @public
@@ -21,9 +31,7 @@ import { A4Config } from './config'
  *  配置信息加载配置项。
  *
  */
-export interface IA4ConfigModuleOptions extends AllConfigPreOptions {
-  Schema: ClassConstructor<object> | ClassConstructor<object>[]
-}
+export type IA4ConfigModuleOptions = IA4ConfigModuleOptions1 | IA4ConfigModuleOptions2
 
 /**
  * @public
@@ -83,7 +91,7 @@ export class A4ConfigModule implements A4ModuleBase, IA4ConfigModule {
     // eslint-disable-next-line no-undef-init
     let loader: AllConfigLoader | undefined = undefined
 
-    if (options.type === 'file') {
+    if (options.type === undefined || options.type === 'file') {
       loader = new FileConfigLoader(options)
     }
 
@@ -93,8 +101,9 @@ export class A4ConfigModule implements A4ModuleBase, IA4ConfigModule {
     const loadedConfig = await loader.asyncLoad()
     this.logger.log(successLogger)
 
-    if (!Array.isArray(options.Schema)) return ClassValidatorUtil.parse(options.Schema, loadedConfig)
+    if (options.ignoreSchema === true) return loadedConfig
 
+    if (!Array.isArray(options.Schema)) return ClassValidatorUtil.parse(options.Schema, loadedConfig)
     // 各个模块多次独立解析。
     let result: object = {}
     options.Schema.forEach((s: ClassConstructor<object>) => {

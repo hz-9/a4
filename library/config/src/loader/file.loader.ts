@@ -2,14 +2,14 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-15 23:06:57
+ * @LastEditTime : 2024-06-25 10:43:12
  */
 import { isObject } from '@nestjs/common/utils/shared.utils'
 import fs from 'node:fs'
 import path from 'node:path'
 import { parse as parseYml } from 'yaml'
 
-import { A4Util } from '@hz-9/a4-core'
+import { A4DefaultUtil } from '@hz-9/a4-core'
 
 import { A4_CONFIG_FILE } from '../const/index'
 import { ConfigModuleError } from '../errors'
@@ -23,7 +23,7 @@ import { BaseConfigLoader, IBaseConfigOptions } from './base.loader'
  *
  */
 export interface IFileConfigPreOptions extends IBaseConfigOptions {
-  type: 'file'
+  type: 'file' | undefined
 
   /**
    *
@@ -38,7 +38,7 @@ export interface IFileConfigPreOptions extends IBaseConfigOptions {
    * 配置文件文件名。可选。默认为 [A4_CONFIG_FILE]
    *
    */
-  configFile?: string
+  configFile?: string | string[]
 }
 
 /**
@@ -50,6 +50,7 @@ export interface IFileConfigPreOptions extends IBaseConfigOptions {
  */
 export interface IFileConfigOptions extends Required<IFileConfigPreOptions> {
   rootDir: string[]
+  configFile: string[]
 }
 
 /**
@@ -61,36 +62,38 @@ export interface IFileConfigOptions extends Required<IFileConfigPreOptions> {
  */
 export class FileConfigLoader extends BaseConfigLoader<IFileConfigPreOptions, IFileConfigOptions> {
   protected withDefaultOptions(options: IFileConfigPreOptions): IFileConfigOptions {
-    let rootDir: string[] = []
-    if (typeof options.rootDir === 'string') {
-      rootDir = [A4Util.noAbsoluteWith(options.rootDir, process.cwd())]
-    } else if (Array.isArray(options.rootDir) && options.rootDir.length) {
-      rootDir = options.rootDir.map((i) => A4Util.noAbsoluteWith(i, process.cwd()))
-    } else {
-      rootDir = [process.cwd()]
-    }
-
     return {
       type: options.type,
-      rootDir,
-      configFile: options.configFile ?? A4_CONFIG_FILE,
+      rootDir: A4DefaultUtil.strOrArrWithDefault(options.rootDir, [process.cwd()]),
+      configFile: A4DefaultUtil.strOrArrWithDefault(options.configFile, [A4_CONFIG_FILE]),
     }
   }
 
   public async asyncLoad(): Promise<object> {
     const { rootDir, configFile } = this.options
-    const configPath = rootDir.map((i) => path.resolve(i, configFile)).find((i) => fs.existsSync(i))
 
-    if (!configPath) throw new ConfigModuleError('Not found config file.')
+    const tryFiles: string[] = []
+    rootDir.forEach((i) => {
+      configFile.forEach((j) => {
+        tryFiles.push(path.resolve(process.cwd(), i, j))
+      })
+    })
 
-    const fileInfo = fs.readFileSync(configPath, { encoding: 'utf8' })
-    const configInfo = parseYml(fileInfo)
+    const f = tryFiles.find((i) => fs.existsSync(i))
+    if (!f) throw new ConfigModuleError('Not found config file.')
 
-    /**
-     * FIXME 在读取配置时，直接将当前环境添加至配置信息中。
-     */
-    if (isObject(configInfo.a4)) configInfo.A4.NODE_ENV = process.env.NODE_ENV
-    return configInfo
+    try {
+      const fileInfo = fs.readFileSync(f, { encoding: 'utf8' })
+      const configInfo = parseYml(fileInfo)
+
+      /**
+       * FIXME 在读取配置时，直接将当前环境添加至配置信息中。
+       */
+      if (isObject(configInfo.a4)) configInfo.A4.NODE_ENV = process.env.NODE_ENV
+      return configInfo
+    } catch (error: unknown) {
+      throw new ConfigModuleError(`Parse config file error. ${(error as Error).message}`)
+    }
   }
 
   public getSuccessLoggerMsg(): string {
