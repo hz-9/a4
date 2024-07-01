@@ -2,14 +2,14 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-01 01:31:53
+ * @LastEditTime : 2024-07-01 23:20:30
  */
 
 /* eslint-disable max-classes-per-file */
 import { Type } from 'class-transformer'
 import { IsObject, ValidateNested } from 'class-validator'
 
-import { ClassValidatorUtil as CU, IsOptionalNotNull } from '@hz-9/a4-core'
+import { CU, IsOptionalNotNull } from '@hz-9/a4-core'
 
 import { A4SafeCORSModuleSchema } from './cors.safe.schema'
 import { A4SafeHelmetModuleSchema } from './helmet.safe.schema'
@@ -71,5 +71,5 @@ export class A4SafeModuleSchemaA {
   @IsObject()
   @ValidateNested()
   @Type(() => A4SafeModuleSchemaB)
-  public readonly A4: A4SafeModuleSchemaB
+  public readonly A4: A4SafeModuleSchemaB = CU.p2CwD(A4SafeModuleSchemaB, {})
 }

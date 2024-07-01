@@ -4,43 +4,52 @@
 
 ```ts
 
-import { A4ModuleBase } from '@hz-9/a4-core';
-import { Configuration } from 'log4js';
-import { DynamicModule } from '@nestjs/common';
-import { FactoryProvider } from '@nestjs/common';
+import type { Configuration } from 'log4js';
 import { IA4Config } from '@hz-9/a4-core';
 import { IA4LogModule } from '@hz-9/a4-core';
+import { IA4ModuleBaseSubType } from '@hz-9/a4-core';
 import type { Levels } from 'log4js';
-import { Logger } from '@nestjs/common';
-import { Logger as Logger_2 } from 'log4js';
+import { Logger } from 'log4js';
 import { LoggerService } from '@nestjs/common';
-import { ModuleMetadata } from '@nestjs/common';
-import { Type } from '@nestjs/common';
+import { ModuleError } from '@hz-9/a4-core';
 
-// Warning: (ae-forgotten-export) The symbol "Log4jsModule" needs to be exported by the entry point index.d.ts
+// @public (undocumented)
+export class A4Log4jsLogger implements LoggerService {
+    constructor(_logger: Logger);
+    // (undocumented)
+    debug(message: unknown, context?: string): void;
+    // (undocumented)
+    error(message: unknown, trace?: string, context?: string): void;
+    // (undocumented)
+    static getTimestamp(): string;
+    // (undocumented)
+    getTimestamp(): string;
+    // (undocumented)
+    log(message: unknown, context?: string): void;
+    // (undocumented)
+    updateContext(context?: string): void;
+    // (undocumented)
+    verbose(message: unknown, context?: string): void;
+    // (undocumented)
+    warn(message: unknown, context?: string): void;
+}
+
+// Warning: (ae-forgotten-export) The symbol "A4Log4jsSimpleLogModuleBase" needs to be exported by the entry point index.d.ts
 //
-// @public
-export class A4Log4jsLogModule extends Log4jsModule implements A4ModuleBase, IA4LogModule {
+// @public (undocumented)
+export class A4Log4jsSimpleLogModule extends A4Log4jsSimpleLogModuleBase implements IA4LogModule {
     // (undocumented)
-    static CONFIG_MIDDLE_PATH: "A4.log";
-    // Warning: (ae-forgotten-export) The symbol "Log4jsAsyncOptions" needs to be exported by the entry point index.d.ts
-    //
+    static get defaultConfig(): ILog4jsOptions;
     // (undocumented)
-    static forRootAsync(options: Log4jsAsyncOptions): DynamicModule;
-    // Warning: (ae-forgotten-export) The symbol "Log4jsLogger" needs to be exported by the entry point index.d.ts
-    //
+    static getConfig(a4Config: IA4Config<typeof A4Log4jsSimpleLogModuleBase['RootSchemaType']>, configKey?: string): ILog4jsOptions;
     // (undocumented)
-    static getInitLogger(options?: IInitLoggerOptions): Promise<Log4jsLogger>;
+    static getInitLogger(options?: IInitLoggerOptions): A4Log4jsLogger;
     // (undocumented)
-    static logger: Logger;
-    // (undocumented)
-    static Schema: typeof A4Log4jsLogModuleSchemaA;
-    // Warning: (ae-forgotten-export) The symbol "Log4jsOptions" needs to be exported by the entry point index.d.ts
-    static simpleOptions(optionsOrConfig: A4Log4jsLogModuleSchema | IA4Config, name?: string): Log4jsOptions;
+    protected static optionsToProvideClassConstructorOptions(options: ILog4jsOptions): Promise<Logger>;
 }
 
 // @public
-export class A4Log4jsLogModuleSchema {
+export class A4Log4jsSimpleLogModuleSchema {
     readonly backups: number;
     readonly baseDir: string;
     readonly consolePattern: string;
@@ -51,19 +60,33 @@ export class A4Log4jsLogModuleSchema {
 }
 
 // @public
-export class A4Log4jsLogModuleSchemaA {
+export class A4Log4jsSimpleLogModuleSchemaA {
     // (undocumented)
-    readonly A4: A4Log4jsLogModuleSchemaB;
+    readonly A4: A4Log4jsSimpleLogModuleSchemaB;
 }
 
 // @public
-export class A4Log4jsLogModuleSchemaB {
+export class A4Log4jsSimpleLogModuleSchemaB {
     // (undocumented)
-    readonly log: A4Log4jsLogModuleSchema;
+    readonly log: A4Log4jsSimpleLogModuleSchemaC;
 }
 
 // @public
-export interface IInitLoggerOptions extends Omit<A4Log4jsLogModuleSchema, 'filePattern' | 'maxLogSize' | 'backups'> {
+export class A4Log4jsSimpleLogModuleSchemaC {
+    // (undocumented)
+    readonly log4js: A4Log4jsSimpleLogModuleSchema;
+}
+
+// @public
+export interface IInitLoggerOptions extends Omit<A4Log4jsSimpleLogModuleSchema, 'filePattern' | 'maxLogSize' | 'backups'> {
+}
+
+// @public
+export interface ILog4jsOptions {
+    // (undocumented)
+    config: Configuration;
+    // (undocumented)
+    name: string;
 }
 
 // @public

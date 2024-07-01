@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-01 01:15:35
+ * @LastEditTime : 2024-06-27 03:04:43
  */
 
 /* eslint-disable max-classes-per-file */
@@ -10,7 +10,7 @@ import type { EurekaClient } from '@rocketsoftware/eureka-js-client'
 import { Type } from 'class-transformer'
 import { IsObject, IsString, ValidateNested } from 'class-validator'
 
-import { ClassValidatorUtil as CU, IsOptionalNotNull } from '@hz-9/a4-core'
+import { CU, IsOptionalNotNull } from '@hz-9/a4-core'
 
 /**
  *
@@ -107,11 +107,25 @@ export class A4EurekaRegistryModuleSchema {
  *  `A4 Registry Eureka Module` 用于 Multi Schema 类型判断类（A4）。
  *
  */
-export class A4EurekaRegistryModuleSchemaB {
+export class A4EurekaRegistryModuleSchemaC {
   @IsObject()
   @ValidateNested()
   @Type(() => A4EurekaRegistryModuleSchema)
-  public readonly registry: A4EurekaRegistryModuleSchema
+  public readonly eureka: A4EurekaRegistryModuleSchema
+}
+
+/**
+ *
+ * @public
+ *
+ *  `A4 Registry Eureka Module` 用于 Multi Schema 类型判断类（A4）。
+ *
+ */
+export class A4EurekaRegistryModuleSchemaB {
+  @IsObject()
+  @ValidateNested()
+  @Type(() => A4EurekaRegistryModuleSchemaC)
+  public readonly registry: A4EurekaRegistryModuleSchemaC
 }
 
 /**

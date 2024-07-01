@@ -74,14 +74,16 @@ common/envs/eureka/*.jar
 
 # Libraries & Service
 
-/hefts/*/temp
+/hefts/*/temp/*
+!/hefts/*/temp/__static__
 /hefts/*/dist
 /hefts/*/lib
 /hefts/*/.rush
 /hefts/*/docs/.vuepress
 /hefts/*/docs/.markdowns
 
-/library/*/temp
+/library/*/temp/*
+!/library/*/temp/__static__
 /library/*/dist
 /library/*/lib
 /library/*/.rush
@@ -90,7 +92,8 @@ common/envs/eureka/*.jar
 /library/*/logs
 /library/*/log
 
-/service/*/temp
+/service/*/temp/*
+!/service/*/temp/__static__
 /service/*/build
 /service/*/dist
 /service/*/lib
@@ -100,7 +103,8 @@ common/envs/eureka/*.jar
 /service/*/logs
 /service/*/log
 
-/sample/*/temp
+/sample/*/temp/*
+!/sample/*/temp/__static__
 /sample/*/build
 /sample/*/dist
 /sample/*/lib

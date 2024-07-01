@@ -23,9 +23,9 @@
       "require": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
-    "./chalk": {
-      "require": "./dist/plugin/chalk.js",
-      "types": "./dist/plugin/chalk.d.ts"
+    "./axios": {
+      "require": "./dist/plugin/axios.js",
+      "types": "./dist/plugin/axios.d.ts"
     },
     "./dayjs-plugin-relative-time": {
       "require": "./dist/plugin/dayjs-plugin-relative-time.js",
@@ -55,8 +55,10 @@
       "require": "./dist/plugin/pug.js",
       "types": "./dist/plugin/pug.d.ts"
     },
+    "./type-challenges-utils": {
+      "types": "./dist/plugin/type-challenges-utils.d.ts"
+    },
     "./type-fest": {
-      "require": "./dist/plugin/type-fest.js",
       "types": "./dist/plugin/type-fest.d.ts"
     },
     "./upath": {
@@ -74,7 +76,7 @@
     "logo"
   ],
   "scripts": {
-    "build": "heft test --clean",
+    "build": "heft test-all --clean",
     "build:sync": "npm run build && node ./.utils/repair.js && node ./.utils/sync-dist.js",
     "lint": "heft lint",
     "test": "heft test --clean",
@@ -91,7 +93,6 @@
     "@types/pug": "~2.0.10",
     "@types/uuid": "~9.0.8",
     "body-parser": "~1.20.2",
-    "chalk": "~4.1.2",
     "dayjs": "~1.11.10",
     "fs-extra": "~11.1.1",
     "lodash": "~4.17.21",
@@ -99,7 +100,9 @@
     "pug": "~3.0.3",
     "type-fest": "~4.20.0",
     "upath": "~2.0.1",
-    "ua-parser-js": "~1.0.38"
+    "ua-parser-js": "~1.0.38",
+    "@type-challenges/utils": "~0.1.1",
+    "axios": "~1.7.2"
   },
   "devDependencies": {
     "@hz-9/eslint-config-airbnb-ts": "~0.5.4",

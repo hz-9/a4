@@ -8,9 +8,9 @@ import type { A4Application } from '@hz-9/a4-core';
 import { A4ModuleBase } from '@hz-9/a4-core';
 import type { CorsOptions } from '@nestjs/common/interfaces/external/cors-options.interface';
 import { DynamicModule } from '@nestjs/common';
-import { FactoryProvider } from '@nestjs/common';
 import type { HelmetOptions } from 'helmet';
 import { IA4Config } from '@hz-9/a4-core';
+import { IA4ModuleForRootAsyncOptions } from '@hz-9/a4-core';
 import type { IA4Safe } from '@hz-9/a4-core';
 import { IA4SafeModule } from '@hz-9/a4-core';
 import { Logger } from '@nestjs/common';
@@ -29,13 +29,15 @@ export class A4SafeModule implements A4ModuleBase, IA4SafeModule {
     // (undocumented)
     static CONFIG_MIDDLE_PATH: "A4.safe";
     // (undocumented)
-    static forRootAsync(options: Omit<FactoryProvider<A4SafeModuleSchema>, 'provide'>): DynamicModule;
+    static forRootAsync(options: IA4ModuleForRootAsyncOptions<A4SafeModuleSchema>): DynamicModule;
     // (undocumented)
-    static getConfig(a4Config: IA4Config): A4SafeModuleSchema;
+    static getConfig(a4Config: IA4Config<A4SafeModule['Schema']>, configKey?: string): A4SafeModuleSchema;
     // (undocumented)
     static logger: Logger;
     // (undocumented)
     static Schema: typeof A4SafeModuleSchemaA;
+    // (undocumented)
+    Schema: A4SafeModuleSchemaA;
 }
 
 // @public

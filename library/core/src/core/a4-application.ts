@@ -2,11 +2,10 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-14 17:26:12
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-22 10:48:16
+ * @LastEditTime : 2024-07-01 23:14:58
  */
 import { Logger } from '@nestjs/common'
 import { HttpAdapterHost, ModuleRef, NestApplication } from '@nestjs/core'
-import chalk from 'chalk'
 import type { Request, Response } from 'express'
 import { createReadStream, readdirSync } from 'fs-extra'
 import _ from 'lodash'
@@ -16,11 +15,11 @@ import { resolve } from 'upath'
 
 import { ERROR_WELCOME_MSG, HOME_STATIC_PATH, HTTP_LISTEN_DEFAULT, MAIN_STATIC_PATH } from '../const/index'
 import { AllExceptionsFilter, IExceptionRule } from '../exception-filter'
-import { A4_CONFIG, type IA4Config } from '../module/config'
-import { A4_DOCS, type IA4Docs } from '../module/docs'
-import { A4_NETWORK, type IA4Network } from '../module/network'
-import { A4_SAFE, type IA4Safe } from '../module/safe'
-import { A4Util } from '../util'
+import { type IA4Config, getA4Config } from '../module/config'
+import { GLOBAL_PROVIDE_TOKEN_A4_DOCS, type IA4Docs } from '../module/docs'
+import { GLOBAL_PROVIDE_TOKEN_A4_NETWORK, type IA4Network } from '../module/network'
+import { GLOBAL_PROVIDE_TOKEN_A4_SAFE, type IA4Safe } from '../module/safe'
+import { A4Color, A4Util } from '../util'
 import { A4MicroServiceHelp } from './a4-micro-service.help'
 import { A4NetworkB } from './a4-network-b'
 import { A4RegistryHelp } from './a4-registry.help'
@@ -126,6 +125,13 @@ export interface IA4AppConstructorOptions {
    * 默认：16100
    */
   readonly port?: number
+
+  /**
+   * 是否处于 Test 环境，将会停止某些动作。
+   *
+   * 默认：false
+   */
+  readonly isTest?: boolean
 }
 
 /**
@@ -141,9 +147,9 @@ export class A4Application {
 
   public readonly nestApp: NestApplication
 
-  public readonly microService: A4MicroServiceHelp
+  protected readonly microServiceMap: Map<string, A4MicroServiceHelp>
 
-  public readonly registry: A4RegistryHelp
+  protected readonly registryMap: Map<string, A4RegistryHelp>
 
   public readonly network: IA4Network
 
@@ -155,17 +161,36 @@ export class A4Application {
     this.instanceId = nanoid()
 
     this.nestApp = nestApp
-    this.microService = new A4MicroServiceHelp(this)
-    this.registry = new A4RegistryHelp(this)
+    this.microServiceMap = new Map<string, A4MicroServiceHelp>()
+    this.registryMap = new Map<string, A4RegistryHelp>()
     this.options = this.optionsWithDefault(options)
     this.network = this.getNetwork()
 
     this.alive = true
   }
 
+  public getA4RegistryHelp(provideToken: string): A4RegistryHelp {
+    const g = this.registryMap.get(provideToken)
+    if (g) return g
+
+    const help = new A4RegistryHelp(this, provideToken)
+    this.registryMap.set(provideToken, help)
+    return help
+  }
+
+  public getA4MicroServiceMap(provideToken: string): A4MicroServiceHelp {
+    const g = this.microServiceMap.get(provideToken)
+    if (g) return g
+
+    const help = new A4MicroServiceHelp(this, provideToken)
+    this.microServiceMap.set(provideToken, help)
+    return help
+  }
+
   protected optionsWithDefault(options: IA4AppConstructorOptions = {}): Required<IA4AppConstructorOptions> {
     return {
       port: options.port ?? 16100,
+      isTest: options.isTest ?? false,
     }
   }
 
@@ -176,12 +201,15 @@ export class A4Application {
    *
    */
   protected getNetwork(): IA4Network {
+    if (this.options.isTest) {
+      return new A4NetworkB({ port: this.options.port })
+    }
+
     const moduleRef: ModuleRef = this.nestApp.get(ModuleRef)
     try {
-      return moduleRef.get(A4_NETWORK, { strict: false }) as IA4Network
+      return moduleRef.get(GLOBAL_PROVIDE_TOKEN_A4_NETWORK, { strict: false }) as IA4Network
     } catch (error) {
       this.logger.warn(`'A4 Network' is not loaded, using downgrade scheme.`)
-
       return new A4NetworkB({ port: this.options.port })
     }
   }
@@ -194,9 +222,9 @@ export class A4Application {
   public async init(): Promise<void> {
     await this.initMainRequest()
 
-    await this.initDocs()
+    await this.tryInitDocs()
 
-    await this.initSafe()
+    await this.tryInitSafe()
   }
 
   /**
@@ -226,55 +254,51 @@ export class A4Application {
     })
 
     const moduleRef: ModuleRef = this.nestApp.get(ModuleRef)
-    try {
-      const a4Config: IA4Config = moduleRef.get(A4_CONFIG, { strict: false })
+    const a4Config: IA4Config = getA4Config(moduleRef, this.logger)
 
-      this.staticFile({
-        requestPath: '/',
-        callback: (req, res) => {
-          res.setHeader('Content-type', 'text/html')
-          try {
-            res.status(200).send(renderFile(HOME_STATIC_PATH, { info: a4Config.getA4Info() }))
-          } catch (error) {
-            this.logger.error(`Render error.`, error)
-            res.status(200).send(ERROR_WELCOME_MSG)
-          }
-        },
-        logger: false,
-      })
+    this.staticFile({
+      requestPath: '/',
+      callback: (req, res) => {
+        res.setHeader('Content-type', 'text/html')
+        try {
+          res.status(200).send(renderFile(HOME_STATIC_PATH, { info: a4Config.getA4Info() }))
+        } catch (error) {
+          this.logger.error(`Render error.`, error)
+          res.status(200).send(ERROR_WELCOME_MSG)
+        }
+      },
+      logger: false,
+    })
 
-      this.staticFile({
-        requestPath: '/info',
-        callback: (req, res) => {
+    this.staticFile({
+      requestPath: '/info',
+      callback: (req, res) => {
+        res.setHeader('Content-type', 'application/json')
+        res.status(200).json(a4Config.getA4Info())
+      },
+      logger: false,
+    })
+
+    this.staticFile({
+      requestPath: '/info/:type',
+      callback: (req, res) => {
+        const info = {
+          stats: a4Config.getA4StatsInfo(),
+          env: a4Config.getA4EnvInfo(),
+          path: a4Config.getA4PathInfo(),
+          libraries: a4Config.getA4LibrariesInfo(),
+          library: a4Config.getA4LibrariesInfo(),
+        }[req.params.type]
+
+        if (!info) {
+          res.status(404).send()
+        } else {
           res.setHeader('Content-type', 'application/json')
-          res.status(200).json(a4Config.getA4Info())
-        },
-        logger: false,
-      })
-
-      this.staticFile({
-        requestPath: '/info/:type',
-        callback: (req, res) => {
-          const info = {
-            stats: a4Config.getA4StatsInfo(),
-            env: a4Config.getA4EnvInfo(),
-            path: a4Config.getA4PathInfo(),
-            libraries: a4Config.getA4LibrariesInfo(),
-            library: a4Config.getA4LibrariesInfo(),
-          }[req.params.type]
-
-          if (!info) {
-            res.status(404).send()
-          } else {
-            res.setHeader('Content-type', 'application/json')
-            res.status(200).json(info)
-          }
-        },
-        logger: false,
-      })
-    } catch (error) {
-      this.logger.warn(`'A4 Config' is not loaded, close the '/info/*' route.`)
-    }
+          res.status(200).json(info)
+        }
+      },
+      logger: false,
+    })
   }
 
   /**
@@ -284,10 +308,10 @@ export class A4Application {
    *  初始化 `A4 Docs` 及衍生库。
    *
    */
-  protected async initDocs(): Promise<void> {
+  protected async tryInitDocs(): Promise<void> {
     const moduleRef: ModuleRef = this.nestApp.get(ModuleRef)
     try {
-      const a4Docs: IA4Docs = moduleRef.get(A4_DOCS, { strict: false })
+      const a4Docs: IA4Docs = moduleRef.get(GLOBAL_PROVIDE_TOKEN_A4_DOCS, { strict: false })
       await a4Docs.init(this)
     } catch (error) {
       this.logger.debug(`'A4 Docs' is not loaded.`)
@@ -301,10 +325,10 @@ export class A4Application {
    *  初始化 `A4 Safe` 及衍生库。
    *
    */
-  protected async initSafe(): Promise<void> {
+  protected async tryInitSafe(): Promise<void> {
     const moduleRef: ModuleRef = this.nestApp.get(ModuleRef)
     try {
-      const a4Safe: IA4Safe = moduleRef.get(A4_SAFE, { strict: false })
+      const a4Safe: IA4Safe = moduleRef.get(GLOBAL_PROVIDE_TOKEN_A4_SAFE, { strict: false })
       await a4Safe.init(this)
     } catch (error) {
       this.logger.debug(`'A4 Safe' is not loaded.`)
@@ -394,9 +418,9 @@ export class A4Application {
     const urlMaxLength = Math.max(...urls.map((i) => i.length))
 
     urls.forEach((url: string, index: number) => {
-      const u = chalk.cyan(_.padEnd(url, urlMaxLength, ' '))
+      const u = A4Color.cyan(_.padEnd(url, urlMaxLength, ' '))
       if (index === 0) {
-        const t = chalk.yellowBright(`${Date.now() - +(process.env.A4_INIT_TIME as string)} ms`)
+        const t = A4Color.yellowBright(`${Date.now() - +(process.env.A4_INIT_TIME as string)} ms`)
         this.logger.log(`Application runing at: ${u} (+${t})`)
       } else {
         this.logger.log(`                       ${u}`)

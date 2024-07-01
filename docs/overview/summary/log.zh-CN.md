@@ -85,7 +85,7 @@ export class AppModule {
 
 `A4Log4jsLogModule.Schema` 是 `A4Log4jsLogModule` 的配置项模型。
 
-更多的日志配置说明，请参阅 [链接](TODO)。
+更多的配置说明，请参阅 [配置项](../../guide/a4-log-log4js/options)。
 
 ## 如何使用
 

@@ -5,19 +5,22 @@
 ```ts
 
 import { A4Application } from '@hz-9/a4-core';
-import { A4ModuleBase } from '@hz-9/a4-core';
-import { DynamicModule } from '@nestjs/common';
-import { FactoryProvider } from '@nestjs/common';
+import { GLOBAL_PROVIDE_TOKEN_A4_DOCS } from '@hz-9/a4-core';
 import { IA4Config } from '@hz-9/a4-core';
 import { IA4Docs } from '@hz-9/a4-core';
-import { IA4DocsModule } from '@hz-9/a4-core';
+import { IA4ModuleBaseSubType } from '@hz-9/a4-core';
 import type { IA4PathInfo } from '@hz-9/a4-core';
 import type { IA4StatusInfo } from '@hz-9/a4-core';
 import { Logger } from '@nestjs/common';
+import { MODULE_CONFIG_PATH_A4_DOCS } from '@hz-9/a4-core';
+import { ModuleError } from '@hz-9/a4-core';
+import { SCOPE_PROVIDE_TOKEN_A4_DOCS } from '@hz-9/a4-core';
 
 // @public
 export class A4Docs implements IA4Docs {
     constructor(options: IDocsConstructorOptions);
+    // (undocumented)
+    getHomePageHtml(): string;
     // Warning: (ae-forgotten-export) The symbol "IHomeLinkOption" needs to be exported by the entry point index.d.ts
     //
     // (undocumented)
@@ -37,18 +40,16 @@ export class A4DocsFileModuleSchema {
     readonly open: boolean;
 }
 
+// Warning: (ae-forgotten-export) The symbol "A4DocsModuleBase" needs to be exported by the entry point index.d.ts
+//
 // @public
-export class A4DocsModule implements A4ModuleBase, IA4DocsModule {
+export class A4DocsModule extends A4DocsModuleBase {
     // (undocumented)
-    static CONFIG_MIDDLE_PATH: "A4.docs";
+    static get defaultConfig(): IDocsInfo;
     // (undocumented)
-    static forRootAsync(options: Omit<FactoryProvider<IDocsInfo>, 'provide'>): DynamicModule;
+    static getConfig(a4Config: IA4Config<typeof A4DocsModuleBase['RootSchemaType']>, configKey?: string): IDocsInfo;
     // (undocumented)
-    static getConfig(a4Config: IA4Config): IDocsInfo;
-    // (undocumented)
-    protected readonly logger: Logger;
-    // (undocumented)
-    static Schema: typeof A4DocsModuleSchemaA;
+    protected static optionsToProvideClassConstructorOptions(options: IDocsInfo): Promise<IDocsInfo>;
 }
 
 // @public
@@ -83,13 +84,13 @@ export const DOCS_MODULE_DEFAULT: {
     readonly PREFIX: "docs";
     readonly UI: {
         readonly OPEN: true;
-        readonly PATH: "swagger-ui";
+        readonly PATH: "openapi-ui";
     };
     readonly SINGLE_FILE: {
         readonly OPEN: true;
         readonly EXPORT: true;
         readonly FILEDIR: "docs/api";
-        readonly FILENAME: "single.openapi.json";
+        readonly FILENAME: "openapi.json";
     };
     readonly MICRO_SERVICE_FILE: {
         readonly OPEN: false;
@@ -98,6 +99,8 @@ export const DOCS_MODULE_DEFAULT: {
         readonly FILENAME: "micro-service.openapi.json";
     };
 };
+
+export { GLOBAL_PROVIDE_TOKEN_A4_DOCS }
 
 // @public
 export interface IDocsConstructorOptions extends IDocsInfo {
@@ -110,6 +113,10 @@ export interface IDocsInfo extends A4DocsModuleSchema {
     // (undocumented)
     statsInfo: IA4StatusInfo;
 }
+
+export { MODULE_CONFIG_PATH_A4_DOCS }
+
+export { SCOPE_PROVIDE_TOKEN_A4_DOCS }
 
 
 export * from "@nestjs/swagger/dist/decorators/index";

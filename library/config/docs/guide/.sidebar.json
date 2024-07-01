@@ -1,1 +1,13 @@
-[""]
+[
+  "",
+
+  {
+    "text": "Introduction",
+    "children": ["load-file", "schema", "namespace", "type-safe", "load-http", "load-custom"]
+  },
+
+  {
+    "text": "Internal",
+    "children": ["options", "module-register", "env"]
+  }
+]

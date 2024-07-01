@@ -10,8 +10,6 @@
 npm i @hz-9/a4-network
 ```
 
-<!-- TODO 对于 IPv4 IPv6 的侦听进行限制 -->
-
 ## 开始
 
 在 `src/app.module.ts` 文件中导入 `A4Log4jsLogModule` 模块。
@@ -57,4 +55,4 @@ export class AppModule {
 
 `A4NetworkModule.Schema` 是 `A4NetworkModule` 的配置项模型。
 
-更多的日志配置说明，请参阅 [链接](TODO)。
+更多的配置说明，请参阅 [配置项](../../guide/a4-network/options)。

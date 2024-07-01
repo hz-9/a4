@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-27 16:18:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-20 20:36:00
+ * @LastEditTime : 2024-06-27 18:46:07
  */
 import { HttpException, HttpStatus, Injectable, Logger } from '@nestjs/common'
 import { Observable, concatMap, map, of } from 'rxjs'
@@ -44,12 +44,10 @@ export class UserService implements A4SimpleServiceRxjs {
 
     protected readonly redlock: Redlock,
 
-    protected readonly aAConfig: A4Config
+    protected readonly aAConfig: A4Config<AppConfigSchema>
   ) {
-    this.tokenExpiresIn = aAConfig.getOrThrow<AppConfigSchema['A4']['app']['tokenExpiresIn']>('A4.app.tokenExpiresIn')
-
-    this.defaultPassword =
-      aAConfig.getOrThrow<AppConfigSchema['A4']['app']['defaultPassword']>('A4.app.defaultPassword')
+    this.tokenExpiresIn = aAConfig.getOrThrow('A4.app.tokenExpiresIn')
+    this.defaultPassword = aAConfig.getOrThrow('A4.app.defaultPassword')
   }
 
   public async onApplicationBootstrap(): Promise<void> {

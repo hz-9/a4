@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-05-31 23:12:40
+ * @LastEditTime : 2024-07-01 23:07:20
  */
 
 /**
@@ -18,14 +18,14 @@ export const DOCS_MODULE_DEFAULT = {
 
   UI: {
     OPEN: true,
-    PATH: 'swagger-ui',
+    PATH: 'openapi-ui',
   },
 
   SINGLE_FILE: {
     OPEN: true,
     EXPORT: true,
     FILEDIR: 'docs/api',
-    FILENAME: 'single.openapi.json',
+    FILENAME: 'openapi.json',
   },
 
   MICRO_SERVICE_FILE: {

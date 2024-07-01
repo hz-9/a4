@@ -2,12 +2,13 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-05-12 14:52:07
+ * @LastEditTime : 2024-07-01 00:52:21
  */
-import chalk from 'chalk'
 import console from 'node:console'
 import fs from 'node:fs'
 import path from 'node:path'
+
+import { A4Color } from './color.util'
 
 /**
  * 因 `logo` 字符串特殊字符过多，不应直接存放当前文件。
@@ -54,12 +55,12 @@ export class LogoUtil {
     const version = JSON.parse(packageInfo).version ?? 'Unknown'
 
     if (!onlyLogo) {
-      logoLines[1] = `${logoLines[1]} A4`
+      // logoLines[1] = `${logoLines[1]}`
       logoLines[logoLines.length - 2] = `${logoLines[logoLines.length - 2]} ${version}`
     }
 
     console.log('')
-    console.log(chalk.magenta(logoLines.join('\n')))
+    console.log(A4Color.magenta(logoLines.join('\n')))
     console.log('')
   }
 }

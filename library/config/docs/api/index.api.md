@@ -4,98 +4,143 @@
 
 ```ts
 
-import { A4ModuleBase } from '@hz-9/a4-core';
+import { A4ConfigBase } from '@hz-9/a4-core';
+import { A4ConfigGetType } from '@hz-9/a4-core';
+import { AxiosInstance } from '@hz-9/a4-core/axios';
+import { AxiosRequestConfig } from '@hz-9/a4-core/axios';
+import { AxiosResponse } from '@hz-9/a4-core/axios';
 import type { ClassConstructor } from 'class-transformer';
-import { DynamicModule } from '@nestjs/common';
-import { FactoryProvider } from '@nestjs/common';
+import { GLOBAL_PROVIDE_TOKEN_A4_CONFIG } from '@hz-9/a4-core';
 import { IA4Config } from '@hz-9/a4-core';
 import { IA4ConfigModule } from '@hz-9/a4-core';
-import { IA4EnvInfo } from '@hz-9/a4-core';
-import { IA4Info } from '@hz-9/a4-core';
-import { IA4LibrariesInfo } from '@hz-9/a4-core';
-import { IA4PathInfo } from '@hz-9/a4-core';
-import { IA4StatusInfo } from '@hz-9/a4-core';
-import { Logger } from '@nestjs/common';
+import { IA4ModuleBaseSubType } from '@hz-9/a4-core';
+import type { IClassValidatorUtilParseOptions } from '@hz-9/a4-core';
+import { MODULE_CONFIG_PATH_A4_CONFIG } from '@hz-9/a4-core';
+import { ModuleError } from '@hz-9/a4-core';
+import { NonUndefined } from '@hz-9/a4-core';
+import { SCOPE_PROVIDE_TOKEN_A4_CONFIG } from '@hz-9/a4-core';
 
 // @public
-export class A4Config implements IA4Config {
+export class A4Config<T extends object = object> extends A4ConfigBase implements IA4Config<T> {
     constructor(config: object);
     // (undocumented)
-    allConfig(): object;
+    readonly config: T;
     // (undocumented)
-    readonly config: object;
-    get cwd(): string;
+    get<P extends string | readonly string[]>(propertyPath: P): A4ConfigGetType<T, P, false>;
     // (undocumented)
-    get<CT = unknown>(propertyPath: string, defaultValueOrOptions?: CT): CT | undefined;
+    get<P extends string | readonly string[]>(propertyPath: P, defaultValue: NonUndefined<A4ConfigGetType<T, P, false>>): A4ConfigGetType<T, P, true>;
     // (undocumented)
-    getA4EnvInfo(): IA4EnvInfo;
-    // (undocumented)
-    getA4Info(): IA4Info;
-    // (undocumented)
-    getA4LibrariesInfo(): IA4LibrariesInfo;
-    // (undocumented)
-    getA4PathInfo(): IA4PathInfo;
-    // (undocumented)
-    getA4StatsInfo(librariesInfoBase?: IA4LibrariesInfo): IA4StatusInfo;
-    // (undocumented)
-    getOrThrow<CT = unknown>(propertyPath: string): CT;
-    get mainFilepath(): string;
-    get mainNormalRoot(): string;
-    get mainRoot(): string;
+    getOrThrow<P extends string | readonly string[]>(propertyPath: P): A4ConfigGetType<T, P, false>;
 }
 
-// @public
-export class A4ConfigModule implements A4ModuleBase, IA4ConfigModule {
-    // (undocumented)
-    static CONFIG_MIDDLE_PATH: "A4.config";
-    // (undocumented)
-    static forRootAsync(options: Omit<FactoryProvider<IA4ConfigModuleOptions>, 'provide'>): DynamicModule;
-    protected static loadConfigAndValidate(options: IA4ConfigModuleOptions): Promise<object>;
-    // (undocumented)
-    static logger: Logger;
-}
-
-// @public
-export type AllConfigLoader = FileConfigLoader;
-
-// @public
-export type AllConfigPreOptions = IFileConfigPreOptions;
-
-// Warning: (ae-forgotten-export) The symbol "BaseConfigLoader" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "A4ConfigModuleBase" needs to be exported by the entry point index.d.ts
 //
 // @public
-export class FileConfigLoader extends BaseConfigLoader<IFileConfigPreOptions, IFileConfigOptions> {
-    // (undocumented)
-    asyncLoad(): Promise<object>;
-    // (undocumented)
-    getSuccessLoggerMsg(): string;
-    // (undocumented)
-    protected withDefaultOptions(options: IFileConfigPreOptions): IFileConfigOptions;
+export class A4ConfigModule extends A4ConfigModuleBase implements IA4ConfigModule {
+    // @internal (undocumented)
+    protected static optionsToProvideClassConstructorOptions(options: IA4ConfigModuleOptions): Promise<object>;
 }
 
-// Warning: (ae-forgotten-export) The symbol "IA4ConfigModuleOptions1" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "IA4ConfigModuleOptions2" needs to be exported by the entry point index.d.ts
+// @public
+export class A4ConfigModuleError extends ModuleError {
+}
+
+// @public (undocumented)
+export class A4ConfigModuleSchema {
+}
+
+// @public (undocumented)
+export class A4ConfigModuleSchemaA {
+}
+
+// @public
+export class A4ConfigNotFoundError extends A4ConfigModuleError {
+}
+
+// @public
+export class A4ConfigParseError extends A4ConfigModuleError {
+}
+
+// @public
+export class A4ConfigUnknownError extends A4ConfigModuleError {
+}
+
+// Warning: (ae-internal-missing-underscore) The name "getLoader" should be prefixed with an underscore because the declaration is marked as @internal
 //
-// @public
-export type IA4ConfigModuleOptions = IA4ConfigModuleOptions1 | IA4ConfigModuleOptions2;
+// @internal
+export const getLoader: (options: IA4ConfigLoadOptions) => IAllConfigLoader;
+
+export { GLOBAL_PROVIDE_TOKEN_A4_CONFIG }
+
+// @public (undocumented)
+export type IA4ConfigCheckOptions = IA4ConfigCheckOptions1 | IA4ConfigCheckOptions2;
+
+// @public (undocumented)
+export interface IA4ConfigCheckOptions1 {
+    // (undocumented)
+    ignoreSchema: true;
+    // (undocumented)
+    Schema?: ClassConstructor<object> | ClassConstructor<object>[];
+}
+
+// @public (undocumented)
+export interface IA4ConfigCheckOptions2 {
+    // (undocumented)
+    ignoreSchema?: false;
+    // (undocumented)
+    Schema: ClassConstructor<object> | ClassConstructor<object>[];
+}
 
 // @public
-export interface IFileConfigOptions extends Required<IFileConfigPreOptions> {
-    // (undocumented)
-    configFile: string[];
-    // (undocumented)
-    rootDir: string[];
-}
+export type IA4ConfigLoadOptions = IFileConfigLoadOptions | IHttpConfigLoadOptions | ICustomConfigLoadOptions;
+
+// @public
+export type IA4ConfigModuleOptions = IA4ConfigLoadOptions & IA4ConfigCheckOptions & IConfigClassValidatorUtilParseOptions;
+
+// Warning: (ae-forgotten-export) The symbol "FileConfigLoader" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "HttpConfigLoader" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "CustomConfigLoader" needs to be exported by the entry point index.d.ts
+// Warning: (ae-internal-missing-underscore) The name "IAllConfigLoader" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export type IAllConfigLoader = FileConfigLoader | HttpConfigLoader | CustomConfigLoader;
+
+// @public
+export type IConfigClassValidatorUtilParseOptions = Pick<IClassValidatorUtilParseOptions, 'errorColer'>;
 
 // Warning: (ae-forgotten-export) The symbol "IBaseConfigOptions" needs to be exported by the entry point index.d.ts
 //
 // @public
-export interface IFileConfigPreOptions extends IBaseConfigOptions {
+export interface ICustomConfigLoadOptions extends IBaseConfigOptions {
+    // (undocumented)
+    loader: () => Promise<object> | object;
+    // (undocumented)
+    type: 'custom';
+}
+
+// @public
+export interface IFileConfigLoadOptions extends IBaseConfigOptions {
     configFile?: string | string[];
     rootDir?: string | string[];
     // (undocumented)
-    type: 'file' | undefined;
+    type?: 'file';
 }
+
+// @public
+export interface IHttpConfigLoadOptions extends IBaseConfigOptions {
+    axiosInstance?: AxiosInstance;
+    axiosRequestConfig?: AxiosRequestConfig;
+    method?: 'get' | 'post';
+    // (undocumented)
+    responseParse?: (response: AxiosResponse) => object | Promise<object>;
+    // (undocumented)
+    type: 'http';
+    url: string;
+}
+
+export { MODULE_CONFIG_PATH_A4_CONFIG }
+
+export { SCOPE_PROVIDE_TOKEN_A4_CONFIG }
 
 // (No @packageDocumentation comment for this package)
 

@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-05-31 23:40:16
+ * @LastEditTime : 2024-06-29 18:21:43
  */
 import * as DefaultGateway from 'default-gateway'
 import os from 'node:os'
@@ -111,7 +111,7 @@ export class Address {
   public static async getInterfaceList(family?: NetworkFamily, name?: string | string[]): Promise<InterfaceInfo[]> {
     const interfaces = os.networkInterfaces()
     const familyWithDefault = family || NetworkFamily.IPv4
-    let defaultName = []
+    let defaultName: string[] = []
 
     if (name) {
       defaultName = typeof name === 'string' ? [name] : name

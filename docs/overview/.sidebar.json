@@ -15,14 +15,11 @@
       "summary/safe"
     ]
   },
-  // {
-  //   "text": "Advance",
-  //   "collapsible": true,
-  //   "children": [
-  //     "advance/schedule",
-  //     "advance/lock-redlock"
-  //   ]
-  // },
+  {
+    "text": "Advance",
+    "collapsible": true,
+    "children": ["advance/schedule", "advance/lock-redlock"]
+  },
   // {
   //   "text": "Micro Service",
   //   "collapsible": true,
@@ -32,8 +29,13 @@
   //   ]
   // },
   {
+    "text": "Internal",
+    "collapsible": true,
+    "children": ["internal/module-register", "internal/env"]
+  },
+  {
     "text": "Developer",
     "collapsible": true,
-    "children": ["developer/to-developer.md", "developer/publish.md"]
+    "children": ["developer/to-developer", "developer/publish"]
   }
 ]

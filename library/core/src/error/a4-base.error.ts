@@ -2,20 +2,20 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-05-10 19:05:41
+ * @LastEditTime : 2024-06-25 17:28:09
  */
 
 /**
  *
  * @public
  *
- *  `a4` 异常基类。
+ *  `A4` 异常基类。
  *
  */
 export class A4Error extends Error {
   public readonly name: string
 
-  public constructor(message: string) {
+  public constructor(message?: string) {
     super(message)
 
     this.name = this.constructor.name

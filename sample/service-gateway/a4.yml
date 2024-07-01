@@ -3,16 +3,17 @@ A4:
     swagger:
       open: true
   registry:
-    instance:
-      service: SERVICE_GATEWAY
-      urlAlias: gateway
-      version: v1
-    service:
-      host: '127.0.0.1'
-      port: 8761
-      servicePath: '/eureka/apps/'
-      serviceUrls:
-        - http://127.0.0.1:8761/eureka/apps/
+    eureka:
+      instance:
+        service: SERVICE_GATEWAY
+        urlAlias: gateway
+        version: v1
+      service:
+        host: '127.0.0.1'
+        port: 8761
+        servicePath: '/eureka/apps/'
+        serviceUrls:
+          - http://127.0.0.1:8761/eureka/apps/
   microService:
     connect:
       redis:

@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-05 20:11:38
+ * @LastEditTime : 2024-06-27 18:30:54
  */
 
 /* eslint-disable max-classes-per-file */
@@ -10,18 +10,6 @@ import { Type } from 'class-transformer'
 import { IsObject, ValidateNested } from 'class-validator'
 
 import type { DataSourceOptionsExtra } from '../interface'
-
-/**
- *
- * @public
- *
- *  `A4 CRUD TypeORM Module` 配置项结构。
- *
- */
-export class A4TypeORMCrudModuleSchema {
-  @IsObject()
-  public readonly default: DataSourceOptionsExtra
-}
 
 /**
  *

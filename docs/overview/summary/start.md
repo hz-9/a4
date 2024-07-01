@@ -4,7 +4,7 @@ In this series of articles, you will learn how to build an application using `A4
 
 For readers with little or no experience using Nest.js, you can continue reading this series of articles, which mainly focuses on the usage of the `A4` modules. Links to Nest.js related topics will be provided at appropriate places for later reading.
 
-For experienced Nest.js application developers, you can directly refer to the [module directories](../guide) to view module descriptions.
+For experienced Nest.js application developers, you can directly refer to the [module directories](../guide) to view module descriptions. The registration of `A4 Module` modules follows a unified scheme. Please refer to the [`A4` Module Registration](../internal/module-register.html) to fully understand the registration scheme.
 
 ## Language
 

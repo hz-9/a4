@@ -85,7 +85,7 @@ Here, `A4Log4jsLogModule` depends on `A4Config` and reads the configuration opti
 
 `A4Log4jsLogModule.Schema` is the configuration model of `A4Log4jsLogModule`.
 
-For more information on log configuration, please refer to the [link](TODO).
+For more configuration details, please refer to the [Options](../../guide/a4-log-log4js/options) section.
 
 ## How to Use
 

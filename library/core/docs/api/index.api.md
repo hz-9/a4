@@ -10,27 +10,35 @@ import { ArgumentsHost } from '@nestjs/common';
 import { CallHandler } from '@nestjs/common';
 import { ClassConstructor } from 'class-transformer';
 import type { DynamicModule } from '@nestjs/common';
+import type { Equal } from '@type-challenges/utils';
 import { ExceptionFilter } from '@nestjs/common';
 import { ExecutionContext } from '@nestjs/common';
 import { ExpressAdapter } from '@nestjs/platform-express';
 import type { FactoryProvider } from '@nestjs/common';
+import type { ForwardReference } from '@nestjs/common';
+import type { Get } from 'type-fest';
 import { HttpAdapterHost } from '@nestjs/core';
+import { InjectionToken } from '@nestjs/common';
 import { Logger } from '@nestjs/common';
 import { LoggerService } from '@nestjs/common';
+import { ModuleMetadata } from '@nestjs/common';
+import type { ModuleRef } from '@nestjs/core';
 import { NestApplication } from '@nestjs/core';
-import { NestApplication as NestApplication_2 } from '@nestjs/core/nest-application';
-import type { NestApplicationOptions } from '@nestjs/common';
+import { NestApplicationOptions } from '@nestjs/common';
 import { NestExpressBodyParserOptions } from '@nestjs/platform-express';
 import { NestExpressBodyParserType } from '@nestjs/platform-express';
 import { NestInterceptor } from '@nestjs/common';
 import { NestMiddleware } from '@nestjs/common';
 import type { NextFunction } from 'express';
 import { Observable } from 'rxjs';
+import type { OptionalFactoryDependency } from '@nestjs/common';
 import type { PackageJson } from 'type-fest';
 import type { ParseIntPipeOptions } from '@nestjs/common';
 import { PipeTransform } from '@nestjs/common';
+import { Provider } from '@nestjs/common';
 import type { Request as Request_2 } from 'express';
 import type { Response as Response_2 } from 'express';
+import { Type } from '@nestjs/common';
 import { ValidationError } from 'class-validator';
 import { ValidationOptions } from 'class-validator';
 import { ValidationPipe } from '@nestjs/common';
@@ -40,31 +48,16 @@ import { ValidationPipeOptions } from '@nestjs/common';
 export const A4_CACHE: string;
 
 // @public
-export const A4_CONFIG: string;
-
-// @public
 export const A4_CRUD: string;
-
-// @public
-export const A4_DOCS: string;
 
 // @public
 export const A4_LOCK: string;
 
 // @public
-export const A4_LOG: string;
-
-// @public
 export const A4_MICRO_SERVICE: string;
 
 // @public
-export const A4_NETWORK: string;
-
-// @public
-export const A4_REGISTRY: string;
-
-// @public
-export const A4_SAFE: string;
+export const A4_REGISTRY_PROVIDE_TOKEN: (token: string) => string;
 
 // @public
 export class A4Application {
@@ -72,21 +65,21 @@ export class A4Application {
     addGlobalExceptionsFilter(rules?: IExceptionRule[]): void;
     // (undocumented)
     alive: boolean;
+    // (undocumented)
+    getA4MicroServiceMap(provideToken: string): A4MicroServiceHelp;
+    // (undocumented)
+    getA4RegistryHelp(provideToken: string): A4RegistryHelp;
     // @internal
     protected getNetwork(): IA4Network;
     init(): Promise<void>;
-    // @internal
-    protected initDocs(): Promise<void>;
     protected initMainRequest(): Promise<void>;
-    // @internal
-    protected initSafe(): Promise<void>;
     // (undocumented)
     readonly instanceId: string;
     listen(options?: IA4AppListenOptions): Promise<void>;
     // (undocumented)
     protected readonly logger: Logger;
     // (undocumented)
-    readonly microService: A4MicroServiceHelp;
+    protected readonly microServiceMap: Map<string, A4MicroServiceHelp>;
     // (undocumented)
     readonly nestApp: NestApplication;
     // (undocumented)
@@ -97,9 +90,76 @@ export class A4Application {
     protected optionsWithDefault(options?: IA4AppConstructorOptions): Required<IA4AppConstructorOptions>;
     printAddress(): Promise<void>;
     // (undocumented)
-    readonly registry: A4RegistryHelp;
+    protected readonly registryMap: Map<string, A4RegistryHelp>;
     staticFile(options: IA4AppStaticFileOptions): void;
+    // @internal
+    protected tryInitDocs(): Promise<void>;
+    // @internal
+    protected tryInitSafe(): Promise<void>;
 }
+
+// @public (undocumented)
+export class A4Color {
+    // (undocumented)
+    static blue(text: string): string;
+    // (undocumented)
+    static blueBright(text: string): string;
+    // (undocumented)
+    static bold(text: string): string;
+    // (undocumented)
+    static cyan(text: string): string;
+    // (undocumented)
+    static cyanBright(text: string): string;
+    // (undocumented)
+    static green(text: string): string;
+    // (undocumented)
+    static greenBright(text: string): string;
+    // (undocumented)
+    static magenta(text: string): string;
+    // (undocumented)
+    static magentaBright(text: string): string;
+    // (undocumented)
+    static red(text: string): string;
+    // (undocumented)
+    static redBright(text: string): string;
+    // (undocumented)
+    static yellow(text: string): string;
+    // (undocumented)
+    static yellowBright(text: string): string;
+}
+
+// @public
+export class A4ConfigBase<T extends object = object> implements IA4Config<T> {
+    get cwd(): string;
+    // (undocumented)
+    get<P extends string | readonly string[]>(propertyPath: P): A4ConfigGetType<T, P, false>;
+    // (undocumented)
+    get<P extends string | readonly string[]>(propertyPath: P, defaultValue: NonUndefined<A4ConfigGetType<T, P, false>>): A4ConfigGetType<T, P, true>;
+    // (undocumented)
+    getA4EnvInfo(): IA4EnvInfo;
+    // (undocumented)
+    getA4Info(): IA4Info;
+    // (undocumented)
+    getA4LibrariesInfo(): IA4LibrariesInfo;
+    // (undocumented)
+    getA4PathInfo(): IA4PathInfo;
+    // (undocumented)
+    getA4StatsInfo(librariesInfoBase?: IA4LibrariesInfo): IA4StatusInfo;
+    // (undocumented)
+    getOrThrow<P extends string | readonly string[]>(propertyPath: P): A4ConfigGetType<T, P, false>;
+    get mainFilepath(): string;
+    get mainNormalRoot(): string;
+    get mainRoot(): string;
+}
+
+// Warning: (ae-forgotten-export) The symbol "GetTypeForType" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export type A4ConfigGetType<OT, Path extends string | readonly string[],
+/**
+* 是否设置了默认值。
+*/
+WithDefault extends boolean = false> = OT extends object ? Equal<OT, object> extends true ? unknown : GetTypeForType<OT, Path, WithDefault> : never;
 
 // @public
 export class A4CrudUtil {
@@ -113,7 +173,7 @@ export class A4DefaultUtil {
 
 // @public
 export class A4Error extends Error {
-    constructor(message: string);
+    constructor(message?: string);
     // (undocumented)
     readonly name: string;
 }
@@ -130,12 +190,15 @@ export class A4Factory {
     // Warning: (ae-forgotten-export) The symbol "IA4FactoryInitBodyParserOptions" needs to be exported by the entry point index.d.ts
     //
     // (undocumented)
-    protected static initBodyParser(nestApplication: NestApplication_2, options: IA4FactoryInitBodyParserOptions): void;
+    protected static initBodyParser(nestApplication: NestApplication, options: IA4FactoryInitBodyParserOptions): void;
 }
 
 // @public
+export type A4GlobalProvideToken = `Global.A4.${string}`;
+
+// @public
 export class A4MicroServiceHelp {
-    constructor(a4App: A4Application);
+    constructor(a4App: A4Application, provideToken: InjectionToken);
     // (undocumented)
     protected readonly a4App: A4Application;
     // (undocumented)
@@ -152,16 +215,40 @@ export class A4MicroServiceHelp {
 
 // @public
 export abstract class A4ModuleBase {
-    static CONFIG_MIDDLE_PATH: string;
-    static forRootAsync: (options: Omit<FactoryProvider, 'provide'>) => DynamicModule;
-    static getConfig: <T = unknown>(a4Config: IA4Config) => T;
     // (undocumented)
-    static logger: Logger;
+    protected static commonRegister: (provideName: InjectionToken, options: IA4ModuleForRootOptions) => DynamicModule;
+    // (undocumented)
+    protected static commonRegisterAsync: (options: IA4ModuleRegisterAsyncOptions) => DynamicModule;
+    protected static CONFIG_MIDDLE_PATH: string;
+    // (undocumented)
+    protected static createAsyncProvider: (options: IA4ModuleRegisterAsyncOptions) => FactoryProvider;
+    static forRoot: (options: IA4ModuleForRootOptions) => DynamicModule;
+    static forRootAsync: (options: IA4ModuleForRootAsyncOptions) => DynamicModule;
+    static getConfig: <Schema extends object, Return>(a4Config: IA4Config<Schema>, configKey?: string) => Return;
+    protected static logger: Logger;
+    // (undocumented)
+    protected static optionsToFactoryResult: (configOptions: any) => Promise<any>;
+    static register: (options: IA4ModuleRegisterOptions) => DynamicModule;
+    static registerAsync: (options: IA4ModuleRegisterAsyncOptions) => DynamicModule;
 }
 
 // @public
+export class A4ModuleBaseBuilder<T = any, TO extends IA4ModuleBaseBuilderTypeOptions = IA4ModuleBaseBuilderTypeOptionsDefault> {
+    constructor(options: IA4ModuleBaseBuilderConstructorOptions);
+    // (undocumented)
+    build(): IA4ModuleBaseSubType<T, TO>;
+    // Warning: (ae-forgotten-export) The symbol "IA4ModuleBaseBuilderConstructorOptions" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    readonly buildOptions: IA4ModuleBaseBuilderConstructorOptions;
+}
+
+// @public (undocumented)
+export type A4ModuleConfigPath = `A4.${string}`;
+
+// @public
 export class A4RegistryHelp {
-    constructor(a4App: A4Application);
+    constructor(a4App: A4Application, provideToken: InjectionToken);
     // (undocumented)
     protected readonly a4App: A4Application;
     // (undocumented)
@@ -171,6 +258,9 @@ export class A4RegistryHelp {
     start(): Promise<void>;
     stop(): Promise<void>;
 }
+
+// @public (undocumented)
+export type A4ScopeProvideToken = `Scope.A4.${string}`;
 
 // @public
 export type A4SimpleControllerPromise = {
@@ -194,8 +284,11 @@ export type A4SimpleServiceRxjs = {
 
 // @public
 export class A4Util {
+    static contentExtraProviders(extraProviders: Provider[], providers: Provider[], exports: Required<ModuleMetadata>['exports'], logger?: Logger): void;
     static handleRetry(dataSourceName: string, retryDelay: number, retryAttempts: number, verboseRetryLog: boolean, logger: Logger): <T>(source: Observable<T>) => Observable<T>;
     static noAbsoluteWith(sourcePath: string, basePath: string): string;
+    // (undocumented)
+    static providerEqual(provider1: Provider, provider2: Provider): boolean;
     static sleep(t: number): Promise<void>;
 }
 
@@ -279,6 +372,9 @@ export class ClassValidatorUtil {
 }
 
 // @public
+export const CU: typeof ClassValidatorUtil;
+
+// @public
 export type Debug<T> = {
     [K in keyof T]: T[K];
 };
@@ -323,6 +419,24 @@ export class DeleteEffectInfo {
 export const ERROR_WELCOME_MSG: string;
 
 // @public (undocumented)
+export const getA4Config: (moduleRef: ModuleRef, logger?: Logger) => IA4Config;
+
+// @public
+export const GLOBAL_PROVIDE_TOKEN_A4_CONFIG: A4GlobalProvideToken;
+
+// @public
+export const GLOBAL_PROVIDE_TOKEN_A4_DOCS: A4GlobalProvideToken;
+
+// @public
+export const GLOBAL_PROVIDE_TOKEN_A4_LOG: A4GlobalProvideToken;
+
+// @public
+export const GLOBAL_PROVIDE_TOKEN_A4_NETWORK: A4GlobalProvideToken;
+
+// @public
+export const GLOBAL_PROVIDE_TOKEN_A4_SAFE: A4GlobalProvideToken;
+
+// @public (undocumented)
 export const HOME_STATIC_PATH: string;
 
 // @public
@@ -347,6 +461,7 @@ export interface IA4AddressInfo {
 
 // @public
 export interface IA4AppConstructorOptions {
+    readonly isTest?: boolean;
     readonly port?: number;
 }
 
@@ -373,13 +488,13 @@ export abstract class IA4CacheModule {
 }
 
 // @public
-export abstract class IA4Config {
-    // (undocumented)
-    allConfig: () => object;
+export abstract class IA4Config<T extends object = object> {
     // (undocumented)
     cwd: string;
     // (undocumented)
-    abstract get<CT = unknown>(propertyPath: string, defaultValueOrOptions?: CT): CT | undefined;
+    abstract get<P extends string | readonly string[]>(propertyPath: P): A4ConfigGetType<T, P, false>;
+    // (undocumented)
+    abstract get<P extends string | readonly string[]>(propertyPath: P, defaultValue: NonUndefined<A4ConfigGetType<T, P, false>>): A4ConfigGetType<T, P, true>;
     // (undocumented)
     abstract getA4EnvInfo(): IA4EnvInfo;
     // (undocumented)
@@ -391,7 +506,7 @@ export abstract class IA4Config {
     // (undocumented)
     abstract getA4StatsInfo(): IA4StatusInfo;
     // (undocumented)
-    abstract getOrThrow<CT = unknown>(propertyPath: string, defaultValueOrOptions?: CT): CT;
+    abstract getOrThrow<P extends string | readonly string[]>(propertyPath: P): A4ConfigGetType<T, P, false>;
     // (undocumented)
     mainFilepath: string;
     // (undocumented)
@@ -482,16 +597,179 @@ export abstract class IA4MicroService {
 export abstract class IA4MicroServiceModule {
 }
 
-// @public
-export interface IA4ModuleBase<P extends unknown[] = unknown[], R extends unknown = unknown> {
-    CONFIG_MIDDLE_PATH: string;
+// @public (undocumented)
+export interface IA4ModuleBase<T = any> {
     // (undocumented)
-    init?: (app: A4Application, ...args: P) => R;
+    commonRegister: (provideName: InjectionToken, options: IA4ModuleForRootOptions<T>) => DynamicModule;
     // (undocumented)
-    start?: (app: A4Application, ...args: P) => R;
+    commonRegisterAsync: (options: IA4ModuleRegisterAsyncOptions<T>) => DynamicModule;
+    readonly configPath: A4ModuleConfigPath;
     // (undocumented)
-    stop?: (app: A4Application, ...args: P) => R;
+    createAsyncProvider: (options: IA4ModuleRegisterAsyncOptions<T>) => FactoryProvider;
+    // (undocumented)
+    readonly defaultConfig: T;
+    forRoot: (options: IA4ModuleForRootOptions<T>) => DynamicModule;
+    forRootAsync: (options: IA4ModuleForRootAsyncOptions<T>) => DynamicModule;
+    getConfig: (a4Config: IA4Config<any>, configKey?: string) => T;
+    // (undocumented)
+    readonly globalProvideToken: A4GlobalProvideToken;
+    readonly logger: Logger;
+    // (undocumented)
+    optionsToProvideClassConstructorOptions: (configOptions: T) => Promise<any>;
+    register: (options: IA4ModuleRegisterOptions<T>) => DynamicModule;
+    registerAsync: (options: IA4ModuleRegisterAsyncOptions<T>) => DynamicModule;
+    // (undocumented)
+    readonly RootSchema: ClassConstructor<any>;
+    // (undocumented)
+    readonly Schema: ClassConstructor<any>;
+    // (undocumented)
+    readonly scopeProvideToken: A4ScopeProvideToken;
 }
+
+// @public (undocumented)
+export interface IA4ModuleBaseBuilderTypeOptions {
+    // (undocumented)
+    configPath: string;
+    // (undocumented)
+    globalProvideToken: string;
+    // (undocumented)
+    registerType: 'register' | 'forRoot' | 'registerAndForRoot';
+    // (undocumented)
+    RootSchema: ClassConstructor<any>;
+    // (undocumented)
+    RootSchemaType: any;
+    // (undocumented)
+    Schema: ClassConstructor<any>;
+    // (undocumented)
+    SchemaType: any;
+    // (undocumented)
+    scoped: 'public' | 'protected';
+    // (undocumented)
+    scopeProvideToken: string;
+    // (undocumented)
+    withDefault: boolean;
+}
+
+// @public (undocumented)
+export interface IA4ModuleBaseBuilderTypeOptionsDefault {
+    // (undocumented)
+    configPath: string;
+    // (undocumented)
+    globalProvideToken: string;
+    // (undocumented)
+    registerType: 'registerAndForRoot';
+    // (undocumented)
+    RootSchema: ClassConstructor<any>;
+    // (undocumented)
+    RootSchemaType: any;
+    // (undocumented)
+    Schema: ClassConstructor<any>;
+    // (undocumented)
+    SchemaType: any;
+    // (undocumented)
+    scoped: 'public';
+    // (undocumented)
+    scopeProvideToken: string;
+    // (undocumented)
+    withDefault: true;
+}
+
+// Warning: (ae-forgotten-export) The symbol "IA4ModuleBasePublicKey" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "IA4ModuleBaseRootKey" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "IA4ModuleBaseRegisterKey" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "IA4ModuleBaseProtectedKey" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "IA4ModuleBaseWithDefaultKey" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export type IA4ModuleBaseSubType<T, TO extends IA4ModuleBaseBuilderTypeOptions> = {
+    new (): {};
+} & {
+    [K in IA4ModuleBasePublicKey]: K extends keyof TO ? TO[K] : IA4ModuleBase<T>[K];
+} & {
+    getConfig: (a4Config: IA4Config<TO['RootSchemaType']>, configKey?: string) => T;
+    RootSchemaType: TO['RootSchemaType'];
+    SchemaType: TO['SchemaType'];
+} & {
+    [K in IA4ModuleBaseRootKey as TO['registerType'] extends 'forRoot' | 'registerAndForRoot' ? K : never]: IA4ModuleBase<T>[K];
+} & {
+    [K in IA4ModuleBaseRegisterKey as TO['registerType'] extends 'register' | 'registerAndForRoot' ? K : never]: IA4ModuleBase<T>[K];
+} & {
+    [K in IA4ModuleBaseProtectedKey as TO['scoped'] extends 'protected' ? K : never]: IA4ModuleBase<T>[K];
+} & {
+    [K in IA4ModuleBaseWithDefaultKey as TO['withDefault'] extends true ? K : never]: IA4ModuleBase<T>[K];
+};
+
+// @public
+export type IA4ModuleForRootAsyncOptions<T = any> = IA4ModuleForRootAsyncOptionsBase & (IA4ModuleRegisterAsyncOptions1<T> | IA4ModuleRegisterAsyncOptions2<T> | IA4ModuleRegisterAsyncOptions3<T>);
+
+// @public
+export interface IA4ModuleForRootAsyncOptionsBase extends IA4ModuleRegisterAsyncOptionsBase {
+    isGlobal?: boolean;
+}
+
+// @public
+export type IA4ModuleForRootOptions<T = any> = T;
+
+// @public
+export interface IA4ModuleOptionsFactory<T = any> {
+    // (undocumented)
+    getA4ModuleOptions(): Promise<T> | T;
+}
+
+// @public
+export type IA4ModuleRegisterAsyncOptions<T = any> = IA4ModuleRegisterAsyncOptionsBase & (IA4ModuleRegisterAsyncOptions1<T> | IA4ModuleRegisterAsyncOptions2<T> | IA4ModuleRegisterAsyncOptions3<T>);
+
+// @public
+export interface IA4ModuleRegisterAsyncOptions1<T = any> {
+    // (undocumented)
+    imports?: Array<Type<any> | DynamicModule | Promise<DynamicModule> | ForwardReference>;
+    // (undocumented)
+    inject?: Array<InjectionToken | OptionalFactoryDependency>;
+    // (undocumented)
+    useClass?: undefined;
+    // (undocumented)
+    useExisting?: undefined;
+    // (undocumented)
+    useFactory: (...args: any[]) => Promise<T> | T;
+}
+
+// @public
+export interface IA4ModuleRegisterAsyncOptions2<T = any> {
+    // (undocumented)
+    imports: Array<Type<any> | DynamicModule | Promise<DynamicModule> | ForwardReference>;
+    // (undocumented)
+    inject?: undefined;
+    // (undocumented)
+    useClass?: undefined;
+    // (undocumented)
+    useExisting: Type<IA4ModuleOptionsFactory<T>>;
+    // (undocumented)
+    useFactory?: undefined;
+}
+
+// @public
+export interface IA4ModuleRegisterAsyncOptions3<T = any> {
+    // (undocumented)
+    imports?: Array<Type<any> | DynamicModule | Promise<DynamicModule> | ForwardReference>;
+    // (undocumented)
+    inject?: undefined;
+    // (undocumented)
+    useClass?: Type<IA4ModuleOptionsFactory<T>>;
+    // (undocumented)
+    useExisting?: undefined;
+    // (undocumented)
+    useFactory?: undefined;
+}
+
+// @public
+export interface IA4ModuleRegisterAsyncOptionsBase {
+    extraProviders?: Provider[];
+    isGlobal?: boolean;
+    provide?: InjectionToken;
+}
+
+// @public
+export type IA4ModuleRegisterOptions<T = any> = T;
 
 // @public
 export abstract class IA4Network {
@@ -644,18 +922,6 @@ export interface IA4StatusInfo {
 
 // @public
 export interface IA4ValidationPipeOptions extends ValidationPipeOptions {
-}
-
-// @public
-export interface IAbstractModule {
-    // (undocumented)
-    [K: string]: unknown;
-    // (undocumented)
-    CONFIG_MIDDLE_PATH: string;
-    // (undocumented)
-    MODULE_PROVIDE: symbol;
-    // (undocumented)
-    SERVICE_PROVIDE: symbol;
 }
 
 // @public
@@ -812,8 +1078,26 @@ export class LogoUtil {
 export const MAIN_STATIC_PATH: string;
 
 // @public
+export const MODULE_CONFIG_PATH_A4_CONFIG: "A4.config";
+
+// @public
+export const MODULE_CONFIG_PATH_A4_DOCS: "A4.docs";
+
+// @public
+export const MODULE_CONFIG_PATH_A4_LOG: <T extends string>(str: T) => `A4.log.${T}`;
+
+// @public
+export const MODULE_CONFIG_PATH_A4_NETWORK: "A4.network";
+
+// @public
+export const MODULE_CONFIG_PATH_A4_SAFE: "A4.safe";
+
+// @public
 export class ModuleError extends A4Error {
 }
+
+// @public
+export type NonUndefined<T> = T extends undefined ? never : T;
 
 // @public
 export class PageReqDto {
@@ -937,6 +1221,21 @@ export class RunEnv {
     static get isDev(): boolean;
     static get isProd(): boolean;
 }
+
+// @public
+export const SCOPE_PROVIDE_TOKEN_A4_CONFIG: A4ScopeProvideToken;
+
+// @public
+export const SCOPE_PROVIDE_TOKEN_A4_DOCS: A4ScopeProvideToken;
+
+// @public
+export const SCOPE_PROVIDE_TOKEN_A4_LOG: A4ScopeProvideToken;
+
+// @public
+export const SCOPE_PROVIDE_TOKEN_A4_NETWORK: A4ScopeProvideToken;
+
+// @public
+export const SCOPE_PROVIDE_TOKEN_A4_SAFE: A4ScopeProvideToken;
 
 // @public
 export class SIdEntity {

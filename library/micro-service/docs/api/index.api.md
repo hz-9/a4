@@ -11,10 +11,10 @@ import { BaseRpcExceptionFilter } from '@nestjs/microservices';
 import { ClientProxy } from '@nestjs/microservices';
 import { Closeable } from '@nestjs/microservices';
 import { DynamicModule } from '@nestjs/common';
-import { FactoryProvider } from '@nestjs/common';
 import { IA4Config } from '@hz-9/a4-core';
 import type { IA4MicroService } from '@hz-9/a4-core';
 import { IA4MicroServiceModule } from '@hz-9/a4-core';
+import { IA4ModuleForRootAsyncOptions } from '@hz-9/a4-core';
 import { IExceptionRule } from '@hz-9/a4-core';
 import { IObjectLiteral } from '@hz-9/a4-core';
 import { Logger } from '@nestjs/common';
@@ -62,13 +62,15 @@ export class A4MicroServiceModule implements A4ModuleBase, IA4MicroServiceModule
     // (undocumented)
     static exceptionRules: IExceptionRule[];
     // (undocumented)
-    static forRootAsync(options: Omit<FactoryProvider<A4MicroServiceModuleSchema>, 'provide'>): DynamicModule;
+    static forRootAsync(options: IA4ModuleForRootAsyncOptions<A4MicroServiceModuleSchema>): DynamicModule;
     // (undocumented)
-    static getConfig(a4Config: IA4Config): A4MicroServiceModuleSchema;
+    static getConfig(a4Config: IA4Config<A4MicroServiceModule['Schema']>, configKey?: string): A4MicroServiceModuleSchema;
     // (undocumented)
     static logger: Logger;
     // (undocumented)
     static Schema: typeof A4MicroServiceModuleSchemaA;
+    // (undocumented)
+    Schema: A4MicroServiceModuleSchemaA;
 }
 
 // @public

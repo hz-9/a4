@@ -2,11 +2,12 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-01 00:42:18
+ * @LastEditTime : 2024-07-01 00:52:01
  */
-import chalk from 'chalk'
 import { ClassConstructor, plainToClass } from 'class-transformer'
 import { ValidationError, validateSync } from 'class-validator'
+
+import { A4Color } from './color.util'
 
 /**
  * @public
@@ -142,32 +143,24 @@ export class ClassValidatorUtil {
   public static mergeErrorsToOneMsg(errors: ValidationError[], options: IClassValidatorUtilParseOptions): string {
     const errorPlus: IValidationErrorPlus[] = this._formatValidationError(errors)
 
-    const messages: string = errorPlus
-      .map(({ property, value, constraints }) => {
-        const constraintMessage = Object.entries(constraints || /* istanbul ignore next */ {})
-          .map(([key, val]) =>
-            options.errorColer
-              ? `    - ${key}: ${chalk.yellow(val)}, current config is \`${chalk.blue(JSON.stringify(value))}\``
-              : `    - ${key}: ${val}, current config is \`${JSON.stringify(value)}\``
-          )
-          .join(`\n`)
+    const titleMsg: string = `Configuration is not valid:`
 
-        const msg = [
-          options.errorColer
-            ? `  - config ${chalk.cyan(property)} does not match the following rules:`
-            : `  - config ${property} does not match the following rules:`,
-          `${constraintMessage}`,
-        ].join(`\n`)
-        return msg
-      })
-      .filter(Boolean)
-      .join(`\n`)
+    const showErrorColor = options.errorColer
 
-    const configErrorMessage = options.errorColer
-      ? chalk.red(`Configuration is not valid:\n${messages}\n`)
-      : `Configuration is not valid:\n${messages}\n`
+    const messages: string[] = errorPlus.map(({ property, value, constraints }) => {
+      const propertyMsg: string = showErrorColor ? A4Color.cyan(property) : property
 
-    return configErrorMessage
+      const constraintMessage: string[] = Object.entries(constraints || /* istanbul ignore next */ {}).map(
+        ([key, val]) =>
+          showErrorColor
+            ? `    - ${key}: ${A4Color.yellow(val)}, current config is \`${A4Color.blue(JSON.stringify(value))}\``
+            : `    - ${key}: ${val}, current config is \`${JSON.stringify(value)}\``
+      )
+
+      return [`  - config ${propertyMsg} does not match the following rules:`, ...constraintMessage].join(`\n`)
+    })
+
+    return [showErrorColor ? A4Color.red(titleMsg) : titleMsg, ...messages].join(`\n`)
   }
 
   /**
@@ -198,3 +191,11 @@ export class ClassValidatorUtil {
     return result
   }
 }
+
+/**
+ * @public
+ *
+ *  `ClassValidatorUtil` 类名较长，ClassValidatorUtil 的别名。
+ *
+ */
+export const CU: typeof ClassValidatorUtil = ClassValidatorUtil

@@ -9,9 +9,9 @@ import type { ClientOptions } from '@elastic/elasticsearch';
 import { DeepPartial } from '@hz-9/a4-core';
 import { DynamicModule } from '@nestjs/common';
 import { Client as ElasticsearchClient } from '@elastic/elasticsearch';
-import { FactoryProvider } from '@nestjs/common';
 import { IA4Config } from '@hz-9/a4-core';
 import { IA4CrudModule } from '@hz-9/a4-core';
+import { IA4ModuleForRootAsyncOptions } from '@hz-9/a4-core';
 import { IA4SimpleDao } from '@hz-9/a4-core';
 import { IDeleteResult } from '@hz-9/a4-core';
 import { Inject } from '@nestjs/common';
@@ -77,14 +77,20 @@ export class A4ElasticSearchCrudModule implements A4ModuleBase, IA4CrudModule {
     static CONFIG_MIDDLE_PATH: "A4.crud.elasticSearch";
     // (undocumented)
     static forFeature(indices?: Index[], dbName?: string): DynamicModule;
+    // Warning: (ae-incompatible-release-tags) The symbol "forRootAsync" is marked as @public, but its signature references "A4ElasticSearchCrudModuleOptions" which is marked as @internal
+    //
     // (undocumented)
-    static forRootAsync(options: Omit<FactoryProvider<Record<string, DataSourceOptionsExtraWithDefault>>, 'provide'>): DynamicModule;
+    static forRootAsync(options: IA4ModuleForRootAsyncOptions<A4ElasticSearchCrudModuleOptions>): DynamicModule;
+    // Warning: (ae-incompatible-release-tags) The symbol "getConfig" is marked as @public, but its signature references "A4ElasticSearchCrudModuleOptions" which is marked as @internal
+    //
     // (undocumented)
-    static getConfig(a4Config: IA4Config): Record<string, DataSourceOptionsExtraWithDefault>;
+    static getConfig(a4Config: IA4Config<A4ElasticSearchCrudModule['Schema']>, configKey?: string): A4ElasticSearchCrudModuleOptions;
     // (undocumented)
     static logger: Logger;
     // (undocumented)
     static Schema: typeof A4ElasticSearchCrudModuleSchemaA;
+    // (undocumented)
+    Schema: A4ElasticSearchCrudModuleSchemaA;
 }
 
 // Warning: (ae-internal-missing-underscore) The name "A4ElasticSearchCrudModuleOptions" should be prefixed with an underscore because the declaration is marked as @internal
@@ -108,12 +114,6 @@ export class A4ElasticSearchCrudModuleSchemaA {
 export class A4ElasticSearchCrudModuleSchemaB {
     // (undocumented)
     readonly crud: A44ElasticSearchCrudModuleSchemaC;
-}
-
-// @public
-export class A4TypeORMCrudModuleSchema {
-    // (undocumented)
-    readonly default: DataSourceOptionsExtra;
 }
 
 // @public

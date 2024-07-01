@@ -10,8 +10,6 @@ First, we need to install the required dependencies:
 npm i @hz-9/a4-network
 ```
 
-<!-- TODO Limiting listening for IPv4 and IPv6 -->
-
 ## Getting Started
 
 Import the `A4Log4jsLogModule` module in the `src/app.module.ts` file.
@@ -57,4 +55,4 @@ Here, `A4NetworkModule` depends on `A4Config` and reads the configuration option
 
 `A4NetworkModule.Schema` is the configuration model for `A4NetworkModule`.
 
-For more information on log configuration, please refer to the [link](TODO).
+For more configuration details, please refer to the [Options](../../guide/a4-network/options) section.
