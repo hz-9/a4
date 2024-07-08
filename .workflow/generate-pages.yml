@@ -54,18 +54,18 @@ stages:
             - ae5f4645-c72c-407f-8377-7033c8e79165
         deployArtifact:
           - source: artifact
-            name: output
+            name: pages
             target: /usr/heaven_docs/a4
             artifactRepository: default
             artifactName: pages
             artifactVersion: latest
         script:
-          - cd /usr/heaven_docs/tool
-          - tar zxvf output.tar.gz
-          - cd ../ && rm -rf ./lint_dist
-          - mv ./a4/dist ./lint_dist
+          - cd /usr/heaven_docs/a4
+          - tar zxvf pages.tar.gz
+          - cd ../ && rm -rf ./a4_dist
+          - mv ./a4/dist ./a4_dist
           - rm -rf ./a4/*
-          - mv ./lint_dist/* ./a4/
+          - mv ./a4_dist/* ./a4/
           - echo 'Publish Page Complete!'
         notify: []
         strategy:
