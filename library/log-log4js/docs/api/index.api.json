@@ -729,8 +729,8 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "ILog4jsOptions",
-                  "canonicalReference": "@hz-9/a4-log-log4js!ILog4jsOptions:interface"
+                  "text": "IA4Log4jsOptions",
+                  "canonicalReference": "@hz-9/a4-log-log4js!IA4Log4jsOptions:type"
                 },
                 {
                   "kind": "Content",
@@ -765,7 +765,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "<typeof "
+                  "text": "<(typeof "
                 },
                 {
                   "kind": "Reference",
@@ -774,7 +774,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "['RootSchemaType']>"
+                  "text": ")['RootSchemaType']>"
                 },
                 {
                   "kind": "Content",
@@ -790,8 +790,8 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "ILog4jsOptions",
-                  "canonicalReference": "@hz-9/a4-log-log4js!ILog4jsOptions:interface"
+                  "text": "IA4Log4jsOptions",
+                  "canonicalReference": "@hz-9/a4-log-log4js!IA4Log4jsOptions:type"
                 },
                 {
                   "kind": "Content",
@@ -880,6 +880,56 @@
             },
             {
               "kind": "Method",
+              "canonicalReference": "@hz-9/a4-log-log4js!A4Log4jsSimpleLogModule.optionsToConfig:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "static optionsToConfig(options: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "A4Log4jsSimpleLogModuleSchema",
+                  "canonicalReference": "@hz-9/a4-log-log4js!A4Log4jsSimpleLogModuleSchema:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IA4Log4jsSimpleOptions",
+                  "canonicalReference": "@hz-9/a4-log-log4js!IA4Log4jsSimpleOptions:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": true,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "optionsToConfig"
+            },
+            {
+              "kind": "Method",
               "canonicalReference": "@hz-9/a4-log-log4js!A4Log4jsSimpleLogModule.optionsToProvideClassConstructorOptions:member(1)",
               "docComment": "",
               "excerptTokens": [
@@ -889,8 +939,8 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "ILog4jsOptions",
-                  "canonicalReference": "@hz-9/a4-log-log4js!ILog4jsOptions:interface"
+                  "text": "IA4Log4jsOptions",
+                  "canonicalReference": "@hz-9/a4-log-log4js!IA4Log4jsOptions:type"
                 },
                 {
                   "kind": "Content",
@@ -972,7 +1022,7 @@
             {
               "kind": "Property",
               "canonicalReference": "@hz-9/a4-log-log4js!A4Log4jsSimpleLogModuleSchema#backups:member",
-              "docComment": "/**\n * 日志文件最长备份天数。\n *\n * 作为 `ConfitSchema` 时，若缺省，则赋值为 作为 `ConfitSchema` 时，若缺省，则赋值为 [LOGGER_MODULE_DEFAULT.BACK_UPS]\n */\n",
+              "docComment": "/**\n * 日志文件最长备份天数。\n *\n * 作为 `ConfitSchema` 时，若缺省，则赋值为 作为 `ConfitSchema` 时，若缺省，则赋值为 [SIMPLE_LOGGER_MODULE_DEFAULT.BACK_UPS]\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -1002,7 +1052,7 @@
             {
               "kind": "Property",
               "canonicalReference": "@hz-9/a4-log-log4js!A4Log4jsSimpleLogModuleSchema#baseDir:member",
-              "docComment": "/**\n * 日志文件存放路径。\n *\n * 作为 `ConfitSchema` 时，若缺省，则赋值为 [LOGGER_MODULE_DEFAULT.BASE_DIR]\n */\n",
+              "docComment": "/**\n * 日志文件存放路径。\n *\n * 作为 `ConfitSchema` 时，若缺省，则赋值为 [SIMPLE_LOGGER_MODULE_DEFAULT.BASE_DIR]\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -1032,7 +1082,7 @@
             {
               "kind": "Property",
               "canonicalReference": "@hz-9/a4-log-log4js!A4Log4jsSimpleLogModuleSchema#consolePattern:member",
-              "docComment": "/**\n * 在控制台的默认输出格式。\n *\n * 作为 `ConfitSchema` 时，若缺省，则赋值为 [LOGGER_MODULE_DEFAULT.CONSOLE_PATTERN]\n */\n",
+              "docComment": "/**\n * 在控制台的默认输出格式。\n *\n * 作为 `ConfitSchema` 时，若缺省，则赋值为 [SIMPLE_LOGGER_MODULE_DEFAULT.CONSOLE_PATTERN]\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -1062,7 +1112,7 @@
             {
               "kind": "Property",
               "canonicalReference": "@hz-9/a4-log-log4js!A4Log4jsSimpleLogModuleSchema#enableCallStack:member",
-              "docComment": "/**\n * 是否开启回调栈。\n *\n * 部分日志输出需要开启此功能，但会影响性能。\n *\n * 作为 `ConfitSchema` 时，若缺省，则赋值为 [LOGGER_MODULE_DEFAULT.ENABLE_CALLSTACK]\n *\n * enableCallStack 在 `log4js` 详细解释可 [查看](https://log4js-node.github.io/log4js-node/layouts.html)\n */\n",
+              "docComment": "/**\n * 是否开启回调栈。\n *\n * 部分日志输出需要开启此功能，但会影响性能。\n *\n * 作为 `ConfitSchema` 时，若缺省，则赋值为 [SIMPLE_LOGGER_MODULE_DEFAULT.ENABLE_CALLSTACK]\n *\n * enableCallStack 在 `log4js` 详细解释可 [查看](https://log4js-node.github.io/log4js-node/layouts.html)\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -1092,7 +1142,7 @@
             {
               "kind": "Property",
               "canonicalReference": "@hz-9/a4-log-log4js!A4Log4jsSimpleLogModuleSchema#filePattern:member",
-              "docComment": "/**\n * 在日志文件的默认输出格式。\n *\n * 作为 `ConfitSchema` 时，若缺省，则赋值为 [LOGGER_MODULE_DEFAULT.FILE_PATTERN]\n */\n",
+              "docComment": "/**\n * 在日志文件的默认输出格式。\n *\n * 作为 `ConfitSchema` 时，若缺省，则赋值为 [SIMPLE_LOGGER_MODULE_DEFAULT.FILE_PATTERN]\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -1122,7 +1172,7 @@
             {
               "kind": "Property",
               "canonicalReference": "@hz-9/a4-log-log4js!A4Log4jsSimpleLogModuleSchema#level:member",
-              "docComment": "/**\n * 日志输出级别。\n *\n * 作为 `ConfitSchema` 时，若缺省，则赋值为 [LOGGER_MODULE_DEFAULT.CONSOLE_PATTERN]\n */\n",
+              "docComment": "/**\n * 日志输出级别。\n *\n * 作为 `ConfitSchema` 时，若缺省，则赋值为 [SIMPLE_LOGGER_MODULE_DEFAULT.CONSOLE_PATTERN]\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -1153,7 +1203,7 @@
             {
               "kind": "Property",
               "canonicalReference": "@hz-9/a4-log-log4js!A4Log4jsSimpleLogModuleSchema#maxLogSize:member",
-              "docComment": "/**\n * 日志文件最大文件大小（单位：B）。\n *\n * 作为 `ConfitSchema` 时，若缺省，则赋值为 [LOGGER_MODULE_DEFAULT.MAX_LOG_SIZE]\n */\n",
+              "docComment": "/**\n * 日志文件最大文件大小（单位：B）。\n *\n * 作为 `ConfitSchema` 时，若缺省，则赋值为 [SIMPLE_LOGGER_MODULE_DEFAULT.MAX_LOG_SIZE]\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -1334,6 +1384,231 @@
           "implementsTokenRanges": []
         },
         {
+          "kind": "TypeAlias",
+          "canonicalReference": "@hz-9/a4-log-log4js!IA4Log4jsOptions:type",
+          "docComment": "/**\n * `log4js` 需求配置项\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type IA4Log4jsOptions = "
+            },
+            {
+              "kind": "Reference",
+              "text": "Configuration",
+              "canonicalReference": "log4js!Configuration:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "dist/interface/logger.d.ts",
+          "releaseTag": "Public",
+          "name": "IA4Log4jsOptions",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@hz-9/a4-log-log4js!IA4Log4jsSimpleInitOptions:interface",
+          "docComment": "/**\n * `log4js` 需求配置项\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface IA4Log4jsSimpleInitOptions "
+            }
+          ],
+          "fileUrlPath": "dist/interface/logger.d.ts",
+          "releaseTag": "Public",
+          "name": "IA4Log4jsSimpleInitOptions",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/a4-log-log4js!IA4Log4jsSimpleInitOptions#appenders:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "appenders: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "{\n        stdout: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "StandardOutputAppender",
+                  "canonicalReference": "log4js!StandardOutputAppender:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";\n    }"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "appenders",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 4
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/a4-log-log4js!IA4Log4jsSimpleInitOptions#categories:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "categories: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "{\n        default: {\n            enableCallStack: boolean;\n            appenders: string[];\n            level: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "LoggerLevel",
+                  "canonicalReference": "@hz-9/a4-log-log4js!LoggerLevel:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";\n        };\n    }"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "categories",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 4
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@hz-9/a4-log-log4js!IA4Log4jsSimpleOptions:interface",
+          "docComment": "/**\n * `log4js` 需求配置项\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface IA4Log4jsSimpleOptions "
+            }
+          ],
+          "fileUrlPath": "dist/interface/logger.d.ts",
+          "releaseTag": "Public",
+          "name": "IA4Log4jsSimpleOptions",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/a4-log-log4js!IA4Log4jsSimpleOptions#appenders:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "appenders: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "{\n        stdout: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "StandardOutputAppender",
+                  "canonicalReference": "log4js!StandardOutputAppender:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";\n        app: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DateFileAppender",
+                  "canonicalReference": "log4js!DateFileAppender:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";\n        [k: string]: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Appender",
+                  "canonicalReference": "log4js!Appender:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";\n    }"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "appenders",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 8
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/a4-log-log4js!IA4Log4jsSimpleOptions#categories:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "categories: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "{\n        default: {\n            enableCallStack: boolean;\n            appenders: string[];\n            level: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "LoggerLevel",
+                  "canonicalReference": "@hz-9/a4-log-log4js!LoggerLevel:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";\n        };\n    }"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "categories",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 4
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
           "kind": "Interface",
           "canonicalReference": "@hz-9/a4-log-log4js!IInitLoggerOptions:interface",
           "docComment": "/**\n * 服务初始化阶段，日志对象的配置参数。\n *\n * 此阶段，进存在普通输出日志流，不存在文件写入的情况。\n *\n * 无 `filePattern` `maxLogSize` `backups` 属性。\n *\n * @public\n */\n",
@@ -1376,102 +1651,6 @@
               "endIndex": 5
             }
           ]
-        },
-        {
-          "kind": "Interface",
-          "canonicalReference": "@hz-9/a4-log-log4js!ILog4jsOptions:interface",
-          "docComment": "/**\n * `log4js` 需求配置项\n *\n * @public\n */\n",
-          "excerptTokens": [
-            {
-              "kind": "Content",
-              "text": "export interface ILog4jsOptions "
-            }
-          ],
-          "fileUrlPath": "dist/interface/logger.d.ts",
-          "releaseTag": "Public",
-          "name": "ILog4jsOptions",
-          "preserveMemberOrder": false,
-          "members": [
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/a4-log-log4js!ILog4jsOptions#config:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "config: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Configuration",
-                  "canonicalReference": "log4js!Configuration:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "config",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/a4-log-log4js!ILog4jsOptions#name:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "name: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "string"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "name",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            }
-          ],
-          "extendsTokenRanges": []
-        },
-        {
-          "kind": "Variable",
-          "canonicalReference": "@hz-9/a4-log-log4js!LOGGER_MODULE_DEFAULT:var",
-          "docComment": "/**\n * `A4 Log Log4js` 配置信息默认值。\n *\n * 各参数说明，请查看 [SimpleLoggerConfigSchema](TODO)。\n *\n * @public\n */\n",
-          "excerptTokens": [
-            {
-              "kind": "Content",
-              "text": "LOGGER_MODULE_DEFAULT: "
-            },
-            {
-              "kind": "Content",
-              "text": "{\n    readonly LOGGER_LEVEL: \"debug\";\n    readonly CONSOLE_PATTERN: \"[A4] \\u001B[92m%z\\u001B[39m  - %d{yyyy-MM-dd hh:mm:ss} \\u001B[92m%7p\\u001B[39m \\u001B[33m[%14.14x{name}]\\u001B[39m \\u001B[92m%m\\u001B[39m\";\n    readonly FILE_PATTERN: \"[A4] %-6z - %d{yyyy-MM-dd hh:mm:ss} %7p [%14.14x{name}] %m\";\n    readonly BASE_DIR: \"./logs\";\n    readonly MAX_LOG_SIZE: 10485760;\n    readonly BACK_UPS: 180;\n    readonly ENABLE_CALLSTACK: false;\n}"
-            }
-          ],
-          "fileUrlPath": "dist/const/index.d.ts",
-          "isReadonly": true,
-          "releaseTag": "Public",
-          "name": "LOGGER_MODULE_DEFAULT",
-          "variableTypeTokenRange": {
-            "startIndex": 1,
-            "endIndex": 2
-          }
         },
         {
           "kind": "TypeAlias",
@@ -1520,6 +1699,29 @@
           "typeTokenRange": {
             "startIndex": 1,
             "endIndex": 7
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@hz-9/a4-log-log4js!SIMPLE_LOGGER_MODULE_DEFAULT:var",
+          "docComment": "/**\n * `A4 Log Log4js` 配置信息默认值。\n *\n * 各参数说明，请查看 [SimpleLoggerConfigSchema](TODO)。\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "SIMPLE_LOGGER_MODULE_DEFAULT: "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    readonly LOGGER_LEVEL: \"debug\";\n    readonly CONSOLE_PATTERN: \"[A4] \\u001B[92m%z\\u001B[39m  - %d{yyyy-MM-dd hh:mm:ss} \\u001B[92m%7p\\u001B[39m \\u001B[33m[%14.14x{name}]\\u001B[39m \\u001B[92m%m\\u001B[39m\";\n    readonly FILE_PATTERN: \"[A4] %-6z - %d{yyyy-MM-dd hh:mm:ss} %7p [%14.14x{name}] %m\";\n    readonly BASE_DIR: \"./logs\";\n    readonly MAX_LOG_SIZE: 10485760;\n    readonly BACK_UPS: 180;\n    readonly ENABLE_CALLSTACK: false;\n}"
+            }
+          ],
+          "fileUrlPath": "dist/const/index.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "SIMPLE_LOGGER_MODULE_DEFAULT",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
           }
         }
       ]

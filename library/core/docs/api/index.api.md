@@ -159,7 +159,7 @@ export type A4ConfigGetType<OT, Path extends string | readonly string[],
 /**
 * 是否设置了默认值。
 */
-WithDefault extends boolean = false> = OT extends object ? Equal<OT, object> extends true ? unknown : GetTypeForType<OT, Path, WithDefault> : never;
+WithDefault extends boolean = false> = OT extends object ? (Equal<OT, object> extends true ? unknown : GetTypeForType<OT, Path, WithDefault>) : never;
 
 // @public
 export class A4CrudUtil {

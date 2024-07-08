@@ -4,7 +4,9 @@
 
 ```ts
 
-import type { Configuration } from 'log4js';
+import type { Appender } from 'log4js';
+import { Configuration } from 'log4js';
+import type { DateFileAppender } from 'log4js';
 import { IA4Config } from '@hz-9/a4-core';
 import { IA4LogModule } from '@hz-9/a4-core';
 import { IA4ModuleBaseSubType } from '@hz-9/a4-core';
@@ -12,6 +14,7 @@ import type { Levels } from 'log4js';
 import { Logger } from 'log4js';
 import { LoggerService } from '@nestjs/common';
 import { ModuleError } from '@hz-9/a4-core';
+import type { StandardOutputAppender } from 'log4js';
 
 // @public (undocumented)
 export class A4Log4jsLogger implements LoggerService {
@@ -39,13 +42,15 @@ export class A4Log4jsLogger implements LoggerService {
 // @public (undocumented)
 export class A4Log4jsSimpleLogModule extends A4Log4jsSimpleLogModuleBase implements IA4LogModule {
     // (undocumented)
-    static get defaultConfig(): ILog4jsOptions;
+    static get defaultConfig(): IA4Log4jsOptions;
     // (undocumented)
-    static getConfig(a4Config: IA4Config<typeof A4Log4jsSimpleLogModuleBase['RootSchemaType']>, configKey?: string): ILog4jsOptions;
+    static getConfig(a4Config: IA4Config<(typeof A4Log4jsSimpleLogModuleBase)['RootSchemaType']>, configKey?: string): IA4Log4jsOptions;
     // (undocumented)
     static getInitLogger(options?: IInitLoggerOptions): A4Log4jsLogger;
     // (undocumented)
-    protected static optionsToProvideClassConstructorOptions(options: ILog4jsOptions): Promise<Logger>;
+    static optionsToConfig(options: A4Log4jsSimpleLogModuleSchema): IA4Log4jsSimpleOptions;
+    // (undocumented)
+    protected static optionsToProvideClassConstructorOptions(options: IA4Log4jsOptions): Promise<Logger>;
 }
 
 // @public
@@ -78,19 +83,51 @@ export class A4Log4jsSimpleLogModuleSchemaC {
 }
 
 // @public
+export type IA4Log4jsOptions = Configuration;
+
+// @public
+export interface IA4Log4jsSimpleInitOptions {
+    // (undocumented)
+    appenders: {
+        stdout: StandardOutputAppender;
+    };
+    // (undocumented)
+    categories: {
+        default: {
+            enableCallStack: boolean;
+            appenders: string[];
+            level: LoggerLevel;
+        };
+    };
+}
+
+// @public
+export interface IA4Log4jsSimpleOptions {
+    // (undocumented)
+    appenders: {
+        stdout: StandardOutputAppender;
+        app: DateFileAppender;
+        [k: string]: Appender;
+    };
+    // (undocumented)
+    categories: {
+        default: {
+            enableCallStack: boolean;
+            appenders: string[];
+            level: LoggerLevel;
+        };
+    };
+}
+
+// @public
 export interface IInitLoggerOptions extends Omit<A4Log4jsSimpleLogModuleSchema, 'filePattern' | 'maxLogSize' | 'backups'> {
 }
 
 // @public
-export interface ILog4jsOptions {
-    // (undocumented)
-    config: Configuration;
-    // (undocumented)
-    name: string;
-}
+export type LoggerLevel = Lowercase<Exclude<keyof Levels, 'levels' | 'getLevel' | 'addLevels'>>;
 
 // @public
-export const LOGGER_MODULE_DEFAULT: {
+export const SIMPLE_LOGGER_MODULE_DEFAULT: {
     readonly LOGGER_LEVEL: "debug";
     readonly CONSOLE_PATTERN: "[A4] \u001B[92m%z\u001B[39m  - %d{yyyy-MM-dd hh:mm:ss} \u001B[92m%7p\u001B[39m \u001B[33m[%14.14x{name}]\u001B[39m \u001B[92m%m\u001B[39m";
     readonly FILE_PATTERN: "[A4] %-6z - %d{yyyy-MM-dd hh:mm:ss} %7p [%14.14x{name}] %m";
@@ -99,9 +136,6 @@ export const LOGGER_MODULE_DEFAULT: {
     readonly BACK_UPS: 180;
     readonly ENABLE_CALLSTACK: false;
 };
-
-// @public
-export type LoggerLevel = Lowercase<Exclude<keyof Levels, 'levels' | 'getLevel' | 'addLevels'>>;
 
 // (No @packageDocumentation comment for this package)
 

@@ -37,7 +37,7 @@ export class A4Network implements IA4Network {
 // @public
 export class A4NetworkModule extends A4NetworkModuleBase {
     // (undocumented)
-    static getConfig(a4Config: IA4Config<typeof A4NetworkModuleBase['RootSchemaType']>, configKey?: string): A4NetworkModuleSchema;
+    static getConfig(a4Config: IA4Config<(typeof A4NetworkModuleBase)['RootSchemaType']>, configKey?: string): A4NetworkModuleSchema;
     // (undocumented)
     protected static optionsToProvideClassConstructorOptions(options: A4NetworkModuleSchema): Promise<INetworkInfo>;
 }

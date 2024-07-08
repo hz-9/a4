@@ -47,7 +47,7 @@ export class A4DocsModule extends A4DocsModuleBase {
     // (undocumented)
     static get defaultConfig(): IDocsInfo;
     // (undocumented)
-    static getConfig(a4Config: IA4Config<typeof A4DocsModuleBase['RootSchemaType']>, configKey?: string): IDocsInfo;
+    static getConfig(a4Config: IA4Config<(typeof A4DocsModuleBase)['RootSchemaType']>, configKey?: string): IDocsInfo;
     // (undocumented)
     protected static optionsToProvideClassConstructorOptions(options: IDocsInfo): Promise<IDocsInfo>;
 }

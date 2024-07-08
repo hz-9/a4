@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 17:05:30
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-01 23:02:55
+ * @LastEditTime : 2024-07-06 17:24:14
  */
 import { MiddlewareConsumer, Module } from '@nestjs/common'
 
@@ -32,7 +32,7 @@ import { ProxyRpcMiddleware } from './middleware/proxy.rpc.middleware'
           A4MicroServiceModule.Schema,
           A4NetworkModule.RootSchema,
           A4EurekaRegsitryModule.Schema,
-          A4SafeModule.Schema,
+          A4SafeModule.RootSchema,
         ],
       }),
     }),

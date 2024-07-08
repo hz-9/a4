@@ -631,7 +631,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "<typeof "
+                  "text": "<(typeof "
                 },
                 {
                   "kind": "Reference",
@@ -640,7 +640,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "['RootSchemaType']>"
+                  "text": ")['RootSchemaType']>"
                 },
                 {
                   "kind": "Content",
