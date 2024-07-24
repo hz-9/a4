@@ -1,4 +1,5 @@
 {
-  "prettier.prettierPath": "common/autoinstallers/rush-prettier/node_modules/prettier/bin/prettier.cjs",
-  "prettier.configPath": ".prettierrc.js"
+  "prettier.useEditorConfig": false,
+  "prettier.configPath": ".prettierrc.js",
+  "eslint.enable": true
 }
