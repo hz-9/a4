@@ -62,58 +62,34 @@ jspm_packages/
 common/deploy/
 common/temp/
 common/autoinstallers/*/.npmrc
-common/envs/eureka/*.jar
-
 **/.rush/temp/
 
-# docs
-/docs/.vuepress
+# Docs
+/docs
+**/docs/.markdowns
+**/docs/.vuepress
 
 # Heft
 .heft
 
-# Libraries & Service
-
-/hefts/*/temp
+# Repo build output
 /hefts/*/dist
 /hefts/*/lib
-/hefts/*/.rush
-/hefts/*/docs/.vuepress
-/hefts/*/docs/.markdowns
-
-/library/*/temp
 /library/*/dist
 /library/*/lib
-/library/*/.rush
-/library/*/docs/.vuepress
-/library/*/docs/.markdowns
-/library/*/logs
-/library/*/log
-
-/service/*/temp
-/service/*/build
-/service/*/dist
-/service/*/lib
-/service/*/.rush
-/service/*/docs/.vuepress
-/service/*/docs/.markdowns
-/service/*/logs
-/service/*/log
-
-/sample/*/temp
-/sample/*/build
 /sample/*/dist
 /sample/*/lib
-/sample/*/.rush
-/sample/*/docs/.vuepress
-/sample/*/docs/.markdowns
-/sample/*/logs
-/sample/*/log
+/sample/*/build
 
-/test/*/temp
-/test/*/dist
-/test/*/lib
-/test/*/.rush
-/test/*/docs/.vuepress
-/test/*/logs
-/test/*/log
+# Repo temp files
+/hefts/*/temp
+/library/*/temp
+/sample/*/temp
+
+# Repo logs
+/hefts/*/log
+/hefts/*/logs
+/library/*/log
+/library/*/logs
+/sample/*/log
+/sample/*/logs

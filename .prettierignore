@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------------------------------------------------
-# 保持与 .gitignore 同步
+# Keep in sync with .gitignore
 #-------------------------------------------------------------------------------------------------------------------
 
 # Logs
@@ -68,58 +68,52 @@ common/temp/
 common/autoinstallers/*/.npmrc
 **/.rush/temp/
 
-library/*/sandbox/temp
-library/*/src/test/temp
-library/*/lib
-library/*/docs/api
-library/*/build
-library/*/temp
-library/*/public/*.json
-
-service/*/sandbox/temp
-service/*/src/test/temp
-service/*/lib
-service/*/docs/api
-service/*/build
-service/*/temp
-
-sample/*/sandbox/temp
-sample/*/src/test/temp
-sample/*/lib
-sample/*/docs/api
-sample/*/build
-sample/*/temp
+# Docs
+/docs
+**/docs/.markdowns
+**/docs/.vuepress
 
 # Heft
 .heft
 
+# Repo build output
+/hefts/*/dist
+/hefts/*/lib
+/library/*/dist
+/library/*/lib
+/sample/*/dist
+/sample/*/lib
+/sample/*/build
+
+# Repo temp files
+/hefts/*/temp
+/library/*/temp
+/sample/*/temp
+
+# Repo logs
+/hefts/*/log
+/hefts/*/logs
+/library/*/log
+/library/*/logs
+/sample/*/log
+/sample/*/logs
 
 #-------------------------------------------------------------------------------------------------------------------
-# Prettier 通用配置
+# Prettier general configuration
 #-------------------------------------------------------------------------------------------------------------------
 
-# Rush 文件
+# Rush files
 common/changes/
 common/scripts/
 common/config/
 CHANGELOG.*
 
-# docs
+# Docs
 markdowns
+*.md
 
-**/temp/_eslint-*.json
-
-# 包管理文件
+# Package manager lock files
 pnpm-lock.yaml
 yarn.lock
 package-lock.json
 shrinkwrap.json
-
-# 构建产物
-dist
-lib
-
-# 在 Markdown 中，Prettier 将会对代码块进行格式化，这会影响输出
-*.md
-
-library/cli/.template/temp
