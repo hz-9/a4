@@ -2,14 +2,14 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-01 01:29:59
+ * @LastEditTime : 2024-07-01 20:00:55
  */
 
 /* eslint-disable max-classes-per-file */
 import { Type } from 'class-transformer'
 import { IsBoolean, IsObject, IsString, ValidateNested } from 'class-validator'
 
-import { ClassValidatorUtil as CU, IsOptionalNotNull } from '@hz-9/a4-core'
+import { CU, IsOptionalNotNull } from '@hz-9/a4-core'
 
 import { DOCS_MODULE_DEFAULT } from '../const'
 
@@ -170,5 +170,5 @@ export class A4DocsModuleSchemaA {
   @IsObject()
   @ValidateNested()
   @Type(() => A4DocsModuleSchemaB)
-  public readonly A4: A4DocsModuleSchemaB
+  public readonly A4: A4DocsModuleSchemaB = CU.p2CwD(A4DocsModuleSchemaB, {})
 }

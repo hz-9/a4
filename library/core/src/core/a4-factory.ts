@@ -2,14 +2,16 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-14 11:44:19
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-21 12:57:12
+ * @LastEditTime : 2024-07-01 00:30:47
  */
-import type { NestApplicationOptions } from '@nestjs/common'
-import { NestApplication } from '@nestjs/core/nest-application'
+import { Logger, NestApplicationOptions } from '@nestjs/common'
+import { ModuleRef, NestApplication } from '@nestjs/core'
 import { NestFactory } from '@nestjs/core/nest-factory'
 
+import { GLOBAL_PROVIDE_TOKEN_A4_LOG } from '../module/log/index'
 import { LogoUtil } from '../util'
 import { A4Application, type IA4AppConstructorOptions } from './a4-application'
+import { A4ConsoleLogger } from './a4-console-logger'
 import { A4ExpressAdapter } from './a4-express-adapter'
 
 interface IA4FactoryInitBodyParserOptions {
@@ -56,6 +58,7 @@ export class A4Factory {
         prefix: options.bodyParserPrefix,
         limit: options.bodyParserLimit ?? '100kb',
       })
+
       nestApplication.useBodyParser('urlencoded', {
         prefix: options?.bodyParserPrefix,
         limit: options?.bodyParserLimit ?? '100kb',
@@ -65,18 +68,37 @@ export class A4Factory {
   }
 
   public static async create(module: unknown, options: IA4FactoryCreateOptions = {}): Promise<A4Application> {
-    if (options?.printLogo ?? true) LogoUtil.print()
+    if (options.printLogo ?? true) LogoUtil.print()
 
-    const nestApplication: NestApplication = await NestFactory.create(module, new A4ExpressAdapter(), {
+    const nestOptions: NestApplicationOptions = {
       ...options,
-      bodyParser: false, // 不再自动创建，使用 A4Factory._initBodyParser 手动创建。
-    })
 
+      bodyParser: false,
+      bufferLogs: options.bufferLogs ?? true,
+    }
+
+    const nestApplication: NestApplication = await NestFactory.create(module, new A4ExpressAdapter(), nestOptions)
+
+    nestApplication.useLogger(this._getLogger(nestApplication))
+
+    // TODO await NestFactory.create<NestExpressApplication>(AppModule); 才是合理的写法。
     this.initBodyParser(nestApplication, options)
 
     const app = new A4Application(nestApplication, { port: options?.port })
 
     await app.init()
+
     return app
+  }
+
+  private static _getLogger(app: NestApplication): Logger {
+    const moduleRef: ModuleRef = app.get(ModuleRef)
+    try {
+      return moduleRef.get(GLOBAL_PROVIDE_TOKEN_A4_LOG, { strict: false }) as Logger
+    } catch (error) {
+      const logger = new A4ConsoleLogger('A4 Init')
+      logger.warn(`'A4 Log Module' is not loaded, using 'A4ConsoleLogger'.`)
+      return logger as unknown as Logger
+    }
   }
 }

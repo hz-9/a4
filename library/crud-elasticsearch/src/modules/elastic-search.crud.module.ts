@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-21 16:10:04
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-15 22:58:16
+ * @LastEditTime : 2024-06-28 22:25:25
  */
 import type { ClientOptions } from '@elastic/elasticsearch'
 import type { IndicesGetResponse } from '@elastic/elasticsearch/lib/api/types'
@@ -11,7 +11,7 @@ import { OpenSearchMappingService } from '@scalenc/opensearch-mapping-ts'
 import { defer, lastValueFrom } from 'rxjs'
 
 import * as fs from '@hz-9/a4-core/fs-extra'
-import { A4ModuleBase, A4Util, IA4Config, IA4CrudModule, RunEnv } from '@hz-9/a4-core'
+import { A4ModuleBase, A4Util, IA4Config, IA4CrudModule, IA4ModuleForRootAsyncOptions, RunEnv } from '@hz-9/a4-core'
 
 import {
   A4_CRUD_ELASTICSEARCH_DATASOURCE_GROUP,
@@ -20,7 +20,7 @@ import {
   A4_ELASTICSEARCH_INDEX_NAME_IN_METADATA,
   CRUD_ELASTICSEARCH_MODULE_DEFAULT,
 } from '../const'
-import { DataSourceOptionsExtra, DataSourceOptionsExtraWithDefault, Index } from '../interface'
+import { A4ElasticSearchCrudModuleOptions, DataSourceOptionsExtraWithDefault, Index } from '../interface'
 import { ElasticsearchClient } from '../plugin/elasticsearch_'
 import { A4ElasticSearchCrudModuleSchemaA } from '../schema'
 import { getElasticSearchCrudToken, getIndexToken, splitExtraOptions } from '../util'
@@ -43,15 +43,15 @@ interface IA4ElasticSearchIndexGroup {
 export class A4ElasticSearchCrudModule implements A4ModuleBase, IA4CrudModule {
   public static logger: Logger = new Logger('A4 Crud')
 
-  /* eslint-disable @typescript-eslint/typedef */
+  // eslint-disable-next-line @typescript-eslint/typedef
   public static CONFIG_MIDDLE_PATH = 'A4.crud.elasticSearch' as const
 
+  // eslint-disable-next-line @typescript-eslint/typedef
   public static Schema = A4ElasticSearchCrudModuleSchemaA
-  /* eslint-enable @typescript-eslint/typedef */
 
-  public static forRootAsync(
-    options: Omit<FactoryProvider<Record<string, DataSourceOptionsExtraWithDefault>>, 'provide'>
-  ): DynamicModule {
+  public Schema: A4ElasticSearchCrudModuleSchemaA
+
+  public static forRootAsync(options: IA4ModuleForRootAsyncOptions<A4ElasticSearchCrudModuleOptions>): DynamicModule {
     return {
       module: A4ElasticSearchCrudModule,
 
@@ -60,7 +60,7 @@ export class A4ElasticSearchCrudModule implements A4ModuleBase, IA4CrudModule {
           provide: A4_CRUD_ELASTICSEARCH_OPTIONS,
           inject: options.inject,
           useFactory: async (...args) => {
-            const result = await options.useFactory(...args)
+            const result = await options.useFactory!(...args)
             return result
           },
         },
@@ -68,7 +68,7 @@ export class A4ElasticSearchCrudModule implements A4ModuleBase, IA4CrudModule {
         {
           provide: A4_CRUD_ELASTICSEARCH_DATASOURCE_GROUP,
           inject: [A4_CRUD_ELASTICSEARCH_OPTIONS],
-          useFactory: async (dataSourceOptions: Record<string, DataSourceOptionsExtraWithDefault>) => {
+          useFactory: async (dataSourceOptions: A4ElasticSearchCrudModuleOptions) => {
             const group: Record<string, ElasticsearchClient> = {}
 
             const names = Object.getOwnPropertyNames(dataSourceOptions)
@@ -189,16 +189,19 @@ export class A4ElasticSearchCrudModule implements A4ModuleBase, IA4CrudModule {
     return dataSource
   }
 
-  public static getConfig(a4Config: IA4Config): Record<string, DataSourceOptionsExtraWithDefault> {
-    const config = a4Config.getOrThrow<Record<string, DataSourceOptionsExtra>>(this.CONFIG_MIDDLE_PATH)
+  public static getConfig(
+    a4Config: IA4Config<A4ElasticSearchCrudModule['Schema']>,
+    configKey?: string
+  ): A4ElasticSearchCrudModuleOptions {
+    const config = a4Config.getOrThrow((configKey as typeof this.CONFIG_MIDDLE_PATH) ?? this.CONFIG_MIDDLE_PATH)
 
-    const newConfig: Record<string, DataSourceOptionsExtraWithDefault> = {}
+    const newConfig: A4ElasticSearchCrudModuleOptions = {}
 
     const names = Object.getOwnPropertyNames(config)
 
     while (names.length) {
       const name = names.shift()!
-      const c = config[name]
+      const c = config[name as keyof typeof config]
 
       // 将 ca.crt 从文件路径读取为文件内容。
       if (c.tls?.ca && typeof c.tls.ca === 'string') {

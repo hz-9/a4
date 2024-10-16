@@ -1,0 +1,15 @@
+{
+  "openapi": "3.0.0",
+  "paths": {},
+  "info": {
+    "title": "SAMPLE SERVICE GATEWAY",
+    "description": "",
+    "version": "0.0.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "schemas": {}
+  }
+}

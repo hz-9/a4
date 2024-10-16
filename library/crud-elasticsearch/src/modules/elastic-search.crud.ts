@@ -2,10 +2,9 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-04 17:58:40
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-21 10:44:06
+ * @LastEditTime : 2024-06-27 03:56:33
  */
 import { GetGetResult, SearchRequest } from '@elastic/elasticsearch/lib/api/types'
-import { Observable, from } from 'rxjs'
 
 import {
   DeepPartial,

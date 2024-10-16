@@ -7,9 +7,9 @@
 import { A4ModuleBase } from '@hz-9/a4-core';
 import type { Cache as Cache_2 } from 'cache-manager';
 import { DynamicModule } from '@nestjs/common';
-import { FactoryProvider } from '@nestjs/common';
 import { IA4Config } from '@hz-9/a4-core';
 import { IA4LockModule } from '@hz-9/a4-core';
+import { IA4ModuleForRootAsyncOptions } from '@hz-9/a4-core';
 import { Logger } from '@nestjs/common';
 import type { Milliseconds } from 'cache-manager';
 import { Observable } from 'rxjs';
@@ -18,17 +18,25 @@ import Redlock from '@hz-9/redlock-dist';
 import type { WrapTTL } from 'cache-manager';
 
 // @public
+export class A4LockModuleSchemaB {
+    // (undocumented)
+    readonly lock: A4RedLockModuleSchemaC;
+}
+
+// @public
 export class A4RedlockLockModule implements A4ModuleBase, IA4LockModule {
     // (undocumented)
-    static CONFIG_MIDDLE_PATH: "A4.lock";
+    static CONFIG_MIDDLE_PATH: "A4.lock.redlock";
     // (undocumented)
-    static forRootAsync(options: Omit<FactoryProvider<A4RedLockModuleSchema>, 'provide'>): DynamicModule;
+    static forRootAsync(options: IA4ModuleForRootAsyncOptions<A4RedLockModuleSchema>): DynamicModule;
     // (undocumented)
-    static getConfig(a4Config: IA4Config): A4RedLockModuleSchema;
+    static getConfig(a4Config: IA4Config<A4RedlockLockModule['Schema']>, configKey?: string): A4RedLockModuleSchema;
     // (undocumented)
     static logger: Logger;
     // (undocumented)
     static Schema: typeof A4RedLockModuleSchemaA;
+    // (undocumented)
+    Schema: A4RedLockModuleSchemaA;
 }
 
 // @public
@@ -41,13 +49,13 @@ export class A4RedLockModuleSchema {
 // @public
 export class A4RedLockModuleSchemaA {
     // (undocumented)
-    readonly A4: A4RedLockModuleSchemaB;
+    readonly A4: A4LockModuleSchemaB;
 }
 
 // @public
-export class A4RedLockModuleSchemaB {
+export class A4RedLockModuleSchemaC {
     // (undocumented)
-    readonly lock: A4RedLockModuleSchema;
+    readonly redlock: A4RedLockModuleSchema;
 }
 
 // @public

@@ -4,12 +4,24 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "A4 Application",
+      "name": "A4 Application - Watch",
       "program": "${workspaceFolder}/node_modules/@nestjs/cli/bin/nest.js",
       "outputCapture": "std",
       "args": ["start", "--watch"],
       "env": {
         // "NEST_DEBUG": "false"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "A4 Application",
+      "program": "${workspaceFolder}/node_modules/@nestjs/cli/bin/nest.js",
+      "outputCapture": "std",
+      "args": ["start"],
+      "env": {
+        // "NEST_DEBUG": "false"
+        // "NO_COLOR": "true"
       }
     }
   ]

@@ -25,21 +25,31 @@
       "require": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
+    "./jsonc-parser": {
+      "require": "./dist/plugin/jsonc-parser.js",
+      "types": "./dist/plugin/jsonc-parser.d.ts"
+    },
+    "./yaml": {
+      "require": "./dist/plugin/yaml.js",
+      "types": "./dist/plugin/yaml.d.ts"
+    },
     "./*": "./*.js"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist"
+    "dist/**/*.{d.ts,js}"
   ],
   "scripts": {
-    "build": "heft test --clean",
+    "build": "heft test-all --clean",
     "lint": "heft lint",
     "test": "heft test --clean",
+    "test:watch": "heft test-watch",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "jsonc-parser": "~3.2.1",
     "yaml": "~2.3.3"
   },
   "devDependencies": {
@@ -59,7 +69,9 @@
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.1",
     "ts-node": "^10.9.1",
-    "typescript": ">=5.0.0 <5.4.0"
+    "typescript": ">=5.0.0 <5.4.0",
+    "axios-mock-adapter": "~1.22.0",
+    "axios": "~1.7.2"
   },
   "peerDependencies": {
     "@hz-9/a4-core": "workspace:*",

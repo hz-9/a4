@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 17:05:30
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-21 11:51:12
+ * @LastEditTime : 2024-06-27 18:44:44
  */
 import { Logger, MiddlewareConsumer, Module } from '@nestjs/common'
 
@@ -44,49 +44,39 @@ import { UserService } from './user/user.service'
       }),
     }),
 
-    A4CacheModule.forRootAsync({
-      inject: [A4Config],
-      useFactory: (a4Config: A4Config) => A4CacheModule.getConfig(a4Config),
-    }),
-
     A4TypeORMCrudModule.forRootAsync({
       inject: [A4Config],
-      useFactory: (a4Config: A4Config) => A4TypeORMCrudModule.getConfig(a4Config),
+      useFactory: (a4Config: A4Config<A4TypeORMCrudModule['Schema']>) => A4TypeORMCrudModule.getConfig(a4Config),
     }),
 
-    // A4DocsModule.forRootAsync({
-    //   inject: [A4Config],
-    //   useFactory: (a4Config: A4Config) => A4DocsModule.getConfig(a4Config),
-    // }),
-
-    A4RedlockLockModule.forRootAsync({
+    A4DocsModule.forRootAsync({
       inject: [A4Config],
-      useFactory: (a4Config: A4Config) => A4RedlockLockModule.getConfig(a4Config),
+      useFactory: (a4Config: A4Config<A4DocsModule['Schema']>) => A4DocsModule.getConfig(a4Config),
     }),
 
     A4Log4jsLogModule.forRootAsync({
       inject: [A4Config],
-      useFactory: (a4Config: A4Config) => A4Log4jsLogModule.simpleOptions(a4Config),
+      useFactory: (a4Config: A4Config<A4Log4jsLogModule['Schema']>) => A4Log4jsLogModule.simpleOptions(a4Config),
     }),
 
     A4MicroServiceModule.forRootAsync({
       inject: [A4Config],
-      useFactory: (a4Config: A4Config) => A4MicroServiceModule.getConfig(a4Config),
+      useFactory: (a4Config: A4Config<A4MicroServiceModule['Schema']>) => A4MicroServiceModule.getConfig(a4Config),
     }),
 
     A4NetworkModule.forRootAsync({
       inject: [A4Config],
-      useFactory: (a4Config: A4Config) => A4NetworkModule.getConfig(a4Config),
+      useFactory: (a4Config: A4Config<A4NetworkModule['Schema']>) => A4NetworkModule.getConfig(a4Config),
     }),
 
     A4EurekaRegsitryModule.forRootAsync({
       inject: [A4Config],
-      useFactory: (a4Config: A4Config) => A4EurekaRegsitryModule.getConfig(a4Config),
+      useFactory: (a4Config: A4Config<A4EurekaRegsitryModule['Schema']>) => A4EurekaRegsitryModule.getConfig(a4Config),
     }),
 
     A4SafeModule.forRootAsync({
       inject: [A4Config],
-      useFactory: (a4Config: A4Config) => A4SafeModule.getConfig(a4Config),
+      useFactory: (a4Config: A4Config<A4SafeModule['Schema']>) => A4SafeModule.getConfig(a4Config),
     }),
 
     PermissionModule,
@@ -101,9 +91,9 @@ export class AppModule {
 
   public constructor(
     protected readonly userService: UserService,
-    protected readonly a4Config: A4Config
+    protected readonly a4Config: A4Config<AppConfigSchema>
   ) {
-    this._initDefault = a4Config.getOrThrow<AppConfigSchema['A4']['app']['initDefault']>('A4.app.initDefault')
+    this._initDefault = a4Config.getOrThrow('A4.app.initDefault')
   }
 
   public configure(consumer: MiddlewareConsumer): void {

@@ -9,9 +9,9 @@ import { DataSourceOptions } from 'typeorm';
 import { DeepPartial } from '@hz-9/a4-core';
 import { DynamicModule } from '@nestjs/common';
 import type { EntitySchema } from 'typeorm';
-import { FactoryProvider } from '@nestjs/common';
 import { IA4Config } from '@hz-9/a4-core';
 import { IA4CrudModule } from '@hz-9/a4-core';
+import { IA4ModuleForRootAsyncOptions } from '@hz-9/a4-core';
 import { IA4SimpleDao } from '@hz-9/a4-core';
 import { IDeleteResult } from '@hz-9/a4-core';
 import { Inject } from '@nestjs/common';
@@ -69,14 +69,20 @@ export class A4TypeORMCrudModule implements A4ModuleBase, IA4CrudModule {
     static CONFIG_MIDDLE_PATH: "A4.crud.typeORM";
     // (undocumented)
     static forFeature(entities?: EntityClassOrSchema[], dataSourceName?: string): DynamicModule;
+    // Warning: (ae-incompatible-release-tags) The symbol "forRootAsync" is marked as @public, but its signature references "A4TypeORMCrudModuleOptions" which is marked as @internal
+    //
     // (undocumented)
-    static forRootAsync(options: Omit<FactoryProvider<Record<string, DataSourceOptionsExtraWithDefault>>, 'provide'>): DynamicModule;
+    static forRootAsync(options: IA4ModuleForRootAsyncOptions<A4TypeORMCrudModuleOptions>): DynamicModule;
+    // Warning: (ae-incompatible-release-tags) The symbol "getConfig" is marked as @public, but its signature references "A4TypeORMCrudModuleOptions" which is marked as @internal
+    //
     // (undocumented)
-    static getConfig(a4Config: IA4Config): Record<string, DataSourceOptionsExtraWithDefault>;
+    static getConfig(a4Config: IA4Config<A4TypeORMCrudModule['Schema']>, configKey?: string): A4TypeORMCrudModuleOptions;
     // (undocumented)
     static logger: Logger;
     // (undocumented)
     static Schema: typeof A4TypeORMCrudModuleSchemaA;
+    // (undocumented)
+    Schema: A4TypeORMCrudModuleSchemaA;
 }
 
 // Warning: (ae-internal-missing-underscore) The name "A4TypeORMCrudModuleOptions" should be prefixed with an underscore because the declaration is marked as @internal

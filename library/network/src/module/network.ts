@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-05-31 01:35:34
+ * @LastEditTime : 2024-06-29 02:52:08
  */
 import portfinder from 'portfinder'
 
@@ -17,7 +17,7 @@ import type { INetworkInfo } from '../interface'
  *
  */
 export class A4Network implements IA4Network {
-  protected readonly options: INetworkInfo
+  public readonly options: INetworkInfo
 
   /**
    * 端口尝试次数。

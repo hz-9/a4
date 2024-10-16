@@ -335,17 +335,8 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "Omit",
-                  "canonicalReference": "!Omit:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<"
-                },
-                {
-                  "kind": "Reference",
-                  "text": "FactoryProvider",
-                  "canonicalReference": "@nestjs/common!FactoryProvider:interface"
+                  "text": "IA4ModuleForRootAsyncOptions",
+                  "canonicalReference": "@hz-9/a4-core!IA4ModuleForRootAsyncOptions:type"
                 },
                 {
                   "kind": "Content",
@@ -358,7 +349,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": ">, 'provide'>"
+                  "text": ">"
                 },
                 {
                   "kind": "Content",
@@ -376,8 +367,8 @@
               ],
               "isStatic": true,
               "returnTypeTokenRange": {
-                "startIndex": 8,
-                "endIndex": 9
+                "startIndex": 6,
+                "endIndex": 7
               },
               "releaseTag": "Public",
               "isProtected": false,
@@ -387,7 +378,7 @@
                   "parameterName": "options",
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
-                    "endIndex": 7
+                    "endIndex": 5
                   },
                   "isOptional": false
                 }
@@ -412,6 +403,27 @@
                 },
                 {
                   "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "A4CacheModule",
+                  "canonicalReference": "@hz-9/a4-cache!A4CacheModule:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "['Schema']>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", configKey?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
                   "text": "): "
                 },
                 {
@@ -426,8 +438,8 @@
               ],
               "isStatic": true,
               "returnTypeTokenRange": {
-                "startIndex": 3,
-                "endIndex": 4
+                "startIndex": 8,
+                "endIndex": 9
               },
               "releaseTag": "Public",
               "isProtected": false,
@@ -437,9 +449,17 @@
                   "parameterName": "a4Config",
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
-                    "endIndex": 2
+                    "endIndex": 5
                   },
                   "isOptional": false
+                },
+                {
+                  "parameterName": "configKey",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 6,
+                    "endIndex": 7
+                  },
+                  "isOptional": true
                 }
               ],
               "isOptional": false,
@@ -474,6 +494,37 @@
                 "endIndex": 2
               },
               "isStatic": true,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@hz-9/a4-cache!A4CacheModule#Schema:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Schema: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "A4CacheModuleSchemaA",
+                  "canonicalReference": "@hz-9/a4-cache!A4CacheModuleSchemaA:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "Schema",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
               "isProtected": false,
               "isAbstract": false
             },

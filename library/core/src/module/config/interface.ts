@@ -2,11 +2,14 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-21 13:51:49
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-19 17:30:00
+ * @LastEditTime : 2024-06-30 20:27:26
  */
 
 /* eslint-disable max-classes-per-file */
-import type { PackageJson } from 'type-fest'
+import type { Equal } from '@type-challenges/utils'
+import type { Get, PackageJson } from 'type-fest'
+
+import type { NonUndefined } from '../../interface/util'
 
 /**
  *
@@ -161,13 +164,56 @@ export abstract class IA4ConfigModule {
 }
 
 /**
+ * @public
+ */
+export type A4ConfigGetType<
+  OT,
+  Path extends string | readonly string[],
+  /**
+   * 是否设置了默认值。
+   */
+  WithDefault extends boolean = false,
+> = OT extends object ? (Equal<OT, object> extends true ? unknown : GetTypeForType<OT, Path, WithDefault>) : never
+
+// export type A4ConfigGetType<
+//   OT,
+//   Path extends string | readonly string[],
+
+//   /**
+//    * 是否设置了默认值。
+//    */
+//   WithDefault extends boolean = false
+// > = Equal<OT, object> extends true
+//   ? unknown
+//   : OT extends object
+//     ? GetTypeForType<OT, Path, WithDefault>
+//     : never
+
+type GetTypeForType<
+  /**
+   * Get 函数泛型。
+   */
+  ObjectType extends object,
+  /**
+   * 请求路径。
+   */
+  Path extends string | readonly string[],
+  /**
+   * 是否设置了默认值。
+   */
+  WithDefault extends boolean = false,
+  T = Get<ObjectType, Path>,
+  T2 = Equal<T, unknown> extends true ? undefined : T,
+> = WithDefault extends true ? NonUndefined<T2> : T2
+
+/**
  *
  * @public
  *
  *  `A4Config` 抽象类。
  *
  */
-export abstract class IA4Config {
+export abstract class IA4Config<T extends object = object> {
   public mainFilepath: string
 
   public mainRoot: string
@@ -176,11 +222,17 @@ export abstract class IA4Config {
 
   public cwd: string
 
-  public allConfig: () => object
+  public abstract get<P extends string | readonly string[]>(propertyPath: P): A4ConfigGetType<T, P, false>
+  public abstract get<P extends string | readonly string[]>(
+    propertyPath: P,
+    defaultValue: NonUndefined<A4ConfigGetType<T, P, false>>
+  ): A4ConfigGetType<T, P, true>
 
-  public abstract get<CT = unknown>(propertyPath: string, defaultValueOrOptions?: CT): CT | undefined
+  public abstract getOrThrow<P extends string | readonly string[]>(propertyPath: P): A4ConfigGetType<T, P, false>
 
-  public abstract getOrThrow<CT = unknown>(propertyPath: string, defaultValueOrOptions?: CT): CT
+  // public abstract getOrThrow<P extends string | readonly string[]>(
+  //   propertyPath: P
+  // ): A4ConfigGetType<T, P, false>
 
   public abstract getA4StatsInfo(): IA4StatusInfo
 

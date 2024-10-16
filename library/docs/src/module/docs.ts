@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-19 17:05:40
+ * @LastEditTime : 2024-07-01 23:08:35
  */
 import { Logger } from '@nestjs/common'
 import { DocumentBuilder, OpenAPIObject, SwaggerModule } from '@nestjs/swagger'
@@ -51,7 +51,7 @@ export class A4Docs implements IA4Docs {
     const document = this._initSwaggerDocument(app)
 
     this._initSwaggerUI(app, document)
-    this._initSwaggerFile(app, document)
+    // this._initSwaggerFile(app, document)
 
     this._initHomePage(app)
   }
@@ -86,48 +86,42 @@ export class A4Docs implements IA4Docs {
   private _initSwaggerUI(app: A4Application, document: OpenAPIObject): void {
     if (this.options.ui.open) {
       const requestPath: string = `/${this.options.prefix}/${this.options.ui.path}`
-      SwaggerModule.setup(requestPath.replace(/^\//, ''), app.nestApp, document)
+      const jsonRequestPath = `/${this.options.prefix}/${this.options.file.filename}`
+      // const jsonRequestPath = `/${this.options.prefix}/${config.filename}`
+
+      SwaggerModule.setup(requestPath.replace(/^\//, ''), app.nestApp, document, {
+        jsonDocumentUrl: jsonRequestPath,
+      })
+
       this.logger.log(`Mapped {${requestPath}, GET} route`)
 
       this.homeLinkOptions.push({
-        label: 'Swagger UI',
+        label: 'OpenAPI UI',
         link: requestPath,
       })
+
+      this.homeLinkOptions.push({
+        label: this.options.file.filename,
+        link: jsonRequestPath,
+      })
+
+      if (this.options.file.export) {
+        const filedir = A4Util.noAbsoluteWith(this.options.file.filedir, this.options.pathInfo.mainNormalRoot)
+        const filepath = path.resolve(filedir, this.options.file.filename)
+
+        mkdirpSync(path.dirname(filepath))
+        writeFileSync(filepath, JSON.stringify(document, undefined, 2), { encoding: 'utf8' })
+      }
     }
   }
 
-  /**
-   *
-   * @internal
-   *
-   *  发布 openapi.json 文件
-   *
-   */
-  private _initSwaggerFile(app: A4Application, document: OpenAPIObject): void {
-    const config = this.options.file
-    const filedir = A4Util.noAbsoluteWith(config.filedir, this.options.pathInfo.mainNormalRoot)
-    const filepath = path.resolve(filedir, config.filename)
+  public getHomePageHtml(): string {
+    const filePath =
+      this.homeLinkOptions.length === 0
+        ? path.resolve(__dirname, '../../.template/index-empty.pug')
+        : path.resolve(__dirname, '../../.template/index-link.pug')
 
-    if (config.export) {
-      mkdirpSync(path.dirname(filepath))
-      writeFileSync(filepath, JSON.stringify(document, undefined, 2), { encoding: 'utf8' })
-    }
-
-    if (config.open) {
-      const requestPath = `/${this.options.prefix}/${config.filename}`
-
-      this.homeLinkOptions.push({
-        label: config.filename,
-        link: requestPath,
-      })
-
-      app.staticFile({
-        requestPath,
-        filepath,
-        contentType: 'application/json',
-        loggerMarker,
-      })
-    }
+    return renderFile(filePath, { links: this.homeLinkOptions, service: this.options.statsInfo })
   }
 
   /**
@@ -142,13 +136,7 @@ export class A4Docs implements IA4Docs {
     app.staticFile({
       requestPath,
       contentType: 'text/html',
-      contentCallback: (req, res) => {
-        const filePath =
-          this.homeLinkOptions.length === 0
-            ? path.resolve(__dirname, '../../.template/index-empty.pug')
-            : path.resolve(__dirname, '../../.template/index-link.pug')
-        return renderFile(filePath, { links: this.homeLinkOptions, service: this.options.statsInfo })
-      },
+      contentCallback: (req, res) => this.getHomePageHtml(),
       loggerMarker,
     })
   }

@@ -5,15 +5,15 @@
 ```ts
 
 import type { A4Application } from '@hz-9/a4-core';
-import { A4ModuleBase } from '@hz-9/a4-core';
 import type { CorsOptions } from '@nestjs/common/interfaces/external/cors-options.interface';
-import { DynamicModule } from '@nestjs/common';
-import { FactoryProvider } from '@nestjs/common';
+import { GLOBAL_PROVIDE_TOKEN_A4_SAFE } from '@hz-9/a4-core';
 import type { HelmetOptions } from 'helmet';
 import { IA4Config } from '@hz-9/a4-core';
+import { IA4ModuleBaseSubType } from '@hz-9/a4-core';
 import type { IA4Safe } from '@hz-9/a4-core';
-import { IA4SafeModule } from '@hz-9/a4-core';
-import { Logger } from '@nestjs/common';
+import { MODULE_CONFIG_PATH_A4_SAFE } from '@hz-9/a4-core';
+import { ModuleError } from '@hz-9/a4-core';
+import { SCOPE_PROVIDE_TOKEN_A4_SAFE } from '@hz-9/a4-core';
 
 // @public
 export class A4Safe implements IA4Safe {
@@ -24,18 +24,14 @@ export class A4Safe implements IA4Safe {
     readonly options: IA4SafeConstructorOptions;
 }
 
+// Warning: (ae-forgotten-export) The symbol "A4SafeModuleBase" needs to be exported by the entry point index.d.ts
+//
 // @public
-export class A4SafeModule implements A4ModuleBase, IA4SafeModule {
+export class A4SafeModule extends A4SafeModuleBase {
     // (undocumented)
-    static CONFIG_MIDDLE_PATH: "A4.safe";
+    static getConfig(a4Config: IA4Config<(typeof A4SafeModuleBase)['RootSchemaType']>, configKey?: string): A4SafeModuleSchema;
     // (undocumented)
-    static forRootAsync(options: Omit<FactoryProvider<A4SafeModuleSchema>, 'provide'>): DynamicModule;
-    // (undocumented)
-    static getConfig(a4Config: IA4Config): A4SafeModuleSchema;
-    // (undocumented)
-    static logger: Logger;
-    // (undocumented)
-    static Schema: typeof A4SafeModuleSchemaA;
+    protected static optionsToProvideClassConstructorOptions(options: A4SafeModuleSchema): Promise<A4SafeModuleSchema>;
 }
 
 // @public
@@ -58,9 +54,13 @@ export class A4SafeModuleSchemaB {
     readonly safe: A4SafeModuleSchema;
 }
 
+export { GLOBAL_PROVIDE_TOKEN_A4_SAFE }
+
 // @public
 export interface IA4SafeConstructorOptions extends A4SafeModuleSchema {
 }
+
+export { MODULE_CONFIG_PATH_A4_SAFE }
 
 // @public
 export const SAFE_MODULE_DEFAULT: {
@@ -71,6 +71,8 @@ export const SAFE_MODULE_DEFAULT: {
         readonly OPEN: false;
     };
 };
+
+export { SCOPE_PROVIDE_TOKEN_A4_SAFE }
 
 // (No @packageDocumentation comment for this package)
 

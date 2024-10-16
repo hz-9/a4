@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 17:05:30
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-21 12:53:14
+ * @LastEditTime : 2024-07-06 17:20:27
  */
 import 'reflect-metadata'
 
@@ -17,15 +17,15 @@ import { AppModule } from './app.module'
     logger: await A4Log4jsLogModule.getInitLogger(),
   })
 
-  await app.microService.connect()
+  // await app.microService.connect()
 
-  await app.microService.start()
+  // await app.microService.start()
 
   app.addGlobalExceptionsFilter(A4MicroServiceModule.exceptionRules)
 
   await app.listen()
 
-  await app.registry.start()
+  // await app.registry.start()
 
   await app.printAddress()
 })()

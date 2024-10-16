@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-05-31 23:31:06
+ * @LastEditTime : 2024-06-30 20:50:43
  */
 
 /**
@@ -13,7 +13,7 @@
  *  各参数说明，请查看 [SimpleLoggerConfigSchema](TODO)。
  *
  */
-export const LOGGER_MODULE_DEFAULT = {
+export const SIMPLE_LOGGER_MODULE_DEFAULT = {
   LOGGER_LEVEL: 'debug',
 
   CONSOLE_PATTERN: '[A4] [92m%z[39m  - %d{yyyy-MM-dd hh:mm:ss} [92m%7p[39m [33m[%14.14x{name}][39m [92m%m[39m',

@@ -1,33 +1,41 @@
 [
   "",
+  {
+    "text": "Summary",
+    "collapsible": true,
+    "children": [
+      "summary/start",
+      "summary/config",
+      "summary/log",
+      "summary/network",
+      "summary/crud",
+      "summary/docs",
+      "summary/cache",
+      "summary/schedule",
+      "summary/safe"
+    ]
+  },
+  {
+    "text": "Advance",
+    "collapsible": true,
+    "children": ["advance/schedule", "advance/lock-redlock"]
+  },
   // {
-  //   "text": "Summary",
+  //   "text": "Micro Service",
   //   "collapsible": true,
   //   "children": [
-  //     "summary/start",
-  //     "summary/crud",
-  //     "summary/config",
-  //     "summary/logger",
-  //     "summary/network",
-  //     "summary/safe",
-  //     "summary/test",
-  //     "summary/docs",
-  //     "summary/ci-cd",
-  //     "summary/micro-service",
-  //     "summary/third-party"
-  //   ]
-  // },
-  // {
-  //   "text": "实践",
-  //   "collapsible": true,
-  //   "children": [
-  //     "practice/single-init",
-  //     "practice/rush-init"
+  //     "micro-service/rpc",
+  //     "micro-service/registry"
   //   ]
   // },
   {
+    "text": "Internal",
+    "collapsible": true,
+    "children": ["internal/module-register", "internal/env"]
+  },
+  {
     "text": "Developer",
     "collapsible": true,
-    "children": ["developer/to-developer.md", "developer/publish.md"]
+    "children": ["developer/to-developer", "developer/publish"]
   }
 ]

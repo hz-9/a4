@@ -2,13 +2,13 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-21 16:10:04
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-06 09:27:02
+ * @LastEditTime : 2024-06-28 22:26:34
  */
 import { CacheOptions, CacheModule as NestjsCacheModule } from '@nestjs/cache-manager'
-import { DynamicModule, FactoryProvider, Logger, Module } from '@nestjs/common'
+import { DynamicModule, Logger, Module } from '@nestjs/common'
 import { redisStore } from 'cache-manager-ioredis-yet'
 
-import { A4ModuleBase, IA4CacheModule, IA4Config } from '@hz-9/a4-core'
+import { A4ModuleBase, IA4CacheModule, IA4Config, IA4ModuleForRootAsyncOptions } from '@hz-9/a4-core'
 
 import { CacheStore } from '../enum'
 import { A4CacheModuleSchema, A4CacheModuleSchemaA } from '../schema'
@@ -30,13 +30,15 @@ export class A4CacheModule extends NestjsCacheModule implements A4ModuleBase, IA
   // eslint-disable-next-line @typescript-eslint/typedef
   public static Schema = A4CacheModuleSchemaA
 
-  public static forRootAsync(options: Omit<FactoryProvider<A4CacheModuleSchema>, 'provide'>): DynamicModule {
-    return this.registerAsync({
-      ...options,
+  public Schema: A4CacheModuleSchemaA
 
+  public static forRootAsync(options: IA4ModuleForRootAsyncOptions<A4CacheModuleSchema>): DynamicModule {
+    return this.registerAsync({
+      // ...options,
+      inject: options.inject,
       isGlobal: true,
       useFactory: async (...args: unknown[]) => {
-        const result = await options.useFactory(...args)
+        const result = await options.useFactory!(...args)
         return this.toCacheOptions(result)
       },
     })
@@ -81,8 +83,8 @@ export class A4CacheModule extends NestjsCacheModule implements A4ModuleBase, IA
     }
   }
 
-  public static getConfig(a4Config: IA4Config): A4CacheModuleSchema {
-    const config = a4Config.getOrThrow<A4CacheModuleSchema>(this.CONFIG_MIDDLE_PATH)
+  public static getConfig(a4Config: IA4Config<A4CacheModule['Schema']>, configKey?: string): A4CacheModuleSchema {
+    const config = a4Config.getOrThrow((configKey as typeof this.CONFIG_MIDDLE_PATH) ?? this.CONFIG_MIDDLE_PATH)
     return config
   }
 }

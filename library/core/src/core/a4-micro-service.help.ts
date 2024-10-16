@@ -2,12 +2,12 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-14 17:26:12
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-21 12:18:51
+ * @LastEditTime : 2024-07-01 19:50:03
  */
-import { Logger } from '@nestjs/common'
+import { InjectionToken, Logger } from '@nestjs/common'
 import { ModuleRef } from '@nestjs/core'
 
-import { A4_MICRO_SERVICE, type IA4MicroService } from '../module/micro-service'
+import { type IA4MicroService } from '../module/micro-service'
 import type { A4Application } from './a4-application'
 
 /**
@@ -23,12 +23,12 @@ export class A4MicroServiceHelp {
 
   protected readonly a4MicroService: IA4MicroService | undefined
 
-  public constructor(a4App: A4Application) {
+  public constructor(a4App: A4Application, provideToken: InjectionToken) {
     this.a4App = a4App
 
     const moduleRef: ModuleRef = this.a4App.nestApp.get(ModuleRef)
     try {
-      this.a4MicroService = moduleRef.get(A4_MICRO_SERVICE, { strict: false })
+      this.a4MicroService = moduleRef.get(provideToken, { strict: false })
     } catch (error) {
       this.a4MicroService = undefined
     }

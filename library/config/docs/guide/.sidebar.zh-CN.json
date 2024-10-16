@@ -1,0 +1,13 @@
+[
+  "",
+
+  {
+    "text": "说明",
+    "children": ["load-file", "schema", "namespace", "type-safe", "load-http", "load-custom"]
+  },
+
+  {
+    "text": "内部",
+    "children": ["options", "module-register", "env"]
+  }
+]

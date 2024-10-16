@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-05-31 00:55:14
+ * @LastEditTime : 2024-06-25 10:43:20
  */
 
 /**
@@ -13,7 +13,7 @@
  *
  */
 export interface IBaseConfigOptions {
-  type: string
+  type?: string
 }
 
 /**

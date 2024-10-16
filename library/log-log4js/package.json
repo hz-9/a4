@@ -30,13 +30,14 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist"
+    "dist/**/*.{d.ts,js}"
   ],
   "scripts": {
-    "build": "heft test --clean",
+    "build": "heft test-all --clean",
     "build-custon": "heft custom-build",
     "lint": "heft lint",
     "test": "heft test --clean",
+    "test:watch": "heft test-watch --clean",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },

@@ -12,9 +12,9 @@ import { CacheOptions } from '@nestjs/cache-manager';
 import { CallHandler } from '@nestjs/common';
 import { DynamicModule } from '@nestjs/common';
 import { ExecutionContext } from '@nestjs/common';
-import { FactoryProvider } from '@nestjs/common';
 import { IA4CacheModule } from '@hz-9/a4-core';
 import { IA4Config } from '@hz-9/a4-core';
+import { IA4ModuleForRootAsyncOptions } from '@hz-9/a4-core';
 import { Logger } from '@nestjs/common';
 import type { Milliseconds } from 'cache-manager';
 import { Observable } from 'rxjs';
@@ -32,13 +32,15 @@ export class A4CacheModule extends CacheModule implements A4ModuleBase, IA4Cache
     // (undocumented)
     static CONFIG_MIDDLE_PATH: "A4.cache";
     // (undocumented)
-    static forRootAsync(options: Omit<FactoryProvider<A4CacheModuleSchema>, 'provide'>): DynamicModule;
+    static forRootAsync(options: IA4ModuleForRootAsyncOptions<A4CacheModuleSchema>): DynamicModule;
     // (undocumented)
-    static getConfig(a4Config: IA4Config): A4CacheModuleSchema;
+    static getConfig(a4Config: IA4Config<A4CacheModule['Schema']>, configKey?: string): A4CacheModuleSchema;
     // (undocumented)
     static logger: Logger;
     // (undocumented)
     static Schema: typeof A4CacheModuleSchemaA;
+    // (undocumented)
+    Schema: A4CacheModuleSchemaA;
     // (undocumented)
     protected static toCacheOptions(options: A4CacheModuleSchema): CacheOptions;
 }

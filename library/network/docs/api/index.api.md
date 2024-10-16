@@ -6,16 +6,16 @@
 
 /// <reference types="node" />
 
-import { A4ModuleBase } from '@hz-9/a4-core';
-import { DynamicModule } from '@nestjs/common';
-import { FactoryProvider } from '@nestjs/common';
+import { GLOBAL_PROVIDE_TOKEN_A4_NETWORK } from '@hz-9/a4-core';
 import { IA4AddressInfo } from '@hz-9/a4-core';
 import { IA4Config } from '@hz-9/a4-core';
 import { IA4HostAndPort } from '@hz-9/a4-core';
+import { IA4ModuleBaseSubType } from '@hz-9/a4-core';
 import { IA4Network } from '@hz-9/a4-core';
-import { IA4NetworkModule } from '@hz-9/a4-core';
-import { Logger } from '@nestjs/common';
+import { MODULE_CONFIG_PATH_A4_NETWORK } from '@hz-9/a4-core';
+import { ModuleError } from '@hz-9/a4-core';
 import os from 'node:os';
+import { SCOPE_PROVIDE_TOKEN_A4_NETWORK } from '@hz-9/a4-core';
 
 // @public
 export class A4Network implements IA4Network {
@@ -28,22 +28,18 @@ export class A4Network implements IA4Network {
     // (undocumented)
     getHostAndPort(): IA4HostAndPort;
     // (undocumented)
-    protected readonly options: INetworkInfo;
+    readonly options: INetworkInfo;
     tryPortTimes: number;
 }
 
+// Warning: (ae-forgotten-export) The symbol "A4NetworkModuleBase" needs to be exported by the entry point index.d.ts
+//
 // @public
-export class A4NetworkModule implements A4ModuleBase, IA4NetworkModule {
+export class A4NetworkModule extends A4NetworkModuleBase {
     // (undocumented)
-    static CONFIG_MIDDLE_PATH: "A4.network";
+    static getConfig(a4Config: IA4Config<(typeof A4NetworkModuleBase)['RootSchemaType']>, configKey?: string): A4NetworkModuleSchema;
     // (undocumented)
-    static forRootAsync(options: Omit<FactoryProvider<A4NetworkModuleSchema>, 'provide'>): DynamicModule;
-    // (undocumented)
-    static getConfig(a4Config: IA4Config): A4NetworkModuleSchema;
-    // (undocumented)
-    static logger: Logger;
-    // (undocumented)
-    static Schema: typeof A4NetworkModuleSchemaA;
+    protected static optionsToProvideClassConstructorOptions(options: A4NetworkModuleSchema): Promise<INetworkInfo>;
 }
 
 // @public
@@ -65,6 +61,8 @@ export class A4NetworkModuleSchemaB {
     // (undocumented)
     readonly network: A4NetworkModuleSchema;
 }
+
+export { GLOBAL_PROVIDE_TOKEN_A4_NETWORK }
 
 // @public
 export interface IA4NetworkOptions extends A4NetworkModuleSchema {
@@ -93,6 +91,8 @@ export interface INetworkInfo extends IA4NetworkOptions {
 // @public
 export type InterfaceInfo = IInterfaceInfoIPv4 | IInterfaceInfoIPv6;
 
+export { MODULE_CONFIG_PATH_A4_NETWORK }
+
 // @public
 export const NETWORK_MODULE_DEFAULT: {
     readonly BIND_IPV4: true;
@@ -107,6 +107,8 @@ export enum NetworkFamily {
     // (undocumented)
     IPv6 = "IPv6"
 }
+
+export { SCOPE_PROVIDE_TOKEN_A4_NETWORK }
 
 // (No @packageDocumentation comment for this package)
 

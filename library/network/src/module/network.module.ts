@@ -2,15 +2,22 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-06 09:27:16
+ * @LastEditTime : 2024-06-30 20:37:48
  */
-import { DynamicModule, FactoryProvider, Logger, Module } from '@nestjs/common'
+import { Module } from '@nestjs/common'
 
-import { A4ModuleBase, A4_NETWORK, IA4Config, IA4NetworkModule } from '@hz-9/a4-core'
+import { IA4Config } from '@hz-9/a4-core'
 
+import type { INetworkInfo } from '../interface'
 import { Address } from '../plugin/address'
-import { A4NetworkModuleSchema, A4NetworkModuleSchemaA } from '../schema'
-import { A4Network } from './network'
+import { A4NetworkModuleSchema } from '../schema'
+import { A4NetworkModuleBase, A4NetworkModuleProtectedBase } from './network.module-definition'
+
+export {
+  GLOBAL_PROVIDE_TOKEN_A4_NETWORK,
+  SCOPE_PROVIDE_TOKEN_A4_NETWORK,
+  MODULE_CONFIG_PATH_A4_NETWORK,
+} from '@hz-9/a4-core'
 
 /**
  * @public
@@ -19,44 +26,24 @@ import { A4Network } from './network'
  *
  */
 @Module({})
-export class A4NetworkModule implements A4ModuleBase, IA4NetworkModule {
-  public static logger: Logger = new Logger('A4 Network')
-
-  // eslint-disable-next-line @typescript-eslint/typedef
-  public static CONFIG_MIDDLE_PATH = 'A4.network' as const
-
-  // eslint-disable-next-line @typescript-eslint/typedef
-  public static Schema = A4NetworkModuleSchemaA
-
-  public static forRootAsync(options: Omit<FactoryProvider<A4NetworkModuleSchema>, 'provide'>): DynamicModule {
-    return {
-      module: A4NetworkModule,
-
-      providers: [
-        {
-          provide: A4_NETWORK,
-          inject: options.inject,
-          useFactory: async (...args) => {
-            const result = await options.useFactory(...args)
-            const info = await Address.getNetWorkInfo(result)
-            return new A4Network(info)
-          },
-        },
-
-        {
-          provide: A4Network,
-          useExisting: A4_NETWORK,
-        },
-      ],
-
-      exports: [A4_NETWORK, A4Network],
-
-      global: true,
-    }
+export class A4NetworkModule extends A4NetworkModuleBase {
+  private static get _this(): A4NetworkModuleProtectedBase {
+    return this as unknown as A4NetworkModuleProtectedBase
   }
 
-  public static getConfig(a4Config: IA4Config): A4NetworkModuleSchema {
-    const config = a4Config.getOrThrow<A4NetworkModuleSchema>(this.CONFIG_MIDDLE_PATH)
+  public static getConfig(
+    a4Config: IA4Config<(typeof A4NetworkModuleBase)['RootSchemaType']>,
+    configKey?: string
+  ): A4NetworkModuleSchema {
+    type ConfigKeyType = (typeof A4NetworkModuleBase)['configPath']
+    const config = a4Config.getOrThrow((configKey as ConfigKeyType) ?? this.configPath)
     return config
+  }
+
+  protected static async optionsToProvideClassConstructorOptions(
+    options: A4NetworkModuleSchema
+  ): Promise<INetworkInfo> {
+    const info = await Address.getNetWorkInfo(options)
+    return info
   }
 }

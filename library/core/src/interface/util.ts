@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-12 13:08:04
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-21 10:46:25
+ * @LastEditTime : 2024-06-27 02:44:10
  */
 import type { IObjectLiteral } from './entity'
 
@@ -21,6 +21,14 @@ export type UnionToUnionArray<T, P = T> = P extends T ? Array<P> : never
  *
  */
 export type ArrayNoFirst<T extends unknown[]> = T extends [unknown, ...args: infer O] ? O : []
+
+/**
+ * @public
+ *
+ *  `string | undefined` 转换为 `string`
+ *
+ */
+export type NonUndefined<T> = T extends undefined ? never : T
 
 /**
  * @public

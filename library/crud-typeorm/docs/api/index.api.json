@@ -1249,8 +1249,8 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "Omit",
-                  "canonicalReference": "!Omit:type"
+                  "text": "IA4ModuleForRootAsyncOptions",
+                  "canonicalReference": "@hz-9/a4-core!IA4ModuleForRootAsyncOptions:type"
                 },
                 {
                   "kind": "Content",
@@ -1258,30 +1258,12 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "FactoryProvider",
-                  "canonicalReference": "@nestjs/common!FactoryProvider:interface"
+                  "text": "A4TypeORMCrudModuleOptions",
+                  "canonicalReference": "@hz-9/a4-crud-typeorm!A4TypeORMCrudModuleOptions:type"
                 },
                 {
                   "kind": "Content",
-                  "text": "<"
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Record",
-                  "canonicalReference": "!Record:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<string, "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "DataSourceOptionsExtraWithDefault",
-                  "canonicalReference": "@hz-9/a4-crud-typeorm!DataSourceOptionsExtraWithDefault:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": ">>, 'provide'>"
+                  "text": ">"
                 },
                 {
                   "kind": "Content",
@@ -1299,8 +1281,8 @@
               ],
               "isStatic": true,
               "returnTypeTokenRange": {
-                "startIndex": 10,
-                "endIndex": 11
+                "startIndex": 6,
+                "endIndex": 7
               },
               "releaseTag": "Public",
               "isProtected": false,
@@ -1310,7 +1292,7 @@
                   "parameterName": "options",
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
-                    "endIndex": 9
+                    "endIndex": 5
                   },
                   "isOptional": false
                 }
@@ -1335,25 +1317,33 @@
                 },
                 {
                   "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "A4TypeORMCrudModule",
+                  "canonicalReference": "@hz-9/a4-crud-typeorm!A4TypeORMCrudModule:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "['Schema']>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", configKey?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
                   "text": "): "
                 },
                 {
                   "kind": "Reference",
-                  "text": "Record",
-                  "canonicalReference": "!Record:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<string, "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "DataSourceOptionsExtraWithDefault",
-                  "canonicalReference": "@hz-9/a4-crud-typeorm!DataSourceOptionsExtraWithDefault:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": ">"
+                  "text": "A4TypeORMCrudModuleOptions",
+                  "canonicalReference": "@hz-9/a4-crud-typeorm!A4TypeORMCrudModuleOptions:type"
                 },
                 {
                   "kind": "Content",
@@ -1362,8 +1352,8 @@
               ],
               "isStatic": true,
               "returnTypeTokenRange": {
-                "startIndex": 3,
-                "endIndex": 7
+                "startIndex": 8,
+                "endIndex": 9
               },
               "releaseTag": "Public",
               "isProtected": false,
@@ -1373,9 +1363,17 @@
                   "parameterName": "a4Config",
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
-                    "endIndex": 2
+                    "endIndex": 5
                   },
                   "isOptional": false
+                },
+                {
+                  "parameterName": "configKey",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 6,
+                    "endIndex": 7
+                  },
+                  "isOptional": true
                 }
               ],
               "isOptional": false,
@@ -1410,6 +1408,37 @@
                 "endIndex": 2
               },
               "isStatic": true,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@hz-9/a4-crud-typeorm!A4TypeORMCrudModule#Schema:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Schema: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "A4TypeORMCrudModuleSchemaA",
+                  "canonicalReference": "@hz-9/a4-crud-typeorm!A4TypeORMCrudModuleSchemaA:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "Schema",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
               "isProtected": false,
               "isAbstract": false
             },

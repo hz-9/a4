@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-01 01:10:19
+ * @LastEditTime : 2024-06-29 03:24:47
  */
 
 /* eslint-disable max-classes-per-file */
@@ -10,7 +10,7 @@ import type RedisStore from 'cache-manager-ioredis-yet'
 import { Type } from 'class-transformer'
 import { IsEnum, IsNumber, IsObject, ValidateNested } from 'class-validator'
 
-import { ClassValidatorUtil as CU, IsOptionalNotNull } from '@hz-9/a4-core'
+import { CU, IsOptionalNotNull } from '@hz-9/a4-core'
 
 import { CACHE_MODULE_DEFAULT } from '../const'
 import { CacheStore } from '../enum'

@@ -27,6 +27,20 @@
       }
     },
 
+    "build-pre": {
+      "phaseDependencies": ["lint"],
+
+      "tasksByName": {
+        "nest-build": {
+          // "taskDependencies": ["static-copy"],
+          "taskPlugin": {
+            "pluginPackage": "@hz-9/heft-nest-plugin",
+            "pluginName": "nest-build-plugin"
+          }
+        }
+      }
+    },
+
     "build": {
       "phaseDependencies": ["lint"],
 
@@ -50,6 +64,18 @@
     },
 
     "test": {
+      "phaseDependencies": ["build-pre"],
+
+      "tasksByName": {
+        "jest": {
+          "taskPlugin": {
+            "pluginPackage": "@rushstack/heft-jest-plugin"
+          }
+        }
+      }
+    },
+
+    "test-all": {
       "phaseDependencies": ["build"],
 
       "tasksByName": {
@@ -60,22 +86,5 @@
         }
       }
     }
-
-    // /**
-    //  * test-watch 会被 heft 直接拦截解析；
-    //  * 此处使用 watch-test
-    //  */
-    // "watch-test": {
-    //   "phaseDependencies": ["build"],
-
-    //   "tasksByName": {
-    //     "vite-test-watch": {
-    //       "taskPlugin": {
-    //         "pluginPackage": "@camouflage/heft-vue-vite-plugin",
-    //         "pluginName": "vitest-watch-plugin"
-    //       }
-    //     }
-    //   }
-    // }
   }
 }

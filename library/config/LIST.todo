@@ -1,0 +1,21 @@
+☐ 功能
+  ☐ 同步注册方案
+  ☐ 其他加载方案
+    ✔ from remote url @done(24-06-27 03:40)
+    ✔ from package.json @done(24-06-27 03:40)
+    ✔ from jsonc @done(24-06-27 03:40)
+    ✔ from customLoad @done(24-06-27 03:40)
+  ☐ 定时同步
+  ☐ 实时读取
+  ✔ 类型推导函数 @done(24-06-27 03:40)
+  ☐ mergeConfig 属性
+
+☐ 单元测试
+  ☐ Http Load
+  ☐ Custom Load
+
+☐ 文档
+  ✔ 多环境部署 @done(24-06-27 03:48)
+  ✔ 参数说明 @done(24-06-27 03:48)
+  ✔ Schema 文件的编写 @done(24-06-27 03:48)
+  ✔ 命名空间 @done(24-06-27 03:48)

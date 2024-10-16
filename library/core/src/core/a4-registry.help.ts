@@ -2,13 +2,12 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-14 17:26:12
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-21 12:42:10
+ * @LastEditTime : 2024-07-01 19:49:41
  */
-import { Logger } from '@nestjs/common'
+import { InjectionToken, Logger } from '@nestjs/common'
 import { ModuleRef } from '@nestjs/core'
 
-import { A4_NETWORK, type IA4Network } from '../module/network'
-import { A4_REGISTRY, type IA4Registry } from '../module/registry'
+import { type IA4Registry } from '../module/registry'
 import type { A4Application } from './a4-application'
 
 /**
@@ -24,12 +23,12 @@ export class A4RegistryHelp {
 
   protected readonly a4Registry: IA4Registry | undefined
 
-  public constructor(a4App: A4Application) {
+  public constructor(a4App: A4Application, provideToken: InjectionToken) {
     this.a4App = a4App
 
     const moduleRef: ModuleRef = this.a4App.nestApp.get(ModuleRef)
     try {
-      this.a4Registry = moduleRef.get(A4_REGISTRY, { strict: false })
+      this.a4Registry = moduleRef.get(provideToken, { strict: false })
     } catch (error) {
       this.a4Registry = undefined
     }

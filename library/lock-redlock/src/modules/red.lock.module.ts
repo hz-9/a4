@@ -2,12 +2,12 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-21 16:10:04
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-06 09:27:10
+ * @LastEditTime : 2024-06-28 22:28:46
  */
-import { DynamicModule, FactoryProvider, Logger, Module } from '@nestjs/common'
+import { DynamicModule, Logger, Module } from '@nestjs/common'
 import RedisClient from 'ioredis'
 
-import { A4ModuleBase, A4_LOCK, IA4Config, IA4LockModule } from '@hz-9/a4-core'
+import { A4ModuleBase, A4_LOCK, IA4Config, IA4LockModule, IA4ModuleForRootAsyncOptions } from '@hz-9/a4-core'
 
 import { Redlock } from '../plugin/redlock_'
 import { A4RedLockModuleSchema, A4RedLockModuleSchemaA } from '../schema'
@@ -23,12 +23,14 @@ export class A4RedlockLockModule implements A4ModuleBase, IA4LockModule {
   public static logger: Logger = new Logger('A4 Lock')
 
   // eslint-disable-next-line @typescript-eslint/typedef
-  public static CONFIG_MIDDLE_PATH = 'A4.lock' as const
+  public static CONFIG_MIDDLE_PATH = 'A4.lock.redlock' as const
 
   // eslint-disable-next-line @typescript-eslint/typedef
   public static Schema = A4RedLockModuleSchemaA
 
-  public static forRootAsync(options: Omit<FactoryProvider<A4RedLockModuleSchema>, 'provide'>): DynamicModule {
+  public Schema: A4RedLockModuleSchemaA
+
+  public static forRootAsync(options: IA4ModuleForRootAsyncOptions<A4RedLockModuleSchema>): DynamicModule {
     return {
       module: A4RedlockLockModule,
 
@@ -37,8 +39,7 @@ export class A4RedlockLockModule implements A4ModuleBase, IA4LockModule {
           provide: A4_LOCK,
           inject: options.inject,
           useFactory: async (...args) => {
-            const result = await options.useFactory(...args)
-
+            const result = await options.useFactory!(...args)
             const clients = this._getIORedisClients(result)
             return this._toRedlock(clients, result)
           },
@@ -81,8 +82,11 @@ export class A4RedlockLockModule implements A4ModuleBase, IA4LockModule {
     return redlock
   }
 
-  public static getConfig(a4Config: IA4Config): A4RedLockModuleSchema {
-    const config = a4Config.getOrThrow<A4RedLockModuleSchema>(this.CONFIG_MIDDLE_PATH)
+  public static getConfig(
+    a4Config: IA4Config<A4RedlockLockModule['Schema']>,
+    configKey?: string
+  ): A4RedLockModuleSchema {
+    const config = a4Config.getOrThrow((configKey as typeof this.CONFIG_MIDDLE_PATH) ?? this.CONFIG_MIDDLE_PATH)
     return config
   }
 }

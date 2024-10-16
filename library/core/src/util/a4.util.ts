@@ -2,11 +2,22 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-19 12:10:04
+ * @LastEditTime : 2024-06-28 22:37:11
  */
 import * as path from 'upath'
-import { Logger } from '@nestjs/common'
+import {
+  ClassProvider,
+  ExistingProvider,
+  FactoryProvider,
+  Logger,
+  ModuleMetadata,
+  Provider,
+  Type,
+  ValueProvider,
+} from '@nestjs/common'
 import { Observable, delay, retry, scan } from 'rxjs'
+
+type ObjProvider<T = any> = ClassProvider<T> | ValueProvider<T> | FactoryProvider<T> | ExistingProvider<T>
 
 /**
  *
@@ -73,7 +84,9 @@ export class A4Util {
                 const verboseMessage = verboseRetryLog ? ` Message: ${error.message}.` : ''
 
                 logger.error(
-                  `Unable to connect to the database${dataSourceName}.${verboseMessage} Retrying (${errorCount + 1})...`,
+                  `Unable to connect to the database${dataSourceName}.${verboseMessage} Retrying (${
+                    errorCount + 1
+                  })...`,
                   error.stack
                 )
                 if (errorCount + 1 >= retryAttempts) {
@@ -86,5 +99,41 @@ export class A4Util {
           },
         })
       )
+  }
+
+  private static _provideToObj(provider: Provider): ObjProvider {
+    if ((provider as ClassProvider).provide) return provider as ObjProvider
+    const classProvider: ClassProvider = {
+      provide: provider as Type<any>,
+      useClass: provider as Type<any>,
+    }
+    return classProvider
+  }
+
+  public static providerEqual(provider1: Provider, provider2: Provider): boolean {
+    return this._provideToObj(provider1).provide === this._provideToObj(provider2).provide
+  }
+
+  /**
+   * @public
+   *
+   *  将 `ExtraProviders` 合并至 `providers` 与 `exports` 中。
+   *
+   */
+  public static contentExtraProviders(
+    extraProviders: Provider[],
+    providers: Provider[],
+    exports: Required<ModuleMetadata>['exports'],
+    logger?: Logger
+  ): void {
+    extraProviders.forEach((provider) => {
+      const exists = !!providers.find((i) => this.providerEqual(i, provider))
+      if (exists) {
+        if (logger) logger.error(`Extra provider ${provider} is already exists in providers.`)
+      } else {
+        providers.push(provider)
+        exports.push(this._provideToObj(provider).provide)
+      }
+    })
   }
 }

@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-01 01:01:18
+ * @LastEditTime : 2024-06-27 03:01:03
  */
 
 /* eslint-disable max-classes-per-file */
@@ -10,7 +10,7 @@ import { Type } from 'class-transformer'
 import { IsArray, IsNumber, IsObject, ValidateNested } from 'class-validator'
 import type { RedisOptions } from 'ioredis'
 
-import { ClassValidatorUtil as CU, IsOptionalNotNull } from '@hz-9/a4-core'
+import { CU, IsOptionalNotNull } from '@hz-9/a4-core'
 
 import { LOCK_MODULE_DEFAULT } from '../const'
 
@@ -105,15 +105,30 @@ export class A4RedLockModuleSchema {
  *
  * @public
  *
- *  `A4 Lock Redlock Module` 用于 Multi Schema 类型判断类（A4）。
+ *  `A4 Lock Redlock Module` 用于 Multi Schema 类型判断类（A4.lock）。
  *
  */
-export class A4RedLockModuleSchemaB {
+export class A4RedLockModuleSchemaC {
   @IsOptionalNotNull()
   @IsObject()
   @ValidateNested()
   @Type(() => A4RedLockModuleSchema)
-  public readonly lock: A4RedLockModuleSchema = CU.p2CwD(A4RedLockModuleSchema, {})
+  public readonly redlock: A4RedLockModuleSchema = CU.p2CwD(A4RedLockModuleSchema, {})
+}
+
+/**
+ *
+ * @public
+ *
+ *  `A4 Lock Redlock Module` 用于 Multi Schema 类型判断类（A4）。
+ *
+ */
+export class A4LockModuleSchemaB {
+  @IsOptionalNotNull()
+  @IsObject()
+  @ValidateNested()
+  @Type(() => A4RedLockModuleSchemaC)
+  public readonly lock: A4RedLockModuleSchemaC = CU.p2CwD(A4RedLockModuleSchemaC, {})
 }
 
 /**
@@ -126,6 +141,6 @@ export class A4RedLockModuleSchemaB {
 export class A4RedLockModuleSchemaA {
   @IsObject()
   @ValidateNested()
-  @Type(() => A4RedLockModuleSchemaB)
-  public readonly A4: A4RedLockModuleSchemaB
+  @Type(() => A4LockModuleSchemaB)
+  public readonly A4: A4LockModuleSchemaB
 }

@@ -4,10 +4,12 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "hz9-a4 Application",
-      "program": "${workspaceFolder}/node_modules/@nestjs/cli/bin/nest.js",
+      "name": "A4 Library for debug Jest tests",
+      "program": "${workspaceFolder}/node_modules/@rushstack/heft/lib/start.js",
+      "cwd": "${workspaceFolder}",
+      "args": ["--debug", "test", "--clean"],
       "console": "integratedTerminal",
-      "args": ["start", "--watch"]
+      "sourceMaps": true
     }
   ]
 }

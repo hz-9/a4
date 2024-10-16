@@ -2,13 +2,21 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-21 16:10:04
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-06 09:27:05
+ * @LastEditTime : 2024-06-28 22:25:31
  */
 import { DynamicModule, FactoryProvider, Logger, Module } from '@nestjs/common'
 import { defer, lastValueFrom } from 'rxjs'
 import { DataSource, type DataSourceOptions, type Repository } from 'typeorm'
 
-import { A4ModuleBase, A4Util, IA4Config, IA4CrudModule, IObjectLiteral, RunEnv } from '@hz-9/a4-core'
+import {
+  A4ModuleBase,
+  A4Util,
+  IA4Config,
+  IA4CrudModule,
+  IA4ModuleForRootAsyncOptions,
+  IObjectLiteral,
+  RunEnv,
+} from '@hz-9/a4-core'
 
 import {
   A4_CRUD_TYPEORM_DATASOURCE_GROUP,
@@ -16,7 +24,7 @@ import {
   A4_DEFAULT_DATA_SOURCE_NAME,
   CRUD_TYPEORM_MODULE_DEFAULT,
 } from '../const'
-import { DataSourceOptionsExtra, DataSourceOptionsExtraWithDefault, EntityClassOrSchema } from '../interface'
+import { A4TypeORMCrudModuleOptions, DataSourceOptionsExtraWithDefault, EntityClassOrSchema } from '../interface'
 import { A4TypeORMCrudModuleSchemaA } from '../schema'
 import { getRepositoryToken, getTypeORMCrudToken, splitExtraOptions } from '../util'
 import { EntitiesStorage } from './entities.storage'
@@ -32,15 +40,15 @@ import { A4TypeORMCrud } from './typeorm.crud'
 export class A4TypeORMCrudModule implements A4ModuleBase, IA4CrudModule {
   public static logger: Logger = new Logger('A4 Crud')
 
-  /* eslint-disable @typescript-eslint/typedef */
+  // eslint-disable-next-line @typescript-eslint/typedef
   public static CONFIG_MIDDLE_PATH = 'A4.crud.typeORM' as const
 
+  // eslint-disable-next-line @typescript-eslint/typedef
   public static Schema = A4TypeORMCrudModuleSchemaA
-  /* eslint-enable @typescript-eslint/typedef */
 
-  public static forRootAsync(
-    options: Omit<FactoryProvider<Record<string, DataSourceOptionsExtraWithDefault>>, 'provide'>
-  ): DynamicModule {
+  public Schema: A4TypeORMCrudModuleSchemaA
+
+  public static forRootAsync(options: IA4ModuleForRootAsyncOptions<A4TypeORMCrudModuleOptions>): DynamicModule {
     return {
       module: A4TypeORMCrudModule,
 
@@ -49,7 +57,7 @@ export class A4TypeORMCrudModule implements A4ModuleBase, IA4CrudModule {
           provide: A4_CRUD_TYPEORM_OPTIONS,
           inject: options.inject,
           useFactory: async (...args) => {
-            const result = await options.useFactory(...args)
+            const result = await options.useFactory!(...args)
             return result
           },
         },
@@ -57,7 +65,7 @@ export class A4TypeORMCrudModule implements A4ModuleBase, IA4CrudModule {
         {
           provide: A4_CRUD_TYPEORM_DATASOURCE_GROUP,
           inject: [A4_CRUD_TYPEORM_OPTIONS],
-          useFactory: async (dataSourceOptions: Record<string, DataSourceOptionsExtraWithDefault>) => {
+          useFactory: async (dataSourceOptions: A4TypeORMCrudModuleOptions) => {
             const group: Record<string, DataSource> = {}
 
             const names = Object.getOwnPropertyNames(dataSourceOptions)
@@ -158,16 +166,19 @@ export class A4TypeORMCrudModule implements A4ModuleBase, IA4CrudModule {
     return dataSource
   }
 
-  public static getConfig(a4Config: IA4Config): Record<string, DataSourceOptionsExtraWithDefault> {
-    const config = a4Config.getOrThrow<Record<string, DataSourceOptionsExtra>>(this.CONFIG_MIDDLE_PATH)
+  public static getConfig(
+    a4Config: IA4Config<A4TypeORMCrudModule['Schema']>,
+    configKey?: string
+  ): A4TypeORMCrudModuleOptions {
+    const config = a4Config.getOrThrow((configKey as typeof this.CONFIG_MIDDLE_PATH) ?? this.CONFIG_MIDDLE_PATH)
 
-    const newConfig: Record<string, DataSourceOptionsExtraWithDefault> = {}
+    const newConfig: A4TypeORMCrudModuleOptions = {}
 
     const names = Object.getOwnPropertyNames(config)
 
     while (names.length) {
       const name = names.shift()!
-      const c = config[name]
+      const c = config[name as 'default']
 
       newConfig[name] = {
         ...c,

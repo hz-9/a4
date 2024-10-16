@@ -2,14 +2,14 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-01 01:11:13
+ * @LastEditTime : 2024-06-29 03:24:11
  */
 
 /* eslint-disable max-classes-per-file */
 import { Type } from 'class-transformer'
 import { IsBoolean, IsNumber, IsObject, IsOptional, ValidateNested } from 'class-validator'
 
-import { ClassValidatorUtil as CU, IsOptionalNotNull } from '@hz-9/a4-core'
+import { CU, IsOptionalNotNull } from '@hz-9/a4-core'
 
 import { NETWORK_MODULE_DEFAULT } from '../const'
 
@@ -95,5 +95,5 @@ export class A4NetworkModuleSchemaA {
   @IsObject()
   @ValidateNested()
   @Type(() => A4NetworkModuleSchemaB)
-  public readonly A4: A4NetworkModuleSchemaB
+  public readonly A4: A4NetworkModuleSchemaB = CU.p2CwD(A4NetworkModuleSchemaB, {})
 }
