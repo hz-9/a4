@@ -2,12 +2,12 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 17:05:30
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-10-22 19:33:07
+ * @LastEditTime : 2024-10-22 23:17:54
  */
 import { A4CacheModule } from '@hz-9/a4-cache'
 import { A4Config, A4ConfigModule } from '@hz-9/a4-config'
 import { LoggerMiddleware } from '@hz-9/a4-core'
-// import { A4ElasticSearchCrudModule } from '@hz-9/a4-crud-elasticsearch'
+import { A4ElasticSearchCrudModule } from '@hz-9/a4-crud-elasticsearch'
 import { A4TypeORMCrudModule } from '@hz-9/a4-crud-typeorm'
 import { A4DocsModule } from '@hz-9/a4-docs'
 import { A4Log4jsSimpleLogModule } from '@hz-9/a4-log-log4js'
@@ -17,7 +17,7 @@ import { A4EurekaRegsitryModule } from '@hz-9/a4-registry-eureka'
 import { A4SafeModule } from '@hz-9/a4-safe'
 import { MiddlewareConsumer, Module } from '@nestjs/common'
 
-// import { Dic2Module } from './dic-2/dic-2.module'
+import { Dic2Module } from './dic-2/dic-2.module'
 import { DicModule } from './dic/dic.module'
 
 @Module({
@@ -27,6 +27,7 @@ import { DicModule } from './dic/dic.module'
         type: 'file',
         Schema: [
           A4CacheModule.Schema,
+          A4ElasticSearchCrudModule.Schema,
           A4TypeORMCrudModule.Schema,
           A4DocsModule.Schema,
           A4Log4jsSimpleLogModule.Schema,
@@ -34,7 +35,6 @@ import { DicModule } from './dic/dic.module'
           A4NetworkModule.Schema,
           A4EurekaRegsitryModule.Schema,
           A4SafeModule.Schema,
-          // A4ElasticSearchCrudModule.Schema,
         ],
       }),
     }),
@@ -45,11 +45,11 @@ import { DicModule } from './dic/dic.module'
         A4CacheModule.getOptions(a4Config),
     }),
 
-    // A4ElasticSearchCrudModule.forRootAsync({
-    //   inject: [A4Config],
-    //   useFactory: (a4Config: A4Config<A4ElasticSearchCrudModule['Schema']>) =>
-    //     A4ElasticSearchCrudModule.getConfig(a4Config),
-    // }),
+    A4ElasticSearchCrudModule.forRootAsync({
+      inject: [A4Config],
+      useFactory: (a4Config: A4Config<InstanceType<(typeof A4ElasticSearchCrudModule)['Schema']>>) =>
+        A4ElasticSearchCrudModule.getOptions(a4Config),
+    }),
 
     A4TypeORMCrudModule.forRootAsync({
       inject: [A4Config],
@@ -94,7 +94,7 @@ import { DicModule } from './dic/dic.module'
     }),
 
     DicModule,
-    // Dic2Module,
+    Dic2Module,
   ],
 })
 export class AppModule {

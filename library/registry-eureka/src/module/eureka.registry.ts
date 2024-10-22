@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-10-20 17:44:15
+ * @LastEditTime : 2024-10-22 23:32:35
  */
 import { IA4Registry, IA4RegistryInstanceMetadata } from '@hz-9/a4-core'
 import _ from '@hz-9/a4-core/lodash'
@@ -204,10 +204,9 @@ export class A4EurekaRegistry implements IA4Registry {
         warn: (...args: unknown[]) => {
           this.logger.warn(args.join(''))
         },
+
         // debug: (...args: unknown[]) => { this.logger.warn(args.join('')) },
-        debug: (...args: unknown[]) => {
-          this.logger.debug(args.join(''))
-        },
+        debug: () => {},
       },
 
       ...this._getEurekaConfigOptions(),

@@ -2,8 +2,29 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-29 15:13:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-25 16:15:16
+ * @LastEditTime : 2024-10-22 23:20:58
  */
+// import { CacheTTL } from '@hz-9/a4-cache/nestjs-cache-manager'
+import {
+  A4CrudUtil, // A4SimpleControllerRxjs,
+  DeleteByIdResultDto,
+  DeleteByIdsResultDto,
+  PageReqDto, // ParamIdReqDto,
+  // ParamIdsReqDto,
+  ParamSIdReqDto,
+  ParamSIdsReqDto, // ParseMultiNumberPipe,
+  ParseMultiStrArrayPipe,
+  ParsePagePipe,
+  ParseSortPipe,
+  RemovePagePipe,
+  RemoveSortPipe,
+  SortReqDto,
+  TransformInterceptor,
+  UpdateByIdResultDto,
+  UpdateByIdsResultDto, // UpdateByIdsResultDto,
+  ValidationWithDefaultPipe,
+} from '@hz-9/a4-core'
+import { ApiTags } from '@hz-9/a4-docs'
 import {
   Body,
   Controller,
@@ -18,31 +39,6 @@ import {
   UseInterceptors,
 } from '@nestjs/common'
 import { Observable, map } from 'rxjs'
-
-// import { CacheTTL } from '@hz-9/a4-cache/nestjs-cache-manager'
-import {
-  A4CrudUtil,
-  A4SimpleControllerRxjs,
-  DeleteByIdResultDto,
-  DeleteByIdsResultDto,
-  PageReqDto,
-  ParamIdReqDto,
-  ParamIdsReqDto,
-  ParamSIdReqDto,
-  ParamSIdsReqDto,
-  ParseMultiNumberPipe,
-  ParseMultiStrArrayPipe,
-  ParsePagePipe,
-  ParseSortPipe,
-  RemovePagePipe,
-  RemoveSortPipe,
-  SortReqDto,
-  TransformInterceptor,
-  UpdateByIdResultDto,
-  UpdateByIdsResultDto, // UpdateByIdsResultDto,
-  ValidationWithDefaultPipe,
-} from '@hz-9/a4-core'
-import { ApiTags } from '@hz-9/a4-docs'
 
 import { Dic2Service } from './dic-2.service'
 import { Dic2InsertReqDto } from './dto/dic-2.insert-req.dto'

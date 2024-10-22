@@ -40,6 +40,7 @@
     "@hz-9/a4-cache": "workspace:*",
     "@hz-9/a4-config": "workspace:*",
     "@hz-9/a4-core": "workspace:*",
+    "@hz-9/a4-crud-elasticsearch": "workspace:*",
     "@hz-9/a4-crud-typeorm": "workspace:*",
     "@hz-9/a4-docs": "workspace:*",
     "@hz-9/a4-lock-redlock": "workspace:*",

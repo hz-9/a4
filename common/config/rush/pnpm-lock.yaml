@@ -907,6 +907,9 @@ importers:
       '@hz-9/a4-core':
         specifier: workspace:*
         version: link:../../library/core
+      '@hz-9/a4-crud-elasticsearch':
+        specifier: workspace:*
+        version: link:../../library/crud-elasticsearch
       '@hz-9/a4-crud-typeorm':
         specifier: workspace:*
         version: link:../../library/crud-typeorm
