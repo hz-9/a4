@@ -496,26 +496,26 @@
     {
       "packageName": "sample-service-dic",
       "projectFolder": "sample/service-dic"
-    },
-
-    {
-      "packageName": "sample-service-gateway",
-      "projectFolder": "sample/service-gateway"
-    },
-
-    {
-      "packageName": "sample-service-news",
-      "projectFolder": "sample/service-news"
-    },
-
-    {
-      "packageName": "sample-service-simplest",
-      "projectFolder": "sample/service-simplest"
-    },
-
-    {
-      "packageName": "sample-service-user-center",
-      "projectFolder": "sample/service-user-center"
     }
+
+    // {
+    //   "packageName": "sample-service-gateway",
+    //   "projectFolder": "sample/service-gateway"
+    // },
+
+    // {
+    //   "packageName": "sample-service-news",
+    //   "projectFolder": "sample/service-news"
+    // },
+
+    // {
+    //   "packageName": "sample-service-simplest",
+    //   "projectFolder": "sample/service-simplest"
+    // },
+
+    // {
+    //   "packageName": "sample-service-user-center",
+    //   "projectFolder": "sample/service-user-center"
+    // }
   ]
 }

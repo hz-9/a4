@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-14 17:26:12
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-01 23:14:58
+ * @LastEditTime : 2024-10-20 16:42:40
  */
 import { Logger } from '@nestjs/common'
 import { HttpAdapterHost, ModuleRef, NestApplication } from '@nestjs/core'
@@ -17,7 +17,9 @@ import { ERROR_WELCOME_MSG, HOME_STATIC_PATH, HTTP_LISTEN_DEFAULT, MAIN_STATIC_P
 import { AllExceptionsFilter, IExceptionRule } from '../exception-filter'
 import { type IA4Config, getA4Config } from '../module/config'
 import { GLOBAL_PROVIDE_TOKEN_A4_DOCS, type IA4Docs } from '../module/docs'
+import { GLOBAL_PROVIDE_TOKEN_A4_MICRO_SERVICE } from '../module/micro-service'
 import { GLOBAL_PROVIDE_TOKEN_A4_NETWORK, type IA4Network } from '../module/network'
+import { GLOBAL_PROVIDE_TOKEN_A4_REGISTRY } from '../module/registry'
 import { GLOBAL_PROVIDE_TOKEN_A4_SAFE, type IA4Safe } from '../module/safe'
 import { A4Color, A4Util } from '../util'
 import { A4MicroServiceHelp } from './a4-micro-service.help'
@@ -169,7 +171,7 @@ export class A4Application {
     this.alive = true
   }
 
-  public getA4RegistryHelp(provideToken: string): A4RegistryHelp {
+  public getA4RegistryHelp(provideToken: string = GLOBAL_PROVIDE_TOKEN_A4_REGISTRY): A4RegistryHelp {
     const g = this.registryMap.get(provideToken)
     if (g) return g
 
@@ -178,7 +180,7 @@ export class A4Application {
     return help
   }
 
-  public getA4MicroServiceMap(provideToken: string): A4MicroServiceHelp {
+  public getA4MicroServiceHelp(provideToken: string = GLOBAL_PROVIDE_TOKEN_A4_MICRO_SERVICE): A4MicroServiceHelp {
     const g = this.microServiceMap.get(provideToken)
     if (g) return g
 

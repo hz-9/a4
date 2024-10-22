@@ -115,48 +115,26 @@
           "syntaxKind": "modifier"
         },
         {
-          "tagName": "@betaDocumentation",
-          "syntaxKind": "modifier"
-        },
-        {
-          "tagName": "@internalRemarks",
+          "tagName": "@Author",
           "syntaxKind": "block"
         },
         {
-          "tagName": "@preapproved",
-          "syntaxKind": "modifier"
+          "tagName": "@Date",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@LastEditors",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@LastEditTime",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@Description",
+          "syntaxKind": "block"
         }
       ],
-      "supportForTags": {
-        "@alpha": true,
-        "@beta": true,
-        "@defaultValue": true,
-        "@decorator": true,
-        "@deprecated": true,
-        "@eventProperty": true,
-        "@example": true,
-        "@experimental": true,
-        "@inheritDoc": true,
-        "@internal": true,
-        "@label": true,
-        "@link": true,
-        "@override": true,
-        "@packageDocumentation": true,
-        "@param": true,
-        "@privateRemarks": true,
-        "@public": true,
-        "@readonly": true,
-        "@remarks": true,
-        "@returns": true,
-        "@sealed": true,
-        "@see": true,
-        "@throws": true,
-        "@typeParam": true,
-        "@virtual": true,
-        "@betaDocumentation": true,
-        "@internalRemarks": true,
-        "@preapproved": true
-      },
       "reportUnsupportedHtmlElements": false
     }
   },
@@ -172,52 +150,6 @@
       "name": "",
       "preserveMemberOrder": false,
       "members": [
-        {
-          "kind": "Variable",
-          "canonicalReference": "@hz-9/a4-crud-typeorm!A4_CRUD_TYPEORM_DATASOURCE_GROUP:var",
-          "docComment": "/**\n * 用于作为 A4 Crud TypeORM 多数据库合集的标记\n *\n * @public\n */\n",
-          "excerptTokens": [
-            {
-              "kind": "Content",
-              "text": "A4_CRUD_TYPEORM_DATASOURCE_GROUP: "
-            },
-            {
-              "kind": "Content",
-              "text": "\"A4.Crud.TypeORM.DataSourceGroup\""
-            }
-          ],
-          "fileUrlPath": "dist/const/index.d.ts",
-          "isReadonly": true,
-          "releaseTag": "Public",
-          "name": "A4_CRUD_TYPEORM_DATASOURCE_GROUP",
-          "variableTypeTokenRange": {
-            "startIndex": 1,
-            "endIndex": 2
-          }
-        },
-        {
-          "kind": "Variable",
-          "canonicalReference": "@hz-9/a4-crud-typeorm!A4_CRUD_TYPEORM_OPTIONS:var",
-          "docComment": "/**\n * 用于作为 A4 Crud TypeORM 配置的标记。\n *\n * @public\n */\n",
-          "excerptTokens": [
-            {
-              "kind": "Content",
-              "text": "A4_CRUD_TYPEORM_OPTIONS: "
-            },
-            {
-              "kind": "Content",
-              "text": "\"A4.Crud.TypeORM.Option\""
-            }
-          ],
-          "fileUrlPath": "dist/const/index.d.ts",
-          "isReadonly": true,
-          "releaseTag": "Public",
-          "name": "A4_CRUD_TYPEORM_OPTIONS",
-          "variableTypeTokenRange": {
-            "startIndex": 1,
-            "endIndex": 2
-          }
-        },
         {
           "kind": "Variable",
           "canonicalReference": "@hz-9/a4-crud-typeorm!A4_DEFAULT_DATA_SOURCE_NAME:var",
@@ -1111,21 +1043,12 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare class A4TypeORMCrudModule implements "
+              "text": "export declare class A4TypeORMCrudModule extends "
             },
             {
               "kind": "Reference",
-              "text": "A4ModuleBase",
-              "canonicalReference": "@hz-9/a4-core!A4ModuleBase:class"
-            },
-            {
-              "kind": "Content",
-              "text": ", "
-            },
-            {
-              "kind": "Reference",
-              "text": "IA4CrudModule",
-              "canonicalReference": "@hz-9/a4-core!IA4CrudModule:class"
+              "text": "A4TypeORMCrudModuleBase",
+              "canonicalReference": "@hz-9/a4-crud-typeorm!~A4TypeORMCrudModuleBase"
             },
             {
               "kind": "Content",
@@ -1139,34 +1062,54 @@
           "preserveMemberOrder": false,
           "members": [
             {
-              "kind": "Property",
-              "canonicalReference": "@hz-9/a4-crud-typeorm!A4TypeORMCrudModule.CONFIG_MIDDLE_PATH:member",
+              "kind": "Method",
+              "canonicalReference": "@hz-9/a4-crud-typeorm!A4TypeORMCrudModule.configToOptions:member(1)",
               "docComment": "",
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "static CONFIG_MIDDLE_PATH: "
+                  "text": "static configToOptions(config: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "A4TypeORMCrudModuleSchema",
+                  "canonicalReference": "@hz-9/a4-crud-typeorm!A4TypeORMCrudModuleSchema:class"
                 },
                 {
                   "kind": "Content",
-                  "text": "\"A4.crud.typeORM\""
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "A4TypeORMCrudModuleOptions",
+                  "canonicalReference": "@hz-9/a4-crud-typeorm!A4TypeORMCrudModuleOptions:type"
                 },
                 {
                   "kind": "Content",
                   "text": ";"
                 }
               ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "CONFIG_MIDDLE_PATH",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              },
               "isStatic": true,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
               "isProtected": false,
-              "isAbstract": false
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "config",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "configToOptions"
             },
             {
               "kind": "Method",
@@ -1240,21 +1183,12 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "@hz-9/a4-crud-typeorm!A4TypeORMCrudModule.forRootAsync:member(1)",
+              "canonicalReference": "@hz-9/a4-crud-typeorm!A4TypeORMCrudModule.optionsToProvideClassConstructorOptions:member(1)",
               "docComment": "",
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "static forRootAsync(options: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IA4ModuleForRootAsyncOptions",
-                  "canonicalReference": "@hz-9/a4-core!IA4ModuleForRootAsyncOptions:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<"
+                  "text": "static optionsToProvideClassConstructorOptions(options: "
                 },
                 {
                   "kind": "Reference",
@@ -1263,16 +1197,34 @@
                 },
                 {
                   "kind": "Content",
-                  "text": ">"
-                },
-                {
-                  "kind": "Content",
                   "text": "): "
                 },
                 {
                   "kind": "Reference",
-                  "text": "DynamicModule",
-                  "canonicalReference": "@nestjs/common!DynamicModule:interface"
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string, "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DataSource",
+                  "canonicalReference": "typeorm!DataSource:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">>"
                 },
                 {
                   "kind": "Content",
@@ -1281,8 +1233,8 @@
               ],
               "isStatic": true,
               "returnTypeTokenRange": {
-                "startIndex": 6,
-                "endIndex": 7
+                "startIndex": 3,
+                "endIndex": 9
               },
               "releaseTag": "Public",
               "isProtected": false,
@@ -1292,202 +1244,21 @@
                   "parameterName": "options",
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
-                    "endIndex": 5
+                    "endIndex": 2
                   },
                   "isOptional": false
                 }
               ],
               "isOptional": false,
               "isAbstract": false,
-              "name": "forRootAsync"
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@hz-9/a4-crud-typeorm!A4TypeORMCrudModule.getConfig:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "static getConfig(a4Config: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IA4Config",
-                  "canonicalReference": "@hz-9/a4-core!IA4Config:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<"
-                },
-                {
-                  "kind": "Reference",
-                  "text": "A4TypeORMCrudModule",
-                  "canonicalReference": "@hz-9/a4-crud-typeorm!A4TypeORMCrudModule:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": "['Schema']>"
-                },
-                {
-                  "kind": "Content",
-                  "text": ", configKey?: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "string"
-                },
-                {
-                  "kind": "Content",
-                  "text": "): "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "A4TypeORMCrudModuleOptions",
-                  "canonicalReference": "@hz-9/a4-crud-typeorm!A4TypeORMCrudModuleOptions:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": true,
-              "returnTypeTokenRange": {
-                "startIndex": 8,
-                "endIndex": 9
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "a4Config",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 5
-                  },
-                  "isOptional": false
-                },
-                {
-                  "parameterName": "configKey",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 6,
-                    "endIndex": 7
-                  },
-                  "isOptional": true
-                }
-              ],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "getConfig"
-            },
-            {
-              "kind": "Property",
-              "canonicalReference": "@hz-9/a4-crud-typeorm!A4TypeORMCrudModule.logger:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "static logger: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Logger",
-                  "canonicalReference": "@nestjs/common!Logger:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "logger",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              },
-              "isStatic": true,
-              "isProtected": false,
-              "isAbstract": false
-            },
-            {
-              "kind": "Property",
-              "canonicalReference": "@hz-9/a4-crud-typeorm!A4TypeORMCrudModule#Schema:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "Schema: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "A4TypeORMCrudModuleSchemaA",
-                  "canonicalReference": "@hz-9/a4-crud-typeorm!A4TypeORMCrudModuleSchemaA:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "Schema",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              },
-              "isStatic": false,
-              "isProtected": false,
-              "isAbstract": false
-            },
-            {
-              "kind": "Property",
-              "canonicalReference": "@hz-9/a4-crud-typeorm!A4TypeORMCrudModule.Schema:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "static Schema: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "typeof "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "A4TypeORMCrudModuleSchemaA",
-                  "canonicalReference": "@hz-9/a4-crud-typeorm!A4TypeORMCrudModuleSchemaA:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "Schema",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 3
-              },
-              "isStatic": true,
-              "isProtected": false,
-              "isAbstract": false
+              "name": "optionsToProvideClassConstructorOptions"
             }
           ],
-          "implementsTokenRanges": [
-            {
-              "startIndex": 1,
-              "endIndex": 2
-            },
-            {
-              "startIndex": 3,
-              "endIndex": 4
-            }
-          ]
+          "extendsTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          },
+          "implementsTokenRanges": []
         },
         {
           "kind": "Class",
@@ -2403,6 +2174,115 @@
             }
           ],
           "extendsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@hz-9/a4-crud-typeorm!TyprORMDataSourceGroup:class",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class TyprORMDataSourceGroup "
+            }
+          ],
+          "fileUrlPath": "dist/modules/typeorm.datasource-group.d.ts",
+          "releaseTag": "Public",
+          "isAbstract": false,
+          "name": "TyprORMDataSourceGroup",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@hz-9/a4-crud-typeorm!TyprORMDataSourceGroup:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `TyprORMDataSourceGroup` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor(options: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string, "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DataSource",
+                  "canonicalReference": "typeorm!DataSource:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ");"
+                }
+              ],
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 5
+                  },
+                  "isOptional": false
+                }
+              ]
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@hz-9/a4-crud-typeorm!TyprORMDataSourceGroup#options:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "readonly options: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string, "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DataSource",
+                  "canonicalReference": "typeorm!DataSource:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": true,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "options",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            }
+          ],
+          "implementsTokenRanges": []
         }
       ]
     }

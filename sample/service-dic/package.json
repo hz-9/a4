@@ -41,7 +41,6 @@
     "@hz-9/a4-core": "workspace:*",
     "@hz-9/a4-crud-typeorm": "workspace:*",
     "@hz-9/a4-docs": "workspace:*",
-    "@hz-9/a4-crud-elasticsearch": "workspace:*",
     "@hz-9/a4-log-log4js": "workspace:*",
     "@hz-9/a4-micro-service": "workspace:*",
     "@hz-9/a4-network": "workspace:*",

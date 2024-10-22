@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-20 19:19:01
+ * @LastEditTime : 2024-10-22 22:40:39
  */
 import {
   ArgumentsHost,
@@ -225,9 +225,9 @@ export class AllExceptionsFilter implements ExceptionFilter {
               message: [
                 `Bad Request Error. ${ctx.getRequest().method} ${httpAdapter.getRequestUrl(ctx.getRequest())}`,
                 `Name:      ${exception.message ?? exception.name}`,
-                `Message:   ${((exception as IExceptionsFilterError).error ?? ['Unknown message.']).join(';')}.`,
+                `Message:   ${exception.stack ?? 'Not found stack'}.`,
                 `Timestamp: ${new Date().toISOString()}`,
-              ].join(' '),
+              ].join('\n'),
             },
           }
         },

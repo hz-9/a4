@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-01 00:57:23
+ * @LastEditTime : 2024-10-22 22:46:37
  */
 
 /* eslint-disable max-classes-per-file */
@@ -25,6 +25,7 @@ class Model1 {
 
 /* eslint-disable @rushstack/security/no-unsafe-regexp */
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const validateHelp = <S>(validatedConfig: any): S => {
   const a = JSON.parse(JSON.stringify(validatedConfig))
 
@@ -44,8 +45,7 @@ const validateHelp = <S>(validatedConfig: any): S => {
 
 describe.skip('class validator', () => {
   it('OK', () => {
-    console.log(validateHelp(plainToClass(Model1, { id: 1, ids: 123 }, { exposeDefaultValues: true })))
-
-    console.log(validateHelp(plainToClass(Model1, { id: 1, ids: 123 })))
+    expect(validateHelp(plainToClass(Model1, { id: 1, ids: 123 }, { exposeDefaultValues: true }))).toBeTruthy()
+    expect(validateHelp(plainToClass(Model1, { id: 1, ids: 123 }))).toBeTruthy()
   })
 })

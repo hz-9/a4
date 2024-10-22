@@ -2,24 +2,8 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-05 18:11:37
+ * @LastEditTime : 2024-10-22 18:08:22
  */
-
-/**
- * @public
- *
- * 用于作为 A4 Crud TypeORM 配置的标记。
- *
- */
-export const A4_CRUD_TYPEORM_OPTIONS = 'A4.Crud.TypeORM.Option' as const
-
-/**
- * @public
- *
- *  用于作为 A4 Crud TypeORM 多数据库合集的标记
- *
- */
-export const A4_CRUD_TYPEORM_DATASOURCE_GROUP = 'A4.Crud.TypeORM.DataSourceGroup' as const
 
 /**
  * @public

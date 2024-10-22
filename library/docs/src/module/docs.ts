@@ -2,15 +2,14 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-01 23:08:35
+ * @LastEditTime : 2024-10-19 20:28:51
  */
-import { Logger } from '@nestjs/common'
-import { DocumentBuilder, OpenAPIObject, SwaggerModule } from '@nestjs/swagger'
-import path from 'node:path'
-
 import { type A4Application, A4Util, type IA4Docs } from '@hz-9/a4-core'
 import { mkdirpSync, writeFileSync } from '@hz-9/a4-core/fs-extra'
 import { renderFile } from '@hz-9/a4-core/pug'
+import { Logger } from '@nestjs/common'
+import { DocumentBuilder, OpenAPIObject, SwaggerModule } from '@nestjs/swagger'
+import path from 'node:path'
 
 import type { IDocsConstructorOptions } from '../interface'
 
@@ -94,6 +93,7 @@ export class A4Docs implements IA4Docs {
       })
 
       this.logger.log(`Mapped {${requestPath}, GET} route`)
+      this.logger.log(`Mapped {${jsonRequestPath}, GET} route`)
 
       this.homeLinkOptions.push({
         label: 'OpenAPI UI',

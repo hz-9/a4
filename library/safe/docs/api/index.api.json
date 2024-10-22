@@ -115,48 +115,26 @@
           "syntaxKind": "modifier"
         },
         {
-          "tagName": "@betaDocumentation",
-          "syntaxKind": "modifier"
-        },
-        {
-          "tagName": "@internalRemarks",
+          "tagName": "@Author",
           "syntaxKind": "block"
         },
         {
-          "tagName": "@preapproved",
-          "syntaxKind": "modifier"
+          "tagName": "@Date",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@LastEditors",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@LastEditTime",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@Description",
+          "syntaxKind": "block"
         }
       ],
-      "supportForTags": {
-        "@alpha": true,
-        "@beta": true,
-        "@defaultValue": true,
-        "@decorator": true,
-        "@deprecated": true,
-        "@eventProperty": true,
-        "@example": true,
-        "@experimental": true,
-        "@inheritDoc": true,
-        "@internal": true,
-        "@label": true,
-        "@link": true,
-        "@override": true,
-        "@packageDocumentation": true,
-        "@param": true,
-        "@privateRemarks": true,
-        "@public": true,
-        "@readonly": true,
-        "@remarks": true,
-        "@returns": true,
-        "@sealed": true,
-        "@see": true,
-        "@throws": true,
-        "@typeParam": true,
-        "@virtual": true,
-        "@betaDocumentation": true,
-        "@internalRemarks": true,
-        "@preapproved": true
-      },
       "reportUnsupportedHtmlElements": false
     }
   },
@@ -347,150 +325,7 @@
           "isAbstract": false,
           "name": "A4SafeModule",
           "preserveMemberOrder": false,
-          "members": [
-            {
-              "kind": "Method",
-              "canonicalReference": "@hz-9/a4-safe!A4SafeModule.getConfig:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "static getConfig(a4Config: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IA4Config",
-                  "canonicalReference": "@hz-9/a4-core!IA4Config:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<(typeof "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "A4SafeModuleBase",
-                  "canonicalReference": "@hz-9/a4-safe!~A4SafeModuleBase:var"
-                },
-                {
-                  "kind": "Content",
-                  "text": ")['RootSchemaType']>"
-                },
-                {
-                  "kind": "Content",
-                  "text": ", configKey?: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "string"
-                },
-                {
-                  "kind": "Content",
-                  "text": "): "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "A4SafeModuleSchema",
-                  "canonicalReference": "@hz-9/a4-safe!A4SafeModuleSchema:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": true,
-              "returnTypeTokenRange": {
-                "startIndex": 8,
-                "endIndex": 9
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "a4Config",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 5
-                  },
-                  "isOptional": false
-                },
-                {
-                  "parameterName": "configKey",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 6,
-                    "endIndex": 7
-                  },
-                  "isOptional": true
-                }
-              ],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "getConfig"
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@hz-9/a4-safe!A4SafeModule.optionsToProvideClassConstructorOptions:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "protected static optionsToProvideClassConstructorOptions(options: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "A4SafeModuleSchema",
-                  "canonicalReference": "@hz-9/a4-safe!A4SafeModuleSchema:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": "): "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Promise",
-                  "canonicalReference": "!Promise:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<"
-                },
-                {
-                  "kind": "Reference",
-                  "text": "A4SafeModuleSchema",
-                  "canonicalReference": "@hz-9/a4-safe!A4SafeModuleSchema:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": ">"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": true,
-              "returnTypeTokenRange": {
-                "startIndex": 3,
-                "endIndex": 7
-              },
-              "releaseTag": "Public",
-              "isProtected": true,
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "options",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 2
-                  },
-                  "isOptional": false
-                }
-              ],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "optionsToProvideClassConstructorOptions"
-            }
-          ],
+          "members": [],
           "extendsTokenRange": {
             "startIndex": 1,
             "endIndex": 2

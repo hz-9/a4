@@ -4,13 +4,11 @@
 
 ```ts
 
-import { A4ModuleBase } from '@hz-9/a4-core';
 import type { ClientOptions } from '@elastic/elasticsearch';
 import { DeepPartial } from '@hz-9/a4-core';
 import { DynamicModule } from '@nestjs/common';
 import { Client as ElasticsearchClient } from '@elastic/elasticsearch';
 import { IA4Config } from '@hz-9/a4-core';
-import { IA4CrudModule } from '@hz-9/a4-core';
 import { IA4ModuleForRootAsyncOptions } from '@hz-9/a4-core';
 import { IA4SimpleDao } from '@hz-9/a4-core';
 import { IDeleteResult } from '@hz-9/a4-core';
@@ -29,12 +27,6 @@ export class A44ElasticSearchCrudModuleSchemaC {
     // (undocumented)
     readonly elasticSearch: A4ElasticSearchCrudModuleSchema;
 }
-
-// @public
-export const A4_CRUD_ELASTICSEARCH_DATASOURCE_GROUP: "A4.Crud.ElasticSearch.DataSourceGroup";
-
-// @public
-export const A4_CRUD_ELASTICSEARCH_OPTIONS: "A4.Crud.ElasticSearch.Option";
 
 // @public
 export const A4_DEFAULT_DATA_SOURCE_NAME: "default";
@@ -71,26 +63,20 @@ export class A4ElasticSearchCrud<E extends IObjectLiteral> extends IA4SimpleDao 
     updateByIdToPromise(id: string, model: DeepPartial<Omit<E, 'id'>>): Promise<IUpdateResult>;
 }
 
+// Warning: (ae-forgotten-export) The symbol "A4ElasticSearchCrudModuleBase" needs to be exported by the entry point index.d.ts
+//
 // @public
-export class A4ElasticSearchCrudModule implements A4ModuleBase, IA4CrudModule {
+export class A4ElasticSearchCrudModule extends A4ElasticSearchCrudModuleBase {
+    // Warning: (ae-incompatible-release-tags) The symbol "configToOptions" is marked as @public, but its signature references "A4ElasticSearchCrudModuleOptions" which is marked as @internal
+    //
     // (undocumented)
-    static CONFIG_MIDDLE_PATH: "A4.crud.elasticSearch";
+    static configToOptions(config: A4ElasticSearchCrudModuleSchema, a4Config?: IA4Config<A4ElasticSearchCrudModuleSchemaA>): A4ElasticSearchCrudModuleOptions;
     // (undocumented)
     static forFeature(indices?: Index[], dbName?: string): DynamicModule;
-    // Warning: (ae-incompatible-release-tags) The symbol "forRootAsync" is marked as @public, but its signature references "A4ElasticSearchCrudModuleOptions" which is marked as @internal
+    // Warning: (ae-incompatible-release-tags) The symbol "optionsToProvideClassConstructorOptions" is marked as @public, but its signature references "A4ElasticSearchCrudModuleOptions" which is marked as @internal
     //
     // (undocumented)
-    static forRootAsync(options: IA4ModuleForRootAsyncOptions<A4ElasticSearchCrudModuleOptions>): DynamicModule;
-    // Warning: (ae-incompatible-release-tags) The symbol "getConfig" is marked as @public, but its signature references "A4ElasticSearchCrudModuleOptions" which is marked as @internal
-    //
-    // (undocumented)
-    static getConfig(a4Config: IA4Config<A4ElasticSearchCrudModule['Schema']>, configKey?: string): A4ElasticSearchCrudModuleOptions;
-    // (undocumented)
-    static logger: Logger;
-    // (undocumented)
-    static Schema: typeof A4ElasticSearchCrudModuleSchemaA;
-    // (undocumented)
-    Schema: A4ElasticSearchCrudModuleSchemaA;
+    static optionsToProvideClassConstructorOptions(options: A4ElasticSearchCrudModuleOptions): Promise<Record<string, ElasticsearchClient>>;
 }
 
 // Warning: (ae-internal-missing-underscore) The name "A4ElasticSearchCrudModuleOptions" should be prefixed with an underscore because the declaration is marked as @internal
@@ -134,6 +120,13 @@ type Document_2 = Record<string, any>;
 export { Document_2 as Document }
 
 export { ElasticsearchClient }
+
+// @public (undocumented)
+export class ElasticSearchDataSourceGroup {
+    constructor(options: Record<string, ElasticsearchClient>);
+    // (undocumented)
+    readonly options: Record<string, ElasticsearchClient>;
+}
 
 // @public
 export interface IElasticSearchModuleOptions {

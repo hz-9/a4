@@ -5,7 +5,6 @@
 ```ts
 
 import type { A4Application } from '@hz-9/a4-core';
-import { A4ModuleBase } from '@hz-9/a4-core';
 import { ArgumentsHost } from '@nestjs/common';
 import { BaseRpcExceptionFilter } from '@nestjs/microservices';
 import { ClientProxy } from '@nestjs/microservices';
@@ -55,22 +54,12 @@ export class A4MicroServiceConnectModuleSchema {
     readonly redis?: RedisOptions['options'];
 }
 
+// Warning: (ae-forgotten-export) The symbol "A4MicroServiceModuleBase" needs to be exported by the entry point index.d.ts
+//
 // @public
-export class A4MicroServiceModule implements A4ModuleBase, IA4MicroServiceModule {
-    // (undocumented)
-    static CONFIG_MIDDLE_PATH: "A4.microService";
+export class A4MicroServiceModule extends A4MicroServiceModuleBase implements IA4MicroServiceModule {
     // (undocumented)
     static exceptionRules: IExceptionRule[];
-    // (undocumented)
-    static forRootAsync(options: IA4ModuleForRootAsyncOptions<A4MicroServiceModuleSchema>): DynamicModule;
-    // (undocumented)
-    static getConfig(a4Config: IA4Config<A4MicroServiceModule['Schema']>, configKey?: string): A4MicroServiceModuleSchema;
-    // (undocumented)
-    static logger: Logger;
-    // (undocumented)
-    static Schema: typeof A4MicroServiceModuleSchemaA;
-    // (undocumented)
-    Schema: A4MicroServiceModuleSchemaA;
 }
 
 // @public

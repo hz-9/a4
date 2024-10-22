@@ -2,17 +2,16 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-30 20:45:27
+ * @LastEditTime : 2024-10-19 02:53:39
  */
+import { ClassValidatorUtil, IA4ConfigModule } from '@hz-9/a4-core'
+import { merge as mergeOptions } from '@hz-9/a4-core/lodash'
 import { Module } from '@nestjs/common'
 import type { ClassConstructor } from 'class-transformer'
 
-import { ClassValidatorUtil, IA4ConfigModule } from '@hz-9/a4-core'
-import { merge as mergeOptions } from '@hz-9/a4-core/lodash'
-
 import { IA4ConfigModuleOptions, IConfigClassValidatorUtilParseOptions } from '../interface'
 import { IAllConfigLoader, getLoader } from '../loader'
-import { A4ConfigModuleBase, A4ConfigModuleProtectedBase } from './config.module-definition'
+import { A4ConfigModuleBase } from './config.module-definition'
 
 export {
   GLOBAL_PROVIDE_TOKEN_A4_CONFIG,
@@ -21,6 +20,7 @@ export {
 } from '@hz-9/a4-core'
 
 /**
+ *
  * @public
  *
  *  `A4 Config` 核心模块类。
@@ -28,18 +28,15 @@ export {
  */
 @Module({})
 export class A4ConfigModule extends A4ConfigModuleBase implements IA4ConfigModule {
-  private static get _this(): A4ConfigModuleProtectedBase {
-    return this as unknown as A4ConfigModuleProtectedBase
-  }
-
   /**
    * @internal
    */
-  protected static async optionsToProvideClassConstructorOptions(options: IA4ConfigModuleOptions): Promise<object> {
+  public static async optionsToProvideClassConstructorOptions(options: IA4ConfigModuleOptions): Promise<object> {
     const loader: IAllConfigLoader = getLoader(options)
 
     const loadedConfig = await loader.asyncLoad()
-    this._this.logger.log(loader.getSuccessLoggerMsg())
+
+    this.logger.log(loader.getSuccessLoggerMsg())
 
     if (options.ignoreSchema === true) return loadedConfig
 
@@ -55,3 +52,12 @@ export class A4ConfigModule extends A4ConfigModuleBase implements IA4ConfigModul
     return result
   }
 }
+
+/**
+ * 转换函数
+ *
+ *  1. Schema 数据格式；
+ *
+ *  2. ProvideClass 配置项参数；
+ *
+ */

@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-20 23:20:32
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-01 16:53:55
+ * @LastEditTime : 2024-10-19 20:58:24
  */
 import type { A4GlobalProvideToken, A4ScopeProvideToken } from '../../interface'
 
@@ -12,7 +12,7 @@ export * from './interface'
  *
  * @public
  *
- *   `A4 Network Module` Network Path
+ *   `A4 Network Module` Config Path
  *
  */
 export const MODULE_CONFIG_PATH_A4_NETWORK = 'A4.network' as const

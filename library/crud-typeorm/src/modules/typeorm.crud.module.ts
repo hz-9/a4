@@ -2,33 +2,21 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-21 16:10:04
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-28 22:25:31
+ * @LastEditTime : 2024-10-22 19:53:09
  */
-import { DynamicModule, FactoryProvider, Logger, Module } from '@nestjs/common'
+import { A4Util, IObjectLiteral, RunEnv } from '@hz-9/a4-core'
+import { DynamicModule, FactoryProvider, Module } from '@nestjs/common'
 import { defer, lastValueFrom } from 'rxjs'
 import { DataSource, type DataSourceOptions, type Repository } from 'typeorm'
 
-import {
-  A4ModuleBase,
-  A4Util,
-  IA4Config,
-  IA4CrudModule,
-  IA4ModuleForRootAsyncOptions,
-  IObjectLiteral,
-  RunEnv,
-} from '@hz-9/a4-core'
-
-import {
-  A4_CRUD_TYPEORM_DATASOURCE_GROUP,
-  A4_CRUD_TYPEORM_OPTIONS,
-  A4_DEFAULT_DATA_SOURCE_NAME,
-  CRUD_TYPEORM_MODULE_DEFAULT,
-} from '../const'
+import { A4_DEFAULT_DATA_SOURCE_NAME, CRUD_TYPEORM_MODULE_DEFAULT } from '../const'
 import { A4TypeORMCrudModuleOptions, DataSourceOptionsExtraWithDefault, EntityClassOrSchema } from '../interface'
-import { A4TypeORMCrudModuleSchemaA } from '../schema'
+import { A4TypeORMCrudModuleSchema } from '../schema'
 import { getRepositoryToken, getTypeORMCrudToken, splitExtraOptions } from '../util'
 import { EntitiesStorage } from './entities.storage'
 import { A4TypeORMCrud } from './typeorm.crud'
+import { A4TypeORMCrudModuleBase } from './typeorm.crud.module-definition'
+import { TyprORMDataSourceGroup } from './typeorm.datasource-group'
 
 /**
  * @public
@@ -37,53 +25,86 @@ import { A4TypeORMCrud } from './typeorm.crud'
  *
  */
 @Module({})
-export class A4TypeORMCrudModule implements A4ModuleBase, IA4CrudModule {
-  public static logger: Logger = new Logger('A4 Crud')
+export class A4TypeORMCrudModule extends A4TypeORMCrudModuleBase {
+  public static configToOptions(config: A4TypeORMCrudModuleSchema): A4TypeORMCrudModuleOptions {
+    const newConfig: A4TypeORMCrudModuleOptions = {}
 
-  // eslint-disable-next-line @typescript-eslint/typedef
-  public static CONFIG_MIDDLE_PATH = 'A4.crud.typeORM' as const
+    const names = Object.getOwnPropertyNames(config)
 
-  // eslint-disable-next-line @typescript-eslint/typedef
-  public static Schema = A4TypeORMCrudModuleSchemaA
+    while (names.length) {
+      const name = names.shift()!
+      const c = config[name as 'default']
 
-  public Schema: A4TypeORMCrudModuleSchemaA
+      newConfig[name] = {
+        ...c,
 
-  public static forRootAsync(options: IA4ModuleForRootAsyncOptions<A4TypeORMCrudModuleOptions>): DynamicModule {
-    return {
-      module: A4TypeORMCrudModule,
+        synchronize: RunEnv.isDev ? c.synchronize ?? true : false,
 
-      providers: [
-        {
-          provide: A4_CRUD_TYPEORM_OPTIONS,
-          inject: options.inject,
-          useFactory: async (...args) => {
-            const result = await options.useFactory!(...args)
-            return result
-          },
-        },
-
-        {
-          provide: A4_CRUD_TYPEORM_DATASOURCE_GROUP,
-          inject: [A4_CRUD_TYPEORM_OPTIONS],
-          useFactory: async (dataSourceOptions: A4TypeORMCrudModuleOptions) => {
-            const group: Record<string, DataSource> = {}
-
-            const names = Object.getOwnPropertyNames(dataSourceOptions)
-
-            while (names.length) {
-              const name = names.shift()!
-              group[name] = await this._createDataSource(name, dataSourceOptions[name])
-            }
-
-            return group
-          },
-        },
-      ],
-
-      exports: [A4_CRUD_TYPEORM_OPTIONS, A4_CRUD_TYPEORM_DATASOURCE_GROUP],
-
-      global: true,
+        autoLoadEntities: c.autoLoadEntities ?? CRUD_TYPEORM_MODULE_DEFAULT.AUTO_LOAD_ENTITIES,
+        retryAttempts: c.retryAttempts ?? CRUD_TYPEORM_MODULE_DEFAULT.RETRY_ATTMPTS,
+        retryDelay: c.retryDelay ?? CRUD_TYPEORM_MODULE_DEFAULT.RETRY_DELAY,
+        verboseRetryLog: c.verboseRetryLog ?? CRUD_TYPEORM_MODULE_DEFAULT.VERBOSE_RESTRY_LOG,
+      }
     }
+
+    return newConfig
+  }
+
+  public static async optionsToProvideClassConstructorOptions(
+    options: A4TypeORMCrudModuleOptions
+  ): Promise<Record<string, DataSource>> {
+    const _createDataSource = async (
+      dbName: string,
+      dbOptions: DataSourceOptionsExtraWithDefault
+    ): Promise<DataSource> => {
+      const createTypeormDataSource = (o: DataSourceOptions): DataSource => new DataSource(o)
+
+      const [dataSourceOptions, customOptions] = splitExtraOptions(dbOptions)
+
+      const dataSource: DataSource = await lastValueFrom(
+        defer(async () => {
+          if (customOptions.autoLoadEntities) {
+            if (Array.isArray(dataSourceOptions.entities)) {
+              dataSourceOptions.entities.push(...EntitiesStorage.getEntitiesByDataSource(dbName))
+            } else {
+              /**
+               * FIXME
+               *
+               *  此处应修复 entities 为只读属性时的判断异常。在程序运行时，通常不会造成影响。
+               *
+               */
+              // @ts-ignore
+              dataSourceOptions.entities = EntitiesStorage.getEntitiesByDataSource(dbName)
+            }
+          }
+
+          const d = await createTypeormDataSource(dataSourceOptions)
+          // 数据库初始化。
+          await d.initialize()
+          return d
+        }).pipe(
+          A4Util.handleRetry(
+            dbName,
+            dbOptions.retryDelay,
+            dbOptions.retryAttempts,
+            dbOptions.verboseRetryLog,
+            this.logger
+          )
+        )
+      )
+
+      return dataSource
+    }
+    const group: Record<string, DataSource> = {}
+
+    const names = Object.getOwnPropertyNames(options)
+
+    while (names.length) {
+      const name = names.shift()!
+      group[name] = await _createDataSource(name, options[name])
+    }
+
+    return group
   }
 
   public static forFeature(
@@ -99,10 +120,10 @@ export class A4TypeORMCrudModule implements A4ModuleBase, IA4CrudModule {
 
     entities.forEach((entity: EntityClassOrSchema) => {
       providers.push({
-        inject: [A4_CRUD_TYPEORM_DATASOURCE_GROUP],
+        inject: [TyprORMDataSourceGroup],
         provide: getRepositoryToken(entity, dataSourceName),
-        useFactory: async (dataSourceGroup: Record<string, DataSource>) => {
-          const dataSource: DataSource | undefined = dataSourceGroup[dataSourceName]
+        useFactory: async (typrORMDataSourceGroup: TyprORMDataSourceGroup) => {
+          const dataSource: DataSource | undefined = typrORMDataSourceGroup.options[dataSourceName]
           if (!dataSource) throw new Error(`Not found '${dataSourceName}' dataSource.`)
 
           const entityMetadata = dataSource.entityMetadatas.find((meta) => meta.target === entity)
@@ -127,71 +148,5 @@ export class A4TypeORMCrudModule implements A4ModuleBase, IA4CrudModule {
       providers,
       exports: exportKeys,
     }
-  }
-
-  private static async _createDataSource(
-    dbName: string,
-    options: DataSourceOptionsExtraWithDefault
-  ): Promise<DataSource> {
-    const createTypeormDataSource = (o: DataSourceOptions): DataSource => new DataSource(o)
-
-    const [dataSourceOptions, customOptions] = splitExtraOptions(options)
-
-    const dataSource: DataSource = await lastValueFrom(
-      defer(async () => {
-        if (customOptions.autoLoadEntities) {
-          if (Array.isArray(dataSourceOptions.entities)) {
-            dataSourceOptions.entities.push(...EntitiesStorage.getEntitiesByDataSource(dbName))
-          } else {
-            /**
-             * FIXME
-             *
-             *  此处应修复 entities 为只读属性时的判断异常。在程序运行时，通常不会造成影响。
-             *
-             */
-            // @ts-ignore
-            dataSourceOptions.entities = EntitiesStorage.getEntitiesByDataSource(dbName)
-          }
-        }
-
-        const d = await createTypeormDataSource(dataSourceOptions)
-        // 数据库初始化。
-        await d.initialize()
-        return d
-      }).pipe(
-        A4Util.handleRetry(dbName, options.retryDelay, options.retryAttempts, options.verboseRetryLog, this.logger)
-      )
-    )
-
-    return dataSource
-  }
-
-  public static getConfig(
-    a4Config: IA4Config<A4TypeORMCrudModule['Schema']>,
-    configKey?: string
-  ): A4TypeORMCrudModuleOptions {
-    const config = a4Config.getOrThrow((configKey as typeof this.CONFIG_MIDDLE_PATH) ?? this.CONFIG_MIDDLE_PATH)
-
-    const newConfig: A4TypeORMCrudModuleOptions = {}
-
-    const names = Object.getOwnPropertyNames(config)
-
-    while (names.length) {
-      const name = names.shift()!
-      const c = config[name as 'default']
-
-      newConfig[name] = {
-        ...c,
-
-        synchronize: RunEnv.isDev ? c.synchronize ?? true : false,
-
-        autoLoadEntities: c.autoLoadEntities ?? CRUD_TYPEORM_MODULE_DEFAULT.AUTO_LOAD_ENTITIES,
-        retryAttempts: c.retryAttempts ?? CRUD_TYPEORM_MODULE_DEFAULT.RETRY_ATTMPTS,
-        retryDelay: c.retryDelay ?? CRUD_TYPEORM_MODULE_DEFAULT.RETRY_DELAY,
-        verboseRetryLog: c.verboseRetryLog ?? CRUD_TYPEORM_MODULE_DEFAULT.VERBOSE_RESTRY_LOG,
-      }
-    }
-
-    return newConfig
   }
 }

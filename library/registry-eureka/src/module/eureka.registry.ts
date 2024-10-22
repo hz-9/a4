@@ -2,13 +2,12 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-05-31 15:02:12
+ * @LastEditTime : 2024-10-20 17:44:15
  */
-import { Logger } from '@nestjs/common'
-import { Eureka, type EurekaClient } from '@rocketsoftware/eureka-js-client'
-
 import { IA4Registry, IA4RegistryInstanceMetadata } from '@hz-9/a4-core'
 import _ from '@hz-9/a4-core/lodash'
+import { Logger } from '@nestjs/common'
+import { Eureka, type EurekaClient } from '@rocketsoftware/eureka-js-client'
 
 import { IA4EurekaRegisterConstructorOptions, IA4EurekaRegisterStartOptions } from '../interface'
 
@@ -206,11 +205,35 @@ export class A4EurekaRegistry implements IA4Registry {
           this.logger.warn(args.join(''))
         },
         // debug: (...args: unknown[]) => { this.logger.warn(args.join('')) },
-        debug: () => {},
+        debug: (...args: unknown[]) => {
+          this.logger.debug(args.join(''))
+        },
       },
 
       ...this._getEurekaConfigOptions(),
     })
+
+    client.on('started', () => {
+      this.logger.log(`Service '${this.getAppId()}' registered success.`)
+    })
+
+    client.on('heartbeat', () => {
+      this.logger.debug(`Ping or Pong`)
+    })
+
+    client.on('registered', () => {
+      this.logger.log(`registered.`)
+    })
+
+    client.on('deregistered', () => {
+      this.logger.log(`deregistered.`)
+    })
+
+    // 会直接显示 retrieved full registry successfully 的日志。
+    // client.on('registryUpdated', () => {
+    //   this.logger.debug(`registryUpdated.`)
+    // })
+
     return client
   }
 }

@@ -10,11 +10,14 @@ import { AxiosInstance } from '@hz-9/a4-core/axios';
 import { AxiosRequestConfig } from '@hz-9/a4-core/axios';
 import { AxiosResponse } from '@hz-9/a4-core/axios';
 import type { ClassConstructor } from 'class-transformer';
+import { DynamicModule } from '@nestjs/common';
 import { GLOBAL_PROVIDE_TOKEN_A4_CONFIG } from '@hz-9/a4-core';
 import { IA4Config } from '@hz-9/a4-core';
 import { IA4ConfigModule } from '@hz-9/a4-core';
-import { IA4ModuleBaseSubType } from '@hz-9/a4-core';
+import { IA4ModuleForRootAsyncOptions } from '@hz-9/a4-core';
+import { IA4ModuleRegisterAsyncOptions } from '@hz-9/a4-core';
 import type { IClassValidatorUtilParseOptions } from '@hz-9/a4-core';
+import { Logger } from '@nestjs/common';
 import { MODULE_CONFIG_PATH_A4_CONFIG } from '@hz-9/a4-core';
 import { ModuleError } from '@hz-9/a4-core';
 import { NonUndefined } from '@hz-9/a4-core';
@@ -38,7 +41,7 @@ export class A4Config<T extends object = object> extends A4ConfigBase implements
 // @public
 export class A4ConfigModule extends A4ConfigModuleBase implements IA4ConfigModule {
     // @internal (undocumented)
-    protected static optionsToProvideClassConstructorOptions(options: IA4ConfigModuleOptions): Promise<object>;
+    static optionsToProvideClassConstructorOptions(options: IA4ConfigModuleOptions): Promise<object>;
 }
 
 // @public

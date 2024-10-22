@@ -26,7 +26,7 @@ describe.each([[A4Log4jsSimpleLogModule, A4Log4jsSimpleLogModuleSchema, A4Log4js
 
     it('OK : forRoot', async () => {
       const moduleRef = await Test.createTestingModule({
-        imports: [LogModule.forRoot(LogModule.defaultConfig)],
+        imports: [LogModule.forRoot(LogModule.defaultOptions)],
       }).compile()
 
       const app = moduleRef.createNestApplication({
@@ -37,11 +37,11 @@ describe.each([[A4Log4jsSimpleLogModule, A4Log4jsSimpleLogModuleSchema, A4Log4js
 
       await app.init()
 
-      const a4Logger: A4Log4jsLogger = moduleRef.get(LogModule.globalProvideToken)
+      const a4Logger: A4Log4jsLogger = moduleRef.get(LogModule.GLOBAL_PROVIDE_TOKEN)
       const a4Logger2: A4Log4jsLogger = moduleRef.get(A4Log4jsLogger)
 
       expect(() => {
-        moduleRef.get(LogModule.scopeProvideToken)
+        moduleRef.get(LogModule.SCOPE_PROVIDE_TOKEN)
       }).toThrow()
       expect(a4Logger).toBeInstanceOf(A4Log4jsLogger)
       expect(a4Logger2).toBeInstanceOf(A4Log4jsLogger)

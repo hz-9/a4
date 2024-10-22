@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-20 23:20:32
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-30 20:05:15
+ * @LastEditTime : 2024-10-22 16:09:14
  */
 import type { A4GlobalProvideToken, A4ScopeProvideToken } from '../../interface'
 
@@ -16,8 +16,6 @@ export * from './interface'
  *
  */
 export const MODULE_CONFIG_PATH_A4_LOG = <T extends string>(str: T): `A4.log.${T}` => `A4.log.${str}`
-
-// export const MODULE_CONFIG_PATH_A4_LOG = 'A4.log' as const
 
 /**
  *

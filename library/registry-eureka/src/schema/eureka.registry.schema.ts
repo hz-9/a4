@@ -2,15 +2,14 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-27 03:04:43
+ * @LastEditTime : 2024-10-20 17:42:27
  */
 
 /* eslint-disable max-classes-per-file */
+import { IsOptionalNotNull } from '@hz-9/a4-core'
 import type { EurekaClient } from '@rocketsoftware/eureka-js-client'
 import { Type } from 'class-transformer'
 import { IsObject, IsString, ValidateNested } from 'class-validator'
-
-import { CU, IsOptionalNotNull } from '@hz-9/a4-core'
 
 /**
  *

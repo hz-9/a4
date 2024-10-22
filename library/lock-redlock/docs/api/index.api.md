@@ -4,18 +4,14 @@
 
 ```ts
 
-import { A4ModuleBase } from '@hz-9/a4-core';
-import type { Cache as Cache_2 } from 'cache-manager';
 import { DynamicModule } from '@nestjs/common';
 import { IA4Config } from '@hz-9/a4-core';
-import { IA4LockModule } from '@hz-9/a4-core';
 import { IA4ModuleForRootAsyncOptions } from '@hz-9/a4-core';
 import { Logger } from '@nestjs/common';
-import type { Milliseconds } from 'cache-manager';
-import { Observable } from 'rxjs';
+import RedisClient from 'ioredis';
 import type { RedisOptions } from 'ioredis';
 import Redlock from '@hz-9/redlock-dist';
-import type { WrapTTL } from 'cache-manager';
+import { Settings } from '@hz-9/redlock-dist';
 
 // @public
 export class A4LockModuleSchemaB {
@@ -23,20 +19,12 @@ export class A4LockModuleSchemaB {
     readonly lock: A4RedLockModuleSchemaC;
 }
 
+// Warning: (ae-forgotten-export) The symbol "A4RedLockModuleBase" needs to be exported by the entry point index.d.ts
+//
 // @public
-export class A4RedlockLockModule implements A4ModuleBase, IA4LockModule {
+export class A4RedLockModule extends A4RedLockModuleBase {
     // (undocumented)
-    static CONFIG_MIDDLE_PATH: "A4.lock.redlock";
-    // (undocumented)
-    static forRootAsync(options: IA4ModuleForRootAsyncOptions<A4RedLockModuleSchema>): DynamicModule;
-    // (undocumented)
-    static getConfig(a4Config: IA4Config<A4RedlockLockModule['Schema']>, configKey?: string): A4RedLockModuleSchema;
-    // (undocumented)
-    static logger: Logger;
-    // (undocumented)
-    static Schema: typeof A4RedLockModuleSchemaA;
-    // (undocumented)
-    Schema: A4RedLockModuleSchemaA;
+    static optionsToProvideClassConstructorOptions(options: A4RedLockModuleSchema): Promise<[RedisClient[], Settings]>;
 }
 
 // @public
@@ -68,12 +56,6 @@ export class A4RedLockSettingModuleSchema {
 }
 
 // @public
-export const cacheWrapToObservable: <T>(cache: Cache_2, key: string, fun: () => Observable<T>, ttl?: WrapTTL<T> | undefined, refreshThreshold?: Milliseconds) => Observable<T>;
-
-// @public
-export const cacheWrapToObservable2: <T>(cache: Cache_2, key: string, fun: () => Promise<T>, ttl?: WrapTTL<T> | undefined, refreshThreshold?: Milliseconds) => Observable<T>;
-
-// @public
 export const LOCK_MODULE_DEFAULT: {
     readonly SETTINGS: {
         readonly DRIFT_FACTOR: 0.01;
@@ -85,6 +67,8 @@ export const LOCK_MODULE_DEFAULT: {
 };
 
 export { Redlock }
+
+export { Settings }
 
 // (No @packageDocumentation comment for this package)
 

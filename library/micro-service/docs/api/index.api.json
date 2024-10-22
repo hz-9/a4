@@ -115,48 +115,26 @@
           "syntaxKind": "modifier"
         },
         {
-          "tagName": "@betaDocumentation",
-          "syntaxKind": "modifier"
-        },
-        {
-          "tagName": "@internalRemarks",
+          "tagName": "@Author",
           "syntaxKind": "block"
         },
         {
-          "tagName": "@preapproved",
-          "syntaxKind": "modifier"
+          "tagName": "@Date",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@LastEditors",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@LastEditTime",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@Description",
+          "syntaxKind": "block"
         }
       ],
-      "supportForTags": {
-        "@alpha": true,
-        "@beta": true,
-        "@defaultValue": true,
-        "@decorator": true,
-        "@deprecated": true,
-        "@eventProperty": true,
-        "@example": true,
-        "@experimental": true,
-        "@inheritDoc": true,
-        "@internal": true,
-        "@label": true,
-        "@link": true,
-        "@override": true,
-        "@packageDocumentation": true,
-        "@param": true,
-        "@privateRemarks": true,
-        "@public": true,
-        "@readonly": true,
-        "@remarks": true,
-        "@returns": true,
-        "@sealed": true,
-        "@see": true,
-        "@throws": true,
-        "@typeParam": true,
-        "@virtual": true,
-        "@betaDocumentation": true,
-        "@internalRemarks": true,
-        "@preapproved": true
-      },
       "reportUnsupportedHtmlElements": false
     }
   },
@@ -763,16 +741,16 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare class A4MicroServiceModule implements "
+              "text": "export declare class A4MicroServiceModule extends "
             },
             {
               "kind": "Reference",
-              "text": "A4ModuleBase",
-              "canonicalReference": "@hz-9/a4-core!A4ModuleBase:class"
+              "text": "A4MicroServiceModuleBase",
+              "canonicalReference": "@hz-9/a4-micro-service!~A4MicroServiceModuleBase"
             },
             {
               "kind": "Content",
-              "text": ", "
+              "text": " implements "
             },
             {
               "kind": "Reference",
@@ -790,36 +768,6 @@
           "name": "A4MicroServiceModule",
           "preserveMemberOrder": false,
           "members": [
-            {
-              "kind": "Property",
-              "canonicalReference": "@hz-9/a4-micro-service!A4MicroServiceModule.CONFIG_MIDDLE_PATH:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "static CONFIG_MIDDLE_PATH: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "\"A4.microService\""
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "CONFIG_MIDDLE_PATH",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              },
-              "isStatic": true,
-              "isProtected": false,
-              "isAbstract": false
-            },
             {
               "kind": "Property",
               "canonicalReference": "@hz-9/a4-micro-service!A4MicroServiceModule.exceptionRules:member",
@@ -854,252 +802,13 @@
               "isStatic": true,
               "isProtected": false,
               "isAbstract": false
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@hz-9/a4-micro-service!A4MicroServiceModule.forRootAsync:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "static forRootAsync(options: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IA4ModuleForRootAsyncOptions",
-                  "canonicalReference": "@hz-9/a4-core!IA4ModuleForRootAsyncOptions:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<"
-                },
-                {
-                  "kind": "Reference",
-                  "text": "A4MicroServiceModuleSchema",
-                  "canonicalReference": "@hz-9/a4-micro-service!A4MicroServiceModuleSchema:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": ">"
-                },
-                {
-                  "kind": "Content",
-                  "text": "): "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "DynamicModule",
-                  "canonicalReference": "@nestjs/common!DynamicModule:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": true,
-              "returnTypeTokenRange": {
-                "startIndex": 6,
-                "endIndex": 7
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "options",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 5
-                  },
-                  "isOptional": false
-                }
-              ],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "forRootAsync"
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@hz-9/a4-micro-service!A4MicroServiceModule.getConfig:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "static getConfig(a4Config: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IA4Config",
-                  "canonicalReference": "@hz-9/a4-core!IA4Config:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<"
-                },
-                {
-                  "kind": "Reference",
-                  "text": "A4MicroServiceModule",
-                  "canonicalReference": "@hz-9/a4-micro-service!A4MicroServiceModule:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": "['Schema']>"
-                },
-                {
-                  "kind": "Content",
-                  "text": ", configKey?: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "string"
-                },
-                {
-                  "kind": "Content",
-                  "text": "): "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "A4MicroServiceModuleSchema",
-                  "canonicalReference": "@hz-9/a4-micro-service!A4MicroServiceModuleSchema:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": true,
-              "returnTypeTokenRange": {
-                "startIndex": 8,
-                "endIndex": 9
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "a4Config",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 5
-                  },
-                  "isOptional": false
-                },
-                {
-                  "parameterName": "configKey",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 6,
-                    "endIndex": 7
-                  },
-                  "isOptional": true
-                }
-              ],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "getConfig"
-            },
-            {
-              "kind": "Property",
-              "canonicalReference": "@hz-9/a4-micro-service!A4MicroServiceModule.logger:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "static logger: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Logger",
-                  "canonicalReference": "@nestjs/common!Logger:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "logger",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              },
-              "isStatic": true,
-              "isProtected": false,
-              "isAbstract": false
-            },
-            {
-              "kind": "Property",
-              "canonicalReference": "@hz-9/a4-micro-service!A4MicroServiceModule#Schema:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "Schema: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "A4MicroServiceModuleSchemaA",
-                  "canonicalReference": "@hz-9/a4-micro-service!A4MicroServiceModuleSchemaA:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "Schema",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              },
-              "isStatic": false,
-              "isProtected": false,
-              "isAbstract": false
-            },
-            {
-              "kind": "Property",
-              "canonicalReference": "@hz-9/a4-micro-service!A4MicroServiceModule.Schema:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "static Schema: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "typeof "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "A4MicroServiceModuleSchemaA",
-                  "canonicalReference": "@hz-9/a4-micro-service!A4MicroServiceModuleSchemaA:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "Schema",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 3
-              },
-              "isStatic": true,
-              "isProtected": false,
-              "isAbstract": false
             }
           ],
+          "extendsTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          },
           "implementsTokenRanges": [
-            {
-              "startIndex": 1,
-              "endIndex": 2
-            },
             {
               "startIndex": 3,
               "endIndex": 4

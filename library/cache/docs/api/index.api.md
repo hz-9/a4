@@ -4,22 +4,31 @@
 
 ```ts
 
-import { A4ModuleBase } from '@hz-9/a4-core';
+import { A4Application } from '@hz-9/a4-core';
 import type { Cache as Cache_2 } from 'cache-manager';
-import { CacheInterceptor as CacheInterceptor_2 } from '@nestjs/cache-manager';
-import { CacheModule } from '@nestjs/cache-manager';
-import { CacheOptions } from '@nestjs/cache-manager';
-import { CallHandler } from '@nestjs/common';
+import * as cacheManager from 'cache-manager';
 import { DynamicModule } from '@nestjs/common';
-import { ExecutionContext } from '@nestjs/common';
-import { IA4CacheModule } from '@hz-9/a4-core';
+import { IA4Cache } from '@hz-9/a4-core';
 import { IA4Config } from '@hz-9/a4-core';
 import { IA4ModuleForRootAsyncOptions } from '@hz-9/a4-core';
 import { Logger } from '@nestjs/common';
 import type { Milliseconds } from 'cache-manager';
 import { Observable } from 'rxjs';
-import type RedisStore from 'cache-manager-ioredis-yet';
+import type { RedisStore } from 'cache-manager-ioredis-yet';
+import type { redisStore } from 'cache-manager-ioredis-yet';
 import type { WrapTTL } from 'cache-manager';
+
+// @public (undocumented)
+export class A4Cache implements IA4Cache {
+    constructor(options: ICacheConstructorOptions);
+    // (undocumented)
+    protected cache: cacheManager.Cache | cacheManager.MultiCache;
+    init(app: A4Application): Promise<void>;
+    // (undocumented)
+    protected readonly logger: Logger;
+    // (undocumented)
+    protected readonly options: ICacheConstructorOptions;
+}
 
 // @public
 export class A4CacheMemoryModuleSchema {
@@ -27,22 +36,12 @@ export class A4CacheMemoryModuleSchema {
     readonly ttl: number;
 }
 
+// Warning: (ae-forgotten-export) The symbol "A4CacheModuleBase" needs to be exported by the entry point index.d.ts
+//
 // @public
-export class A4CacheModule extends CacheModule implements A4ModuleBase, IA4CacheModule {
+export class A4CacheModule extends A4CacheModuleBase {
     // (undocumented)
-    static CONFIG_MIDDLE_PATH: "A4.cache";
-    // (undocumented)
-    static forRootAsync(options: IA4ModuleForRootAsyncOptions<A4CacheModuleSchema>): DynamicModule;
-    // (undocumented)
-    static getConfig(a4Config: IA4Config<A4CacheModule['Schema']>, configKey?: string): A4CacheModuleSchema;
-    // (undocumented)
-    static logger: Logger;
-    // (undocumented)
-    static Schema: typeof A4CacheModuleSchemaA;
-    // (undocumented)
-    Schema: A4CacheModuleSchemaA;
-    // (undocumented)
-    protected static toCacheOptions(options: A4CacheModuleSchema): CacheOptions;
+    static configToOptions(config: A4CacheModuleSchema, a4Config?: IA4Config<A4CacheModuleSchemaA>): ICacheInfo;
 }
 
 // @public
@@ -93,14 +92,6 @@ export const CACHE_MODULE_DEFAULT: {
 };
 
 // @public
-export class CacheInterceptor extends CacheInterceptor_2 {
-    // (undocumented)
-    protected addCacheHeader(context: ExecutionContext): void;
-    // (undocumented)
-    intercept(context: ExecutionContext, next: CallHandler): Promise<Observable<unknown>>;
-}
-
-// @public
 export enum CacheStore {
     Memory = "memory",
     MemoryRedis = "memory-redis",
@@ -112,6 +103,28 @@ export const cacheWrapToObservable: <T>(cache: Cache_2, key: string, fun: () => 
 
 // @public
 export const cacheWrapToObservable2: <T>(cache: Cache_2, key: string, fun: () => Promise<T>, ttl?: WrapTTL<T> | undefined, refreshThreshold?: Milliseconds) => Observable<T>;
+
+// @public
+export type ICacheConstructorOptions = ICacheInfo;
+
+// @public
+export type ICacheInfo = ICacheMemoryInfo | ICacheRedisInfo | [ICacheMemoryInfo, ICacheRedisInfo];
+
+// @public (undocumented)
+export type ICacheMemoryInfo = {
+    store: 'memory';
+    ttl: number;
+    max: number;
+};
+
+// Warning: (ae-forgotten-export) The symbol "RedisOptions" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export type ICacheRedisInfo = {
+    store: () => Promise<RedisStore>;
+    ttl: number;
+    max: number;
+} & Partial<RedisOptions>;
 
 // (No @packageDocumentation comment for this package)
 

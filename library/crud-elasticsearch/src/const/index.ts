@@ -2,24 +2,8 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-05 20:02:11
+ * @LastEditTime : 2024-10-22 22:25:24
  */
-
-/**
- * @public
- *
- * 用于作为 A4 Crud ElasticSearch 配置的标记。
- *
- */
-export const A4_CRUD_ELASTICSEARCH_OPTIONS = 'A4.Crud.ElasticSearch.Option' as const
-
-/**
- * @public
- *
- *  用于作为 A4 Crud ElasticSearch 多数据库合集的标记
- *
- */
-export const A4_CRUD_ELASTICSEARCH_DATASOURCE_GROUP = 'A4.Crud.ElasticSearch.DataSourceGroup' as const
 
 /**
  * @public

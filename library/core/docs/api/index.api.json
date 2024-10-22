@@ -115,48 +115,26 @@
           "syntaxKind": "modifier"
         },
         {
-          "tagName": "@betaDocumentation",
-          "syntaxKind": "modifier"
-        },
-        {
-          "tagName": "@internalRemarks",
+          "tagName": "@Author",
           "syntaxKind": "block"
         },
         {
-          "tagName": "@preapproved",
-          "syntaxKind": "modifier"
+          "tagName": "@Date",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@LastEditors",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@LastEditTime",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@Description",
+          "syntaxKind": "block"
         }
       ],
-      "supportForTags": {
-        "@alpha": true,
-        "@beta": true,
-        "@defaultValue": true,
-        "@decorator": true,
-        "@deprecated": true,
-        "@eventProperty": true,
-        "@example": true,
-        "@experimental": true,
-        "@inheritDoc": true,
-        "@internal": true,
-        "@label": true,
-        "@link": true,
-        "@override": true,
-        "@packageDocumentation": true,
-        "@param": true,
-        "@privateRemarks": true,
-        "@public": true,
-        "@readonly": true,
-        "@remarks": true,
-        "@returns": true,
-        "@sealed": true,
-        "@see": true,
-        "@throws": true,
-        "@typeParam": true,
-        "@virtual": true,
-        "@betaDocumentation": true,
-        "@internalRemarks": true,
-        "@preapproved": true
-      },
       "reportUnsupportedHtmlElements": false
     }
   },
@@ -172,139 +150,6 @@
       "name": "",
       "preserveMemberOrder": false,
       "members": [
-        {
-          "kind": "Variable",
-          "canonicalReference": "@hz-9/a4-core!A4_CACHE:var",
-          "docComment": "/**\n * `A4Cache` Provide\n *\n * @public\n */\n",
-          "excerptTokens": [
-            {
-              "kind": "Content",
-              "text": "A4_CACHE: "
-            },
-            {
-              "kind": "Content",
-              "text": "string"
-            }
-          ],
-          "fileUrlPath": "dist/module/cache/index.d.ts",
-          "isReadonly": true,
-          "releaseTag": "Public",
-          "name": "A4_CACHE",
-          "variableTypeTokenRange": {
-            "startIndex": 1,
-            "endIndex": 2
-          }
-        },
-        {
-          "kind": "Variable",
-          "canonicalReference": "@hz-9/a4-core!A4_CRUD:var",
-          "docComment": "/**\n * `A4Crud` Provide\n *\n * @public\n */\n",
-          "excerptTokens": [
-            {
-              "kind": "Content",
-              "text": "A4_CRUD: "
-            },
-            {
-              "kind": "Content",
-              "text": "string"
-            }
-          ],
-          "fileUrlPath": "dist/module/crud/index.d.ts",
-          "isReadonly": true,
-          "releaseTag": "Public",
-          "name": "A4_CRUD",
-          "variableTypeTokenRange": {
-            "startIndex": 1,
-            "endIndex": 2
-          }
-        },
-        {
-          "kind": "Variable",
-          "canonicalReference": "@hz-9/a4-core!A4_LOCK:var",
-          "docComment": "/**\n * `A4Lock` Provide\n *\n * @public\n */\n",
-          "excerptTokens": [
-            {
-              "kind": "Content",
-              "text": "A4_LOCK: "
-            },
-            {
-              "kind": "Content",
-              "text": "string"
-            }
-          ],
-          "fileUrlPath": "dist/module/lock/index.d.ts",
-          "isReadonly": true,
-          "releaseTag": "Public",
-          "name": "A4_LOCK",
-          "variableTypeTokenRange": {
-            "startIndex": 1,
-            "endIndex": 2
-          }
-        },
-        {
-          "kind": "Variable",
-          "canonicalReference": "@hz-9/a4-core!A4_MICRO_SERVICE:var",
-          "docComment": "/**\n * `A4MicroService` Provide\n *\n * @public\n */\n",
-          "excerptTokens": [
-            {
-              "kind": "Content",
-              "text": "A4_MICRO_SERVICE: "
-            },
-            {
-              "kind": "Content",
-              "text": "string"
-            }
-          ],
-          "fileUrlPath": "dist/module/micro-service/index.d.ts",
-          "isReadonly": true,
-          "releaseTag": "Public",
-          "name": "A4_MICRO_SERVICE",
-          "variableTypeTokenRange": {
-            "startIndex": 1,
-            "endIndex": 2
-          }
-        },
-        {
-          "kind": "Function",
-          "canonicalReference": "@hz-9/a4-core!A4_REGISTRY_PROVIDE_TOKEN:function(1)",
-          "docComment": "/**\n * `A4Registry` Provide\n *\n * @param token - 基础名称\n *\n * @public\n */\n",
-          "excerptTokens": [
-            {
-              "kind": "Content",
-              "text": "A4_REGISTRY_PROVIDE_TOKEN: (token: "
-            },
-            {
-              "kind": "Content",
-              "text": "string"
-            },
-            {
-              "kind": "Content",
-              "text": ") => "
-            },
-            {
-              "kind": "Content",
-              "text": "string"
-            }
-          ],
-          "fileUrlPath": "dist/module/registry/index.d.ts",
-          "returnTypeTokenRange": {
-            "startIndex": 3,
-            "endIndex": 4
-          },
-          "releaseTag": "Public",
-          "overloadIndex": 1,
-          "parameters": [
-            {
-              "parameterName": "token",
-              "parameterTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              },
-              "isOptional": false
-            }
-          ],
-          "name": "A4_REGISTRY_PROVIDE_TOKEN"
-        },
         {
           "kind": "Class",
           "canonicalReference": "@hz-9/a4-core!A4Application:class",
@@ -456,12 +301,12 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "@hz-9/a4-core!A4Application#getA4MicroServiceMap:member(1)",
+              "canonicalReference": "@hz-9/a4-core!A4Application#getA4MicroServiceHelp:member(1)",
               "docComment": "",
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "getA4MicroServiceMap(provideToken: "
+                  "text": "getA4MicroServiceHelp(provideToken?: "
                 },
                 {
                   "kind": "Content",
@@ -496,12 +341,12 @@
                     "startIndex": 1,
                     "endIndex": 2
                   },
-                  "isOptional": false
+                  "isOptional": true
                 }
               ],
               "isOptional": false,
               "isAbstract": false,
-              "name": "getA4MicroServiceMap"
+              "name": "getA4MicroServiceHelp"
             },
             {
               "kind": "Method",
@@ -510,7 +355,7 @@
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "getA4RegistryHelp(provideToken: "
+                  "text": "getA4RegistryHelp(provideToken?: "
                 },
                 {
                   "kind": "Content",
@@ -545,7 +390,7 @@
                     "startIndex": 1,
                     "endIndex": 2
                   },
-                  "isOptional": false
+                  "isOptional": true
                 }
               ],
               "isOptional": false,
@@ -3034,7 +2879,7 @@
         {
           "kind": "TypeAlias",
           "canonicalReference": "@hz-9/a4-core!A4GlobalProvideToken:type",
-          "docComment": "/**\n * @Author : Chen Zhen  @Date : 2024-05-10 00:00:00  @LastEditors : Chen Zhen  @LastEditTime : 2024-06-28 21:38:25\n */\n",
+          "docComment": "/**\n * `A4` 全局提供者 Token。\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -3441,32 +3286,265 @@
         },
         {
           "kind": "Class",
-          "canonicalReference": "@hz-9/a4-core!A4ModuleBase:class",
-          "docComment": "/**\n * `A4 Module *` 库的核心类虚拟实现。\n *\n * @public\n */\n",
+          "canonicalReference": "@hz-9/a4-core!A4ModuleBaseClassBuilder:class",
+          "docComment": "/**\n * `A4 Module *` 库的核心类构建器。\n *\n * 通过参数，快速构建 `A4 Module *` 核心模块类。\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare abstract class A4ModuleBase "
+              "text": "export declare class A4ModuleBaseClassBuilder<O extends "
+            },
+            {
+              "kind": "Content",
+              "text": "any"
+            },
+            {
+              "kind": "Content",
+              "text": ", T extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "IA4ModuleBaseBuilderOptions",
+              "canonicalReference": "@hz-9/a4-core!IA4ModuleBaseBuilderOptions:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "> "
             }
           ],
-          "fileUrlPath": "dist/module/_base/interface.d.ts",
+          "fileUrlPath": "dist/module/_base/a4-module-builder.d.ts",
           "releaseTag": "Public",
-          "isAbstract": true,
-          "name": "A4ModuleBase",
+          "typeParameters": [
+            {
+              "typeParameterName": "O",
+              "constraintTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "isAbstract": false,
+          "name": "A4ModuleBaseClassBuilder",
           "preserveMemberOrder": false,
           "members": [
             {
+              "kind": "Constructor",
+              "canonicalReference": "@hz-9/a4-core!A4ModuleBaseClassBuilder:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `A4ModuleBaseClassBuilder` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor(options: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "T"
+                },
+                {
+                  "kind": "Content",
+                  "text": ");"
+                }
+              ],
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ]
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/a4-core!A4ModuleBaseClassBuilder#base:member(1)",
+              "docComment": "/**\n * 不提供任一注册函数。\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "base(): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "{\n        new (): {};\n        logger: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Logger",
+                  "canonicalReference": "@nestjs/common!Logger:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";\n        readonly CONFIG_PATH: `A4.${string}`;\n        readonly Schema: T[\"Schema\"];\n        readonly CoreSchema: T[\"CoreSchema\"];\n        readonly GLOBAL_PROVIDE_TOKEN: `Global.A4.${string}`;\n        readonly SCOPE_PROVIDE_TOKEN: `Scope.A4.${string}`;\n        getConfig(a4Config: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IA4Config",
+                  "canonicalReference": "@hz-9/a4-core!IA4Config:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "InstanceType",
+                  "canonicalReference": "!InstanceType:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T['Schema']>>, configKey?: string): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "InstanceType",
+                  "canonicalReference": "!InstanceType:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T['CoreSchema']>;\n        readonly DEFAULT_CONFIG: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "InstanceType",
+                  "canonicalReference": "!InstanceType:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T[\"CoreSchema\"]>;\n        readonly DEFAULT_OPTIONS: O;\n        configToOptions(config: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "InstanceType",
+                  "canonicalReference": "!InstanceType:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T['CoreSchema']>, a4Config?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IA4Config",
+                  "canonicalReference": "@hz-9/a4-core!IA4Config:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "InstanceType",
+                  "canonicalReference": "!InstanceType:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T['Schema']>>): O;\n        getOptions(a4Config: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IA4Config",
+                  "canonicalReference": "@hz-9/a4-core!IA4Config:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "InstanceType",
+                  "canonicalReference": "!InstanceType:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T['Schema']>>, configKey?: string): O;\n        optionsToProvideClassConstructorOptions(configOptions: O): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<any>;\n    }"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 24
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "base"
+            },
+            {
               "kind": "Property",
-              "canonicalReference": "@hz-9/a4-core!A4ModuleBase.commonRegister:member",
+              "canonicalReference": "@hz-9/a4-core!A4ModuleBaseClassBuilder#buildOptions:member",
               "docComment": "",
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "protected static commonRegister: "
+                  "text": "readonly buildOptions: "
                 },
                 {
                   "kind": "Content",
-                  "text": "(provideName: "
+                  "text": "T"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": true,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "buildOptions",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@hz-9/a4-core!A4ModuleBaseClassBuilder#commonRegister:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "protected get commonRegister(): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "{\n        commonRegister: (provideName: "
                 },
                 {
                   "kind": "Reference",
@@ -3479,12 +3557,30 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "IA4ModuleForRootOptions",
-                  "canonicalReference": "@hz-9/a4-core!IA4ModuleForRootOptions:type"
+                  "text": "IA4ModuleRegisterOptions",
+                  "canonicalReference": "@hz-9/a4-core!IA4ModuleRegisterOptions:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", isGlobal: boolean, extraOptions: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IA4ModuleBaseResigterExtraOptions",
+                  "canonicalReference": "@hz-9/a4-core!IA4ModuleBaseResigterExtraOptions:interface"
                 },
                 {
                   "kind": "Content",
                   "text": ") => "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Omit",
+                  "canonicalReference": "!Omit:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
                 },
                 {
                   "kind": "Reference",
@@ -3493,42 +3589,82 @@
                 },
                 {
                   "kind": "Content",
+                  "text": ", 'module'>;\n        commonRegisterAsync: (options: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IA4ModuleRegisterAsyncOptions",
+                  "canonicalReference": "@hz-9/a4-core!IA4ModuleRegisterAsyncOptions:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", extraOptions: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IA4ModuleBaseResigterExtraOptions",
+                  "canonicalReference": "@hz-9/a4-core!IA4ModuleBaseResigterExtraOptions:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ") => "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Omit",
+                  "canonicalReference": "!Omit:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DynamicModule",
+                  "canonicalReference": "@nestjs/common!DynamicModule:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", 'module'>;\n    }"
+                },
+                {
+                  "kind": "Content",
                   "text": ";"
                 }
               ],
-              "isReadonly": false,
+              "isReadonly": true,
               "isOptional": false,
               "releaseTag": "Public",
               "name": "commonRegister",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
-                "endIndex": 7
+                "endIndex": 20
               },
-              "isStatic": true,
+              "isStatic": false,
               "isProtected": true,
               "isAbstract": false
             },
             {
-              "kind": "Property",
-              "canonicalReference": "@hz-9/a4-core!A4ModuleBase.commonRegisterAsync:member",
-              "docComment": "",
+              "kind": "Method",
+              "canonicalReference": "@hz-9/a4-core!A4ModuleBaseClassBuilder#withForRoot:member(1)",
+              "docComment": "/**\n * 提供 `forRoot` 和 `forRootAsync` 注册函数。\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "protected static commonRegisterAsync: "
+                  "text": "withForRoot(): "
                 },
                 {
                   "kind": "Content",
-                  "text": "(options: "
+                  "text": "{\n        new (): {};\n        forRoot(options: "
                 },
                 {
                   "kind": "Reference",
-                  "text": "IA4ModuleRegisterAsyncOptions",
-                  "canonicalReference": "@hz-9/a4-core!IA4ModuleRegisterAsyncOptions:type"
+                  "text": "IA4ModuleForRootOptions",
+                  "canonicalReference": "@hz-9/a4-core!IA4ModuleForRootOptions:type"
                 },
                 {
                   "kind": "Content",
-                  "text": ") => "
+                  "text": "<O>): "
                 },
                 {
                   "kind": "Reference",
@@ -3537,63 +3673,173 @@
                 },
                 {
                   "kind": "Content",
+                  "text": ";\n        forRootAsync(options: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IA4ModuleForRootAsyncOptions",
+                  "canonicalReference": "@hz-9/a4-core!IA4ModuleForRootAsyncOptions:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<O>): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DynamicModule",
+                  "canonicalReference": "@nestjs/common!DynamicModule:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";\n        logger: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Logger",
+                  "canonicalReference": "@nestjs/common!Logger:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";\n        readonly CONFIG_PATH: `A4.${string}`;\n        readonly Schema: T[\"Schema\"];\n        readonly CoreSchema: T[\"CoreSchema\"];\n        readonly GLOBAL_PROVIDE_TOKEN: `Global.A4.${string}`;\n        readonly SCOPE_PROVIDE_TOKEN: `Scope.A4.${string}`;\n        getConfig(a4Config: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IA4Config",
+                  "canonicalReference": "@hz-9/a4-core!IA4Config:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "InstanceType",
+                  "canonicalReference": "!InstanceType:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T[\"Schema\"]>>, configKey?: string | undefined): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "InstanceType",
+                  "canonicalReference": "!InstanceType:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T[\"CoreSchema\"]>;\n        readonly DEFAULT_CONFIG: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "InstanceType",
+                  "canonicalReference": "!InstanceType:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T[\"CoreSchema\"]>;\n        readonly DEFAULT_OPTIONS: O;\n        configToOptions(config: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "InstanceType",
+                  "canonicalReference": "!InstanceType:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T[\"CoreSchema\"]>, a4Config?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IA4Config",
+                  "canonicalReference": "@hz-9/a4-core!IA4Config:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "InstanceType",
+                  "canonicalReference": "!InstanceType:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T[\"Schema\"]>>): O;\n        getOptions(a4Config: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IA4Config",
+                  "canonicalReference": "@hz-9/a4-core!IA4Config:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "InstanceType",
+                  "canonicalReference": "!InstanceType:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T[\"Schema\"]>>, configKey?: string | undefined): O;\n        optionsToProvideClassConstructorOptions(configOptions: O): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<any>;\n    }"
+                },
+                {
+                  "kind": "Content",
                   "text": ";"
                 }
               ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "commonRegisterAsync",
-              "propertyTypeTokenRange": {
+              "isStatic": false,
+              "returnTypeTokenRange": {
                 "startIndex": 1,
-                "endIndex": 5
+                "endIndex": 32
               },
-              "isStatic": true,
-              "isProtected": true,
-              "isAbstract": false
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "withForRoot"
             },
             {
-              "kind": "Property",
-              "canonicalReference": "@hz-9/a4-core!A4ModuleBase.CONFIG_MIDDLE_PATH:member",
-              "docComment": "/**\n * 配置项的路径。由模块自行规定。`A4 Module` 会保持一定规则。\n *\n * @see\n *\n * https://hz-9.github.io/a4/guide/a4-config/namespace.html\n *\n * @public\n */\n",
+              "kind": "Method",
+              "canonicalReference": "@hz-9/a4-core!A4ModuleBaseClassBuilder#withRegister:member(1)",
+              "docComment": "/**\n * 提供 `register` 和 `registerAsync` 注册函数。\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "protected static CONFIG_MIDDLE_PATH: "
+                  "text": "withRegister(): "
                 },
                 {
                   "kind": "Content",
-                  "text": "string"
+                  "text": "{\n        new (): {};\n        register(options: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IA4ModuleRegisterOptions",
+                  "canonicalReference": "@hz-9/a4-core!IA4ModuleRegisterOptions:type"
                 },
                 {
                   "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "CONFIG_MIDDLE_PATH",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              },
-              "isStatic": true,
-              "isProtected": true,
-              "isAbstract": false
-            },
-            {
-              "kind": "Property",
-              "canonicalReference": "@hz-9/a4-core!A4ModuleBase.createAsyncProvider:member",
-              "docComment": "",
-              "excerptTokens": [
+                  "text": "<O>): "
+                },
                 {
-                  "kind": "Content",
-                  "text": "protected static createAsyncProvider: "
+                  "kind": "Reference",
+                  "text": "DynamicModule",
+                  "canonicalReference": "@nestjs/common!DynamicModule:interface"
                 },
                 {
                   "kind": "Content",
-                  "text": "(options: "
+                  "text": ";\n        registerAsync(options: "
                 },
                 {
                   "kind": "Reference",
@@ -3602,34 +3848,359 @@
                 },
                 {
                   "kind": "Content",
-                  "text": ") => "
+                  "text": "<O>): "
                 },
                 {
                   "kind": "Reference",
-                  "text": "FactoryProvider",
-                  "canonicalReference": "@nestjs/common!FactoryProvider:interface"
+                  "text": "DynamicModule",
+                  "canonicalReference": "@nestjs/common!DynamicModule:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";\n        logger: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Logger",
+                  "canonicalReference": "@nestjs/common!Logger:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";\n        readonly CONFIG_PATH: `A4.${string}`;\n        readonly Schema: T[\"Schema\"];\n        readonly CoreSchema: T[\"CoreSchema\"];\n        readonly GLOBAL_PROVIDE_TOKEN: `Global.A4.${string}`;\n        readonly SCOPE_PROVIDE_TOKEN: `Scope.A4.${string}`;\n        getConfig(a4Config: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IA4Config",
+                  "canonicalReference": "@hz-9/a4-core!IA4Config:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "InstanceType",
+                  "canonicalReference": "!InstanceType:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T[\"Schema\"]>>, configKey?: string | undefined): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "InstanceType",
+                  "canonicalReference": "!InstanceType:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T[\"CoreSchema\"]>;\n        readonly DEFAULT_CONFIG: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "InstanceType",
+                  "canonicalReference": "!InstanceType:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T[\"CoreSchema\"]>;\n        readonly DEFAULT_OPTIONS: O;\n        configToOptions(config: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "InstanceType",
+                  "canonicalReference": "!InstanceType:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T[\"CoreSchema\"]>, a4Config?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IA4Config",
+                  "canonicalReference": "@hz-9/a4-core!IA4Config:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "InstanceType",
+                  "canonicalReference": "!InstanceType:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T[\"Schema\"]>>): O;\n        getOptions(a4Config: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IA4Config",
+                  "canonicalReference": "@hz-9/a4-core!IA4Config:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "InstanceType",
+                  "canonicalReference": "!InstanceType:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T[\"Schema\"]>>, configKey?: string | undefined): O;\n        optionsToProvideClassConstructorOptions(configOptions: O): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<any>;\n    }"
                 },
                 {
                   "kind": "Content",
                   "text": ";"
                 }
               ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "createAsyncProvider",
-              "propertyTypeTokenRange": {
+              "isStatic": false,
+              "returnTypeTokenRange": {
                 "startIndex": 1,
-                "endIndex": 5
+                "endIndex": 32
               },
-              "isStatic": true,
-              "isProtected": true,
-              "isAbstract": false
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "withRegister"
             },
             {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/a4-core!A4ModuleBaseClassBuilder#withRegisterAndForRoot:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "withRegisterAndForRoot(): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "{\n        new (): {};\n        register(options: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IA4ModuleRegisterOptions",
+                  "canonicalReference": "@hz-9/a4-core!IA4ModuleRegisterOptions:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<O>): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DynamicModule",
+                  "canonicalReference": "@nestjs/common!DynamicModule:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";\n        registerAsync(options: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IA4ModuleRegisterAsyncOptions",
+                  "canonicalReference": "@hz-9/a4-core!IA4ModuleRegisterAsyncOptions:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<O>): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DynamicModule",
+                  "canonicalReference": "@nestjs/common!DynamicModule:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";\n        forRoot(options: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IA4ModuleForRootOptions",
+                  "canonicalReference": "@hz-9/a4-core!IA4ModuleForRootOptions:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<O>): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DynamicModule",
+                  "canonicalReference": "@nestjs/common!DynamicModule:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";\n        forRootAsync(options: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IA4ModuleForRootAsyncOptions",
+                  "canonicalReference": "@hz-9/a4-core!IA4ModuleForRootAsyncOptions:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<O>): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DynamicModule",
+                  "canonicalReference": "@nestjs/common!DynamicModule:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";\n        logger: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Logger",
+                  "canonicalReference": "@nestjs/common!Logger:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";\n        readonly CONFIG_PATH: `A4.${string}`;\n        readonly Schema: T[\"Schema\"];\n        readonly CoreSchema: T[\"CoreSchema\"];\n        readonly GLOBAL_PROVIDE_TOKEN: `Global.A4.${string}`;\n        readonly SCOPE_PROVIDE_TOKEN: `Scope.A4.${string}`;\n        getConfig(a4Config: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IA4Config",
+                  "canonicalReference": "@hz-9/a4-core!IA4Config:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "InstanceType",
+                  "canonicalReference": "!InstanceType:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T[\"Schema\"]>>, configKey?: string | undefined): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "InstanceType",
+                  "canonicalReference": "!InstanceType:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T[\"CoreSchema\"]>;\n        readonly DEFAULT_CONFIG: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "InstanceType",
+                  "canonicalReference": "!InstanceType:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T[\"CoreSchema\"]>;\n        readonly DEFAULT_OPTIONS: O;\n        configToOptions(config: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "InstanceType",
+                  "canonicalReference": "!InstanceType:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T[\"CoreSchema\"]>, a4Config?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IA4Config",
+                  "canonicalReference": "@hz-9/a4-core!IA4Config:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "InstanceType",
+                  "canonicalReference": "!InstanceType:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T[\"Schema\"]>>): O;\n        getOptions(a4Config: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IA4Config",
+                  "canonicalReference": "@hz-9/a4-core!IA4Config:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "InstanceType",
+                  "canonicalReference": "!InstanceType:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T[\"Schema\"]>>, configKey?: string | undefined): O;\n        optionsToProvideClassConstructorOptions(configOptions: O): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<any>;\n    }"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 40
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "withRegisterAndForRoot"
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@hz-9/a4-core!A4ModuleBaseClassForRoot:class",
+          "docComment": "/**\n * ForRoot 注册方式抽象类\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare abstract class A4ModuleBaseClassForRoot "
+            }
+          ],
+          "fileUrlPath": "dist/module/_base/interface.d.ts",
+          "releaseTag": "Public",
+          "isAbstract": true,
+          "name": "A4ModuleBaseClassForRoot",
+          "preserveMemberOrder": false,
+          "members": [
+            {
               "kind": "Property",
-              "canonicalReference": "@hz-9/a4-core!A4ModuleBase.forRoot:member",
-              "docComment": "/**\n * 使用同步方式进行注册。默认为全局注册。\n *\n * @example\n *\n * ``` ts \\@Module({ imports: [ A4ConfigModule.forRoot({ ignoreSchema: true, }), ], }) export class AppModule {} ```\n *\n * @see\n *\n * https://hz-9.github.io/a4/overview/internal/module-register.html\n *\n * @public\n */\n",
+              "canonicalReference": "@hz-9/a4-core!A4ModuleBaseClassForRoot.forRoot:member",
+              "docComment": "/**\n * 使用同步方式进行注册。默认为全局注册。\n *\n * @see\n *\n * https://hz-9.github.io/a4/overview/internal/module-register.html\n *\n * Example:\n * ```ts\n * Module({\n *    imports: [\n *      A4ConfigModule.forRoot({\n *        ignoreSchema: true,\n *      }),\n *    ],\n *  })\n *  export class AppModule {}\n * ```\n *\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -3637,7 +4208,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "(options: "
+                  "text": "<T>(options: "
                 },
                 {
                   "kind": "Reference",
@@ -3646,7 +4217,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": ") => "
+                  "text": "<T>) => "
                 },
                 {
                   "kind": "Reference",
@@ -3672,8 +4243,8 @@
             },
             {
               "kind": "Property",
-              "canonicalReference": "@hz-9/a4-core!A4ModuleBase.forRootAsync:member",
-              "docComment": "/**\n * 使用异步方式进行注册。默认为全局注册。\n *\n * @example\n *\n * ``` ts \\@Module({ imports: [ A4ConfigModule.forRootAsync({ useFactory: async () => ({ ignoreSchema: true, }), }) ], }) export class AppModule {} ```\n *\n * @see\n *\n * https://hz-9.github.io/a4/overview/internal/module-register.html\n *\n * @public\n */\n",
+              "canonicalReference": "@hz-9/a4-core!A4ModuleBaseClassForRoot.forRootAsync:member",
+              "docComment": "/**\n * 使用异步方式进行注册。默认为全局注册。\n *\n * @see\n *\n * https://hz-9.github.io/a4/overview/internal/module-register.html\n *\n * Example:\n * ```ts\n * Module({\n *    imports: [\n *      A4ConfigModule.forRootAsync({\n *        useFactory: async () => ({\n *          ignoreSchema: true,\n *        }),\n *      })\n *    ],\n *  })\n *  export class AppModule {}\n * ```\n *\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -3681,7 +4252,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "(options: "
+                  "text": "<T>(options: "
                 },
                 {
                   "kind": "Reference",
@@ -3690,7 +4261,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": ") => "
+                  "text": "<T>) => "
                 },
                 {
                   "kind": "Reference",
@@ -3713,120 +4284,30 @@
               "isStatic": true,
               "isProtected": false,
               "isAbstract": false
-            },
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@hz-9/a4-core!A4ModuleBaseClassRegister:class",
+          "docComment": "/**\n * Register 注册方式抽象类\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare abstract class A4ModuleBaseClassRegister "
+            }
+          ],
+          "fileUrlPath": "dist/module/_base/interface.d.ts",
+          "releaseTag": "Public",
+          "isAbstract": true,
+          "name": "A4ModuleBaseClassRegister",
+          "preserveMemberOrder": false,
+          "members": [
             {
               "kind": "Property",
-              "canonicalReference": "@hz-9/a4-core!A4ModuleBase.getConfig:member",
-              "docComment": "/**\n * `A4Module.getConfig` 会快速获取配置信息。\n *\n * @param a4Config - `A4Config` 实例。\n *\n * @param configKey - 配置路径。\n *\n * @example\n *\n * 或者自己实现，以 A4 Network 举例。\n * ```ts\n *\n *  return a4Config.getOrThrow(configKey ?? NetworkModule.CONFIG_MIDDLE_PATH)\n *\n * ```\n *\n * @public\n */\n",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "static getConfig: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "<Schema extends object, Return>(a4Config: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IA4Config",
-                  "canonicalReference": "@hz-9/a4-core!IA4Config:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<Schema>, configKey?: string) => Return"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "getConfig",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 4
-              },
-              "isStatic": true,
-              "isProtected": false,
-              "isAbstract": false
-            },
-            {
-              "kind": "Property",
-              "canonicalReference": "@hz-9/a4-core!A4ModuleBase.logger:member",
-              "docComment": "/**\n * 日志对象。通常与模块名称保持一致\n *\n * @expmale\n * ```ts\n * 'A4ConfigModule' -> new Logger('A4 Config')\n *\n * 'A4NetworkModule' -> new Logger('A4 Network')\n * ```\n *\n * @public\n */\n",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "protected static logger: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Logger",
-                  "canonicalReference": "@nestjs/common!Logger:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "logger",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              },
-              "isStatic": true,
-              "isProtected": true,
-              "isAbstract": false
-            },
-            {
-              "kind": "Property",
-              "canonicalReference": "@hz-9/a4-core!A4ModuleBase.optionsToFactoryResult:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "protected static optionsToFactoryResult: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "(configOptions: any) => "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Promise",
-                  "canonicalReference": "!Promise:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<any>"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "optionsToFactoryResult",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 4
-              },
-              "isStatic": true,
-              "isProtected": true,
-              "isAbstract": false
-            },
-            {
-              "kind": "Property",
-              "canonicalReference": "@hz-9/a4-core!A4ModuleBase.register:member",
-              "docComment": "/**\n * 使用同步方式进行注册。默认为局部注册。\n *\n * @example\n * ```ts\n * \\@Module({\n *    imports: [\n *      A4ConfigModule.register({\n *        ignoreSchema: true,\n *      }),\n *    ],\n *  })\n *  export class AppModule {}\n * ```\n *\n * @see\n *\n * https://hz-9.github.io/a4/overview/internal/module-register.html\n *\n * @public\n */\n",
+              "canonicalReference": "@hz-9/a4-core!A4ModuleBaseClassRegister.register:member",
+              "docComment": "/**\n * 使用同步方式进行注册。默认为局部注册。\n *\n * @see\n *\n * https://hz-9.github.io/a4/overview/internal/module-register.html\n *\n * Example:\n * ```ts\n * Module({\n *    imports: [\n *      A4ConfigModule.register({\n *        ignoreSchema: true,\n *      }),\n *    ],\n *  })\n *  export class AppModule {}\n * ```\n *\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -3834,7 +4315,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "(options: "
+                  "text": "<T>(options: "
                 },
                 {
                   "kind": "Reference",
@@ -3843,7 +4324,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": ") => "
+                  "text": "<T>) => "
                 },
                 {
                   "kind": "Reference",
@@ -3869,8 +4350,8 @@
             },
             {
               "kind": "Property",
-              "canonicalReference": "@hz-9/a4-core!A4ModuleBase.registerAsync:member",
-              "docComment": "/**\n * 使用异步方式进行注册。默认为局部注册。\n *\n * @example\n *\n * ``` ts \\@Module({ imports: [ A4ConfigModule.registerAsync({ useFactory: async () => ({ ignoreSchema: true, }), }) ], }) export class AppModule {} ```\n *\n * @see\n *\n * https://hz-9.github.io/a4/overview/internal/module-register.html\n *\n * @public\n */\n",
+              "canonicalReference": "@hz-9/a4-core!A4ModuleBaseClassRegister.registerAsync:member",
+              "docComment": "/**\n * 使用异步方式进行注册。默认为局部注册。\n *\n * @see\n *\n * https://hz-9.github.io/a4/overview/internal/module-register.html\n *\n * Example:\n * ```ts\n * Module({\n *    imports: [\n *      A4ConfigModule.registerAsync({\n *        useFactory: async () => ({\n *          ignoreSchema: true,\n *        }),\n *      })\n *    ],\n *  })\n *  export class AppModule {}\n * ```\n *\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -3878,7 +4359,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "(options: "
+                  "text": "<T>(options: "
                 },
                 {
                   "kind": "Reference",
@@ -3887,7 +4368,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": ") => "
+                  "text": "<T>) => "
                 },
                 {
                   "kind": "Reference",
@@ -3916,167 +4397,193 @@
         },
         {
           "kind": "Class",
-          "canonicalReference": "@hz-9/a4-core!A4ModuleBaseBuilder:class",
-          "docComment": "/**\n * `A4 Module *` 库的核心类虚拟实现。\n *\n * @public\n */\n",
+          "canonicalReference": "@hz-9/a4-core!A4ModuleBaseClassRegisterAndForRoot:class",
+          "docComment": "/**\n * Register 与 ForRoot 注册方式抽象类\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare class A4ModuleBaseBuilder<T = "
-            },
-            {
-              "kind": "Content",
-              "text": "any"
-            },
-            {
-              "kind": "Content",
-              "text": ", TO extends "
-            },
-            {
-              "kind": "Reference",
-              "text": "IA4ModuleBaseBuilderTypeOptions",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBaseBuilderTypeOptions:interface"
-            },
-            {
-              "kind": "Content",
-              "text": " = "
-            },
-            {
-              "kind": "Reference",
-              "text": "IA4ModuleBaseBuilderTypeOptionsDefault",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBaseBuilderTypeOptionsDefault:interface"
-            },
-            {
-              "kind": "Content",
-              "text": "> "
+              "text": "export declare abstract class A4ModuleBaseClassRegisterAndForRoot "
             }
           ],
-          "fileUrlPath": "dist/module/_base/a4-module-builder.d.ts",
+          "fileUrlPath": "dist/module/_base/interface.d.ts",
           "releaseTag": "Public",
-          "typeParameters": [
-            {
-              "typeParameterName": "T",
-              "constraintTokenRange": {
-                "startIndex": 0,
-                "endIndex": 0
-              },
-              "defaultTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "typeParameterName": "TO",
-              "constraintTokenRange": {
-                "startIndex": 3,
-                "endIndex": 4
-              },
-              "defaultTypeTokenRange": {
-                "startIndex": 5,
-                "endIndex": 6
-              }
-            }
-          ],
-          "isAbstract": false,
-          "name": "A4ModuleBaseBuilder",
+          "isAbstract": true,
+          "name": "A4ModuleBaseClassRegisterAndForRoot",
           "preserveMemberOrder": false,
           "members": [
             {
-              "kind": "Constructor",
-              "canonicalReference": "@hz-9/a4-core!A4ModuleBaseBuilder:constructor(1)",
-              "docComment": "/**\n * Constructs a new instance of the `A4ModuleBaseBuilder` class\n */\n",
+              "kind": "Property",
+              "canonicalReference": "@hz-9/a4-core!A4ModuleBaseClassRegisterAndForRoot.forRoot:member",
+              "docComment": "/**\n * 使用同步方式进行注册。默认为全局注册。\n *\n * @see\n *\n * https://hz-9.github.io/a4/overview/internal/module-register.html\n *\n * Example:\n * ```ts\n * Module({\n *    imports: [\n *      A4ConfigModule.forRoot({\n *        ignoreSchema: true,\n *      }),\n *    ],\n *  })\n *  export class AppModule {}\n * ```\n *\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "constructor(options: "
+                  "text": "static forRoot: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>(options: "
                 },
                 {
                   "kind": "Reference",
-                  "text": "IA4ModuleBaseBuilderConstructorOptions",
-                  "canonicalReference": "@hz-9/a4-core!~IA4ModuleBaseBuilderConstructorOptions:type"
+                  "text": "IA4ModuleForRootOptions",
+                  "canonicalReference": "@hz-9/a4-core!IA4ModuleForRootOptions:type"
                 },
                 {
                   "kind": "Content",
-                  "text": ");"
-                }
-              ],
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "options",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 2
-                  },
-                  "isOptional": false
-                }
-              ]
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@hz-9/a4-core!A4ModuleBaseBuilder#build:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "build(): "
+                  "text": "<T>) => "
                 },
                 {
                   "kind": "Reference",
-                  "text": "IA4ModuleBaseSubType",
-                  "canonicalReference": "@hz-9/a4-core!IA4ModuleBaseSubType:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<T, TO>"
+                  "text": "DynamicModule",
+                  "canonicalReference": "@nestjs/common!DynamicModule:interface"
                 },
                 {
                   "kind": "Content",
                   "text": ";"
                 }
               ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 3
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
+              "isReadonly": false,
               "isOptional": false,
-              "isAbstract": false,
-              "name": "build"
+              "releaseTag": "Public",
+              "name": "forRoot",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              },
+              "isStatic": true,
+              "isProtected": false,
+              "isAbstract": false
             },
             {
               "kind": "Property",
-              "canonicalReference": "@hz-9/a4-core!A4ModuleBaseBuilder#buildOptions:member",
-              "docComment": "",
+              "canonicalReference": "@hz-9/a4-core!A4ModuleBaseClassRegisterAndForRoot.forRootAsync:member",
+              "docComment": "/**\n * 使用异步方式进行注册。默认为全局注册。\n *\n * @see\n *\n * https://hz-9.github.io/a4/overview/internal/module-register.html\n *\n * Example:\n * ```ts\n * Module({\n *    imports: [\n *      A4ConfigModule.forRootAsync({\n *        useFactory: async () => ({\n *          ignoreSchema: true,\n *        }),\n *      })\n *    ],\n *  })\n *  export class AppModule {}\n * ```\n *\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "readonly buildOptions: "
+                  "text": "static forRootAsync: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>(options: "
                 },
                 {
                   "kind": "Reference",
-                  "text": "IA4ModuleBaseBuilderConstructorOptions",
-                  "canonicalReference": "@hz-9/a4-core!~IA4ModuleBaseBuilderConstructorOptions:type"
+                  "text": "IA4ModuleForRootAsyncOptions",
+                  "canonicalReference": "@hz-9/a4-core!IA4ModuleForRootAsyncOptions:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>) => "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DynamicModule",
+                  "canonicalReference": "@nestjs/common!DynamicModule:interface"
                 },
                 {
                   "kind": "Content",
                   "text": ";"
                 }
               ],
-              "isReadonly": true,
+              "isReadonly": false,
               "isOptional": false,
               "releaseTag": "Public",
-              "name": "buildOptions",
+              "name": "forRootAsync",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
-                "endIndex": 2
+                "endIndex": 5
               },
-              "isStatic": false,
+              "isStatic": true,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@hz-9/a4-core!A4ModuleBaseClassRegisterAndForRoot.register:member",
+              "docComment": "/**\n * 使用同步方式进行注册。默认为局部注册。\n *\n * @see\n *\n * https://hz-9.github.io/a4/overview/internal/module-register.html\n *\n * Example:\n * ```ts\n * Module({\n *    imports: [\n *      A4ConfigModule.register({\n *        ignoreSchema: true,\n *      }),\n *    ],\n *  })\n *  export class AppModule {}\n * ```\n *\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "static register: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>(options: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IA4ModuleRegisterOptions",
+                  "canonicalReference": "@hz-9/a4-core!IA4ModuleRegisterOptions:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>) => "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DynamicModule",
+                  "canonicalReference": "@nestjs/common!DynamicModule:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "register",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              },
+              "isStatic": true,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@hz-9/a4-core!A4ModuleBaseClassRegisterAndForRoot.registerAsync:member",
+              "docComment": "/**\n * 使用异步方式进行注册。默认为局部注册。\n *\n * @see\n *\n * https://hz-9.github.io/a4/overview/internal/module-register.html\n *\n * Example:\n * ```ts\n * Module({\n *    imports: [\n *      A4ConfigModule.registerAsync({\n *        useFactory: async () => ({\n *          ignoreSchema: true,\n *        }),\n *      })\n *    ],\n *  })\n *  export class AppModule {}\n * ```\n *\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "static registerAsync: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>(options: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IA4ModuleRegisterAsyncOptions",
+                  "canonicalReference": "@hz-9/a4-core!IA4ModuleRegisterAsyncOptions:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>) => "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DynamicModule",
+                  "canonicalReference": "@nestjs/common!DynamicModule:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "registerAsync",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              },
+              "isStatic": true,
               "isProtected": false,
               "isAbstract": false
             }
@@ -4086,7 +4593,7 @@
         {
           "kind": "TypeAlias",
           "canonicalReference": "@hz-9/a4-core!A4ModuleConfigPath:type",
-          "docComment": "",
+          "docComment": "/**\n * `A4` 配置项路径。\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -4350,7 +4857,7 @@
         {
           "kind": "TypeAlias",
           "canonicalReference": "@hz-9/a4-core!A4ScopeProvideToken:type",
-          "docComment": "",
+          "docComment": "/**\n * `A4` 作用域提供者 Token。\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -7264,6 +7771,30 @@
         },
         {
           "kind": "Variable",
+          "canonicalReference": "@hz-9/a4-core!GLOBAL_PROVIDE_TOKEN_A4_CACHE:var",
+          "docComment": "/**\n * `A4 Cache Module` Global Provide Token\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "GLOBAL_PROVIDE_TOKEN_A4_CACHE: "
+            },
+            {
+              "kind": "Reference",
+              "text": "A4GlobalProvideToken",
+              "canonicalReference": "@hz-9/a4-core!A4GlobalProvideToken:type"
+            }
+          ],
+          "fileUrlPath": "dist/module/cache/index.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "GLOBAL_PROVIDE_TOKEN_A4_CACHE",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
           "canonicalReference": "@hz-9/a4-core!GLOBAL_PROVIDE_TOKEN_A4_CONFIG:var",
           "docComment": "/**\n * `A4 Config Module` Global Provide Token\n *\n * @public\n */\n",
           "excerptTokens": [
@@ -7288,8 +7819,32 @@
         },
         {
           "kind": "Variable",
+          "canonicalReference": "@hz-9/a4-core!GLOBAL_PROVIDE_TOKEN_A4_CRUD:var",
+          "docComment": "/**\n * `A4 CRUD Module` Global Provide Token\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "GLOBAL_PROVIDE_TOKEN_A4_CRUD: "
+            },
+            {
+              "kind": "Reference",
+              "text": "A4GlobalProvideToken",
+              "canonicalReference": "@hz-9/a4-core!A4GlobalProvideToken:type"
+            }
+          ],
+          "fileUrlPath": "dist/module/crud/index.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "GLOBAL_PROVIDE_TOKEN_A4_CRUD",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
           "canonicalReference": "@hz-9/a4-core!GLOBAL_PROVIDE_TOKEN_A4_DOCS:var",
-          "docComment": "/**\n * `A4 Network Module` Global Provide Token\n *\n * @public\n */\n",
+          "docComment": "/**\n * `A4 Docs Module` Global Provide Token\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -7305,6 +7860,30 @@
           "isReadonly": true,
           "releaseTag": "Public",
           "name": "GLOBAL_PROVIDE_TOKEN_A4_DOCS",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@hz-9/a4-core!GLOBAL_PROVIDE_TOKEN_A4_LOCK:var",
+          "docComment": "/**\n * `A4 Lock Module` Global Provide Token\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "GLOBAL_PROVIDE_TOKEN_A4_LOCK: "
+            },
+            {
+              "kind": "Reference",
+              "text": "A4GlobalProvideToken",
+              "canonicalReference": "@hz-9/a4-core!A4GlobalProvideToken:type"
+            }
+          ],
+          "fileUrlPath": "dist/module/lock/index.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "GLOBAL_PROVIDE_TOKEN_A4_LOCK",
           "variableTypeTokenRange": {
             "startIndex": 1,
             "endIndex": 2
@@ -7336,6 +7915,30 @@
         },
         {
           "kind": "Variable",
+          "canonicalReference": "@hz-9/a4-core!GLOBAL_PROVIDE_TOKEN_A4_MICRO_SERVICE:var",
+          "docComment": "/**\n * `A4 MicroService Module` Global Provide Token\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "GLOBAL_PROVIDE_TOKEN_A4_MICRO_SERVICE: "
+            },
+            {
+              "kind": "Reference",
+              "text": "A4GlobalProvideToken",
+              "canonicalReference": "@hz-9/a4-core!A4GlobalProvideToken:type"
+            }
+          ],
+          "fileUrlPath": "dist/module/micro-service/index.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "GLOBAL_PROVIDE_TOKEN_A4_MICRO_SERVICE",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
           "canonicalReference": "@hz-9/a4-core!GLOBAL_PROVIDE_TOKEN_A4_NETWORK:var",
           "docComment": "/**\n * `A4 Network Module` Global Provide Token\n *\n * @public\n */\n",
           "excerptTokens": [
@@ -7353,6 +7956,30 @@
           "isReadonly": true,
           "releaseTag": "Public",
           "name": "GLOBAL_PROVIDE_TOKEN_A4_NETWORK",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@hz-9/a4-core!GLOBAL_PROVIDE_TOKEN_A4_REGISTRY:var",
+          "docComment": "/**\n * `A4 Registry Module` Global Provide Token\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "GLOBAL_PROVIDE_TOKEN_A4_REGISTRY: "
+            },
+            {
+              "kind": "Reference",
+              "text": "A4GlobalProvideToken",
+              "canonicalReference": "@hz-9/a4-core!A4GlobalProvideToken:type"
+            }
+          ],
+          "fileUrlPath": "dist/module/registry/index.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "GLOBAL_PROVIDE_TOKEN_A4_REGISTRY",
           "variableTypeTokenRange": {
             "startIndex": 1,
             "endIndex": 2
@@ -8079,6 +8706,79 @@
             }
           ],
           "extendsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@hz-9/a4-core!IA4Cache:class",
+          "docComment": "/**\n * `A4 Caceh` 抽象类。\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare abstract class IA4Cache "
+            }
+          ],
+          "fileUrlPath": "dist/module/cache/interface.d.ts",
+          "releaseTag": "Public",
+          "isAbstract": true,
+          "name": "IA4Cache",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/a4-core!IA4Cache#init:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "abstract init(app: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "A4Application",
+                  "canonicalReference": "@hz-9/a4-core!A4Application:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<void>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 5
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "app",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": true,
+              "name": "init"
+            }
+          ],
+          "implementsTokenRanges": []
         },
         {
           "kind": "Class",
@@ -9645,75 +10345,36 @@
         },
         {
           "kind": "Interface",
-          "canonicalReference": "@hz-9/a4-core!IA4ModuleBase:interface",
-          "docComment": "",
+          "canonicalReference": "@hz-9/a4-core!IA4ModuleBaseBuilderOptions:interface",
+          "docComment": "/**\n * `A4ModuleBaseBuilder` 配置项类型。\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export interface IA4ModuleBase<T = "
-            },
-            {
-              "kind": "Content",
-              "text": "any"
-            },
-            {
-              "kind": "Content",
-              "text": "> "
+              "text": "export interface IA4ModuleBaseBuilderOptions "
             }
           ],
           "fileUrlPath": "dist/module/_base/interface.d.ts",
           "releaseTag": "Public",
-          "typeParameters": [
-            {
-              "typeParameterName": "T",
-              "constraintTokenRange": {
-                "startIndex": 0,
-                "endIndex": 0
-              },
-              "defaultTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            }
-          ],
-          "name": "IA4ModuleBase",
+          "name": "IA4ModuleBaseBuilderOptions",
           "preserveMemberOrder": false,
           "members": [
             {
               "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBase#commonRegister:member",
-              "docComment": "",
+              "canonicalReference": "@hz-9/a4-core!IA4ModuleBaseBuilderOptions#A4ModuleError:member",
+              "docComment": "/**\n * 抛错类\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "commonRegister: "
+                  "text": "A4ModuleError: "
                 },
                 {
                   "kind": "Content",
-                  "text": "(provideName: "
+                  "text": "typeof "
                 },
                 {
                   "kind": "Reference",
-                  "text": "InjectionToken",
-                  "canonicalReference": "@nestjs/common!InjectionToken:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": ", options: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IA4ModuleForRootOptions",
-                  "canonicalReference": "@hz-9/a4-core!IA4ModuleForRootOptions:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<T>) => "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "DynamicModule",
-                  "canonicalReference": "@nestjs/common!DynamicModule:interface"
+                  "text": "A4Error",
+                  "canonicalReference": "@hz-9/a4-core!A4Error:class"
                 },
                 {
                   "kind": "Content",
@@ -9723,61 +10384,20 @@
               "isReadonly": false,
               "isOptional": false,
               "releaseTag": "Public",
-              "name": "commonRegister",
+              "name": "A4ModuleError",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
-                "endIndex": 7
+                "endIndex": 3
               }
             },
             {
               "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBase#commonRegisterAsync:member",
-              "docComment": "",
+              "canonicalReference": "@hz-9/a4-core!IA4ModuleBaseBuilderOptions#configPath:member",
+              "docComment": "/**\n * 配置项的路径。\n *\n * 在参数获取中，会使用此路径进行获取。\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "commonRegisterAsync: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "(options: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IA4ModuleRegisterAsyncOptions",
-                  "canonicalReference": "@hz-9/a4-core!IA4ModuleRegisterAsyncOptions:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<T>) => "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "DynamicModule",
-                  "canonicalReference": "@nestjs/common!DynamicModule:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "commonRegisterAsync",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 5
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBase#configPath:member",
-              "docComment": "/**\n * 配置项的路径。由模块自行规定。`A4 Module` 会保持一定规则。\n *\n * @see\n *\n * https://hz-9.github.io/a4/guide/a4-config/namespace.html\n *\n * @public\n */\n",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "readonly configPath: "
+                  "text": "configPath: "
                 },
                 {
                   "kind": "Reference",
@@ -9789,7 +10409,7 @@
                   "text": ";"
                 }
               ],
-              "isReadonly": true,
+              "isReadonly": false,
               "isOptional": false,
               "releaseTag": "Public",
               "name": "configPath",
@@ -9800,30 +10420,21 @@
             },
             {
               "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBase#createAsyncProvider:member",
-              "docComment": "",
+              "canonicalReference": "@hz-9/a4-core!IA4ModuleBaseBuilderOptions#CoreSchema:member",
+              "docComment": "/**\n * 模块实际需要的配置项结构。\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "createAsyncProvider: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "(options: "
+                  "text": "CoreSchema: "
                 },
                 {
                   "kind": "Reference",
-                  "text": "IA4ModuleRegisterAsyncOptions",
-                  "canonicalReference": "@hz-9/a4-core!IA4ModuleRegisterAsyncOptions:type"
+                  "text": "ClassConstructor",
+                  "canonicalReference": "class-transformer!ClassConstructor:type"
                 },
                 {
                   "kind": "Content",
-                  "text": "<T>) => "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "FactoryProvider",
-                  "canonicalReference": "@nestjs/common!FactoryProvider:interface"
+                  "text": "<any>"
                 },
                 {
                   "kind": "Content",
@@ -9833,165 +10444,20 @@
               "isReadonly": false,
               "isOptional": false,
               "releaseTag": "Public",
-              "name": "createAsyncProvider",
+              "name": "CoreSchema",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
-                "endIndex": 5
+                "endIndex": 3
               }
             },
             {
               "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBase#defaultConfig:member",
-              "docComment": "",
+              "canonicalReference": "@hz-9/a4-core!IA4ModuleBaseBuilderOptions#globalProvideToken:member",
+              "docComment": "/**\n * 进行全局注册时的 Porvide Token\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "readonly defaultConfig: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "T"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": true,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "defaultConfig",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBase#forRoot:member",
-              "docComment": "/**\n * 使用同步方式进行注册。默认为全局注册。\n *\n * @example\n *\n * ``` ts \\@Module({ imports: [ A4ConfigModule.forRoot({ ignoreSchema: true, }), ], }) export class AppModule {} ```\n *\n * @see\n *\n * https://hz-9.github.io/a4/overview/internal/module-register.html\n *\n * @public\n */\n",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "forRoot: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "(options: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IA4ModuleForRootOptions",
-                  "canonicalReference": "@hz-9/a4-core!IA4ModuleForRootOptions:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<T>) => "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "DynamicModule",
-                  "canonicalReference": "@nestjs/common!DynamicModule:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "forRoot",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 5
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBase#forRootAsync:member",
-              "docComment": "/**\n * 使用异步方式进行注册。默认为全局注册。\n *\n * @example\n *\n * ``` ts \\@Module({ imports: [ A4ConfigModule.forRootAsync({ useFactory: async () => ({ ignoreSchema: true, }), }) ], }) export class AppModule {} ```\n *\n * @see\n *\n * https://hz-9.github.io/a4/overview/internal/module-register.html\n *\n * @public\n */\n",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "forRootAsync: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "(options: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IA4ModuleForRootAsyncOptions",
-                  "canonicalReference": "@hz-9/a4-core!IA4ModuleForRootAsyncOptions:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<T>) => "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "DynamicModule",
-                  "canonicalReference": "@nestjs/common!DynamicModule:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "forRootAsync",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 5
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBase#getConfig:member",
-              "docComment": "/**\n * `A4Module.getConfig` 会快速获取配置信息。\n *\n * !!! 由各模块自行实现。\n *\n * @param a4Config - `A4Config` 实例。\n *\n * @param configKey - 配置路径。\n *\n * @example\n *\n * 或者自己实现，以 A4 Network 举例。\n * ```ts\n *\n *  return a4Config.getOrThrow(configKey ?? NetworkModule.CONFIG_MIDDLE_PATH)\n *\n * ```\n *\n * @public\n */\n",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "getConfig: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "(a4Config: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IA4Config",
-                  "canonicalReference": "@hz-9/a4-core!IA4Config:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<any>, configKey?: string) => T"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "getConfig",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 4
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBase#globalProvideToken:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "readonly globalProvideToken: "
+                  "text": "globalProvideToken: "
                 },
                 {
                   "kind": "Reference",
@@ -10003,7 +10469,7 @@
                   "text": ";"
                 }
               ],
-              "isReadonly": true,
+              "isReadonly": false,
               "isOptional": false,
               "releaseTag": "Public",
               "name": "globalProvideToken",
@@ -10014,49 +10480,17 @@
             },
             {
               "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBase#logger:member",
-              "docComment": "/**\n * 日志对象。通常与模块名称保持一致\n *\n * @expmale\n * ```ts\n * 'A4ConfigModule' -> new Logger('A4 Config')\n *\n * 'A4NetworkModule' -> new Logger('A4 Network')\n * ```\n *\n * @public\n */\n",
+              "canonicalReference": "@hz-9/a4-core!IA4ModuleBaseBuilderOptions#ProvideClass:member",
+              "docComment": "/**\n * 实际业务类\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "readonly logger: "
+                  "text": "ProvideClass: "
                 },
                 {
                   "kind": "Reference",
-                  "text": "Logger",
-                  "canonicalReference": "@nestjs/common!Logger:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": true,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "logger",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBase#optionsToProvideClassConstructorOptions:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "optionsToProvideClassConstructorOptions: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "(configOptions: T) => "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Promise",
-                  "canonicalReference": "!Promise:interface"
+                  "text": "Type",
+                  "canonicalReference": "@nestjs/common!Type:interface"
                 },
                 {
                   "kind": "Content",
@@ -10070,121 +10504,7 @@
               "isReadonly": false,
               "isOptional": false,
               "releaseTag": "Public",
-              "name": "optionsToProvideClassConstructorOptions",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 4
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBase#register:member",
-              "docComment": "/**\n * 使用同步方式进行注册。默认为局部注册。\n *\n * @example\n * ```ts\n * \\@Module({\n *    imports: [\n *      A4ConfigModule.register({\n *        ignoreSchema: true,\n *      }),\n *    ],\n *  })\n *  export class AppModule {}\n * ```\n *\n * @see\n *\n * https://hz-9.github.io/a4/overview/internal/module-register.html\n *\n * @public\n */\n",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "register: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "(options: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IA4ModuleRegisterOptions",
-                  "canonicalReference": "@hz-9/a4-core!IA4ModuleRegisterOptions:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<T>) => "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "DynamicModule",
-                  "canonicalReference": "@nestjs/common!DynamicModule:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "register",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 5
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBase#registerAsync:member",
-              "docComment": "/**\n * 使用异步方式进行注册。默认为局部注册。\n *\n * @example\n *\n * ``` ts \\@Module({ imports: [ A4ConfigModule.registerAsync({ useFactory: async () => ({ ignoreSchema: true, }), }) ], }) export class AppModule {} ```\n *\n * @see\n *\n * https://hz-9.github.io/a4/overview/internal/module-register.html\n *\n * @public\n */\n",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "registerAsync: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "(options: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IA4ModuleRegisterAsyncOptions",
-                  "canonicalReference": "@hz-9/a4-core!IA4ModuleRegisterAsyncOptions:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<T>) => "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "DynamicModule",
-                  "canonicalReference": "@nestjs/common!DynamicModule:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "registerAsync",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 5
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBase#RootSchema:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "readonly RootSchema: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "ClassConstructor",
-                  "canonicalReference": "class-transformer!ClassConstructor:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<any>"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": true,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "RootSchema",
+              "name": "ProvideClass",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 3
@@ -10192,12 +10512,12 @@
             },
             {
               "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBase#Schema:member",
-              "docComment": "",
+              "canonicalReference": "@hz-9/a4-core!IA4ModuleBaseBuilderOptions#Schema:member",
+              "docComment": "/**\n * 需要解析的数据数据结构。\n *\n * 是 `CoreSchema` 的超级。\n *\n * 需要保证 CoreSchema = Schema[configPath]\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "readonly Schema: "
+                  "text": "Schema: "
                 },
                 {
                   "kind": "Reference",
@@ -10213,7 +10533,7 @@
                   "text": ";"
                 }
               ],
-              "isReadonly": true,
+              "isReadonly": false,
               "isOptional": false,
               "releaseTag": "Public",
               "name": "Schema",
@@ -10224,12 +10544,12 @@
             },
             {
               "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBase#scopeProvideToken:member",
-              "docComment": "",
+              "canonicalReference": "@hz-9/a4-core!IA4ModuleBaseBuilderOptions#scopeProvideToken:member",
+              "docComment": "/**\n * 进行局部注册时的 Porvide Token\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "readonly scopeProvideToken: "
+                  "text": "scopeProvideToken: "
                 },
                 {
                   "kind": "Reference",
@@ -10241,7 +10561,7 @@
                   "text": ";"
                 }
               ],
-              "isReadonly": true,
+              "isReadonly": false,
               "isOptional": false,
               "releaseTag": "Public",
               "name": "scopeProvideToken",
@@ -10252,760 +10572,6 @@
             }
           ],
           "extendsTokenRanges": []
-        },
-        {
-          "kind": "Interface",
-          "canonicalReference": "@hz-9/a4-core!IA4ModuleBaseBuilderTypeOptions:interface",
-          "docComment": "",
-          "excerptTokens": [
-            {
-              "kind": "Content",
-              "text": "export interface IA4ModuleBaseBuilderTypeOptions "
-            }
-          ],
-          "fileUrlPath": "dist/module/_base/interface.d.ts",
-          "releaseTag": "Public",
-          "name": "IA4ModuleBaseBuilderTypeOptions",
-          "preserveMemberOrder": false,
-          "members": [
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBaseBuilderTypeOptions#configPath:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "configPath: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "string"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "configPath",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBaseBuilderTypeOptions#globalProvideToken:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "globalProvideToken: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "string"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "globalProvideToken",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBaseBuilderTypeOptions#registerType:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "registerType: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "'register' | 'forRoot' | 'registerAndForRoot'"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "registerType",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBaseBuilderTypeOptions#RootSchema:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "RootSchema: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "ClassConstructor",
-                  "canonicalReference": "class-transformer!ClassConstructor:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<any>"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "RootSchema",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 3
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBaseBuilderTypeOptions#RootSchemaType:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "RootSchemaType: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "any"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "RootSchemaType",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBaseBuilderTypeOptions#Schema:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "Schema: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "ClassConstructor",
-                  "canonicalReference": "class-transformer!ClassConstructor:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<any>"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "Schema",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 3
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBaseBuilderTypeOptions#SchemaType:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "SchemaType: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "any"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "SchemaType",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBaseBuilderTypeOptions#scoped:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "scoped: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "'public' | 'protected'"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "scoped",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBaseBuilderTypeOptions#scopeProvideToken:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "scopeProvideToken: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "string"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "scopeProvideToken",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBaseBuilderTypeOptions#withDefault:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "withDefault: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "boolean"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "withDefault",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            }
-          ],
-          "extendsTokenRanges": []
-        },
-        {
-          "kind": "Interface",
-          "canonicalReference": "@hz-9/a4-core!IA4ModuleBaseBuilderTypeOptionsDefault:interface",
-          "docComment": "",
-          "excerptTokens": [
-            {
-              "kind": "Content",
-              "text": "export interface IA4ModuleBaseBuilderTypeOptionsDefault "
-            }
-          ],
-          "fileUrlPath": "dist/module/_base/interface.d.ts",
-          "releaseTag": "Public",
-          "name": "IA4ModuleBaseBuilderTypeOptionsDefault",
-          "preserveMemberOrder": false,
-          "members": [
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBaseBuilderTypeOptionsDefault#configPath:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "configPath: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "string"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "configPath",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBaseBuilderTypeOptionsDefault#globalProvideToken:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "globalProvideToken: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "string"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "globalProvideToken",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBaseBuilderTypeOptionsDefault#registerType:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "registerType: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "'registerAndForRoot'"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "registerType",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBaseBuilderTypeOptionsDefault#RootSchema:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "RootSchema: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "ClassConstructor",
-                  "canonicalReference": "class-transformer!ClassConstructor:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<any>"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "RootSchema",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 3
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBaseBuilderTypeOptionsDefault#RootSchemaType:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "RootSchemaType: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "any"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "RootSchemaType",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBaseBuilderTypeOptionsDefault#Schema:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "Schema: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "ClassConstructor",
-                  "canonicalReference": "class-transformer!ClassConstructor:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<any>"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "Schema",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 3
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBaseBuilderTypeOptionsDefault#SchemaType:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "SchemaType: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "any"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "SchemaType",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBaseBuilderTypeOptionsDefault#scoped:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "scoped: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "'public'"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "scoped",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBaseBuilderTypeOptionsDefault#scopeProvideToken:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "scopeProvideToken: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "string"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "scopeProvideToken",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBaseBuilderTypeOptionsDefault#withDefault:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "withDefault: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "true"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "withDefault",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            }
-          ],
-          "extendsTokenRanges": []
-        },
-        {
-          "kind": "TypeAlias",
-          "canonicalReference": "@hz-9/a4-core!IA4ModuleBaseSubType:type",
-          "docComment": "",
-          "excerptTokens": [
-            {
-              "kind": "Content",
-              "text": "export type IA4ModuleBaseSubType<T, TO extends "
-            },
-            {
-              "kind": "Reference",
-              "text": "IA4ModuleBaseBuilderTypeOptions",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBaseBuilderTypeOptions:interface"
-            },
-            {
-              "kind": "Content",
-              "text": "> = "
-            },
-            {
-              "kind": "Content",
-              "text": "{\n    new (): {};\n} & {\n    [K in "
-            },
-            {
-              "kind": "Reference",
-              "text": "IA4ModuleBasePublicKey",
-              "canonicalReference": "@hz-9/a4-core!~IA4ModuleBasePublicKey:type"
-            },
-            {
-              "kind": "Content",
-              "text": "]: K extends keyof TO ? TO[K] : "
-            },
-            {
-              "kind": "Reference",
-              "text": "IA4ModuleBase",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBase:interface"
-            },
-            {
-              "kind": "Content",
-              "text": "<T>[K];\n} & {\n    getConfig: (a4Config: "
-            },
-            {
-              "kind": "Reference",
-              "text": "IA4Config",
-              "canonicalReference": "@hz-9/a4-core!IA4Config:class"
-            },
-            {
-              "kind": "Content",
-              "text": "<TO['RootSchemaType']>, configKey?: string) => T;\n    RootSchemaType: TO['RootSchemaType'];\n    SchemaType: TO['SchemaType'];\n} & {\n    [K in "
-            },
-            {
-              "kind": "Reference",
-              "text": "IA4ModuleBaseRootKey",
-              "canonicalReference": "@hz-9/a4-core!~IA4ModuleBaseRootKey:type"
-            },
-            {
-              "kind": "Content",
-              "text": " as TO['registerType'] extends 'forRoot' | 'registerAndForRoot' ? K : never]: "
-            },
-            {
-              "kind": "Reference",
-              "text": "IA4ModuleBase",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBase:interface"
-            },
-            {
-              "kind": "Content",
-              "text": "<T>[K];\n} & {\n    [K in "
-            },
-            {
-              "kind": "Reference",
-              "text": "IA4ModuleBaseRegisterKey",
-              "canonicalReference": "@hz-9/a4-core!~IA4ModuleBaseRegisterKey:type"
-            },
-            {
-              "kind": "Content",
-              "text": " as TO['registerType'] extends 'register' | 'registerAndForRoot' ? K : never]: "
-            },
-            {
-              "kind": "Reference",
-              "text": "IA4ModuleBase",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBase:interface"
-            },
-            {
-              "kind": "Content",
-              "text": "<T>[K];\n} & {\n    [K in "
-            },
-            {
-              "kind": "Reference",
-              "text": "IA4ModuleBaseProtectedKey",
-              "canonicalReference": "@hz-9/a4-core!~IA4ModuleBaseProtectedKey:type"
-            },
-            {
-              "kind": "Content",
-              "text": " as TO['scoped'] extends 'protected' ? K : never]: "
-            },
-            {
-              "kind": "Reference",
-              "text": "IA4ModuleBase",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBase:interface"
-            },
-            {
-              "kind": "Content",
-              "text": "<T>[K];\n} & {\n    [K in "
-            },
-            {
-              "kind": "Reference",
-              "text": "IA4ModuleBaseWithDefaultKey",
-              "canonicalReference": "@hz-9/a4-core!~IA4ModuleBaseWithDefaultKey:type"
-            },
-            {
-              "kind": "Content",
-              "text": " as TO['withDefault'] extends true ? K : never]: "
-            },
-            {
-              "kind": "Reference",
-              "text": "IA4ModuleBase",
-              "canonicalReference": "@hz-9/a4-core!IA4ModuleBase:interface"
-            },
-            {
-              "kind": "Content",
-              "text": "<T>[K];\n}"
-            },
-            {
-              "kind": "Content",
-              "text": ";"
-            }
-          ],
-          "fileUrlPath": "dist/module/_base/interface.d.ts",
-          "releaseTag": "Public",
-          "name": "IA4ModuleBaseSubType",
-          "typeParameters": [
-            {
-              "typeParameterName": "T",
-              "constraintTokenRange": {
-                "startIndex": 0,
-                "endIndex": 0
-              },
-              "defaultTypeTokenRange": {
-                "startIndex": 0,
-                "endIndex": 0
-              }
-            },
-            {
-              "typeParameterName": "TO",
-              "constraintTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              },
-              "defaultTypeTokenRange": {
-                "startIndex": 0,
-                "endIndex": 0
-              }
-            }
-          ],
-          "typeTokenRange": {
-            "startIndex": 3,
-            "endIndex": 26
-          }
         },
         {
           "kind": "TypeAlias",
@@ -18233,6 +17799,29 @@
         },
         {
           "kind": "Variable",
+          "canonicalReference": "@hz-9/a4-core!MODULE_CONFIG_PATH_A4_CACHE:var",
+          "docComment": "/**\n * `A4 Cache Module` Config Path\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "MODULE_CONFIG_PATH_A4_CACHE: "
+            },
+            {
+              "kind": "Content",
+              "text": "\"A4.cache\""
+            }
+          ],
+          "fileUrlPath": "dist/module/cache/index.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "MODULE_CONFIG_PATH_A4_CACHE",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
           "canonicalReference": "@hz-9/a4-core!MODULE_CONFIG_PATH_A4_CONFIG:var",
           "docComment": "/**\n * `A4 Config Module` Config Path\n *\n * @public\n */\n",
           "excerptTokens": [
@@ -18255,9 +17844,71 @@
           }
         },
         {
+          "kind": "Function",
+          "canonicalReference": "@hz-9/a4-core!MODULE_CONFIG_PATH_A4_CRUD:function(1)",
+          "docComment": "/**\n * `A4 CRUD Module` Config Path\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "MODULE_CONFIG_PATH_A4_CRUD: <T extends "
+            },
+            {
+              "kind": "Content",
+              "text": "string"
+            },
+            {
+              "kind": "Content",
+              "text": ">(str: "
+            },
+            {
+              "kind": "Content",
+              "text": "T"
+            },
+            {
+              "kind": "Content",
+              "text": ") => "
+            },
+            {
+              "kind": "Content",
+              "text": "`A4.crud.${T}`"
+            }
+          ],
+          "fileUrlPath": "dist/module/crud/index.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 5,
+            "endIndex": 6
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "str",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "MODULE_CONFIG_PATH_A4_CRUD"
+        },
+        {
           "kind": "Variable",
           "canonicalReference": "@hz-9/a4-core!MODULE_CONFIG_PATH_A4_DOCS:var",
-          "docComment": "/**\n * `A4 Network Module` Network Path\n *\n * @public\n */\n",
+          "docComment": "/**\n * `A4 Docs Module` Config Path\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -18276,6 +17927,68 @@
             "startIndex": 1,
             "endIndex": 2
           }
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@hz-9/a4-core!MODULE_CONFIG_PATH_A4_LOCK:function(1)",
+          "docComment": "/**\n * `A4 Lock Module` Config Path\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "MODULE_CONFIG_PATH_A4_LOCK: <T extends "
+            },
+            {
+              "kind": "Content",
+              "text": "string"
+            },
+            {
+              "kind": "Content",
+              "text": ">(str: "
+            },
+            {
+              "kind": "Content",
+              "text": "T"
+            },
+            {
+              "kind": "Content",
+              "text": ") => "
+            },
+            {
+              "kind": "Content",
+              "text": "`A4.lock.${T}`"
+            }
+          ],
+          "fileUrlPath": "dist/module/lock/index.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 5,
+            "endIndex": 6
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "str",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "MODULE_CONFIG_PATH_A4_LOCK"
         },
         {
           "kind": "Function",
@@ -18341,8 +18054,31 @@
         },
         {
           "kind": "Variable",
+          "canonicalReference": "@hz-9/a4-core!MODULE_CONFIG_PATH_A4_MICRO_SERVICE:var",
+          "docComment": "/**\n * `A4 MicroService` Provide\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "MODULE_CONFIG_PATH_A4_MICRO_SERVICE: "
+            },
+            {
+              "kind": "Content",
+              "text": "\"A4.microService\""
+            }
+          ],
+          "fileUrlPath": "dist/module/micro-service/index.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "MODULE_CONFIG_PATH_A4_MICRO_SERVICE",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
           "canonicalReference": "@hz-9/a4-core!MODULE_CONFIG_PATH_A4_NETWORK:var",
-          "docComment": "/**\n * `A4 Network Module` Network Path\n *\n * @public\n */\n",
+          "docComment": "/**\n * `A4 Network Module` Config Path\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -18361,6 +18097,68 @@
             "startIndex": 1,
             "endIndex": 2
           }
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@hz-9/a4-core!MODULE_CONFIG_PATH_A4_REGISTRY:function(1)",
+          "docComment": "/**\n * `A4Registry` Provide\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "MODULE_CONFIG_PATH_A4_REGISTRY: <T extends "
+            },
+            {
+              "kind": "Content",
+              "text": "string"
+            },
+            {
+              "kind": "Content",
+              "text": ">(str: "
+            },
+            {
+              "kind": "Content",
+              "text": "T"
+            },
+            {
+              "kind": "Content",
+              "text": ") => "
+            },
+            {
+              "kind": "Content",
+              "text": "`A4.registry.${T}`"
+            }
+          ],
+          "fileUrlPath": "dist/module/registry/index.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 5,
+            "endIndex": 6
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "str",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "MODULE_CONFIG_PATH_A4_REGISTRY"
         },
         {
           "kind": "Variable",
@@ -20111,6 +19909,30 @@
         },
         {
           "kind": "Variable",
+          "canonicalReference": "@hz-9/a4-core!SCOPE_PROVIDE_TOKEN_A4_CACHE:var",
+          "docComment": "/**\n * `A4 Cache Module` Scope Provide Token\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "SCOPE_PROVIDE_TOKEN_A4_CACHE: "
+            },
+            {
+              "kind": "Reference",
+              "text": "A4ScopeProvideToken",
+              "canonicalReference": "@hz-9/a4-core!A4ScopeProvideToken:type"
+            }
+          ],
+          "fileUrlPath": "dist/module/cache/index.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "SCOPE_PROVIDE_TOKEN_A4_CACHE",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
           "canonicalReference": "@hz-9/a4-core!SCOPE_PROVIDE_TOKEN_A4_CONFIG:var",
           "docComment": "/**\n * `A4 Config Module` Scope Provide Token\n *\n * @public\n */\n",
           "excerptTokens": [
@@ -20135,8 +19957,32 @@
         },
         {
           "kind": "Variable",
+          "canonicalReference": "@hz-9/a4-core!SCOPE_PROVIDE_TOKEN_A4_CRUD:var",
+          "docComment": "/**\n * `A4 CRUD Module` Scope Provide Token\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "SCOPE_PROVIDE_TOKEN_A4_CRUD: "
+            },
+            {
+              "kind": "Reference",
+              "text": "A4ScopeProvideToken",
+              "canonicalReference": "@hz-9/a4-core!A4ScopeProvideToken:type"
+            }
+          ],
+          "fileUrlPath": "dist/module/crud/index.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "SCOPE_PROVIDE_TOKEN_A4_CRUD",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
           "canonicalReference": "@hz-9/a4-core!SCOPE_PROVIDE_TOKEN_A4_DOCS:var",
-          "docComment": "/**\n * `A4 Network Module` Scope Provide Token\n *\n * @public\n */\n",
+          "docComment": "/**\n * `A4 Docs Module` Scope Provide Token\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -20152,6 +19998,30 @@
           "isReadonly": true,
           "releaseTag": "Public",
           "name": "SCOPE_PROVIDE_TOKEN_A4_DOCS",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@hz-9/a4-core!SCOPE_PROVIDE_TOKEN_A4_LOCK:var",
+          "docComment": "/**\n * `A4 Lock Module` Scope Provide Token\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "SCOPE_PROVIDE_TOKEN_A4_LOCK: "
+            },
+            {
+              "kind": "Reference",
+              "text": "A4ScopeProvideToken",
+              "canonicalReference": "@hz-9/a4-core!A4ScopeProvideToken:type"
+            }
+          ],
+          "fileUrlPath": "dist/module/lock/index.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "SCOPE_PROVIDE_TOKEN_A4_LOCK",
           "variableTypeTokenRange": {
             "startIndex": 1,
             "endIndex": 2
@@ -20183,6 +20053,30 @@
         },
         {
           "kind": "Variable",
+          "canonicalReference": "@hz-9/a4-core!SCOPE_PROVIDE_TOKEN_A4_MICRO_SERVICE:var",
+          "docComment": "/**\n * `A4 MicroService Module` Scope Provide Token\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "SCOPE_PROVIDE_TOKEN_A4_MICRO_SERVICE: "
+            },
+            {
+              "kind": "Reference",
+              "text": "A4ScopeProvideToken",
+              "canonicalReference": "@hz-9/a4-core!A4ScopeProvideToken:type"
+            }
+          ],
+          "fileUrlPath": "dist/module/micro-service/index.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "SCOPE_PROVIDE_TOKEN_A4_MICRO_SERVICE",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
           "canonicalReference": "@hz-9/a4-core!SCOPE_PROVIDE_TOKEN_A4_NETWORK:var",
           "docComment": "/**\n * `A4 Network Module` Scope Provide Token\n *\n * @public\n */\n",
           "excerptTokens": [
@@ -20200,6 +20094,30 @@
           "isReadonly": true,
           "releaseTag": "Public",
           "name": "SCOPE_PROVIDE_TOKEN_A4_NETWORK",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@hz-9/a4-core!SCOPE_PROVIDE_TOKEN_A4_REGISTRY:var",
+          "docComment": "/**\n * `A4 Registry Module` Scope Provide Token\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "SCOPE_PROVIDE_TOKEN_A4_REGISTRY: "
+            },
+            {
+              "kind": "Reference",
+              "text": "A4ScopeProvideToken",
+              "canonicalReference": "@hz-9/a4-core!A4ScopeProvideToken:type"
+            }
+          ],
+          "fileUrlPath": "dist/module/registry/index.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "SCOPE_PROVIDE_TOKEN_A4_REGISTRY",
           "variableTypeTokenRange": {
             "startIndex": 1,
             "endIndex": 2

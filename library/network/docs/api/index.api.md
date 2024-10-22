@@ -6,14 +6,16 @@
 
 /// <reference types="node" />
 
+import { DynamicModule } from '@nestjs/common';
 import { GLOBAL_PROVIDE_TOKEN_A4_NETWORK } from '@hz-9/a4-core';
 import { IA4AddressInfo } from '@hz-9/a4-core';
 import { IA4Config } from '@hz-9/a4-core';
 import { IA4HostAndPort } from '@hz-9/a4-core';
-import { IA4ModuleBaseSubType } from '@hz-9/a4-core';
+import { IA4ModuleForRootAsyncOptions } from '@hz-9/a4-core';
+import { IA4ModuleRegisterAsyncOptions } from '@hz-9/a4-core';
 import { IA4Network } from '@hz-9/a4-core';
+import { Logger } from '@nestjs/common';
 import { MODULE_CONFIG_PATH_A4_NETWORK } from '@hz-9/a4-core';
-import { ModuleError } from '@hz-9/a4-core';
 import os from 'node:os';
 import { SCOPE_PROVIDE_TOKEN_A4_NETWORK } from '@hz-9/a4-core';
 
@@ -37,9 +39,7 @@ export class A4Network implements IA4Network {
 // @public
 export class A4NetworkModule extends A4NetworkModuleBase {
     // (undocumented)
-    static getConfig(a4Config: IA4Config<(typeof A4NetworkModuleBase)['RootSchemaType']>, configKey?: string): A4NetworkModuleSchema;
-    // (undocumented)
-    protected static optionsToProvideClassConstructorOptions(options: A4NetworkModuleSchema): Promise<INetworkInfo>;
+    static optionsToProvideClassConstructorOptions(options: A4NetworkModuleSchema): Promise<INetworkInfo>;
 }
 
 // @public

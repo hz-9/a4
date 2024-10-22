@@ -6,13 +6,14 @@
 
 import type { A4Application } from '@hz-9/a4-core';
 import type { CorsOptions } from '@nestjs/common/interfaces/external/cors-options.interface';
+import { DynamicModule } from '@nestjs/common';
 import { GLOBAL_PROVIDE_TOKEN_A4_SAFE } from '@hz-9/a4-core';
 import type { HelmetOptions } from 'helmet';
 import { IA4Config } from '@hz-9/a4-core';
-import { IA4ModuleBaseSubType } from '@hz-9/a4-core';
+import { IA4ModuleForRootAsyncOptions } from '@hz-9/a4-core';
 import type { IA4Safe } from '@hz-9/a4-core';
+import { Logger } from '@nestjs/common';
 import { MODULE_CONFIG_PATH_A4_SAFE } from '@hz-9/a4-core';
-import { ModuleError } from '@hz-9/a4-core';
 import { SCOPE_PROVIDE_TOKEN_A4_SAFE } from '@hz-9/a4-core';
 
 // @public
@@ -28,10 +29,6 @@ export class A4Safe implements IA4Safe {
 //
 // @public
 export class A4SafeModule extends A4SafeModuleBase {
-    // (undocumented)
-    static getConfig(a4Config: IA4Config<(typeof A4SafeModuleBase)['RootSchemaType']>, configKey?: string): A4SafeModuleSchema;
-    // (undocumented)
-    protected static optionsToProvideClassConstructorOptions(options: A4SafeModuleSchema): Promise<A4SafeModuleSchema>;
 }
 
 // @public

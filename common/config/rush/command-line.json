@@ -202,7 +202,7 @@
       "commandKind": "bulk",
       "name": "build",
       "summary": "Run `build` script.",
-      "enableParallelism": true,
+      "enableParallelism": false,
       // "safeForSimultaneousRushProcesses": true,
       "ignoreMissingScript": true
     },
@@ -211,7 +211,7 @@
       "commandKind": "bulk",
       "name": "lint",
       "summary": "Lint code.",
-      "enableParallelism": true,
+      "enableParallelism": false,
       "safeForSimultaneousRushProcesses": true,
       "ignoreMissingScript": true
     },
@@ -220,7 +220,7 @@
       "commandKind": "bulk",
       "name": "prepare",
       "summary": "For start prepare.",
-      "enableParallelism": true,
+      "enableParallelism": false,
       "safeForSimultaneousRushProcesses": true,
       "ignoreMissingScript": true
     },

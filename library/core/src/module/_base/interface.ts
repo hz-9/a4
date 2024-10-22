@@ -2,13 +2,12 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-20 23:26:29
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-30 20:35:35
+ * @LastEditTime : 2024-10-22 22:53:06
  */
 
-/* eslint-disable max-classes-per-file */
+/* eslint-disable max-classes-per-file, @typescript-eslint/no-explicit-any */
 import type {
   DynamicModule,
-  FactoryProvider,
   ForwardReference,
   InjectionToken,
   Logger,
@@ -16,12 +15,15 @@ import type {
   Provider,
   Type,
 } from '@nestjs/common'
-import type { ClassConstructor } from 'class-transformer'
+import { ClassConstructor } from 'class-transformer'
 
+import type { A4Error } from '../../error'
 import type { A4GlobalProvideToken, A4ModuleConfigPath, A4ScopeProvideToken } from '../../interface'
-import type { IA4Config } from '../config'
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
+// import type { ClassConstructor } from 'class-transformer'
+
+// import type { A4GlobalProvideToken, A4ModuleConfigPath, A4ScopeProvideToken } from '../../interface'
+// import type { IA4Config } from '../config'
 
 /**
  * @public
@@ -163,290 +165,87 @@ export type IA4ModuleRegisterAsyncOptions<T = any> = IA4ModuleRegisterAsyncOptio
 export type IA4ModuleForRootAsyncOptions<T = any> = IA4ModuleForRootAsyncOptionsBase &
   (IA4ModuleRegisterAsyncOptions1<T> | IA4ModuleRegisterAsyncOptions2<T> | IA4ModuleRegisterAsyncOptions3<T>)
 
-export interface IA4ModuleBase<T = any> {
+/**
+ * @public
+ *
+ * `A4ModuleBaseBuilder` 配置项类型。
+ *
+ */
+export interface IA4ModuleBaseBuilderOptions {
   /**
-   * @public
    *
-   *  配置项的路径。由模块自行规定。`A4 Module` 会保持一定规则。
-   *
-   * @see https://hz-9.github.io/a4/guide/a4-config/namespace.html
+   * 模块实际需要的配置项结构。
    *
    */
-  readonly configPath: A4ModuleConfigPath
-
-  readonly globalProvideToken: A4GlobalProvideToken
-
-  readonly scopeProvideToken: A4ScopeProvideToken
-
-  readonly RootSchema: ClassConstructor<any>
-
-  readonly Schema: ClassConstructor<any>
+  CoreSchema: ClassConstructor<any>
 
   /**
-   * @public
    *
-   * 日志对象。通常与模块名称保持一致
+   * 需要解析的数据数据结构。
    *
-   * @expmale
+   * 是 `CoreSchema` 的超级。
    *
-   * ``` ts
-   * 'A4ConfigModule' -> new Logger('A4 Config')
-   *
-   * 'A4NetworkModule' -> new Logger('A4 Network')
-   * ```
+   * 需要保证 CoreSchema = Schema[configPath]
    *
    */
-  readonly logger: Logger
-
-  /**
-   * @public
-   *
-   *  使用同步方式进行注册。默认为局部注册。
-   *
-   * @see https://hz-9.github.io/a4/overview/internal/module-register.html
-   *
-   * @example
-   *
-   *``` ts
-   * \@Module({
-   *    imports: [
-   *      A4ConfigModule.register({
-   *        ignoreSchema: true,
-   *      }),
-   *    ],
-   *  })
-   *  export class AppModule {}
-   *```
-   *
-   */
-  register: (options: IA4ModuleRegisterOptions<T>) => DynamicModule
-
-  /**
-   * @public
-   *
-   *  使用异步方式进行注册。默认为局部注册。
-   *
-   * @see https://hz-9.github.io/a4/overview/internal/module-register.html
-   *
-   * @example
-   *
-   *  ``` ts
-   * \@Module({
-   *    imports: [
-   *      A4ConfigModule.registerAsync({
-   *        useFactory: async () => ({
-   *          ignoreSchema: true,
-   *        }),
-   *      })
-   *    ],
-   *  })
-   *  export class AppModule {}
-   *  ```
-   *
-   */
-  registerAsync: (options: IA4ModuleRegisterAsyncOptions<T>) => DynamicModule
-
-  /**
-   * @public
-   *
-   *  使用同步方式进行注册。默认为全局注册。
-   *
-   * @see https://hz-9.github.io/a4/overview/internal/module-register.html
-   *
-   * @example
-   *
-   *  ``` ts
-   * \@Module({
-   *    imports: [
-   *      A4ConfigModule.forRoot({
-   *        ignoreSchema: true,
-   *      }),
-   *    ],
-   *  })
-   *  export class AppModule {}
-   *  ```
-   *
-   */
-  forRoot: (options: IA4ModuleForRootOptions<T>) => DynamicModule
-
-  /**
-   * @public
-   *
-   *  使用异步方式进行注册。默认为全局注册。
-   *
-   * @see https://hz-9.github.io/a4/overview/internal/module-register.html
-   *
-   * @example
-   *
-   *  ``` ts
-   * \@Module({
-   *    imports: [
-   *      A4ConfigModule.forRootAsync({
-   *        useFactory: async () => ({
-   *          ignoreSchema: true,
-   *        }),
-   *      })
-   *    ],
-   *  })
-   *  export class AppModule {}
-   *  ```
-   *
-   */
-  forRootAsync: (options: IA4ModuleForRootAsyncOptions<T>) => DynamicModule
-
-  /**
-   * @public
-   *
-   * `A4Module.getConfig` 会快速获取配置信息。
-   *
-   * !!! 由各模块自行实现。
-   *
-   * @param a4Config - `A4Config` 实例。
-   * @param configKey - 配置路径。
-   *
-   * @example
-   *
-   *  或者自己实现，以 A4 Network 举例。
-   *
-   * ``` ts
-   *
-   *  return a4Config.getOrThrow(configKey ?? NetworkModule.CONFIG_MIDDLE_PATH)
-   *
-   * ```
-   */
-  getConfig: (a4Config: IA4Config<any>, configKey?: string) => T
-
-  readonly defaultConfig: T
-
-  commonRegister: (provideName: InjectionToken, options: IA4ModuleForRootOptions<T>) => DynamicModule
-
-  commonRegisterAsync: (options: IA4ModuleRegisterAsyncOptions<T>) => DynamicModule
-
-  createAsyncProvider: (options: IA4ModuleRegisterAsyncOptions<T>) => FactoryProvider
-
-  optionsToProvideClassConstructorOptions: (configOptions: T) => Promise<any>
-}
-
-export interface IA4ModuleBaseBuilderTypeOptions {
-  registerType: 'register' | 'forRoot' | 'registerAndForRoot'
-  scoped: 'public' | 'protected'
-  withDefault: boolean
-
-  configPath: string
-  globalProvideToken: string
-  scopeProvideToken: string
   Schema: ClassConstructor<any>
-  RootSchema: ClassConstructor<any>
 
-  SchemaType: any
-  RootSchemaType: any
-}
+  /**
+   * 实际业务类
+   */
+  ProvideClass: Type<any>
 
-export interface IA4ModuleBaseBuilderTypeOptionsDefault {
-  scoped: 'public'
-  registerType: 'registerAndForRoot'
-  withDefault: true
+  /**
+   * 抛错类
+   */
+  A4ModuleError: typeof A4Error
 
-  configPath: string
-  globalProvideToken: string
-  scopeProvideToken: string
-  Schema: ClassConstructor<any>
-  RootSchema: ClassConstructor<any>
+  /**
+   *
+   * 配置项的路径。
+   *
+   * 在参数获取中，会使用此路径进行获取。
+   *
+   */
+  configPath: A4ModuleConfigPath
 
-  SchemaType: any
-  RootSchemaType: any
-}
+  /**
+   * 进行全局注册时的 Porvide Token
+   */
+  globalProvideToken: A4GlobalProvideToken
 
-type IA4ModuleBasePublicKey =
-  | 'logger'
-  | 'configPath'
-  | 'globalProvideToken'
-  | 'scopeProvideToken'
-  | 'RootSchema'
-  | 'Schema'
-
-type IA4ModuleBaseRootKey = 'forRoot' | 'forRootAsync'
-
-type IA4ModuleBaseRegisterKey = 'register' | 'registerAsync'
-
-type IA4ModuleBaseProtectedKey =
-  | 'optionsToProvideClassConstructorOptions'
-  | 'commonRegister'
-  | 'commonRegisterAsync'
-  | 'createAsyncProvider'
-
-type IA4ModuleBaseWithDefaultKey = 'defaultConfig'
-
-export type IA4ModuleBaseSubType<T, TO extends IA4ModuleBaseBuilderTypeOptions> = {
-  new (): {
-    // [K in keyof TO as (K extends IA4ModuleBasePublicKey ? K : never)]: TO[K]
-  }
-} & {
-  [K in IA4ModuleBasePublicKey]: K extends keyof TO ? TO[K] : IA4ModuleBase<T>[K]
-} & {
-  getConfig: (a4Config: IA4Config<TO['RootSchemaType']>, configKey?: string) => T
-
-  RootSchemaType: TO['RootSchemaType']
-  SchemaType: TO['SchemaType']
-} & {
-  [K in IA4ModuleBaseRootKey as TO['registerType'] extends 'forRoot' | 'registerAndForRoot'
-    ? K
-    : never]: IA4ModuleBase<T>[K]
-} & {
-  [K in IA4ModuleBaseRegisterKey as TO['registerType'] extends 'register' | 'registerAndForRoot'
-    ? K
-    : never]: IA4ModuleBase<T>[K]
-} & {
-  [K in IA4ModuleBaseProtectedKey as TO['scoped'] extends 'protected' ? K : never]: IA4ModuleBase<T>[K]
-} & {
-  [K in IA4ModuleBaseWithDefaultKey as TO['withDefault'] extends true ? K : never]: IA4ModuleBase<T>[K]
+  /**
+   * 进行局部注册时的 Porvide Token
+   */
+  scopeProvideToken: A4ScopeProvideToken
 }
 
 /**
+ * @internal
  *
- * @public
- *
- *  `A4 Module *` 库的核心类虚拟实现。
+ *  同步注册内容部扩展函数。
  *
  */
-export abstract class A4ModuleBase {
-  /**
-   * @public
-   *
-   * 日志对象。通常与模块名称保持一致
-   *
-   * @expmale
-   *
-   * ``` ts
-   * 'A4ConfigModule' -> new Logger('A4 Config')
-   *
-   * 'A4NetworkModule' -> new Logger('A4 Network')
-   * ```
-   *
-   */
-  protected static logger: Logger
+export interface IA4ModuleBaseResigterExtraOptions {
+  optionsToProvideClassConstructorOptions: (configOptions: any) => Promise<object | object[]>
+  logger: Logger
+}
 
+/**
+ * @public
+ *
+ * Register 注册方式抽象类
+ */
+export abstract class A4ModuleBaseClassRegister {
   /**
-   * @public
-   *
-   *  配置项的路径。由模块自行规定。`A4 Module` 会保持一定规则。
-   *
-   * @see https://hz-9.github.io/a4/guide/a4-config/namespace.html
-   *
-   */
-  protected static CONFIG_MIDDLE_PATH: string
-
-  /**
-   * @public
-   *
    *  使用同步方式进行注册。默认为局部注册。
    *
    * @see https://hz-9.github.io/a4/overview/internal/module-register.html
    *
-   * @example
+   * Example:
    *
    *``` ts
-   * \@Module({
+   * Module({
    *    imports: [
    *      A4ConfigModule.register({
    *        ignoreSchema: true,
@@ -457,19 +256,17 @@ export abstract class A4ModuleBase {
    *```
    *
    */
-  public static register: (options: IA4ModuleRegisterOptions) => DynamicModule
+  public static register: <T>(options: IA4ModuleRegisterOptions<T>) => DynamicModule
 
   /**
-   * @public
-   *
    *  使用异步方式进行注册。默认为局部注册。
    *
    * @see https://hz-9.github.io/a4/overview/internal/module-register.html
    *
-   * @example
+   * Example:
    *
-   *  ``` ts
-   * \@Module({
+   * ``` ts
+   * Module({
    *    imports: [
    *      A4ConfigModule.registerAsync({
    *        useFactory: async () => ({
@@ -479,22 +276,27 @@ export abstract class A4ModuleBase {
    *    ],
    *  })
    *  export class AppModule {}
-   *  ```
+   * ```
    *
    */
-  public static registerAsync: (options: IA4ModuleRegisterAsyncOptions) => DynamicModule
+  public static registerAsync: <T>(options: IA4ModuleRegisterAsyncOptions<T>) => DynamicModule
+}
 
+/**
+ * @public
+ *
+ * ForRoot 注册方式抽象类
+ */
+export abstract class A4ModuleBaseClassForRoot {
   /**
-   * @public
-   *
    *  使用同步方式进行注册。默认为全局注册。
    *
    * @see https://hz-9.github.io/a4/overview/internal/module-register.html
    *
-   * @example
+   * Example:
    *
-   *  ``` ts
-   * \@Module({
+   * ``` ts
+   * Module({
    *    imports: [
    *      A4ConfigModule.forRoot({
    *        ignoreSchema: true,
@@ -502,22 +304,20 @@ export abstract class A4ModuleBase {
    *    ],
    *  })
    *  export class AppModule {}
-   *  ```
+   * ```
    *
    */
-  public static forRoot: (options: IA4ModuleForRootOptions) => DynamicModule
+  public static forRoot: <T>(options: IA4ModuleForRootOptions<T>) => DynamicModule
 
   /**
-   * @public
-   *
    *  使用异步方式进行注册。默认为全局注册。
    *
    * @see https://hz-9.github.io/a4/overview/internal/module-register.html
    *
-   * @example
+   * Example:
    *
-   *  ``` ts
-   * \@Module({
+   * ``` ts
+   * Module({
    *    imports: [
    *      A4ConfigModule.forRootAsync({
    *        useFactory: async () => ({
@@ -527,36 +327,104 @@ export abstract class A4ModuleBase {
    *    ],
    *  })
    *  export class AppModule {}
-   *  ```
+   * ```
    *
    */
-  public static forRootAsync: (options: IA4ModuleForRootAsyncOptions) => DynamicModule
+  public static forRootAsync: <T>(options: IA4ModuleForRootAsyncOptions<T>) => DynamicModule
+}
 
+/**
+ * @public
+ *
+ * Register 与 ForRoot 注册方式抽象类
+ *
+ */
+export abstract class A4ModuleBaseClassRegisterAndForRoot {
   /**
-   * @public
+   *  使用同步方式进行注册。默认为局部注册。
    *
-   * `A4Module.getConfig` 会快速获取配置信息。
+   * @see https://hz-9.github.io/a4/overview/internal/module-register.html
    *
-   * @param a4Config - `A4Config` 实例。
-   * @param configKey - 配置路径。
-   *
-   * @example
-   *
-   *  或者自己实现，以 A4 Network 举例。
+   * Example:
    *
    * ``` ts
-   *
-   *  return a4Config.getOrThrow(configKey ?? NetworkModule.CONFIG_MIDDLE_PATH)
-   *
+   * Module({
+   *    imports: [
+   *      A4ConfigModule.register({
+   *        ignoreSchema: true,
+   *      }),
+   *    ],
+   *  })
+   *  export class AppModule {}
    * ```
+   *
    */
-  public static getConfig: <Schema extends object, Return>(a4Config: IA4Config<Schema>, configKey?: string) => Return
+  public static register: <T>(options: IA4ModuleRegisterOptions<T>) => DynamicModule
 
-  protected static commonRegister: (provideName: InjectionToken, options: IA4ModuleForRootOptions) => DynamicModule
+  /**
+   *  使用异步方式进行注册。默认为局部注册。
+   *
+   * @see https://hz-9.github.io/a4/overview/internal/module-register.html
+   *
+   * Example:
+   *
+   * ``` ts
+   * Module({
+   *    imports: [
+   *      A4ConfigModule.registerAsync({
+   *        useFactory: async () => ({
+   *          ignoreSchema: true,
+   *        }),
+   *      })
+   *    ],
+   *  })
+   *  export class AppModule {}
+   * ```
+   *
+   */
+  public static registerAsync: <T>(options: IA4ModuleRegisterAsyncOptions<T>) => DynamicModule
 
-  protected static commonRegisterAsync: (options: IA4ModuleRegisterAsyncOptions) => DynamicModule
+  /**
+   *  使用同步方式进行注册。默认为全局注册。
+   *
+   * @see https://hz-9.github.io/a4/overview/internal/module-register.html
+   *
+   * Example:
+   *
+   * ``` ts
+   * Module({
+   *    imports: [
+   *      A4ConfigModule.forRoot({
+   *        ignoreSchema: true,
+   *      }),
+   *    ],
+   *  })
+   *  export class AppModule {}
+   * ```
+   *
+   */
+  public static forRoot: <T>(options: IA4ModuleForRootOptions<T>) => DynamicModule
 
-  protected static createAsyncProvider: (options: IA4ModuleRegisterAsyncOptions) => FactoryProvider
-
-  protected static optionsToFactoryResult: (configOptions: any) => Promise<any>
+  /**
+   *  使用异步方式进行注册。默认为全局注册。
+   *
+   * @see https://hz-9.github.io/a4/overview/internal/module-register.html
+   *
+   * Example:
+   *
+   * ``` ts
+   * Module({
+   *    imports: [
+   *      A4ConfigModule.forRootAsync({
+   *        useFactory: async () => ({
+   *          ignoreSchema: true,
+   *        }),
+   *      })
+   *    ],
+   *  })
+   *  export class AppModule {}
+   * ```
+   *
+   */
+  public static forRootAsync: <T>(options: IA4ModuleForRootAsyncOptions<T>) => DynamicModule
 }

@@ -2,29 +2,28 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-21 16:10:04
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-28 22:25:25
+ * @LastEditTime : 2024-10-22 22:25:11
  */
+import * as fs from '@hz-9/a4-core/fs-extra'
 import type { ClientOptions } from '@elastic/elasticsearch'
 import type { IndicesGetResponse } from '@elastic/elasticsearch/lib/api/types'
-import { DynamicModule, FactoryProvider, Logger, Module } from '@nestjs/common'
+import { A4ConfigBase, A4Util, IA4Config, RunEnv } from '@hz-9/a4-core'
+import { DynamicModule, FactoryProvider, Module } from '@nestjs/common'
 import { OpenSearchMappingService } from '@scalenc/opensearch-mapping-ts'
 import { defer, lastValueFrom } from 'rxjs'
 
-import * as fs from '@hz-9/a4-core/fs-extra'
-import { A4ModuleBase, A4Util, IA4Config, IA4CrudModule, IA4ModuleForRootAsyncOptions, RunEnv } from '@hz-9/a4-core'
-
 import {
-  A4_CRUD_ELASTICSEARCH_DATASOURCE_GROUP,
-  A4_CRUD_ELASTICSEARCH_OPTIONS,
   A4_DEFAULT_DATA_SOURCE_NAME,
   A4_ELASTICSEARCH_INDEX_NAME_IN_METADATA,
   CRUD_ELASTICSEARCH_MODULE_DEFAULT,
 } from '../const'
 import { A4ElasticSearchCrudModuleOptions, DataSourceOptionsExtraWithDefault, Index } from '../interface'
 import { ElasticsearchClient } from '../plugin/elasticsearch_'
-import { A4ElasticSearchCrudModuleSchemaA } from '../schema'
+import { A4ElasticSearchCrudModuleSchema, A4ElasticSearchCrudModuleSchemaA } from '../schema'
 import { getElasticSearchCrudToken, getIndexToken, splitExtraOptions } from '../util'
 import { A4ElasticSearchCrud } from './elastic-search.crud'
+import { A4ElasticSearchCrudModuleBase } from './elastic-search.crud.module-definition'
+import { ElasticSearchDataSourceGroup } from './elastic-search.datasource-group'
 import { IndicesStorage } from './indices.storage'
 
 interface IA4ElasticSearchIndexGroup {
@@ -40,53 +39,113 @@ interface IA4ElasticSearchIndexGroup {
  *
  */
 @Module({})
-export class A4ElasticSearchCrudModule implements A4ModuleBase, IA4CrudModule {
-  public static logger: Logger = new Logger('A4 Crud')
+export class A4ElasticSearchCrudModule extends A4ElasticSearchCrudModuleBase {
+  public static configToOptions(
+    config: A4ElasticSearchCrudModuleSchema,
+    a4Config: IA4Config<A4ElasticSearchCrudModuleSchemaA> = new A4ConfigBase<A4ElasticSearchCrudModuleSchemaA>()
+  ): A4ElasticSearchCrudModuleOptions {
+    const options: A4ElasticSearchCrudModuleOptions = {}
 
-  // eslint-disable-next-line @typescript-eslint/typedef
-  public static CONFIG_MIDDLE_PATH = 'A4.crud.elasticSearch' as const
+    const names = Object.getOwnPropertyNames(config)
 
-  // eslint-disable-next-line @typescript-eslint/typedef
-  public static Schema = A4ElasticSearchCrudModuleSchemaA
+    while (names.length) {
+      const name = names.shift()!
+      const c = config[name as keyof typeof config]
 
-  public Schema: A4ElasticSearchCrudModuleSchemaA
+      // 将 ca.crt 从文件路径读取为文件内容。
+      if (c.tls?.ca && typeof c.tls.ca === 'string') {
+        const { ca } = c.tls
+        c.tls.ca = fs.readFileSync(A4Util.noAbsoluteWith(ca, a4Config.cwd))
+      }
 
-  public static forRootAsync(options: IA4ModuleForRootAsyncOptions<A4ElasticSearchCrudModuleOptions>): DynamicModule {
-    return {
-      module: A4ElasticSearchCrudModule,
+      options[name] = {
+        ...c,
 
-      providers: [
-        {
-          provide: A4_CRUD_ELASTICSEARCH_OPTIONS,
-          inject: options.inject,
-          useFactory: async (...args) => {
-            const result = await options.useFactory!(...args)
-            return result
-          },
-        },
+        synchronize: RunEnv.isDev ? c.synchronize ?? true : false,
 
-        {
-          provide: A4_CRUD_ELASTICSEARCH_DATASOURCE_GROUP,
-          inject: [A4_CRUD_ELASTICSEARCH_OPTIONS],
-          useFactory: async (dataSourceOptions: A4ElasticSearchCrudModuleOptions) => {
-            const group: Record<string, ElasticsearchClient> = {}
-
-            const names = Object.getOwnPropertyNames(dataSourceOptions)
-
-            while (names.length) {
-              const name = names.shift()!
-              group[name] = await this._createDataSource(name, dataSourceOptions[name])
-            }
-
-            return group
-          },
-        },
-      ],
-
-      exports: [A4_CRUD_ELASTICSEARCH_OPTIONS, A4_CRUD_ELASTICSEARCH_DATASOURCE_GROUP],
-
-      global: true,
+        retryAttempts: c.retryAttempts ?? CRUD_ELASTICSEARCH_MODULE_DEFAULT.RETRY_ATTMPTS,
+        retryDelay: c.retryDelay ?? CRUD_ELASTICSEARCH_MODULE_DEFAULT.RETRY_DELAY,
+        verboseRetryLog: c.verboseRetryLog ?? CRUD_ELASTICSEARCH_MODULE_DEFAULT.VERBOSE_RESTRY_LOG,
+      }
     }
+
+    return options
+  }
+
+  public static async optionsToProvideClassConstructorOptions(
+    options: A4ElasticSearchCrudModuleOptions
+  ): Promise<Record<string, ElasticsearchClient>> {
+    const _createDataSource = async (
+      dbName: string,
+      dbOptions: DataSourceOptionsExtraWithDefault
+    ): Promise<ElasticsearchClient> => {
+      const createClient = (o: ClientOptions): ElasticsearchClient => new ElasticsearchClient(dbOptions)
+
+      const [dataSourceOptions, customOptions] = splitExtraOptions(dbOptions)
+
+      const dataSource: ElasticsearchClient = await lastValueFrom(
+        defer(async () => {
+          const client = await createClient(dataSourceOptions)
+
+          // 数据库初始化。
+          await client.ping()
+
+          /**
+           * Sync Index。
+           */
+          if (customOptions.synchronize) {
+            const mappings = OpenSearchMappingService.getInstance().getMappings()
+
+            const indexNames: string[] = IndicesStorage.getIndicesByDataSource(dbName).map((i) =>
+              Reflect.getMetadata(A4_ELASTICSEARCH_INDEX_NAME_IN_METADATA, i)
+            )
+
+            await Promise.all(
+              mappings.map(async (mapping) => {
+                const indexName: string = mapping.osmapping.index
+
+                if (indexNames.includes(indexName)) {
+                  const exists = await client.indices.exists({ index: indexName })
+                  if (!exists) {
+                    await client.indices.create({
+                      index: indexName,
+                    })
+                  }
+
+                  // 更新索引
+                  await client.indices.putMapping({
+                    index: indexName,
+                    properties: mapping.osmapping.body.properties,
+                  })
+                }
+              })
+            )
+          }
+
+          return client
+        }).pipe(
+          A4Util.handleRetry(
+            dbName,
+            dbOptions.retryDelay,
+            dbOptions.retryAttempts,
+            dbOptions.verboseRetryLog,
+            this.logger
+          )
+        )
+      )
+
+      return dataSource
+    }
+    const group: Record<string, ElasticsearchClient> = {}
+
+    const names = Object.getOwnPropertyNames(options)
+
+    while (names.length) {
+      const name = names.shift()!
+      group[name] = await _createDataSource(name, options[name])
+    }
+
+    return group
   }
 
   public static forFeature(indices: Index[] = [], dbName: string = A4_DEFAULT_DATA_SOURCE_NAME): DynamicModule {
@@ -99,10 +158,10 @@ export class A4ElasticSearchCrudModule implements A4ModuleBase, IA4CrudModule {
 
     indices.forEach((index: Index) => {
       providers.push({
-        inject: [A4_CRUD_ELASTICSEARCH_DATASOURCE_GROUP],
+        inject: [ElasticSearchDataSourceGroup],
         provide: getIndexToken(index, dbName),
-        useFactory: async (dataSourceGroup: Record<string, ElasticsearchClient>) => {
-          const client: ElasticsearchClient | undefined = dataSourceGroup[dbName]
+        useFactory: async (elasticSearchDataSourceGroup: ElasticSearchDataSourceGroup) => {
+          const client: ElasticsearchClient | undefined = elasticSearchDataSourceGroup.options[dbName]
           if (!client) throw new Error(`Not found '${dbName}' dataSource.`)
 
           const indexName = Reflect.getMetadata(A4_ELASTICSEARCH_INDEX_NAME_IN_METADATA, index)
@@ -131,95 +190,5 @@ export class A4ElasticSearchCrudModule implements A4ModuleBase, IA4CrudModule {
       providers,
       exports: exportKeys,
     }
-  }
-
-  private static async _createDataSource(
-    dbName: string,
-    options: DataSourceOptionsExtraWithDefault
-  ): Promise<ElasticsearchClient> {
-    const createClient = (o: ClientOptions): ElasticsearchClient => new ElasticsearchClient(options)
-
-    const [dataSourceOptions, customOptions] = splitExtraOptions(options)
-
-    const dataSource: ElasticsearchClient = await lastValueFrom(
-      defer(async () => {
-        const client = await createClient(dataSourceOptions)
-
-        // 数据库初始化。
-        await client.ping()
-
-        /**
-         * Sync Index。
-         */
-        if (customOptions.synchronize) {
-          const mappings = OpenSearchMappingService.getInstance().getMappings()
-
-          const indexNames: string[] = IndicesStorage.getIndicesByDataSource(dbName).map((i) =>
-            Reflect.getMetadata(A4_ELASTICSEARCH_INDEX_NAME_IN_METADATA, i)
-          )
-
-          await Promise.all(
-            mappings.map(async (mapping) => {
-              const indexName: string = mapping.osmapping.index
-
-              if (indexNames.includes(indexName)) {
-                const exists = await client.indices.exists({ index: indexName })
-                if (!exists) {
-                  await client.indices.create({
-                    index: indexName,
-                  })
-                }
-
-                // 更新索引
-                await client.indices.putMapping({
-                  index: indexName,
-                  properties: mapping.osmapping.body.properties,
-                })
-              }
-            })
-          )
-        }
-
-        return client
-      }).pipe(
-        A4Util.handleRetry(dbName, options.retryDelay, options.retryAttempts, options.verboseRetryLog, this.logger)
-      )
-    )
-
-    return dataSource
-  }
-
-  public static getConfig(
-    a4Config: IA4Config<A4ElasticSearchCrudModule['Schema']>,
-    configKey?: string
-  ): A4ElasticSearchCrudModuleOptions {
-    const config = a4Config.getOrThrow((configKey as typeof this.CONFIG_MIDDLE_PATH) ?? this.CONFIG_MIDDLE_PATH)
-
-    const newConfig: A4ElasticSearchCrudModuleOptions = {}
-
-    const names = Object.getOwnPropertyNames(config)
-
-    while (names.length) {
-      const name = names.shift()!
-      const c = config[name as keyof typeof config]
-
-      // 将 ca.crt 从文件路径读取为文件内容。
-      if (c.tls?.ca && typeof c.tls.ca === 'string') {
-        const { ca } = c.tls
-        c.tls.ca = fs.readFileSync(A4Util.noAbsoluteWith(ca, a4Config.cwd))
-      }
-
-      newConfig[name] = {
-        ...c,
-
-        synchronize: RunEnv.isDev ? c.synchronize ?? true : false,
-
-        retryAttempts: c.retryAttempts ?? CRUD_ELASTICSEARCH_MODULE_DEFAULT.RETRY_ATTMPTS,
-        retryDelay: c.retryDelay ?? CRUD_ELASTICSEARCH_MODULE_DEFAULT.RETRY_DELAY,
-        verboseRetryLog: c.verboseRetryLog ?? CRUD_ELASTICSEARCH_MODULE_DEFAULT.VERBOSE_RESTRY_LOG,
-      }
-    }
-
-    return newConfig
   }
 }

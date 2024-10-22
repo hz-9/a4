@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-28 22:37:11
+ * @LastEditTime : 2024-10-22 22:41:17
  */
 import * as path from 'upath'
 import {
@@ -17,6 +17,7 @@ import {
 } from '@nestjs/common'
 import { Observable, delay, retry, scan } from 'rxjs'
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type ObjProvider<T = any> = ClassProvider<T> | ValueProvider<T> | FactoryProvider<T> | ExistingProvider<T>
 
 /**
@@ -104,7 +105,9 @@ export class A4Util {
   private static _provideToObj(provider: Provider): ObjProvider {
     if ((provider as ClassProvider).provide) return provider as ObjProvider
     const classProvider: ClassProvider = {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       provide: provider as Type<any>,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       useClass: provider as Type<any>,
     }
     return classProvider

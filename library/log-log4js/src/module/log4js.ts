@@ -1,6 +1,9 @@
 import { Injectable, LoggerService } from '@nestjs/common'
 import { Logger } from 'log4js'
 
+/**
+ * @public
+ */
 @Injectable()
 export class A4Log4jsLogger implements LoggerService {
   public constructor(private readonly _logger: Logger) {}

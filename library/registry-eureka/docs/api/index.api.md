@@ -4,13 +4,11 @@
 
 ```ts
 
-import { A4ModuleBase } from '@hz-9/a4-core';
 import { DynamicModule } from '@nestjs/common';
 import { IA4Config } from '@hz-9/a4-core';
 import { IA4ModuleForRootAsyncOptions } from '@hz-9/a4-core';
 import { IA4Registry } from '@hz-9/a4-core';
 import { IA4RegistryInstanceMetadata } from '@hz-9/a4-core';
-import { IA4RegistryModule } from '@hz-9/a4-core';
 import { Logger } from '@nestjs/common';
 
 // @public
@@ -91,20 +89,12 @@ export class A4EurekaRegistryModuleSchemaC {
     readonly eureka: A4EurekaRegistryModuleSchema;
 }
 
+// Warning: (ae-forgotten-export) The symbol "A4EurekaRegsitryModuleBase" needs to be exported by the entry point index.d.ts
+//
 // @public
-export class A4EurekaRegsitryModule implements A4ModuleBase, IA4RegistryModule {
+export class A4EurekaRegsitryModule extends A4EurekaRegsitryModuleBase {
     // (undocumented)
-    static CONFIG_MIDDLE_PATH: "A4.registry.eureka";
-    // (undocumented)
-    static forRootAsync(options: IA4ModuleForRootAsyncOptions<A4EurekaRegistryModuleSchema>): DynamicModule;
-    // (undocumented)
-    static getConfig(a4Config: IA4Config<A4EurekaRegsitryModule['Schema']>, configKey?: string): A4EurekaRegistryModuleSchema;
-    // (undocumented)
-    static logger: Logger;
-    // (undocumented)
-    static Schema: typeof A4EurekaRegistryModuleSchemaA;
-    // (undocumented)
-    Schema: A4EurekaRegistryModuleSchemaA;
+    static configToOptions(config: A4EurekaRegistryModuleSchema, a4Config?: IA4Config<A4EurekaRegistryModuleSchemaA>): IA4EurekaRegisterConstructorOptions;
 }
 
 // @public

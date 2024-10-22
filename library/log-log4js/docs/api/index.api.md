@@ -5,20 +5,21 @@
 ```ts
 
 import type { Appender } from 'log4js';
-import { Configuration } from 'log4js';
+import type { Configuration } from 'log4js';
 import type { DateFileAppender } from 'log4js';
+import { DynamicModule } from '@nestjs/common';
 import { IA4Config } from '@hz-9/a4-core';
 import { IA4LogModule } from '@hz-9/a4-core';
-import { IA4ModuleBaseSubType } from '@hz-9/a4-core';
+import { IA4ModuleForRootAsyncOptions } from '@hz-9/a4-core';
 import type { Levels } from 'log4js';
-import { Logger } from 'log4js';
+import { Logger } from '@nestjs/common';
+import { Logger as Logger_2 } from 'log4js';
 import { LoggerService } from '@nestjs/common';
-import { ModuleError } from '@hz-9/a4-core';
 import type { StandardOutputAppender } from 'log4js';
 
 // @public (undocumented)
 export class A4Log4jsLogger implements LoggerService {
-    constructor(_logger: Logger);
+    constructor(_logger: Logger_2);
     // (undocumented)
     debug(message: unknown, context?: string): void;
     // (undocumented)
@@ -39,18 +40,14 @@ export class A4Log4jsLogger implements LoggerService {
 
 // Warning: (ae-forgotten-export) The symbol "A4Log4jsSimpleLogModuleBase" needs to be exported by the entry point index.d.ts
 //
-// @public (undocumented)
+// @public
 export class A4Log4jsSimpleLogModule extends A4Log4jsSimpleLogModuleBase implements IA4LogModule {
-    // (undocumented)
-    static get defaultConfig(): IA4Log4jsOptions;
-    // (undocumented)
-    static getConfig(a4Config: IA4Config<(typeof A4Log4jsSimpleLogModuleBase)['RootSchemaType']>, configKey?: string): IA4Log4jsOptions;
+    static configToOptions(options: A4Log4jsSimpleLogModuleSchema): IA4Log4jsSimpleOptions;
+    static get defaultOptions(): IA4Log4jsSimpleOptions;
     // (undocumented)
     static getInitLogger(options?: IInitLoggerOptions): A4Log4jsLogger;
     // (undocumented)
-    static optionsToConfig(options: A4Log4jsSimpleLogModuleSchema): IA4Log4jsSimpleOptions;
-    // (undocumented)
-    protected static optionsToProvideClassConstructorOptions(options: IA4Log4jsOptions): Promise<Logger>;
+    static optionsToProvideClassConstructorOptions(options: IA4Log4jsOptions): Promise<Logger_2>;
 }
 
 // @public

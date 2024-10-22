@@ -1,15 +1,22 @@
 A4:
   registry:
-    instance:
-      service: SERVICE_DIC
-      urlAlias: dic
-      version: v1
-    service:
-      host: '192.168.31.179'
-      port: 8761
-      servicePath: '/eureka/apps/'
-      serviceUrls:
-        - http://192.168.31.179:8761/eureka/apps/
+    eureka:
+      instance:
+        service: SERVICE_DIC
+        urlAlias: dic
+        version: v1
+      service:
+        host: '127.0.0.1'
+        port: 8761
+        servicePath: '/eureka/apps/'
+        heartbeatInterval: 30000 # 心跳间隔频率
+        registryFetchInterval: 10000 # 获取配置信息频率
+        registerWithEureka: false # 自动注册到eureka
+        fetchRegistry: true # 是否获取配置信息
+        serviceUrls:
+          default:
+            - http://127.0.0.1:8761/eureka/apps/
+
   microService:
     connect:
       redis:

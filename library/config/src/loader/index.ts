@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-31 00:42:36
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-29 17:03:07
+ * @LastEditTime : 2024-10-22 22:55:25
  */
 import { CustomConfigLoader, ICustomConfigLoadOptions } from './custom.loader'
 import { FileConfigLoader, IFileConfigLoadOptions } from './file.loader'
@@ -36,7 +36,7 @@ export type IA4ConfigLoadOptions = IFileConfigLoadOptions | IHttpConfigLoadOptio
  *
  *  获取配置加载对象。
  *
- * @param options
+ * @param options - 多个类型加载对象配置项的联合类型。
  * @returns
  */
 export const getLoader = (options: IA4ConfigLoadOptions): IAllConfigLoader => {

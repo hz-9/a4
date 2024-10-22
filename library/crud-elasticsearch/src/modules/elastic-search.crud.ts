@@ -2,10 +2,9 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-04 17:58:40
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-27 03:56:33
+ * @LastEditTime : 2024-10-22 22:25:52
  */
 import { GetGetResult, SearchRequest } from '@elastic/elasticsearch/lib/api/types'
-
 import {
   DeepPartial,
   IA4SimpleDao,
@@ -138,7 +137,7 @@ export class A4ElasticSearchCrud<E extends IObjectLiteral> extends IA4SimpleDao 
     model: DeepPartial<E>,
     options: ISelectNoPageOptions<E> = {}
   ): Promise<ISelectNoPageReturn<E>> {
-    const { sort } = options
+    // const { sort } = options
 
     const params: SearchRequest = {
       index: this.indexName,

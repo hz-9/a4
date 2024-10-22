@@ -1,0 +1,620 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/api/dic": {
+      "post": {
+        "operationId": "DicHttpController_insert",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DicInsertReqDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DicInsertResultDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Dic"]
+      },
+      "get": {
+        "operationId": "DicHttpController_selectByPage",
+        "parameters": [
+          {
+            "name": "id",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "label",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "code",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "description",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "remark",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageNum",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "minimum": 1,
+              "default": 1,
+              "type": "number"
+            }
+          },
+          {
+            "name": "pageSize",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "minimum": 1,
+              "maximum": 1000,
+              "default": 20,
+              "type": "number"
+            }
+          },
+          {
+            "name": "sort",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DicSelectByPageResultDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Dic"]
+      }
+    },
+    "/api/dic/{id}": {
+      "get": {
+        "operationId": "DicHttpController_selectById",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DicSelectByIdResultDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Dic"]
+      },
+      "patch": {
+        "operationId": "DicHttpController_updateById",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DicUpdateReqDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateByIdResultDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Dic"]
+      },
+      "delete": {
+        "operationId": "DicHttpController_deleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteByIdResultDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Dic"]
+      }
+    },
+    "/api/dic/m": {
+      "post": {
+        "operationId": "DicHttpController_insertMulti",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DicInsertMultiResultDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Dic"]
+      }
+    },
+    "/api/dic/m/{ids}": {
+      "get": {
+        "operationId": "DicHttpController_selectByIds",
+        "parameters": [
+          {
+            "name": "ids",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DicSelectByIdsResultDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Dic"]
+      },
+      "patch": {
+        "operationId": "DicHttpController_updateByIds",
+        "parameters": [
+          {
+            "name": "ids",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DicUpdateReqDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateByIdsResultDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Dic"]
+      },
+      "delete": {
+        "operationId": "DicHttpController_deleteByIds",
+        "parameters": [
+          {
+            "name": "ids",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteByIdsResultDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Dic"]
+      }
+    }
+  },
+  "info": {
+    "title": "SAMPLE SERVICE DIC",
+    "description": "",
+    "version": "0.0.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "schemas": {
+      "DicInsertReqDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "label": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "remark": {
+            "type": "string"
+          }
+        }
+      },
+      "DicInsertResDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "label": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "remark": {
+            "type": "string"
+          }
+        },
+        "required": ["id", "label", "code"]
+      },
+      "DicInsertResultDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "number"
+          },
+          "data": {
+            "$ref": "#/components/schemas/DicInsertResDto"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": ["status", "data", "message"]
+      },
+      "DicSelectResDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "label": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "remark": {
+            "type": "string"
+          }
+        },
+        "required": ["id", "label", "code"]
+      },
+      "PageResDto": {
+        "type": "object",
+        "properties": {
+          "pageSize": {
+            "type": "number"
+          },
+          "pageNum": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": ["pageSize", "pageNum", "total"]
+      },
+      "DicSelectByPageResultDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "number"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DicSelectResDto"
+            }
+          },
+          "page": {
+            "$ref": "#/components/schemas/PageResDto"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": ["status", "data", "page", "message"]
+      },
+      "DicSelectByIdResultDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "number"
+          },
+          "data": {
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DicSelectResDto"
+              }
+            ]
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": ["status", "data", "message"]
+      },
+      "DicUpdateReqDto": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "remark": {
+            "type": "string"
+          }
+        }
+      },
+      "UpdateEffectInfo": {
+        "type": "object",
+        "properties": {
+          "effectNum": {
+            "type": "number",
+            "nullable": true
+          }
+        },
+        "required": ["effectNum"]
+      },
+      "UpdateByIdResultDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "number"
+          },
+          "data": {
+            "$ref": "#/components/schemas/UpdateEffectInfo"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": ["status", "data", "message"]
+      },
+      "DeleteEffectInfo": {
+        "type": "object",
+        "properties": {
+          "effectNum": {
+            "type": "number",
+            "nullable": true
+          }
+        },
+        "required": ["effectNum"]
+      },
+      "DeleteByIdResultDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "number"
+          },
+          "data": {
+            "$ref": "#/components/schemas/DeleteEffectInfo"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": ["status", "data", "message"]
+      },
+      "DicInsertMultiResultDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "number"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DicInsertResDto"
+            }
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": ["status", "data", "message"]
+      },
+      "DicSelectByIdsResultDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "number"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DicSelectResDto"
+            }
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": ["status", "data", "message"]
+      },
+      "UpdateByIdsResultDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "number"
+          },
+          "data": {
+            "$ref": "#/components/schemas/UpdateEffectInfo"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": ["status", "data", "message"]
+      },
+      "DeleteByIdsResultDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "number"
+          },
+          "data": {
+            "$ref": "#/components/schemas/DeleteEffectInfo"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": ["status", "data", "message"]
+      }
+    }
+  }
+}

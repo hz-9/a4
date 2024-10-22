@@ -2,15 +2,14 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-27 03:01:03
+ * @LastEditTime : 2024-10-22 17:22:32
  */
 
 /* eslint-disable max-classes-per-file */
+import { CU, IsOptionalNotNull } from '@hz-9/a4-core'
 import { Type } from 'class-transformer'
 import { IsArray, IsNumber, IsObject, ValidateNested } from 'class-validator'
 import type { RedisOptions } from 'ioredis'
-
-import { CU, IsOptionalNotNull } from '@hz-9/a4-core'
 
 import { LOCK_MODULE_DEFAULT } from '../const'
 

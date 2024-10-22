@@ -115,48 +115,26 @@
           "syntaxKind": "modifier"
         },
         {
-          "tagName": "@betaDocumentation",
-          "syntaxKind": "modifier"
-        },
-        {
-          "tagName": "@internalRemarks",
+          "tagName": "@Author",
           "syntaxKind": "block"
         },
         {
-          "tagName": "@preapproved",
-          "syntaxKind": "modifier"
+          "tagName": "@Date",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@LastEditors",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@LastEditTime",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@Description",
+          "syntaxKind": "block"
         }
       ],
-      "supportForTags": {
-        "@alpha": true,
-        "@beta": true,
-        "@defaultValue": true,
-        "@decorator": true,
-        "@deprecated": true,
-        "@eventProperty": true,
-        "@example": true,
-        "@experimental": true,
-        "@inheritDoc": true,
-        "@internal": true,
-        "@label": true,
-        "@link": true,
-        "@override": true,
-        "@packageDocumentation": true,
-        "@param": true,
-        "@privateRemarks": true,
-        "@public": true,
-        "@readonly": true,
-        "@remarks": true,
-        "@returns": true,
-        "@sealed": true,
-        "@see": true,
-        "@throws": true,
-        "@typeParam": true,
-        "@virtual": true,
-        "@betaDocumentation": true,
-        "@internalRemarks": true,
-        "@preapproved": true
-      },
       "reportUnsupportedHtmlElements": false
     }
   },
@@ -1408,21 +1386,12 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare class A4EurekaRegsitryModule implements "
+              "text": "export declare class A4EurekaRegsitryModule extends "
             },
             {
               "kind": "Reference",
-              "text": "A4ModuleBase",
-              "canonicalReference": "@hz-9/a4-core!A4ModuleBase:class"
-            },
-            {
-              "kind": "Content",
-              "text": ", "
-            },
-            {
-              "kind": "Reference",
-              "text": "IA4RegistryModule",
-              "canonicalReference": "@hz-9/a4-core!IA4RegistryModule:class"
+              "text": "A4EurekaRegsitryModuleBase",
+              "canonicalReference": "@hz-9/a4-registry-eureka!~A4EurekaRegsitryModuleBase"
             },
             {
               "kind": "Content",
@@ -1436,52 +1405,13 @@
           "preserveMemberOrder": false,
           "members": [
             {
-              "kind": "Property",
-              "canonicalReference": "@hz-9/a4-registry-eureka!A4EurekaRegsitryModule.CONFIG_MIDDLE_PATH:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "static CONFIG_MIDDLE_PATH: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "\"A4.registry.eureka\""
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "CONFIG_MIDDLE_PATH",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              },
-              "isStatic": true,
-              "isProtected": false,
-              "isAbstract": false
-            },
-            {
               "kind": "Method",
-              "canonicalReference": "@hz-9/a4-registry-eureka!A4EurekaRegsitryModule.forRootAsync:member(1)",
+              "canonicalReference": "@hz-9/a4-registry-eureka!A4EurekaRegsitryModule.configToOptions:member(1)",
               "docComment": "",
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "static forRootAsync(options: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IA4ModuleForRootAsyncOptions",
-                  "canonicalReference": "@hz-9/a4-core!IA4ModuleForRootAsyncOptions:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<"
+                  "text": "static configToOptions(config: "
                 },
                 {
                   "kind": "Reference",
@@ -1490,52 +1420,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": ">"
-                },
-                {
-                  "kind": "Content",
-                  "text": "): "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "DynamicModule",
-                  "canonicalReference": "@nestjs/common!DynamicModule:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": true,
-              "returnTypeTokenRange": {
-                "startIndex": 6,
-                "endIndex": 7
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "options",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 5
-                  },
-                  "isOptional": false
-                }
-              ],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "forRootAsync"
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@hz-9/a4-registry-eureka!A4EurekaRegsitryModule.getConfig:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "static getConfig(a4Config: "
+                  "text": ", a4Config?: "
                 },
                 {
                   "kind": "Reference",
@@ -1548,20 +1433,12 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "A4EurekaRegsitryModule",
-                  "canonicalReference": "@hz-9/a4-registry-eureka!A4EurekaRegsitryModule:class"
+                  "text": "A4EurekaRegistryModuleSchemaA",
+                  "canonicalReference": "@hz-9/a4-registry-eureka!A4EurekaRegistryModuleSchemaA:class"
                 },
                 {
                   "kind": "Content",
-                  "text": "['Schema']>"
-                },
-                {
-                  "kind": "Content",
-                  "text": ", configKey?: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "string"
+                  "text": ">"
                 },
                 {
                   "kind": "Content",
@@ -1569,8 +1446,8 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "A4EurekaRegistryModuleSchema",
-                  "canonicalReference": "@hz-9/a4-registry-eureka!A4EurekaRegistryModuleSchema:class"
+                  "text": "IA4EurekaRegisterConstructorOptions",
+                  "canonicalReference": "@hz-9/a4-registry-eureka!IA4EurekaRegisterConstructorOptions:interface"
                 },
                 {
                   "kind": "Content",
@@ -1587,17 +1464,17 @@
               "overloadIndex": 1,
               "parameters": [
                 {
-                  "parameterName": "a4Config",
+                  "parameterName": "config",
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
-                    "endIndex": 5
+                    "endIndex": 2
                   },
                   "isOptional": false
                 },
                 {
-                  "parameterName": "configKey",
+                  "parameterName": "a4Config",
                   "parameterTypeTokenRange": {
-                    "startIndex": 6,
+                    "startIndex": 3,
                     "endIndex": 7
                   },
                   "isOptional": true
@@ -1605,116 +1482,14 @@
               ],
               "isOptional": false,
               "isAbstract": false,
-              "name": "getConfig"
-            },
-            {
-              "kind": "Property",
-              "canonicalReference": "@hz-9/a4-registry-eureka!A4EurekaRegsitryModule.logger:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "static logger: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Logger",
-                  "canonicalReference": "@nestjs/common!Logger:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "logger",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              },
-              "isStatic": true,
-              "isProtected": false,
-              "isAbstract": false
-            },
-            {
-              "kind": "Property",
-              "canonicalReference": "@hz-9/a4-registry-eureka!A4EurekaRegsitryModule#Schema:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "Schema: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "A4EurekaRegistryModuleSchemaA",
-                  "canonicalReference": "@hz-9/a4-registry-eureka!A4EurekaRegistryModuleSchemaA:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "Schema",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              },
-              "isStatic": false,
-              "isProtected": false,
-              "isAbstract": false
-            },
-            {
-              "kind": "Property",
-              "canonicalReference": "@hz-9/a4-registry-eureka!A4EurekaRegsitryModule.Schema:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "static Schema: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "typeof "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "A4EurekaRegistryModuleSchemaA",
-                  "canonicalReference": "@hz-9/a4-registry-eureka!A4EurekaRegistryModuleSchemaA:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "Schema",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 3
-              },
-              "isStatic": true,
-              "isProtected": false,
-              "isAbstract": false
+              "name": "configToOptions"
             }
           ],
-          "implementsTokenRanges": [
-            {
-              "startIndex": 1,
-              "endIndex": 2
-            },
-            {
-              "startIndex": 3,
-              "endIndex": 4
-            }
-          ]
+          "extendsTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          },
+          "implementsTokenRanges": []
         },
         {
           "kind": "Interface",

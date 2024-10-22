@@ -2,8 +2,10 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-21 18:05:27
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-05 16:25:06
+ * @LastEditTime : 2024-10-22 22:40:53
  */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Observable } from 'rxjs'
 
 import type { DeepPartial, IObjectLiteral } from '../../../interface'

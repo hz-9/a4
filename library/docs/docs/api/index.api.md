@@ -5,15 +5,15 @@
 ```ts
 
 import { A4Application } from '@hz-9/a4-core';
+import { DynamicModule } from '@nestjs/common';
 import { GLOBAL_PROVIDE_TOKEN_A4_DOCS } from '@hz-9/a4-core';
 import { IA4Config } from '@hz-9/a4-core';
 import { IA4Docs } from '@hz-9/a4-core';
-import { IA4ModuleBaseSubType } from '@hz-9/a4-core';
+import { IA4ModuleForRootAsyncOptions } from '@hz-9/a4-core';
 import type { IA4PathInfo } from '@hz-9/a4-core';
 import type { IA4StatusInfo } from '@hz-9/a4-core';
 import { Logger } from '@nestjs/common';
 import { MODULE_CONFIG_PATH_A4_DOCS } from '@hz-9/a4-core';
-import { ModuleError } from '@hz-9/a4-core';
 import { SCOPE_PROVIDE_TOKEN_A4_DOCS } from '@hz-9/a4-core';
 
 // @public
@@ -45,11 +45,7 @@ export class A4DocsFileModuleSchema {
 // @public
 export class A4DocsModule extends A4DocsModuleBase {
     // (undocumented)
-    static get defaultConfig(): IDocsInfo;
-    // (undocumented)
-    static getConfig(a4Config: IA4Config<(typeof A4DocsModuleBase)['RootSchemaType']>, configKey?: string): IDocsInfo;
-    // (undocumented)
-    protected static optionsToProvideClassConstructorOptions(options: IDocsInfo): Promise<IDocsInfo>;
+    static configToOptions(config: A4DocsModuleSchema, a4Config?: IA4Config<A4DocsModuleSchemaA>): IDocsInfo;
 }
 
 // @public
